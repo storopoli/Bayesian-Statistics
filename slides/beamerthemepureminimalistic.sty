@@ -1,0 +1,58 @@
+% A pure minimalistic LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2020 Kai Norman Clasen
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamerthemepureminimalistic.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kai-tub/latex-beamer-pure-minimalistic
+
+\ProvidesPackage{beamerthemepureminimalistic}[v2.0.1]
+
+\mode<presentation>
+
+\DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemepureminimalistic}}
+\DeclareOptionBeamer{showmaxslides}{\PassOptionsToPackage{showmaxslides}{beamerouterthemepureminimalistic}}
+\DeclareOptionBeamer{nofooterlogo}{\PassOptionsToPackage{nofooterlogo}{beamerouterthemepureminimalistic}}
+\DeclareOptionBeamer{nofooter}{\PassOptionsToPackage{nofooter}{beamerouterthemepureminimalistic}}
+\DeclareOptionBeamer{customfont}{\PassOptionsToPackage{customfont}{beamerfontthemepureminimalistic}}
+\DeclareOptionBeamer{noto}{\PassOptionsToPackage{noto}{beamerfontthemepureminimalistic}}
+
+\ProcessOptionsBeamer
+
+% Settings
+\usefonttheme{pureminimalistic}
+\usecolortheme{pureminimalistic}
+\useoutertheme{pureminimalistic}
+\useinnertheme{pureminimalistic}
+
+\setbeamertemplate{navigation symbols}{}%
+\beamerdefaultoverlayspecification{}
+
+\def\maketitle{%
+	{%Set beamer template only works for the following frames.
+	% Would need a different way to support calling \maketitle in
+	% a frame environment
+		\setbeamertemplate{footline}{}%
+		\setbeamertemplate{frametitle}[largetitle]%
+
+		\begin{frame}[noframenumbering]%
+			\titlepage%
+		\end{frame}%
+	}
+}
+
+
+\mode<all>

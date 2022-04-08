@@ -1,0 +1,96 @@
+% A pure minimalistic LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2020 Kai Norman Clasen
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamerthemepureminimalistic.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kai-tub/latex-beamer-pure-minimalistic
+
+\ProvidesPackage{beamerfontthemepureminimalistic}[v2.0.1]
+\RequirePackage{ifthen}
+% Adds micro-typographical enhancements 
+% Has no significant impact on presentation slides
+% Adds issues to japanese packages...
+% \RequirePackage{microtype}
+\mode<presentation>
+
+\newboolean{customfont}
+\setboolean{customfont}{false}
+\newboolean{noto}
+\setboolean{noto}{false}
+
+\DeclareOptionBeamer{customfont}{\setboolean{customfont}{true}}
+\DeclareOptionBeamer{noto}{\setboolean{noto}{true}}
+\ProcessOptionsBeamer
+
+\RequirePackage{silence}
+% I have no clue how I can fix this warning
+\WarningFilter{latex}{Font shape declaration has incorrect series value}
+\RequirePackage{iftex}
+
+\ifpdftex
+  \RequirePackage[T1]{fontenc}
+\fi
+
+\ifthenelse{\boolean{noto}}{%
+    % If Noto overwrites the fira fonts settings
+    \RequirePackage{noto}
+}{%
+    \ifthenelse{\boolean{customfont}}{%
+        % Load default fonts
+    }{%
+        % By default load Fira
+        \RequirePackage[sfdefault]{FiraSans}
+        \RequirePackage{FiraMono}
+    }
+}
+
+\renewcommand\footnotesize{\fontsize{8pt}{10pt}\selectfont}
+\renewcommand\small{\fontsize{10pt}{12pt}\selectfont}
+\renewcommand\normalsize{\fontsize{12pt}{14pt}\selectfont}
+\renewcommand\large{\fontsize{14pt}{16pt}\selectfont}
+\renewcommand\Large{\fontsize{16pt}{18pt}\selectfont}
+\renewcommand\LARGE{\fontsize{18pt}{20pt}\selectfont}
+
+\setbeamerfont{normal text}{family=\sffamily, size=\normalsize, series=\mdseries}
+\setbeamerfont{alerted text}{parent=normal text}
+
+\setbeamerfont{structure}{parent=normal text}
+
+\setbeamerfont{all titles}{parent=normal text}
+\setbeamerfont{presentation title}{parent=all titles, size=\large, shape=\scshape}
+\setbeamerfont{subtitle}{parent=all titles, shape=\upshape}
+\setbeamerfont{frametitle}{parent=all titles, size=\Large}
+
+\setbeamerfont{footline}{parent=structure,size=\footnotesize}
+\setbeamerfont{title in head/foot}{parent=footline, series=\bfseries}
+\setbeamerfont{author in head/foot}{parent=footline}
+
+\setbeamerfont{section in toc}{parent=normal text}
+\setbeamerfont{subsection in toc}{parent=section in toc}
+\setbeamerfont{subsubsection in toc}{parent=subsection in toc}
+
+\setbeamerfont{author}{parent=normal text, size=\small}
+\setbeamerfont{institute}{parent=normal text, size=\small}
+
+\setbeamerfont{caption}{parent=normal text, size=\small}
+\setbeamerfont{caption name}{series=normal text, size=\small}
+
+\setbeamerfont{itemize/enumerate body}{parent=normal text}
+\setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
+\setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
+
+\mode<all>

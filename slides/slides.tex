@@ -1,0 +1,246 @@
+% Packages
+% sudo tlmgr install silence appendixnumberbeamer fira fontaxes mwe noto csquotes babel helvet
+%--- Preamble ---------------------------------------------------------%
+% Load LaTeX packages
+\documentclass[aspectratio=169]{beamer}                    % supports floating text in any location
+\usetheme[darkmode]{pureminimalistic}
+%\usetheme[lightmode]{pureminimalistic}
+
+\AtBeginSection[]{%
+	\frame<beamer>{
+		\frametitle{Table of Contents for \secname}
+		\setcounter{tocdepth}{10}
+		\tableofcontents[currentsubsection, sectionstyle=hide/hide, subsectionstyle=show/show/hide, subsubsectionstyle=show/show/show/hide] % Show current section and current section's subsections, but hide other section's section and subsections!
+	}
+}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes,xpatch}% recommended
+%\usepackage[english]{babel}
+\usepackage[american]{babel}
+\usepackage{hyphenat}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{bookmark}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{%
+	%colorlinks=false,% hyperlinks will not be colored
+	%linkbordercolor=white,
+	%allcolors=white,
+	%pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
+}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+
+% Algorithms
+\usepackage[ruled,vlined,portuguese]{algorithm2e}
+\SetKwFor{For}{for}{}{}
+
+% strikethought text
+\usepackage[normalem]{ulem}
+
+% Plots
+\usepackage{pgfplots}
+\graphicspath{{logos}{../images}{images}}
+\pgfplotsset{height=6cm, % only if needed
+	width=12cm,
+	compat=1.17,
+	legend style = {fill = black, draw = white},
+	contour/every contour label/.style={
+			every node/.style={mapped color!50!black,fill=black}}
+}
+\usepackage{tikz}
+\usepackage{tikzsymbols} % Metropolis Little Man
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{automata} % State in Markov Chains
+\usetikzlibrary{intersections}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/]
+% Sample Space subfigures
+\usepackage{subfigure}
+\definecolor{gray80}{gray}{0.8}
+\definecolor{gray60}{gray}{0.6}
+\definecolor{colorA}{rgb}{102, 255, 255}
+\definecolor{colorB}{rgb}{0, 102, 255}
+\usepackage{transparent}
+% Multilevel Modeling
+\usepackage{adjustbox}
+\newcommand*{\offset}{0.025}
+\definecolor{light}{RGB}{188, 188, 220}
+\definecolor{mid}{RGB}{124, 124, 185}
+\definecolor{dark}{RGB}{39, 39, 143}
+\definecolor{highlight}{RGB}{180, 31, 180}
+% Animations
+\usepackage{media9}
+\usepackage{multimedia}
+\addmediapath{animations}
+\addmediapath{../images}
+
+% Bibliography
+\usepackage[
+	backend=biber,
+	doi=true,
+	style=apa,
+	url=true,
+	eprint=false]{biblatex}
+\usepackage{csquotes}
+\addbibresource{../bib/references.bib}
+
+% this makes it possible to add backup slides, without counting them
+\usepackage{appendixnumberbeamer}
+\renewcommand{\appendixname}{\texorpdfstring{\translate{appendix}}{appendix}}
+
+% footer page
+\renewcommand{\pageword}{Slide}
+
+% Math Font Default (Fira is strange)
+\renewcommand\mathfamilydefault{\rmdefault}
+
+
+% if loaded after begin{document} a warning will appear: "pdfauthor already used"
+\title[Bayesian Statistics]{Bayesian Statistics}
+\author{Jose Storopoli, PhD \texttt{josees@uni9.pro.br}}
+\institute{Universidade Nove de Julho - UNINOVE}
+\date{2022}
+
+%%%% Maths crap
+\newtheorem{theo}{Theorem}[]
+\newtheorem{defn}{Definition}[]
+\newtheorem{question}{Question}[]
+\newtheorem{idea}{Idea}[]
+\newtheorem{property}{Property}[]
+
+\begin{document}
+%--- Title Page -------------------------------------------------------%
+
+\maketitle
+
+%--- Intro Bayes for Everyone ----------------------------------------%
+\begingroup
+\AtBeginSection[]{}
+\include{intro.tex}
+\endgroup
+
+%--- Table of Contents-------------------------------------------------%
+\setcounter{tocdepth}{1}
+\begin{frame}[plain, noframenumbering]{Table of Contents}
+	\tableofcontents
+\end{frame}
+
+%--- Distributions ----------------------------------------------------%
+
+\tikzset{
+	declare function={
+			discreteuniform(\a,\b)=1/(\b-\a+1);%
+			binomial(\n,\p)=\n!/(x!*(\n-x)!)*\p^x*(1-\p)^(\n-x);%
+			poisson(\l)=(\l^x)*exp(-\l)/(x!);%
+			negativebinomial(\r,\p)=((x+\r-1)!/((\r-1)!*x!))*((1-\p)^x*\p^\r);%
+			continuousuniform(\a,\b)=1/(\b-\a);%
+			gaussian(\m,\s)=1/(\s*sqrt(2*pi))*exp(-((x-\m)^2)/(2*\s^2));%
+			lognormal(\m,\s)=1/(x*\s*sqrt(2*pi))*exp(-((ln(x)-\m)^2)/(2*\s^2));%
+			exponential(\l)=\l*exp(-\l*x);%
+			gamma(\z)=2.506628274631*sqrt(1/\z)+ 0.20888568*(1/\z)^(1.5)+ 0.00870357*(1/\z)^(2.5)- (174.2106599*(1/\z)^(3.5))/25920- (715.6423511*(1/\z)^(4.5))/1244160)*exp((-ln(1/\z)-1)*\z;%
+			student(\n)=gamma((\n+1)/2.)/(sqrt(\n*pi)*gamma(\n/2.))*((1+(x*x)/\n)^(-(\n+1)/2.));%
+			beta(\a,\b)=(x^(\a-1)*(1-x)^(\b-1)/((gamma(\a)*gamma(\b))/gamma(\a+\b));%
+			binormal(\ma,\sa,\mb,\sb,\ro)=exp(-(((x-\ma)/\sa)^2+((y-\mb)/\sb)^2-(2*\ro)*((x-\ma)/\sa)*((y-\mb)/\sb))/(2*(1-\ro^2)))/(2*pi*\sa*\sb*(1-\ro^2)^0.5);%
+			conditionalbinormal(\yc,\ma,\sa,\mb,\sb,\ro)=exp(-(((x-\ma)/\sa)^2+((\yc-\mb)/\sb)^2-(2*\ro)*((x-\ma)/\sa)*((\yc-\mb)/\sb))/(2*(1-\ro^2)))/(2*pi*\sa*\sb*(1-\ro^2)^0.5);%
+			sumtwonormals(\ma,\sa,\wa,\mb,\sb,\wb)=(\wa*gaussian(\ma,\sa))+(\wb*gaussian(\mb,\sb));%
+			normcdf(\m,\s)=1/(1 + exp(-0.07056*((x-\m)/\s)^3 - 1.5976*(x-\m)/\s));%
+		}
+}
+
+%--- Lectures --------------------------------------------------------%
+%\include{01-Bayesian_Statistics}
+%\include{2-Distribuicoes_Estatisticas}
+%\include{3-rstanarm_brms}
+%\include{4-Priors}
+%\include{5-Priors_Posteriors_Checks}
+%\include{6-Regressao_Linear}
+%\include{7-Regressao_Logistica}
+%\include{7.1-Regressao_Ordinal}
+%\include{8-Regressao_Poisson}
+%\include{9-Regressao_Robusta}
+%\include{10-Modelos_Multiniveis}
+%\include{11-MCMC}
+%\include{12-Comparacao_Modelos}
+
+%--- Citations -------------------------------------------------------%
+
+\begingroup
+\AtBeginSection[]{}
+\section{References}
+\begin{frame}[allowframebreaks]{References}
+	\printbibliography
+\end{frame}
+\endgroup
+
+%--- Appendix Slides -------------------------------------------------%
+\appendix % do not count the following slides for the total number
+\section*{Backup Slides}
+\begin{frame}[plain, noframenumbering]{License}
+	\centering
+	\vfill
+	\Large The text and images from these slides have a
+	\href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en}{Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)}
+	\vfill
+	\includegraphics[width = 0.2\textwidth]{CC_SA.png}
+\end{frame}
+
+\begin{frame}[plain, noframenumbering]{How to cite this content}
+	\centering
+	\vfill
+	\Large \fullcite{storopoli2022bayesian}
+	\vfill
+\end{frame}
+
+\begin{frame}[plain, noframenumbering, label=appendixnormal]{How the Normal distribution arose\footnote{Abraham de Moivre in 1738}\footnote{A better explanation can be found by \href{http://www.stat.yale.edu/~pollard/Courses/241.fall2014/notes2014/Bin.Normal.pdf}{clicking here}}}
+	$$
+		\begin{aligned}
+			\text{Binomial}(n, k)                            & = \binom{n}{k} p^k (1-p)^{n-k}                                                \\
+			n!                                               & \approx \sqrt{2 \pi n} \left(\frac{n}{e}\right)^n         & \text{(Stirling)} \\
+			\lim_{n \to \infty} \binom{n}{k} p^k (1-p)^{n-k} & = \frac{1}{\sqrt{2 \pi npq}} e^{-\frac{(k - np)^2}{2npq}}
+		\end{aligned}
+	$$
+	We know that in the binomial: $\mathrm{E} = np$ and $\mathrm{Var} = npq$; hence replacing $\mathrm{E}$ by $\mu$ and $\mathrm{Var}$ by $\sigma^2$:
+	$$\lim_{n \to \infty} \binom{n}{k} p^k (1-p)^{n-k} = \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{(k - \mu)^2}{\sigma^2}}$$
+\end{frame}
+
+\begin{frame}[plain, noframenumbering, label=appendixnqr]{QR Decomposition}
+	\footnotesize
+	In Linear Algebra 101, we learn that any matrix
+	(even non-square ones) can be decomposed into a product of two matrices:
+	\begin{vfilleditems}
+		\footnotesize
+		\item $\mathbf{Q}$: an orthogonal matrix (its columns are orthogonal unit vectors,
+		\textit{i.e.} $\mathbf{Q}^T = \mathbf{Q}^{-1}$)
+		\item $\mathbf{R}$: an upper-triangular matrix
+	\end{vfilleditems}
+	\footnotesize
+	Now, we incorporate the QR decomposition into the linear regression model.
+	Here, I am going to use the "thin" QR instead of the "fat", which scales $\mathbf{Q}$ and $\mathbf{R}$
+	matrices by a factor of $\sqrt{n-1}$ where $n$ is the number of rows in $\mathbf{X}$.
+	In practice, it is better to implement the thin QR, than the fat QR decomposition.
+	It is more numerical stable. Mathematically speaking, the thing QR decomposition is:
+	$$
+		\begin{aligned}
+			\mathbf{X}       & = \mathbf{Q}^* \mathbf{R}^*                                                    \\
+			\mathbf{Q}^*     & = \mathbf{Q} \cdot \sqrt{n - 1}                                                \\
+			\mathbf{R}^*     & = \frac{1}{\sqrt{n - 1}} \cdot \mathbf{R}                                      \\
+			\boldsymbol{\mu} & = \alpha + \mathbf{X} \cdot \boldsymbol{\beta} + \sigma                        \\
+			                 & = \alpha + \mathbf{Q}^* \cdot \mathbf{R}^* \cdot \boldsymbol{\beta} + \sigma   \\
+			                 & = \alpha + \mathbf{Q}^* \cdot (\mathbf{R}^* \cdot \boldsymbol{\beta}) + \sigma \\
+			                 & = \alpha + \mathbf{Q}^* \cdot \widetilde{\boldsymbol{\beta}} + \sigma
+		\end{aligned}
+	$$
+\end{frame}
+
+\end{document}

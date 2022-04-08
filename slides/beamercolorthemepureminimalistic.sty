@@ -1,0 +1,78 @@
+% A pure minimalistic LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2020 Kai Norman Clasen
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamerthemepureminimalistic.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kai-tub/latex-beamer-pure-minimalistic
+
+\ProvidesPackage{beamercolorthemepureminimalistic}[v2.0.1]
+\RequirePackage{ifthen}
+\mode<presentation>
+
+\newboolean{darkmode}
+\setboolean{darkmode}{false}
+
+\DeclareOptionBeamer{darkmode}{\setboolean{darkmode}{true}}
+\ProcessOptionsBeamer
+
+\definecolor{pureminimalistic@text@black}{RGB}{0,0,0}
+\definecolor{pureminimalistic@text@gray}{RGB}{113,113,113}
+\definecolor{pureminimalistic@text@whiter_gray}{RGB}{200,200,200}
+\definecolor{pureminimalistic@text@red}{RGB}{190,15,30}
+\definecolor{pureminimalistic@text@white}{RGB}{255, 255, 255}
+
+\newcommand{\beamertitlecolor}{pureminimalistic@text@red}
+
+\ifthenelse{\boolean{darkmode}}{
+  \newcommand{\beamertextcolor}{pureminimalistic@text@white}%
+  \newcommand{\beamerbgcolor}{pureminimalistic@text@black}%
+  \newcommand{\beamerfootertextcolor}{pureminimalistic@text@whiter_gray}%
+}{%
+  \newcommand{\beamertextcolor}{pureminimalistic@text@black}%
+  \newcommand{\beamerbgcolor}{pureminimalistic@text@white}%
+  \newcommand{\beamerfootertextcolor}{pureminimalistic@text@gray}%
+}
+
+\setbeamercolor*{normal text}{fg=\beamertextcolor, bg=\beamerbgcolor}
+\setbeamercolor*{alerted text}{fg=\beamertitlecolor, bg=\beamerbgcolor}
+\setbeamercolor*{footline}{fg=\beamerfootertextcolor, bg=\beamerbgcolor}
+\setbeamercolor*{frametitle}{fg=\beamertitlecolor, bg=\beamerbgcolor}
+
+\setbeamercolor*{author}{parent=normal text}
+\setbeamercolor*{title}{parent=frametitle}
+
+\setbeamercolor*{section in toc}{parent=normal text}
+\setbeamercolor*{subsection in toc}{parent=normal text}
+\setbeamercolor*{subsubsection in toc}{parent=normal text}
+
+\setbeamercolor*{enumerate item}{parent=normal text}
+\setbeamercolor*{enumerate subitem}{parent=normal text}
+\setbeamercolor*{enumerate subsubitem}{parent=normal text}
+
+\setbeamercolor*{itemize item}{parent=normal text}
+\setbeamercolor*{itemize subitem}{parent=normal text}
+\setbeamercolor*{itemize subsubitem}{parent=normal text}
+
+\setbeamercolor*{bibliography item}{parent=normal text}
+\setbeamercolor*{bibliography entry title}{parent=normal text}
+\setbeamercolor*{bibliography entry author}{parent=normal text}
+\setbeamercolor*{bibliography entry location}{parent=normal text}
+\setbeamercolor*{bibliography entry note}{parent=normal text}
+
+\setbeamercolor*{caption name}{parent=normal text}
+
+\mode<all>

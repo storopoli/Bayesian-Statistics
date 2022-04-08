@@ -1,0 +1,114 @@
+% A pure minimalistic LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2020 Kai Norman Clasen
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamerthemepureminimalistic.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kai-tub/latex-beamer-pure-minimalistic
+
+\ProvidesPackage{beamerinnerthemepureminimalistic}[v2.0.1]
+
+\mode<presentation>
+
+\def\itemsymbol{\raisebox{0.3ex}{\small$\bullet$}}
+% Save the \item makro to \svitem
+\let\svitem\item
+\makeatletter
+\newenvironment<>{vfilleditems}{%
+  \begin{itemize}[#1]%
+  \let\olditem\item
+  \renewcommand\item[1][\itemsymbol]{
+    \ifnum\@itemdepth=1\relax
+      \vfill
+    \else
+      \ifnum\@itemdepth=2\relax
+        \setlength\itemsep{0.5ex}
+      \else
+        \ifnum\@itemdepth=3\relax
+          \setlength\itemsep{0.25ex}
+    \fi\fi\fi
+    \svitem[##1]
+  }
+}{
+  \end{itemize}\vfill
+}
+\makeatother
+
+
+\defbeamertemplate*{section in toc}{pureminimalistic}{%
+  \hspace{0.5em} \inserttocsectionnumber.~\inserttocsection
+}
+
+\defbeamertemplate*{subsection in toc}{pureminimalistic}{%
+  \hspace{1.5em} \inserttocsectionnumber.\inserttocsubsectionnumber~\inserttocsubsection\par
+}
+
+\defbeamertemplate*{subsubsection in toc}{pureminimalistic}{% No one should use subsubsections in a presentation
+ \hspace{2.5em} \inserttocsectionnumber.\inserttocsubsectionnumber.\inserttocsubsubsectionnumber~\inserttocsubsubsection\par
+}
+
+\defbeamertemplate*{itemize item}{pureminimalistic}{%
+  \usebeamerfont*{itemize item}\itemsymbol
+}
+
+\defbeamertemplate*{itemize subitem}{pureminimalistic}{%
+  \usebeamerfont*{itemize subitem}\itemsymbol
+}
+
+\defbeamertemplate*{itemize subsubitem}{pureminimalistic}{%
+  \usebeamerfont*{itemize subsubitem}\itemsymbol
+}
+
+\defbeamertemplate*{bibliography item}{pureminimalistic}{%
+  \insertbiblabel
+}
+
+\setlength{\abovecaptionskip}{0ex}
+\setlength{\belowcaptionskip}{1ex}
+
+\setbeamertemplate{caption}{%
+  \insertcaption%
+}
+
+\defbeamertemplate*{title page}{pureminimalistic}[1][]
+{
+  \usebeamerfont{title}
+  \begin{beamercolorbox}[sep=0ex,wd=\textwidth,dp=1ex]{headline}
+    \vskip 3pt
+    \hfill\logotitle\par% \logotitle is defined in outertheme
+    \vskip 75pt
+    \parbox{\linewidth}{%
+      \begin{beamercolorbox}[wd=\textwidth]{title}%
+        {\inserttitle}%
+      \end{beamercolorbox}
+
+      \begin{beamercolorbox}[wd=\textwidth,dp=1ex]{author}%
+        \vskip 3pt
+        \usebeamerfont{author}\usebeamercolor{author}\insertauthor $\quad$
+        \ifx\insertinstitute\@empty%
+          \else%
+          {\usebeamerfont{institute}\insertinstitute $\quad$}%
+        \fi%
+        \ifx\insertsubtitle\@empty%
+          \else%
+          {\usebeamerfont{subtitle}\insertsubtitle}%
+        \fi%
+      \end{beamercolorbox}%
+    }%
+  \end{beamercolorbox}
+}
+
+\mode<all>

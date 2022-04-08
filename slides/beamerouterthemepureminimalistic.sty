@@ -1,0 +1,169 @@
+% A pure minimalistic LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2020 Kai Norman Clasen
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamerthemepureminimalistic.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kai-tub/latex-beamer-pure-minimalistic
+
+\ProvidesPackage{beamerouterthemepureminimalistic}[v2.0.1]
+\RequirePackage{ifthen}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+
+\mode<presentation>
+
+\newboolean{showmaxslides}
+\setboolean{showmaxslides}{false}
+\newboolean{nofooterlogo}
+\setboolean{nofooterlogo}{false}
+
+\newboolean{nofooter}
+\setboolean{nofooter}{false}
+
+\DeclareOptionBeamer{showmaxslides}{\setboolean{showmaxslides}{true}}
+\DeclareOptionBeamer{nofooterlogo}{\setboolean{nofooterlogo}{true}}
+\DeclareOptionBeamer{nofooter}{\setboolean{nofooter}{true}}
+
+\ProcessOptionsBeamer
+
+% invertcolor is already processed in colortheme
+\ifthenelse{\boolean{darkmode}}{%
+  \newcommand{\headerpath}{uninove_black.png}
+  \newcommand{\institutepath}{uninove_black.png}
+}{%
+  \newcommand{\headerpath}{uninove_black.png}
+  \newcommand{\institutepath}{uninove_black.png}
+}
+% The header shares the horizontal space with the frame title in normal mode
+% a relative width value between .5 and .8 should usually be the best
+\newcommand{\logoheader}{\includegraphics[width=.5\linewidth]{\headerpath}}
+% For the title page, the logo is embedded in the total frame, meaning that \linewidth
+% here refers to the complete \paperwidth, small width values of < .4 are usually best.
+\newcommand{\logotitle}{\includegraphics[width=.2\linewidth]{\headerpath}}
+% The footer will only use part of the space under the line. Usually almost the
+% full linewidth should be used
+\newcommand{\logofooter}{\includegraphics[width=.7\linewidth]{\institutepath}}
+
+\newcommand{\pageword}{Page}
+\newcommand{\showpagenum}{%
+  \pageword{} \insertframenumber\ifthenelse{%
+    \boolean{showmaxslides}%
+  }{%
+    /\inserttotalframenumber%
+  }{}%
+}
+
+
+\defbeamertemplate*{frametitle}{largetitle}{
+    \logotitle
+}
+
+\newlength{\myleftmargin}
+\setlength{\myleftmargin}{.0625\paperwidth}
+\newlength{\myrightmargin}
+\setlength{\myrightmargin}{.0625\paperwidth}
+\newlength{\mytextlength}
+\setlength{\mytextlength}{\paperwidth - \myleftmargin - \myrightmargin}
+\newlength{\myfooterheight}
+\setlength{\myfooterheight}{.08\paperheight}
+
+\setbeamersize{text margin left=\myleftmargin, text margin right=\myrightmargin}
+% This cannot be an environment because I need to access the height parameter
+% after closing the relevant beamercolorbox
+\newcommand{\basicfooter}[2]{%
+  \leavevmode
+  \begin{beamercolorbox}[sep=0pt, wd=\myleftmargin, ht=#1, dp=1ex]{footline}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[sep=0pt, wd=\mytextlength, ht=#1, dp=1ex]{footline}
+    \parbox{\linewidth}%
+    % Don't ask me why I had to insert a space/character after \usebeamercolor
+    % for it to have an effect on \hrule. Same goes for \color{white} \hrule
+    { \usebeamercolor[fg]{normal text}\ \hrule }
+    \leavevmode%
+    #2%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[sep=0pt, wd=\myrightmargin, dp=1ex, ht=#1]{footline}
+  \end{beamercolorbox}%
+}
+
+\defbeamertemplate*{frametitle}{pureminimalistictitle}{
+  \vskip 10pt
+  \leavevmode
+  \begin{beamercolorbox}[sep=0ex, wd=.9\paperwidth, left]{frametitle}
+    \usebeamerfont{frametitle}%
+    \insertframetitle%
+  \end{beamercolorbox}%
+  % \begin{beamercolorbox}[sep=0pt, wd=.2\paperwidth, right]{headline}
+  %   \logoheader
+  % \end{beamercolorbox}
+}%
+
+\defbeamertemplate*{footline}{pureminimalisticfooterdefault}{%
+  \basicfooter{%
+    \myfooterheight
+  }{%
+    \begin{beamercolorbox}[sep=0mm, wd=.725\mytextlength, ht=\myfooterheight]{footline}%
+      \usebeamerfont{footline}%
+      \vbox to\myfooterheight{%
+        \vfil%
+        \insertshorttitle{} $~|~$ %
+        \insertshortauthor{} $\quad$%
+        \insertshortsubtitle{}\par%
+        \ifthenelse{\boolean{nofooterlogo}}{}{
+          \showpagenum
+        }
+        \par%
+        \vfil%
+        \vfil%
+      }
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[sep=0mm, wd=.275\mytextlength,right, ht=\myfooterheight]{footline}
+      \vbox to\myfooterheight{%
+        \vfil%
+        \logofooter
+        \vfil%
+      }%
+    \end{beamercolorbox}%
+  }
+}
+
+\defbeamertemplate{footline}{pureminimalisticfooternologo}{%
+  \basicfooter{%
+    \myfooterheight
+  }{%
+      \vbox to\myfooterheight{%
+      \vfil%
+      \insertshorttitle{} $~|~$ %
+      \insertshortauthor{} $\quad$%
+      \insertshortsubtitle{}%
+      \hfill \showpagenum%
+      \par\vfil\vfil
+    }
+  }
+}
+
+\defbeamertemplate{footline}{pureminimalisticfooterdisable}{}
+
+\ifthenelse{\boolean{nofooter}}{
+  \setbeamertemplate{footline}[pureminimalisticfooterdisable]
+}{}
+
+\ifthenelse{\boolean{nofooterlogo}}{
+  \setbeamertemplate{footline}[pureminimalisticfooternologo]
+}{}
+
+\mode<all>
