@@ -187,6 +187,38 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{\texttt{Turing.jl} Ecosystem}
+	We have several Julia packages under \texttt{Turing.jl}'s GitHub
+	organization \href{https://github.com/TuringLang}{TuringLang},
+	but I will focus on 6 of those:
+
+	\begin{vfilleditems}
+		\small
+		\item \href{https://github.com/TuringLang/Turing.jl}{\texttt{Turing.jl}}:
+			main package that we use to \textbf{interface with all
+			the Turing ecosystem} of packages and the backbone of
+			everything
+		\item \href{https://github.com/TuringLang/MCMCChains.jl}{\texttt{MCMCChains.jl}}:
+			interface to \textbf{summarizing MCMC simulations} and
+			has several utility functions for \textbf{diagnostics}
+			and \textbf{visualizations}
+		\item \href{https://github.com/TuringLang/DynamicPPL.jl}{\texttt{DynamicPPL.jl}}:
+			specifies a domain-specific language for \texttt{Turing.jl},
+			entirely written in Julia, and it is modular
+		\item \href{https://github.com/TuringLang/AdvancedHMC.jl}{\texttt{AdvancedHMC.jl}}:
+			modular and efficient implementation of advanced
+			Hamiltonian Monte Carlo (HMC) algorithms
+		\item \href{https://github.com/TuringLang/DistributionsAD.jl}{\texttt{DistributionsAD.jl}}:
+			defines the necessary functions to enable automatic
+			differentiation (AD) of the log PDF functions from
+			\href{https://github.com/JuliaStats/Distributions.jl}{\texttt{Distributions.jl}}
+		\item \href{https://github.com/TuringLang/Bijectors.jl}{\texttt{Bijectors.jl}}:
+			implements a set of functions for transforming constrained
+			random variables (\textit{e.g.} simplexes, intervals)
+			to Euclidean space
+	\end{vfilleditems}
+\end{frame}
+
 \begin{frame}[fragile]{\texttt{Turing.jl}\footnote{
 			I believe in Julia's potential and wrote a whole set of
 			\href{https://storopoli.io/Bayesian-Julia}{
@@ -240,7 +272,7 @@
 				the future.
 				\texttt{PyMC} developers are still experimenting with other
 				backends: \texttt{TensorFlow Probability}, \texttt{NumPyro}
-				and so on...
+				and so on ...
 			\end{vfilleditems}
 		\end{column}
 		\begin{column}{0.2\textwidth}
@@ -263,19 +295,6 @@
                      sigma=sigma, observed=y)
 \end{lstlisting}
 \end{frame}
-
-%\begin{frame}{\href{https://turing.ml}{\texttt{Turing}}}
-%	\begin{vfilleditems}
-%		\item \href{https://turing.ml}{\texttt{Turing}} é uma \textbf{Linguagem de Programação Probabilística}\footnote{em inglês \textit{probabilistic programming language} (PPL)} escrita totalmente em \href{https://julialang.org/}{\texttt{Julia}}
-%		\item Usa \textbf{pacotes} de \href{https://julialang.org/}{\texttt{Julia}} para:
-%		\begin{vfilleditems}
-%			\item \textbf{Diferenciação Automática}\footnote{\textit{autodiff}}
-%			\item \textbf{Distribuições Probabilísticas}
-%			\item \textbf{Solucionadores de Equações Ordinais}\footnote{\textit{Ordinary Differential Equation Solvers} (ODE)}
-%			\item \textbf{Redes Neurais} (sendo responsável pela parte "Bayesiana"~da Rede Neural Bayesiana)
-%		\end{vfilleditems}
-%	\end{vfilleditems}
-%\end{frame}
 
 %\subsection{Probabilidade}
 %\begin{frame}{PROBABILIDADE NÃO EXISTE!\footnote{\textcite{definettiTheoryProbability1974}}}

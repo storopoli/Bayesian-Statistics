@@ -26,6 +26,21 @@ and the process of parameter value inference is a direct result of the **Bayes' 
 
 ## Content
 
+The whole content is a set of several slides found at `slides/slides.pdf`.
+Here is a brief table of contents
+
+1. **What is Bayesian Statistics?**
+2. **Common Probability Distributions**
+3. **Priors and Posteriors**
+4. **Bayesian Linear Regression**
+5. **Bayesian Logistic Regression**
+6. **Bayesian Ordinal Regression**
+7. **Bayesian Regression with Count Data: Poisson Regression**
+8. **Robust Bayesian Regression**
+9. **Multilevel Models (a.k.a. Hierarchical Models)**
+10. **Markov Chain Monte Carlo (MCMC)**
+11. **Model Comparison**
+
 ## Probabilistic Programming Languages (PPLs)
 
 Along with slides for the content, this repository also holds `Stan` code and also `Turing.jl` code for all models.
@@ -57,23 +72,6 @@ My hope is to have **more people into Bayesian statistics**.
 The content is aimed towards PhD candidates in applied sciences.
 I chose to provide an **intuitive approach** along with some rigorous mathematical formulations.
 I've made it to be how I would have liked to be introduced to Bayesian statistics.
-
-## Content
-
-The whole content is a set of several slides found at `slides/slides.pdf`.
-Here is a brief table of contents
-
-1. **What is Bayesian Statistics?**
-2. **Common Probability Distributions**
-3. **Priors and Posteriors**
-4. **Bayesian Linear Regression**
-5. **Bayesian Logistic Regression**
-6. **Bayesian Ordinal Regression**
-7. **Bayesian Regression with Count Data: Poisson Regression**
-8. **Robust Bayesian Regression**
-9. **Multilevel Models (a.k.a. Hierarchical Models)**
-10. **Markov Chain Monte Carlo (MCMC)**
-11. **Model Comparison**
 
 ## References
 
