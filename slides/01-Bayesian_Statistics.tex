@@ -195,27 +195,27 @@
 	\begin{vfilleditems}
 		\small
 		\item \href{https://github.com/TuringLang/Turing.jl}{\texttt{Turing.jl}}:
-			main package that we use to \textbf{interface with all
+		main package that we use to \textbf{interface with all
 			the Turing ecosystem} of packages and the backbone of
-			everything
+		everything
 		\item \href{https://github.com/TuringLang/MCMCChains.jl}{\texttt{MCMCChains.jl}}:
-			interface to \textbf{summarizing MCMC simulations} and
-			has several utility functions for \textbf{diagnostics}
-			and \textbf{visualizations}
+		interface to \textbf{summarizing MCMC simulations} and
+		has several utility functions for \textbf{diagnostics}
+		and \textbf{visualizations}
 		\item \href{https://github.com/TuringLang/DynamicPPL.jl}{\texttt{DynamicPPL.jl}}:
-			specifies a domain-specific language for \texttt{Turing.jl},
-			entirely written in Julia, and it is modular
+		specifies a domain-specific language for \texttt{Turing.jl},
+		entirely written in Julia, and it is modular
 		\item \href{https://github.com/TuringLang/AdvancedHMC.jl}{\texttt{AdvancedHMC.jl}}:
-			modular and efficient implementation of advanced
-			Hamiltonian Monte Carlo (HMC) algorithms
+		modular and efficient implementation of advanced
+		Hamiltonian Monte Carlo (HMC) algorithms
 		\item \href{https://github.com/TuringLang/DistributionsAD.jl}{\texttt{DistributionsAD.jl}}:
-			defines the necessary functions to enable automatic
-			differentiation (AD) of the log PDF functions from
-			\href{https://github.com/JuliaStats/Distributions.jl}{\texttt{Distributions.jl}}
+		defines the necessary functions to enable automatic
+		differentiation (AD) of the log PDF functions from
+		\href{https://github.com/JuliaStats/Distributions.jl}{\texttt{Distributions.jl}}
 		\item \href{https://github.com/TuringLang/Bijectors.jl}{\texttt{Bijectors.jl}}:
-			implements a set of functions for transforming constrained
-			random variables (\textit{e.g.} simplexes, intervals)
-			to Euclidean space
+		implements a set of functions for transforming constrained
+		random variables (\textit{e.g.} simplexes, intervals)
+		to Euclidean space
 	\end{vfilleditems}
 \end{frame}
 
@@ -296,700 +296,711 @@
 \end{lstlisting}
 \end{frame}
 
-%\subsection{Probabilidade}
-%\begin{frame}{PROBABILIDADE NÃO EXISTE!\footnote{\textcite{definettiTheoryProbability1974}}}
-%	\begin{columns}
-%		\begin{column}{0.8\textwidth}
-%			\begin{vfilleditems}
-%				\item Sim, a probabilidade não existe.
-%				\item Ou melhor, probabilidade como uma quantidade física,
-%				chance objetiva, \textbf{NÃO existe}
-%				\item se dispensarmos a questão da chance objetiva \textit{nada se perde}
-%				\item A matemática do raciocínio indutivo permanece
-%				\textbf{exatamente a mesma}
-%			\end{vfilleditems}
-%		\end{column}
-%		\begin{column}{0.2\textwidth}
-%			\centering
-%			\includegraphics[width=0.9\columnwidth]{finetti.jpg}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+\subsection{Probability}
+\begin{frame}{PROBABILITY DOES NOT EXIST!\footnote{\textcite{definettiTheoryProbability1974}}}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{vfilleditems}
+				\item Yes, probability does not exist ...
+				\item Or even better, probability as a physical quantity,
+				objective chance, \textbf{does NOT exist}
+				\item if we disregard objetive chance \textit{nothing is lost}
+				\item The math of inductive rationality remains
+				\textbf{exactly the same}
+			\end{vfilleditems}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{finetti.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%\begin{frame}{PROBABILIDADE NÃO EXISTE!\footnote{\textcite{definettiTheoryProbability1974}}}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{vfilleditems}
-%				\small
-%				\item Considere jogar uma moeda de enviesada
-%				\item As tentativas são consideradas independentes e, como resultado,
-%				exibem outra propriedade importante: \textbf{a ordem não importa}
-%				\item A frequência é considerada uma \textbf{estatística suficiente}
-%				\item Dizer que a ordem não importa ou dizer que a única coisa que
-%				importa é a frequência são duas maneiras de dizer exatamente a
-%				mesma coisa
-%				\item Dizemos que essa probabilidade é \textbf{invariante sob permutações}
-%			\end{vfilleditems}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			\begin{tikzpicture}[
-%					scale=0.55,
-%					transform shape, thick,
-%					every node/.style = {draw, circle, minimum size = 10mm},
-%					grow = down,  % alignment of characters
-%					level 1/.style = {sibling distance=3cm},
-%					level 2/.style = {sibling distance=1.5cm},
-%					level 3/.style = {sibling distance=3cm},
-%					level distance = 3cm,
-%					head/.style = {fill = orange!90!blue,
-%							label = center:\textsf{\Large C}},
-%					tail/.style = {fill = blue!70!yellow, text = black,
-%							label = center:\textsf{\Large K}}
-%				]
-%				\node[shape = circle split, draw, line width = 1pt,
-%					minimum size = 10mm, inner sep = 0mm, font = \sffamily\large,
-%					rotate=30] (Start)
-%				{ \rotatebox{-30}{H} \nodepart{lower} \rotatebox{-30}{T}}
-%				child {   node [head] (A) {}
-%						child { node [head] (B) {}}
-%						child { node [tail] (C) {}}
-%					}
-%				child {   node [tail] (D) {}
-%						child { node [head] (E) {}}
-%						child { node [tail] (F) {}}
-%					};
+\begin{frame}{PROBABILITY DOES NOT EXIST!\footnote{\textcite{definettiTheoryProbability1974}}}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{vfilleditems}
+				\small
+				\item Consider flipping a biased coin
+				\item The trials are considered independent and, as a result,
+				have an important property: \textbf{the order does not matter}
+				\item The frequency is considered a \textbf{sufficient statistic}
+				\item Saying that order does not matter or saying that the only thing that
+				matters is frequency are two ways of saying the same thing
+				\item We say that the probability is \textbf{invariant under permutations}
+			\end{vfilleditems}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{tikzpicture}[
+					scale=0.55,
+					transform shape, thick,
+					every node/.style = {draw, circle, minimum size = 10mm},
+					grow = down,  % alignment of characters
+					level 1/.style = {sibling distance=3cm},
+					level 2/.style = {sibling distance=1.5cm},
+					level 3/.style = {sibling distance=3cm},
+					level distance = 3cm,
+					head/.style = {fill = orange!90!blue,
+							label = center:\textsf{\Large H}},
+					tail/.style = {fill = blue!70!yellow, text = black,
+							label = center:\textsf{\Large T}}
+				]
+				\node[shape = circle split, draw, line width = 1pt,
+					minimum size = 10mm, inner sep = 0mm, font = \sffamily\large,
+					rotate=30] (Start)
+				{ \rotatebox{-30}{H} \nodepart{lower} \rotatebox{-30}{T}}
+				child {   node [head] (A) {}
+						child { node [head] (B) {}}
+						child { node [tail] (C) {}}
+					}
+				child {   node [tail] (D) {}
+						child { node [head] (E) {}}
+						child { node [tail] (F) {}}
+					};
 
-%				% Filling the root (Start)
-%				\begin{scope}[on background layer, rotate=30]
-%					\fill[head] (Start.base) ([xshift = 0mm]Start.east) arc (0:180:5mm)
-%					-- cycle;
-%					\fill[tail] (Start.base) ([xshift = 0pt]Start.west) arc (180:360:5mm)
-%					-- cycle;
-%				\end{scope}
+				% Filling the root (Start)
+				\begin{scope}[on background layer, rotate=30]
+					\fill[head] (Start.base) ([xshift = 0mm]Start.east) arc (0:180:5mm)
+					-- cycle;
+					\fill[tail] (Start.base) ([xshift = 0pt]Start.west) arc (180:360:5mm)
+					-- cycle;
+				\end{scope}
 
-%				% Labels
-%				\begin{scope}[nodes = {draw = none}]
-%					\path (Start) -- (A) node [near start, left]  {$0.5$};
-%					\path (A)     -- (B) node [near start, left]  {$0.5$};
-%					\path (A)     -- (C) node [near start, right] {$0.5$};
-%					\path (Start) -- (D) node [near start, right] {$0.5$};
-%					\path (D)     -- (E) node [near start, left]  {$0.5$};
-%					\path (D)     -- (F) node [near start, right] {$0.5$};
-%					\begin{scope}[nodes = {below = 11pt}]
-%						\node at (B) {$0.25$};
-%						\node at (C) {$0.25$};
-%						\node at (E) {$0.25$};
-%						\node at (F) {$0.25$};
-%					\end{scope}
-%				\end{scope}
-%			\end{tikzpicture}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+				% Labels
+				\begin{scope}[nodes = {draw = none}]
+					\path (Start) -- (A) node [near start, left]  {$0.5$};
+					\path (A)     -- (B) node [near start, left]  {$0.5$};
+					\path (A)     -- (C) node [near start, right] {$0.5$};
+					\path (Start) -- (D) node [near start, right] {$0.5$};
+					\path (D)     -- (E) node [near start, left]  {$0.5$};
+					\path (D)     -- (F) node [near start, right] {$0.5$};
+					\begin{scope}[nodes = {below = 11pt}]
+						\node at (B) {$0.25$};
+						\node at (C) {$0.25$};
+						\node at (E) {$0.25$};
+						\node at (F) {$0.25$};
+					\end{scope}
+				\end{scope}
+			\end{tikzpicture}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%\begin{frame}{Interpretações da Probabilidade}
-%	\begin{vfilleditems}
-%		\item \textbf{Objetiva} - frequência no longo prazo de um evento específico
-%		\begin{vfilleditems}
-%			\item $P(\text{chuva}) = \frac{\text{dias que choveram}}{\text{dias totais}}$
-%			\item $P(\text{chance de eu ser presidente} = 0)$ (Nunca ocorreu)
-%		\end{vfilleditems}
-%		\item \textbf{Subjetiva} - nível de crença em um evento
-%		\begin{vfilleditems}
-%			\item $P(\text{chuva}) = \text{crença que choverá}$
-%			\item $P(\text{chance de eu ser presidente} = 10^{-10})$ (Muito improvável)
-%		\end{vfilleditems}
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{Probability Interpretations}
+	\begin{vfilleditems}
+		\item \textbf{Objective} - frequency in the long run for an event:
+		\begin{vfilleditems}
+			\item $P(\text{rain}) = \frac{\text{days that rained}}{\text{total days}}$
+			\item $P(\text{me being elected president}) = 0$ (never occurred)
+		\end{vfilleditems}
+		\item \textbf{Subjective} - degrees of belief in an event:
+		\begin{vfilleditems}
+			\item $P(\text{rain}) = \text{degree of belief that will rain}$
+			\item $P(\text{me being elected president}) = 10^{-10}$ (highly unlikely)
+		\end{vfilleditems}
+	\end{vfilleditems}
+\end{frame}
 
-%\subsubsection{O que é Probabilidade?}
-%\begin{frame}{O que é Probabilidade?}
-%	\begin{defn}[Probabilidade]
-%		Sobre notação, definimos que $A$ é um evento e $P(A)$ a probabilidade do evento, logo:
-%		$$
-%			\{P(A) \in \mathbb{R} : 0 \leq P(A) \leq 1 \}.
-%		$$
-%		\vfill
-%		Isto quer dizer o "probabilidade do evento $A$ ocorrer é o conjunto de
-%		todos os números reais entre $0$ e $1$; incluindo $0$ e $1$"
-%	\end{defn}
-%\end{frame}
+\subsubsection{What is Probability?}
+\begin{frame}{What is Probability?}
+	\begin{defn}[Probability]
+		We define $A$ is an event and $P(A)$ the probability of event $A$.
+		$P(A)$ has to be between $0$ and $1$, where higher values defines
+		higher probability of $A$ happening.
+		$$\begin{aligned}
+				P(A)   & \in \mathbb{R} \\
+				P(A)   & \in [0,1]      \\
+				0 \leq & P(A) \leq 1
+			\end{aligned}$$
+	\end{defn}
+\end{frame}
 
-%\begin{frame}{Axiomas da Probabilidade\footnote{\textcite{kolmogorovFoundationsTheoryProbability1933}}}
-%	\begin{columns}
-%		\begin{column}{0.8\textwidth}
-%			\begin{vfilleditems}
-%				\item \textbf{Não-negatividade}: Para todo $A$, $P(A) \geq 0$.
-%				Toda probabilidade é positiva (maior ou igual a zero), independente do
-%				evento
-%				\item \textbf{Aditividade}: Para dois \textit{mutuamente exclusivos}
-%				$A$ e $B$ (não podem ocorrer ao mesmo tempo):
-%				$P(A) = 1 - P(B)$ e $P(B) = 1 - P(A)$
-%				\item \textbf{Normalização}: A probabilidade de todos os eventos
-%				possíveis $A_1, A_2, \dots$ devem somar $1$:
-%				$\sum_{n \in \mathbb{N}} A_n = 1$
-%			\end{vfilleditems}
-%		\end{column}
-%		\begin{column}{0.2\textwidth}
-%			\centering
-%			\includegraphics[width=0.9\columnwidth]{kolmogorov.jpg}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+\begin{frame}{Probability Axioms\footnote{\textcite{kolmogorovFoundationsTheoryProbability1933}}}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{vfilleditems}
+				\item \textbf{Non-negativity}: For every $A$:
+				$$P(A) \geq 0$$
+				\item \textbf{Additivity}: For evey two \textit{mutually exclusive}
+				$A$ and $B$:
+				$$P(A) = 1 - P(B) \text{ and } P(B) = 1 - P(A)$$
+				\item \textbf{Normalization}: The probability of all possible
+				events $A_1, A_2, \dots$ must sum up to $1$:
+				$$\sum_{n \in \mathbb{N}} A_n = 1$$
+			\end{vfilleditems}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{kolmogorov.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%\begin{frame}{Espaços Amostrais}
-%	\begin{vfilleditems}
-%		\item Discretos $$\Theta = \left\{1, 2, \ldots, \right\}$$
-%		\item Contínuos $$\Theta \in \left(-\infty, \infty \right)$$
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{Sample Space}
+	\begin{vfilleditems}
+		\item Discrete $$\Theta = \left\{1, 2, \ldots \right\}$$
+		\item Continuous $$\Theta \in \left(-\infty, \infty \right)$$
+	\end{vfilleditems}
+\end{frame}
 
-%\begin{frame}{Espaços Amostrais Discretos}
-%	8 Planetas do Nosso Sistema Solar
-%	\begin{vfilleditems}
-%		\item Mercúrio - $\mercury$
-%		\item Vênus - $\venus$
-%		\item Terra - $\earth$
-%		\item Marte $\mars$
-%		\item Júpiter - $\jupiter$
-%		\item Saturno $\saturn$
-%		\item Urano - $\uranus$
-%		\item Netuno $\neptune$
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{Discrete Sample Space}
+	8 planets in our solar system:
+	\begin{vfilleditems}
+		\item Mercury - $\mercury$
+		\item Venus - $\venus$
+		\item Earth - $\earth$
+		\item Mars $\mars$
+		\item Jupiter - $\jupiter$
+		\item Saturn $\saturn$
+		\item Uranus - $\uranus$
+		\item Neptune $\neptune$
+	\end{vfilleditems}
+\end{frame}
 
-%\begin{frame}[fragile]{Espaços Amostrais Discretos\footnote{figuras adaptadas de \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}}}
-%	\footnotesize
-%	\begin{figure}
-%		\centering
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-25, 0) to (10, 0);
-%				\node[] at (-15, 0) {O planeta possui campo magnético};
-%				\node[] at (7, 2) {$\theta \in E_{1}$};
+\begin{frame}[fragile]{Discrete Sample Space\footnote{figure adapted from \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}}}
+	\footnotesize
+	\begin{figure}
+		\centering
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-25, 0) to (10, 0);
+				\node[] at (-15, 0) {The planet has a magnetic field};
+				\node[] at (7, 2) {$\theta \in E_{1}$};
 
-%				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-%				\fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$};
-%				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-%				\fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$};
-%				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-%				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-%				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-%				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-25, 0) to (10, 0);
-%				\node[] at (-15, 0) {O planeta possui luas};
-%				\node[] at (7, 2) {$\theta \in E_{2}$};
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
+				\fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$};
+				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
+				\fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$};
+				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
+				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
+				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
+				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-25, 0) to (10, 0);
+				\node[] at (-15, 0) {The planet has moon(s)};
+				\node[] at (7, 2) {$\theta \in E_{2}$};
 
-%				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-%				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
-%				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-%				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
-%				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-%				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-%				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-%				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-25, 0) to (10, 0);
-%				\node[] at (-15, 0) {O planeta possui campo magnético e luas};
-%				\node[] at (7, 2) {$\theta \in E_{1} \cap E_{2}$};
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
+				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
+				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
+				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
+				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
+				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
+				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
+				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-25, 0) to (10, 0);
+				\node[] at (-15, 0) {The planet has a magnetic field \textit{and} moon(s)};
+				\node[] at (7, 2) {$\theta \in E_{1} \cap E_{2}$};
 
-%				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-%				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
-%				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-%				\fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$};
-%				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-%				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-%				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-%				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\node[] at (-15, 0) {O planeta possui campo magnético ou luas};
-%				\node[] at (7, 2) {$\theta \in E_{1} \cup E_{2}$};
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
+				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
+				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
+				\fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$};
+				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
+				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
+				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
+				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\node[] at (-15, 0) {The planet has a magnetic field \textit{or} moon(s)};
+				\node[] at (7, 2) {$\theta \in E_{1} \cup E_{2}$};
 
-%				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-%				\fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$};
-%				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-%				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
-%				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-%				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-%				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-%				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\node[] at (-15, 0) {O planeta não possui um campo magnético};
-%				\node[] at (7, 2) {$\theta \in \neg E_{1}$};
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
+				\fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$};
+				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
+				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
+				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
+				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
+				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
+				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\node[] at (-15, 0) {The planet does \textit{not} have a magnetic field};
+				\node[] at (7, 2) {$\theta \in \neg E_{1}$};
 
-%				\fill[color=blue] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-%				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
-%				\fill[color=gray60] (4, 0) circle (25pt) node[color=black] {$\earth$};
-%				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
-%				\fill[color=gray60] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-%				\fill[color=gray60] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-%				\fill[color=gray60] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-%				\fill[color=gray60] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-%			\end{tikzpicture}
-%		}
-%		%
-%	\end{figure}
-%\end{frame}
+				\fill[color=blue] (0, 0) circle (25pt) node[color=black] {$\mercury$};
+				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
+				\fill[color=gray60] (4, 0) circle (25pt) node[color=black] {$\earth$};
+				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
+				\fill[color=gray60] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
+				\fill[color=gray60] (10, 0) circle (25pt) node[color=black] {$\saturn$};
+				\fill[color=gray60] (12, 0) circle (25pt) node[color=black] {$\uranus$};
+				\fill[color=gray60] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		}
+		%
+	\end{figure}
+\end{frame}
 
-%\begin{frame}{Espaços Amostrais Contínuos\footnote{figuras adaptadas de \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}}}
-%	\footnotesize
-%	\begin{figure}
-%		\centering
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-27, 0) to (17, 0);
-%				\node[align=center] at (-15, 0) {A distância é menos que cinco centímetros};
-%				\node[] at (7.5, 2) {$\theta \in E_{1}$};
+\begin{frame}{Continuous Sample Space\footnote{
+			figure adapted from \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}}
+	}
+	\footnotesize
+	\begin{figure}
+		\centering
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-27, 0) to (17, 0);
+				\node[align=center] at (-15, 0) {The distance is less than five centimeters};
+				\node[] at (7.5, 2) {$\theta \in E_{1}$};
 
-%				\draw[|->] (0, 0) -- (14,0) node[right] {$x$};
-%				\draw[line width=1mm, color=blue] (0, 0) node[] {$\,($} -- (5, 0) node[] {$\!)$};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-27, 0) to (17, 0);
-%				\node[align=center] at (-15, 0) {A distância é entre três e sete centímetros};
-%				\node[] at (7.5, 2) {$\theta \in E_{2}$};
+				\draw[|->] (0, 0) -- (14,0) node[right] {$x$};
+				\draw[line width=1mm, color=blue] (0, 0) node[] {$\,($} -- (5, 0) node[] {$\!)$};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-27, 0) to (17, 0);
+				\node[align=center] at (-15, 0) {The distance is between three and seven centimeters};
+				\node[] at (7.5, 2) {$\theta \in E_{2}$};
 
-%				\draw[|->] (0, 0) -- (14,0) node[right] {$x$};
-%				\draw[line width=1mm, color=blue] (3, 0) node[] {$\,($} -- (7,0) node[] {$\!)$};
+				\draw[|->] (0, 0) -- (14,0) node[right] {$x$};
+				\draw[line width=1mm, color=blue] (3, 0) node[] {$\,($} -- (7,0) node[] {$\!)$};
 
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-27, 0) to (17, 0);
-%				\node[align=center] at (-15, 0) {A distância é menos que cinco centímetros \\ e entre três e sete centímetros};
-%				\node[] at (7.5, 2) {$\theta \in E_{1} \cap E_{2}$};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-27, 0) to (17, 0);
+				\node[align=center] at (-15, 0) {The distance is less than five centimeters \\ \textit{and} e between three and seven centimeters};
+				\node[] at (7.5, 2) {$\theta \in E_{1} \cap E_{2}$};
 
-%				\draw[|->] (0, 0) -- (14,0) node[right] {$x$};
-%				\draw[line width=1mm, color=blue] (3, 0) node[] {$\,($} -- (5, 0) node[] {$\!)$};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-27, 0) to (17, 0);
-%				\node[align=center] at (-15, 0) {A distância é menos que cinco centímetros \\ ou entre três e sete centímetros};
-%				\node[] at (7.5, 2) {$\theta \in E_{1} \cup E_{2}$};
+				\draw[|->] (0, 0) -- (14,0) node[right] {$x$};
+				\draw[line width=1mm, color=blue] (3, 0) node[] {$\,($} -- (5, 0) node[] {$\!)$};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-27, 0) to (17, 0);
+				\node[align=center] at (-15, 0) {The distance is less than five centimeters \\ \textit{or} between three and seven centimeters};
+				\node[] at (7.5, 2) {$\theta \in E_{1} \cup E_{2}$};
 
-%				\draw[|->] (0, 0) -- (14, 0) node[right] {$x$};
-%				\draw[line width=1mm, color=blue] (0, 0) node[] {$\,($} -- (7, 0) node[] {$\!)$};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[scale=0.25, thick]
-%				\draw[color=black] (-27, 0) to (17, 0);
-%				\node[align=center] at (-15, 0) {A distância não é menos que cinco centímetros};
-%				\node[] at (7.5, 2) {$\theta \in \neg E_{1}$};
+				\draw[|->] (0, 0) -- (14, 0) node[right] {$x$};
+				\draw[line width=1mm, color=blue] (0, 0) node[] {$\,($} -- (7, 0) node[] {$\!)$};
+			\end{tikzpicture}
+		}
+		%		%
+		\subfigure{
+			\begin{tikzpicture}[scale=0.25, thick]
+				\draw[color=black] (-27, 0) to (17, 0);
+				\node[align=center] at (-15, 0) {The distance is \textit{not} less than five centimeters};
+				\node[] at (7.5, 2) {$\theta \in \neg E_{1}$};
 
-%				\draw[|->] (0, 0) -- (14, 0) node[right] {$x$};
-%				\draw[line width=1mm, color=blue] (5, 0) node[] {$\,($} -- (13, 0);
-%			\end{tikzpicture}
-%		}
-%	\end{figure}
-%\end{frame}
+				\draw[|->] (0, 0) -- (14, 0) node[right] {$x$};
+				\draw[line width=1mm, color=blue] (5, 0) node[] {$\,($} -- (13, 0);
+			\end{tikzpicture}
+		}
+	\end{figure}
+\end{frame}
 
-%\begin{frame}{Parâmetros Discretos versus Contínuos}
+\begin{frame}{Discrete versus Continuous Parameters}
 
-%	Tudo o que foi exposto até agora partiu do pressuposto que os parâmetros
-%	são discretos. Isto foi feito com o intuito de prover uma melhor intuição
-%	do que é probabilidade. Nem sempre trabalhamos com parâmetros discretos.
-%	Os parâmetros podem ser contínuos, como por exemplo: idade, altura, peso etc.
-%	Mas não se desespere, todas as regras e axiomas da probabilidade são válidos
-%	também para parâmetros contínuos. A única coisa que temos que fazer é trocar
-%	todas as somas $\sum$ por integrais $\int$. Por exemplo o terceiro axioma de
-%	\textbf{Normalização} para variáveis aleatórias contínuas se torna:
-
-%	$$
-%		\int_{x \in X} p(x) dx = 1.
-%	$$
-
-%\end{frame}
-
-
-%\begin{frame}{Probabilidade Condicional}
-%	\begin{defn}[Probabilidade Condicional]
-%		Probabilidade de um evento ocorrer caso outro tenha ocorrido ou não. \newline \newline
-%		A notação que usamos é $P( A \mid B )$, que lê-se como "a probabilidade
-%		de observamos $A$ dado que já observamos $B$". \newline \newline
-%		\vfill \vfill
-%		$$
-%			\begin{aligned}
-%				P(A \mid B) & = \frac{\text{número de elementos em $A$ e $B$}}{\text{número de elemementos em $B$}} \\
-%				P(A \mid B) & = \frac{P(A \cap B)}{(B)}
-%			\end{aligned}
-%		$$
-%		\newline \newline \hspace{0.7\textwidth}
-%		{\footnotesize assumimos que $P(B) > 0$}.
-%	\end{defn}
-%\end{frame}
-
-%\begin{frame}{Exemplo de Probabilidade Condicional}
-%	\begin{exemplo}[Poker Texas Hold'em]
-%		\begin{vfilleditems}
-%			\item \textbf{Espaço Amostral}: $52$ cartas no baralho, $13$ tipos de cartas e $4$ tipos de naipes.
-%			\item $P(A)$: Chance de receber um Ás $\left( \frac{4}{52} = \frac{1}{13}\right)$
-%			\item $P(K)$: Chance de receber um Rei (K) $\left( \frac{4}{52} = \frac{1}{13} \right)$
-%			\item $P(A \mid K)$: Chance de receber um Ás, dado que você recebeu um Rei (K) $\left( \frac{4}{51} \approx 0.078 \right)$
-%			\item $P(K \mid A)$: Chance de receber um Rei (K), dado que você recebeu um Ás $\left( \frac{4}{51} \approx 0.078 \right)$
-%		\end{vfilleditems}
-%	\end{exemplo}
-%\end{frame}
-
-%\begin{frame}{Cuidado! Nem sempre $P(A \mid B) = P(B \mid A)$}
-%	No exemplo anterior temos a simetria $P(A \mid K) = P(K \mid A)$, \textbf{mas nem sempre isso é verdade}\footnote{Mais especificamente, se as taxas basais $P(A)$ e $P(B)$ não são iguais, a simetria é quebrada $P(A \mid B) \neq P(B \mid A)$!}
-%	\begin{exemplo}[O Papa é católico]
-%		\begin{vfilleditems}
-%			\small{
-%				\item $P(\text{papa})$: Chance alguém aleatório ser papa, algo bem pequeno, 1 em 8 bilhões $\left( \frac{1}{8 \cdot 10^9} \right)$
-%				\item $P(\text{católico})$: Chance alguém aleatório ser católico, 1.34 de 8 bilhões $\left( \frac{1.34}{8} \approx 0.17 \right)$
-%				\item $P(\text{católico} \mid \text{papa})$: Chance do Papa ser católico $\left( \frac{999}{1000} = 0.999 \right)$
-%				\item $P(\text{papa} \mid \text{católico})$: Chance de alguém católico ser o papa $\left( \frac{1}{1.34 \cdot 10^9} \cdot 0.999 \approx 7.46 \cdot 10^{-10} \right)$
-%			}
-%			\item \large{\textbf{Logo}: $P(\text{católico} \mid \text{papa}) \neq P(\text{papa} \mid \text{católico})$}
-%		\end{vfilleditems}
-%	\end{exemplo}
-%\end{frame}
-
-%\begin{frame}{Um clássico da Probabilidade}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{exemplo}[Monty Hall]
-%				\begin{vfilleditems}
-%					\small
-%					\item Um apresentador de TV lhe apresenta 3 portas
-%					\item Uma delas tem um prêmio: um carro! As outras tem um bode
-%					\item Você deve escolher uma porta (que não é aberta)
-%					\item Nesse momento Monty abre uma das outras duas portas que você
-%					não escolheu, revelando que o carro não se encontra nessa porta e revelando um dos bodes
-%					\item Monty então lhe pergunta "Você quer manter sua escolha de porta ou trocar?"
-%				\end{vfilleditems}
-%			\end{exemplo}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			\begin{figure}
-%				\centering
-%				\def\svgwidth{\columnwidth}
-%				\input{../images/monty_hall.pdf_tex}
-%			\end{figure}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
-
-%\begin{frame}{Solução do Problema de Monty Hall}
-%	\begin{idea}[Probabilidade de ganhar o carro]
-%		$$
-%			\begin{aligned}
-%				P(\text{carro} \mid C_i) & = \frac{1}{3}                                                                                                                          \\
-%				P(\text{carro})          & = \frac{1}{3} \cdot P(\text{carro} \mid C_1) + \frac{1}{3} \cdot P(\text{carro} \mid C_2) + \frac{1}{3} \cdot P(\text{carro} \mid C_3) \\
-%				P(\text{carro})          & = \frac{\sum^3_{i=1}P(\text{carro} \mid C_i)}{3}                                                                                       \\
-%				P(\text{carro})          & = \frac{1}{3}
-%			\end{aligned}
-%		$$
-%	\end{idea}
-%	\vfill \vfill
-%	$C_i$ é o evento no qual o carro está atrás da porta $i$, $i=1,2,3$
-%\end{frame}
-
-%\begin{frame}[t]{Solução do Problema de Monty Hall\footnote{se você não acredita nesse resultado veja como simular o problema de Monty Hall nos \hyperlink{appendixmontyhall}{Slides de Backup no final dessa apresentação}}}
-%	\begin{columns}[t]
-%		\begin{column}{0.5\textwidth}
-%			{\Large \textbf{Cenário 1}: Não trocar de porta} \newline \newline
-%			Simples: $$\frac{1}{3}$$
-%		\end{column}
-%		\begin{column}{0.5\textwidth}
-%			{\Large \textbf{Cenário 2}: Trocar de porta} \newline \newline
-%			Escolha qualquer porta $i$ para ser $C_i = 0$
-%			\vfill
-%			$$
-%				\begin{aligned}
-%					P(\text{carro}) & = 0 \cdot P(\text{carro} \mid C_i) + \frac{1}{3} + \frac{1}{3} \\
-%					P(\text{carro}) & = \frac{2}{3}
-%				\end{aligned}
-%			$$
-%		\end{column}
-%	\end{columns}
-%\end{frame}
-
-%\begin{frame}{Visualização do Problema de Monty Hall}
-%	\begin{figure}
-%		\centering
-%		\subfigure{
-%			\begin{tikzpicture}[
-%					scale=0.55,
-%					header/.style = {draw, rectangle, fill = blue!50!black, minimum size = 10mm},
-%					level distance = 3.5cm,
-%					transform shape, thick,
-%					grow = right, sloped,
-%				]
-%				\node[header] {Sua Escolha}
-%				child{
-%						node[header] {Carro está}
-%						edge from parent[draw=none]
-%						child{
-%								node[header] {Monty abre}
-%								edge from parent[draw=none]
-%								child{
-%										node[header] {resultado}
-%										edge from parent[draw=none]
-%									}
-%							}
-%					};
-%			\end{tikzpicture}
-%		}
-%		%
-%		\subfigure{
-%			\begin{tikzpicture}[
-%					scale=0.55,
-%					door/.style = {draw, circle, minimum size = 10mm},
-%					car/.style = {circle, fill = green!50!black, minimum size = 10mm},
-%					goat/.style = {circle, fill = red!50!black, minimum size = 10mm},
-%					level distance = 3.5cm,
-%					transform shape, thick,
-%					grow = right, sloped,
-%					level 1/.style = {sibling distance=3.5cm},
-%					level 2/.style = {sibling distance=2cm},
-%					level 3/.style = {sibling distance=3cm}
-%				]
-%				\node[door] {Porta 1}
-%				child {
-%				node[door] {Porta 3}
-%				child {
-%				node[door] {Porta 2}
-%				child {
-%				node[car, label=right:{\Large$\frac{1}{3}$}] {Carro}
-%				}
-%				edge from parent
-%				node[above] {\Large$1$}
-%				}
-%				edge from parent
-%				node[below] {\Large$\frac{1}{3}$}
-%				}
-%				child {
-%				node[door] {Porta 2}
-%				child {
-%				node[door] {Porta 3}
-%				child {
-%				node[car, label=right:{\Large$\frac{1}{3}$}] {Carro}
-%				}
-%				edge from parent
-%				node[above] {\Large$1$}
-%				}
-%				edge from parent
-%				node[above] {\Large$\frac{1}{3}$}
-%				}
-%				child {
-%				node[door] {Porta 1}
-%				child {
-%				node[door] {Porta 2}
-%				child {
-%				node[goat, label=right:{\Large$\frac{1}{6}$}] {Bode}
-%				}
-%				edge from parent
-%				node[above]  {\Large$\frac{1}{2}$}
-%				}
-%				child {
-%				node[door] {Porta 3}
-%				child {
-%				node[goat, label=right:{\Large$\frac{1}{6}$}] {Bode}
-%				}
-%				edge from parent
-%				node[above]  {\Large$\frac{1}{2}$}
-%				}
-%				edge from parent
-%				node[above] {\Large$\frac{1}{3}$}
-%				};
-%			\end{tikzpicture}
-%		}
-%	\end{figure}
-%\end{frame}
-
-%\begin{frame}{Probabilidade Conjunta}
-%	\begin{defn}[Probabilidade Conjunta]
-%		Probabilidade de observados dois ou mais eventos ocorrem. \newline \newline
-%		A notação que usamos é $P(A, B)$, que lê-se como
-%		"a probabilidade de observamos $A$ e também observamos $B$". \newline \newline
-%		$$
-%			\begin{aligned}
-%				P(A,B) & = \text{número de elementos em $A$ ou $B$} \\
-%				P(A,B) & = P(A \cup B)
-%			\end{aligned}
-%		$$
-%	\end{defn}
-%\end{frame}
-
-%\begin{frame}{Exemplo de Probabilidade Conjunta}
-%	\begin{exemplo}[Revisitando Poker Texas Hold'em]
-%		\begin{vfilleditems}
-%			{\footnotesize
-%				\item \textbf{Espaço Amostral}: $52$ cartas no baralho, $13$ tipos de cartas e $4$ tipos de naipes.
-%				\item $P(A)$: Chance de receber um Ás $\left( \frac{4}{52} = \frac{1}{13}\right)$
-%				\item $P(K)$: Chance de receber um Rei (K) $\left( \frac{4}{52} = \frac{1}{13} \right)$
-%				\item $P(A \mid K)$: Chance de receber um Ás, dado que você recebeu um Rei (K) $\left( \frac{4}{51} \approx 0.078 \right)$
-%				\item $P(K \mid A)$: Chance de receber um Rei (K), dado que você recebeu um Ás $\left( \frac{4}{51} \approx 0.078 \right)$
-%			}
-%			\item $P(A, K)$: Chance de receber um Ás e um Rei (K)
-%			$$
-%				\begin{aligned}
-%					P(A, K)                         & = P(K, A)                         \\
-%					P(A) \cdot P(K \mid A)          & = P(K) \cdot P(A \mid K)          \\
-%					\frac{1}{13} \cdot \frac{4}{51} & = \frac{1}{13} \cdot \frac{4}{51} \\
-%					                                & \approx 0.006
-%				\end{aligned}
-%			$$
-%		\end{vfilleditems}
-%	\end{exemplo}
-%\end{frame}
-
-%% Exemplo do Poker com pacote pst-poker
-%% Exemplo do Papa e Católico
-
-%% Bivariate Normal inspirada aqui: https://github.com/walmes/Tikz/blob/master/src/bivariate-normal.pgf
-%\begin{frame}{Visualização de Probabilidade Conjunta vs Probabilidade Condicional}
-%	\centering
-%	\begin{tikzpicture}[scale=0.9]
-%		\begin{axis}[
-%				domain   = -3.5:3.5,
-%				domain y = -3.5:3.5,
-%				view = {-70}{20},
-%				title={$P(X,Y)$ versus $P(X \mid Y=-0.75)$},
-%				xlabel={$X$},
-%				ylabel={$Y$},
-%				% zlabel={$SSE(\beta_0, \beta_1)$},
-%				zmin = -0,
-%				%xticklabels=\empty,
-%				%yticklabels=\empty,
-%				zticklabels=\empty,
-%				xtick=\empty,
-%				ytick={-0.75},
-%				ztick=\empty,
-%				axis z line*=none,
-%				axis y line*=left,
-%				axis x line*= bottom]
-%			\addplot3 [
-%				domain = -3.5:3.5,
-%				samples = 50, samples y = 0,
-%				thick, smooth, color = red, fill = orange, opacity = 0.75]
-%			(x, -0.75, {conditionalbinormal(-0.75, 0, 1, 0, 1, 0.75)});
-
-%			\draw (-3.5, -0.75, 0) -- (3.5, -0.75, 0);
-
-%			\addplot3 [
-%				surf,
-%				domain = -3.5:3.5,
-%				samples = 50,
-%				opacity = 0.15,
-%				faceted color = colorB,
-%				colormap = {blueblack}{
-%						color = (colorB)
-%						color = (colorA!50!white)
-%						color = (colorA)}]
-%			{binormal(0, 1, 0, 1, 0.7)};
-%		\end{axis}
-%	\end{tikzpicture}
-%\end{frame}
-
-%% Countour plot inspirado daqui: https://tex.stackexchange.com/a/31713/200209
-%\begin{frame}{Visualização de Probabilidade Conjunta vs Probabilidade Condicional}
-%	\begin{columns}
-%		\begin{column}{0.5\textwidth}
-%			\centering
-%			\begin{tikzpicture}[scale=0.5]
-%				\begin{axis}[
-%						view={0}{90},
-%						axis equal,
-%						enlarge y limits=true,
-%						title={$P(X,Y)$},
-%						xlabel={$X$},
-%						ylabel={$Y$},
-%						xtick=\empty,
-%						ytick={-0.75}
-%					]
-
-%					\draw[red, line width=2pt] (-3.5, -0.75) -- (3.5, -0.75);
-
-%					\addplot3[contour gnuplot={labels=false},domain=-3.5:3.5,domain y=-3.5:3.5]
-%					{exp(-( x^2 + y^2)/3 )};
-
-%				\end{axis}
-%			\end{tikzpicture}
-%		\end{column}
-%		\begin{column}{0.5\textwidth}
-%			\centering
-%			\begin{tikzpicture}[scale=0.5]
-%				\begin{axis}[every axis plot, line width=2pt,
-%						title={$P(X \mid Y=-0.75)$},
-%						xlabel={$X$},
-%						ylabel={$Y$},
-%						xtick=\empty,
-%						ytick=\empty,
-%						domain=-3.5:3.5,samples=200,
-%						axis x line*=bottom, % no box around the plot, only x and y axis
-%						axis y line*=left, % the * suppresses the arrow tips
-%						enlarge x limits=true
-%					] % extend the axes a bit
-
-%					\addplot [red, fill = red, fill opacity = 0.5] {exp(-( x^2 + -0.75^2)/3 )};
-%				\end{axis}
-%			\end{tikzpicture}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
-
-%\subsubsection{Teorema de Bayes}
-%\begin{frame}{Quem foi Thomas Bayes?}
-%	\begin{columns}
-%		\begin{column}{0.8\textwidth}
-%			\begin{vfilleditems}
-%				\item \small Thomas Bayes (1701 - 1761) foi um estatístico, filósofo
-%				e ministro presbiteriano inglês conhecido por formular um caso
-%				específico do teorema que leva seu nome
-%				\item \small Bayes nunca publicou o que se tornaria sua realização mais famosa;
-%				suas notas foram editadas e publicadas após sua morte pelo seu amigo
-%				Richard Price
-%				\item \small O nome formal do teorema é Bayes-Price-Laplace, pois Thomas
-%				Bayes foi o primeiro a descobrir, Richard Price pegou seus rascunhos,
-%				formalizou em notação matemática e apresentou para a Royal Society of London,
-%				e Pierre Laplace redescobriu o teorema sem ter tido contato prévio no final
-%				do século XVIII na França ao usar probabilidade para inferência estatística
-%				com dados do Censo na era Napoleônica
-%			\end{vfilleditems}
-%		\end{column}
-%		\begin{column}{0.2\textwidth}
-%			\centering
-%			\includegraphics[width=0.9\columnwidth]{thomas_bayes.png}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+	Everything that has been exposed here was under the assumption that the
+	parameters are discrete.
+	This was done with the intent to provide an intuition what is probability.
+	Not always we work with discrete parameters.
+	Parameters can be continuous, such as: age, height, weight etc.
+	But don't despair!
+	All probability rules and axioms are valid also for continuous parameters.
+	The only thing we have to do is to change all sum $\sum$ for integrals $\int$.
+	For example, the third axiom of \textbf{Normalization} for \textit{continuous}
+	random variables becomes:
+	$$
+		\int_{x \in X} p(x) dx = 1.
+	$$
+\end{frame}
 
 
-%\begin{frame}{Teorema de Bayes}
-%	\begin{theo}[Bayes]
-%		Nos diz como "inverter" a probabilidade condicional: \newline \newline
-%		$$P(A \mid B) = \frac{P(A) \cdot P(B \mid A)}{P(B)}$$
-%	\end{theo}
-%\end{frame}
+\begin{frame}{Conditional Probability}
+	\begin{defn}[Conditional Probability]
+		Probability of an event occurring in case another has occurred or not. \newline \newline
+		The notation we use is $P( A \mid B )$, that read as "the probability of
+		observing $A$ given that we already observed $B$". \newline \newline
+		$$
+			\begin{aligned}
+				P(A \mid B) & = \frac{\text{number of elements in$A$ e $B$}}{\text{number of elements in $B$}} \\
+				P(A \mid B) & = \frac{P(A \cap B)}{(B)}
+			\end{aligned}
+		$$
+		\newline \hspace{0.7\textwidth}
+		{\footnotesize assuming that $P(B) > 0$}.
+	\end{defn}
+\end{frame}
+
+\begin{frame}{Example of Conditional Probability}
+	\begin{example}[Poker Texas Hold'em]
+		\begin{vfilleditems}
+			\item \textbf{Sample Space}: $52$ cards in a deck, $13$ types of cards and $4$ types of suits.
+			\item $P(A)$: Probability of being dealt an Ace $\left( \frac{4}{52} = \frac{1}{13}\right)$
+			\item $P(K)$: Probability of being dealt a King $\left( \frac{4}{52} = \frac{1}{13} \right)$
+			\item $P(A \mid K)$: Probability of being dealt an Ace, given that you have already a King $\left( \frac{4}{51} \approx 0.078 \right)$
+			\item $P(K \mid A)$: Probability of being dealt a King, given that you have already an Ace $\left( \frac{4}{51} \approx 0.078 \right)$
+		\end{vfilleditems}
+	\end{example}
+\end{frame}
+
+\begin{frame}{Caution! Not always $P(A \mid B) = P(B \mid A)$}
+	In the previous example we have the symmetry $P(A \mid K) = P(K \mid A)$,
+	\textbf{but not always this is true}\footnote{
+		More specific, if the basal rates $P(A)$ and $P(B)$ aren't equal,
+		the symmetry is broken $P(A \mid B) \neq P(B \mid A)$}
+	\begin{example}[The Pope is catholic]
+		\begin{vfilleditems}
+			\small{
+				\item $P(\text{pope})$:
+				Probability of some random person being the Pope,
+				something really small, 1 in 8 billion $\left( \frac{1}{8 \cdot 10^9} \right)$
+				\item $P(\text{catholic})$:
+				Probability of some random person being catholic,
+				1.34 billion in 8 billion $\left( \frac{1.34}{8} \approx 0.17 \right)$
+				\item $P(\text{catholic} \mid \text{pope})$:
+				Probability of the Pope being catholic $\left( \frac{999}{1000} = 0.999 \right)$
+				\item $P(\text{pope} \mid \text{catholic})$:
+				Probability of a catholic person being the Pope $\left( \frac{1}{1.34 \cdot 10^9} \cdot 0.999 \approx 7.46 \cdot 10^{-10} \right)$
+			}
+			\item \large{\textbf{Hence}: $P(\text{catholic} \mid \text{pope}) \neq P(\text{pope} \mid \text{catholic})$}
+		\end{vfilleditems}
+	\end{example}
+\end{frame}
+
+\begin{frame}{A Probability Textbook Classic}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{example}[Monty Hall]
+				\begin{vfilleditems}
+					\small
+					\item A TV presenter shows you 3 doors
+					\item One of them has a prize: a car!
+					The others have a goat
+					\item You must choose a door (that is not open or revealed)
+					\item In this moment, the presenter opens one of the other two doors
+					that you did not choose,
+					revealing one of the two goats
+					\item The presenter then asks you
+					"Do you want to change your door or stay with your choice?"
+				\end{vfilleditems}
+			\end{example}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\def\svgwidth{\columnwidth}
+				\input{../images/monty_hall.pdf_tex}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Solution for the Monty Hall Problem}
+	\begin{idea}[Probability of winning a car]
+		$$
+			\begin{aligned}
+				P(\text{car} \mid C_i) & = \frac{1}{3}                                                                                                                    \\
+				P(\text{car})          & = \frac{1}{3} \cdot P(\text{car} \mid C_1) + \frac{1}{3} \cdot P(\text{car} \mid C_2) + \frac{1}{3} \cdot P(\text{car} \mid C_3) \\
+				P(\text{car})          & = \frac{\sum^3_{i=1}P(\text{car} \mid C_i)}{3}                                                                                   \\
+				P(\text{car})          & = \frac{1}{3}
+			\end{aligned}
+		$$
+	\end{idea}
+	\vfill \vfill
+	$C_i$ is the event that the car is behind door $i$, $i=1,2,3$
+\end{frame}
+
+\begin{frame}[t]{Solution for the Monty Hall Problem}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+			{\Large \textbf{Scenario 1}: Don't change doors} \newline \newline
+			Simple: $$\frac{1}{3}$$
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			{\Large \textbf{Scenario 2}: Change doors} \newline \newline
+			Choose any door $i$ to be $C_i = 0$
+			\vfill
+			$$
+				\begin{aligned}
+					P(\text{car}) & = 0 \cdot P(\text{car} \mid C_i) + \frac{1}{3} + \frac{1}{3} \\
+					P(\text{car}) & = \frac{2}{3}
+				\end{aligned}
+			$$
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Visualization of the Monty Hall Problem}
+	\begin{figure}
+		\centering
+		\subfigure{
+			\begin{tikzpicture}[
+					scale=0.55,
+					header/.style = {draw, rectangle, fill = blue!50!black, minimum size = 10mm},
+					level distance = 3.5cm,
+					transform shape, thick,
+					grow = right, sloped,
+				]
+				\node[header] {Your Choice}
+				child{
+						node[header] {Car is}
+						edge from parent[draw=none]
+						child{
+								node[header] {Monty opens}
+								edge from parent[draw=none]
+								child{
+										node[header] {result}
+										edge from parent[draw=none]
+									}
+							}
+					};
+			\end{tikzpicture}
+		}
+		%
+		\subfigure{
+			\begin{tikzpicture}[
+					scale=0.55,
+					door/.style = {draw, circle, minimum size = 10mm},
+					car/.style = {circle, fill = green!50!black, minimum size = 10mm},
+					goat/.style = {circle, fill = red!50!black, minimum size = 10mm},
+					level distance = 3.5cm,
+					transform shape, thick,
+					grow = right, sloped,
+					level 1/.style = {sibling distance=3.5cm},
+					level 2/.style = {sibling distance=2cm},
+					level 3/.style = {sibling distance=3cm}
+				]
+				\node[door] {Door 1}
+				child {
+				node[door] {Door 3}
+				child {
+				node[door] {Door 2}
+				child {
+				node[car, label=right:{\Large$\frac{1}{3}$}] {Car}
+				}
+				edge from parent
+				node[above] {\Large$1$}
+				}
+				edge from parent
+				node[below] {\Large$\frac{1}{3}$}
+				}
+				child {
+				node[door] {Door 2}
+				child {
+				node[door] {Door 3}
+				child {
+				node[car, label=right:{\Large$\frac{1}{3}$}] {Car}
+				}
+				edge from parent
+				node[above] {\Large$1$}
+				}
+				edge from parent
+				node[above] {\Large$\frac{1}{3}$}
+				}
+				child {
+				node[door] {Door 1}
+				child {
+				node[door] {Door 2}
+				child {
+				node[goat, label=right:{\Large$\frac{1}{6}$}] {Goat}
+				}
+				edge from parent
+				node[above]  {\Large$\frac{1}{2}$}
+				}
+				child {
+				node[door] {Door 3}
+				child {
+				node[goat, label=right:{\Large$\frac{1}{6}$}] {Goat}
+				}
+				edge from parent
+				node[above]  {\Large$\frac{1}{2}$}
+				}
+				edge from parent
+				node[above] {\Large$\frac{1}{3}$}
+				};
+			\end{tikzpicture}
+		}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Joint Probability}
+	\begin{defn}[Joint Probability]
+		Probability of two or more events occurring. \newline \newline
+		The notation we use is $P(A, B)$, that read as
+		"the probability of observing $A$ and also observing $B$". \newline \newline
+		$$
+			\begin{aligned}
+				P(A,B) & = \text{number of elements in $A$ or $B$} \\
+				P(A,B) & = P(A \cup B)                             \\
+				P(A,B) & = P(B,A)
+			\end{aligned}
+		$$
+	\end{defn}
+\end{frame}
+
+\begin{frame}{Example of Joint Probability}
+	\begin{example}[Revisiting Poker Texas Hold'em]
+		\begin{vfilleditems}
+			{\footnotesize
+				\item \textbf{Sample Space}: $52$ cards in a deck, $13$ types of cards and $4$ types of suits.
+				\item $P(A)$: Probability of being dealt an Ace $\left( \frac{4}{52} = \frac{1}{13}\right)$
+				\item $P(K)$: Probability of being dealt a King $\left( \frac{4}{52} = \frac{1}{13} \right)$
+				\item $P(A \mid K)$: Probability of being dealt an Ace, given that you have already a King $\left( \frac{4}{51} \approx 0.078 \right)$
+				\item $P(K \mid A)$: Probability of being dealt a King, given that you have already an Ace $\left( \frac{4}{51} \approx 0.078 \right)$
+			}
+			\item $P(A, K)$: Probability of being dealt an Ace \textit{and} being dealt a King
+			$$
+				\begin{aligned}
+					P(A, K)                         & = P(K, A)                         \\
+					P(A) \cdot P(K \mid A)          & = P(K) \cdot P(A \mid K)          \\
+					\frac{1}{13} \cdot \frac{4}{51} & = \frac{1}{13} \cdot \frac{4}{51} \\
+					                                & \approx 0.006
+				\end{aligned}
+			$$
+		\end{vfilleditems}
+	\end{example}
+\end{frame}
+
+%% Bivariate Normal adapted from: https://github.com/walmes/Tikz/blob/master/src/bivariate-normal.pgf
+\begin{frame}{Visualization of Joint Probability versus Conditional Probability}
+	\centering
+	\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+				domain   = -3.5:3.5,
+				domain y = -3.5:3.5,
+				view = {-70}{20},
+				title={$P(X,Y)$ versus $P(X \mid Y=-0.75)$},
+				xlabel={$X$},
+				ylabel={$Y$},
+				% zlabel={$SSE(\beta_0, \beta_1)$},
+				zmin = -0,
+				%xticklabels=\empty,
+				%yticklabels=\empty,
+				zticklabels=\empty,
+				xtick=\empty,
+				ytick={-0.75},
+				ztick=\empty,
+				axis z line*=none,
+				axis y line*=left,
+				axis x line*= bottom]
+			\addplot3 [
+				domain = -3.5:3.5,
+				samples = 50, samples y = 0,
+				thick, smooth, color = red, fill = orange, opacity = 0.75]
+			(x, -0.75, {conditionalbinormal(-0.75, 0, 1, 0, 1, 0.75)});
+
+			\draw (-3.5, -0.75, 0) -- (3.5, -0.75, 0);
+
+			\addplot3 [
+				surf,
+				domain = -3.5:3.5,
+				samples = 50,
+				opacity = 0.15,
+				faceted color = colorB,
+				colormap = {blueblack}{
+						color = (colorB)
+						color = (colorA!50!white)
+						color = (colorA)}]
+			{binormal(0, 1, 0, 1, 0.7)};
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+%% Countour plot adapted from: https://tex.stackexchange.com/a/31713/200209
+\begin{frame}{Visualization of Joint Probability versus Conditional Probability}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.5]
+				\begin{axis}[
+						view={0}{90},
+						axis equal,
+						enlarge y limits=true,
+						title={$P(X,Y)$},
+						xlabel={$X$},
+						ylabel={$Y$},
+						xtick=\empty,
+						ytick={-0.75}
+					]
+
+					\draw[red, line width=2pt] (-3.5, -0.75) -- (3.5, -0.75);
+
+					\addplot3[contour gnuplot={labels=false},domain=-3.5:3.5,domain y=-3.5:3.5]
+					{exp(-( x^2 + y^2)/3 )};
+
+				\end{axis}
+			\end{tikzpicture}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.5]
+				\begin{axis}[every axis plot, line width=2pt,
+						title={$P(X \mid Y=-0.75)$},
+						xlabel={$X$},
+						ylabel={$Y$},
+						xtick=\empty,
+						ytick=\empty,
+						domain=-3.5:3.5,samples=200,
+						axis x line*=bottom,  % no box around the plot, only x and y axis
+						axis y line*=left,    % the * suppresses the arrow tips
+						enlarge x limits=true % extend the axes a bit
+					]
+
+					\addplot [red, fill = red, fill opacity = 0.5] {exp(-( x^2 + -0.75^2)/3 )};
+				\end{axis}
+			\end{tikzpicture}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsubsection{Bayes Theorem}
+\begin{frame}{Who was Thomas Bayes?}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{vfilleditems}
+				\item \small \textbf{Thomas Bayes} (1701 - 1761) was a statistician, philosopher
+				and Presbyterian minister who is known for formulating a specific
+				case of the theorem that bears his name: Bayes' theorem.
+				\item \small Bayes never published what would become his most famous
+				accomplishment; his notes were edited and published posthumously by
+				his friend \textbf{Richard Price}.
+				\item \small The theorem official name is \textbf{Bayes-Price-Laplace},
+				because \textbf{Bayes} was the first to discover,
+				\textbf{Price} got his notes, transcribed into mathematical notation,
+				and read to the Royal Society of London,
+				and \textbf{Laplace} independently rediscovered the theorem without
+				having previous contact in the end of the XVIII century in France
+				while using probability for statistical inference with census
+				data in the Napoleonic era.
+			\end{vfilleditems}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{thomas_bayes.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Bayes Theorem}
+	\begin{theorem}[Bayes]
+		Tells us how to "invert" conditional probability: \newline \newline
+		$$P(A \mid B) = \frac{P(A) \cdot P(B \mid A)}{P(B)}$$
+	\end{theorem}
+\end{frame}
 
 %\begin{frame}{Prova do Teorema de Bayes}
 %	Lembra que temos a seguinte identidade na probabilidade:
@@ -1009,30 +1020,6 @@
 %			P(A \mid B)                         & = \frac{P(A) \cdot P(B \mid A)}{P(B)}
 %		\end{aligned}
 %	$$
-%\end{frame}
-
-%\begin{frame}{Visualização do Teorema de Bayes}
-%	\begin{columns}
-%		\begin{column}{0.6\textwidth}
-%			\begin{tikzpicture}[thick]
-%				\node[circle, label={137:Espaço Amostral}, fill=red!20!white, fill opacity = 0.5, minimum size=6cm] (Omega) at (0,0) {};
-%				\node[ellipse, label={35:$E_1$}, fill=blue, fill opacity = 0.5, minimum width=5.5cm, minimum height=2cm] (Ellipse) at (0,1) {};
-%				\node[circle, label={178:$E_2$}, fill=red, fill opacity = 0.5, minimum size = 1cm] (Circulo) at (-1.5,1) {};
-%				\node[] (KK) at (-1.5, 1) {$KK$};
-%				\node[] (CC) at (1.5, 1) {$CC$};
-%				\node[] (KC) at (1.5, -1) {$KC$};
-%				\node[] (CK) at (-1.5, -1) {$CK$};
-%			\end{tikzpicture}
-%		\end{column}
-%		\begin{column}{0.4\textwidth}
-%			$$
-%				\begin{aligned}
-%					E_1 & = P(KK  \cup CC) \\
-%					E_2 & = P(KK \mid E_1)
-%				\end{aligned}
-%			$$
-%		\end{column}
-%	\end{columns}
 %\end{frame}
 
 %\begin{frame}{Mais um clássico da Probabilidade\footnote{Origem: \href{https://www.yudkowsky.net/rational/bayes}{Yudkowski - \textit{An Intuitive Explanation of Bayes’ Theorem}}}}
