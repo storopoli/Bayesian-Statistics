@@ -46,8 +46,8 @@
 		\begin{vfilleditems}
 			\item Coherence
 			\item Propagation
-			\item We don't use \textit{"if we sampled infinite times
-				from a population that we do not observe..."}
+			\item We don't use \textit{``if we sampled infinite times
+				from a population that we do not observe...''}
 		\end{vfilleditems}
 		\item No \textbf{$p$-values}:
 		\begin{vfilleditems}
@@ -632,8 +632,8 @@
 \begin{frame}{Conditional Probability}
 	\begin{defn}[Conditional Probability]
 		Probability of an event occurring in case another has occurred or not. \newline \newline
-		The notation we use is $P( A \mid B )$, that read as "the probability of
-		observing $A$ given that we already observed $B$". \newline \newline
+		The notation we use is $P( A \mid B )$, that read as ``the probability of
+		observing $A$ given that we already observed $B$''. \newline \newline
 		$$
 			\begin{aligned}
 				P(A \mid B) & = \frac{\text{number of elements in$A$ e $B$}}{\text{number of elements in $B$}} \\
@@ -695,7 +695,7 @@
 					that you did not choose,
 					revealing one of the two goats
 					\item The presenter then asks you
-					"Do you want to change your door or stay with your choice?"
+					``Do you want to change your door or stay with your choice?''
 				\end{vfilleditems}
 			\end{example}
 		\end{column}
@@ -841,7 +841,7 @@
 	\begin{defn}[Joint Probability]
 		Probability of two or more events occurring. \newline \newline
 		The notation we use is $P(A, B)$, that read as
-		"the probability of observing $A$ and also observing $B$". \newline \newline
+		``the probability of observing $A$ and also observing $B$''. \newline \newline
 		$$
 			\begin{aligned}
 				P(A,B) & = \text{number of elements in $A$ or $B$} \\
@@ -997,351 +997,370 @@
 
 \begin{frame}{Bayes Theorem}
 	\begin{theorem}[Bayes]
-		Tells us how to "invert" conditional probability: \newline \newline
+		Tells us how to ``invert'' conditional probability: \newline \newline
 		$$P(A \mid B) = \frac{P(A) \cdot P(B \mid A)}{P(B)}$$
 	\end{theorem}
 \end{frame}
 
-%\begin{frame}{Prova do Teorema de Bayes}
-%	Lembra que temos a seguinte identidade na probabilidade:
-%	$$
-%		\begin{aligned}
-%			P(A,B)                 & = P(B,A)                 \\
-%			P(A) \cdot P(B \mid A) & = P(B) \cdot P(A \mid B)
-%		\end{aligned}
-%	$$
+\begin{frame}{Bayes' Theorem Proof}
+	Remember the following probability identity:
+	$$
+		\begin{aligned}
+			P(A,B)                 & = P(B,A)                 \\
+			P(A) \cdot P(B \mid A) & = P(B) \cdot P(A \mid B)
+		\end{aligned}
+	$$
 
-%	Pois bem, agora passe o $P(B)$ do lado direito para o lado esquerdo dividindo:
-%	$$
-%		\begin{aligned}
-%			P(A) \cdot P(B \mid A)              & = \overbrace{P(B)}^{\text{isso vai para $\leftarrow$}} \cdot \quad P(A \mid B) \\
-%			                                    &                                                                                \\
-%			\frac{P(A) \cdot P(B \mid A)}{P(B)} & = P(A \mid B)                                                                  \\
-%			P(A \mid B)                         & = \frac{P(A) \cdot P(B \mid A)}{P(B)}
-%		\end{aligned}
-%	$$
-%\end{frame}
+	OK, now divide everything by $P(B)$:
+	$$
+		\begin{aligned}
+			\frac{P(A) \cdot P(B \mid A)}{P(B)} & = \frac{P(B) \cdot \quad P(A \mid B)}{P(B)} \\
+			                                    &                                             \\
+			\frac{P(A) \cdot P(B \mid A)}{P(B)} & = P(A \mid B)                               \\
+			P(A \mid B)                         & = \frac{P(A) \cdot P(B \mid A)}{P(B)}
+		\end{aligned}
+	$$
+\end{frame}
 
-%\begin{frame}{Mais um clássico da Probabilidade\footnote{Origem: \href{https://www.yudkowsky.net/rational/bayes}{Yudkowski - \textit{An Intuitive Explanation of Bayes’ Theorem}}}}
-%	\begin{exemplo}[Cancêr de Mama]
-%		\small
-%		O quão acurado é o teste de \textbf{câncer de mama}?
-%		\begin{vfilleditems}
-%			\item \footnotesize 1\% das mulheres têm \textbf{câncer de mama} (Prevalência)
-%			\item \footnotesize 80\% das mamografias detectam o \textbf{câncer de mama} (Verdadeiro Positivo)
-%			\item \footnotesize 9.6\% das mamografias detectam \textbf{câncer de mama} quando não há incidência (Falso Positivo)
-%		\end{vfilleditems}
-%		$$
-%			\begin{aligned}
-%				P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+)}                                                      \\
-%				P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+ \mid C) \cdot P(C) + P(+ \mid \neg C) \cdot P(\neg C)} \\
-%				P(C \mid +) & = \frac{0.8 \cdot 0.01}{0.8 \cdot 0.01 + 0.096 \cdot 0.99}                                 \\
-%				P(C \mid +) & \approx 0.0776
-%			\end{aligned}
-%		$$
-%	\end{exemplo}
-%\end{frame}
+\begin{frame}{Another Probability Textbook Classic\footnote{Adapted from: \href{https://www.yudkowsky.net/rational/bayes}{Yudkowski - \textit{An Intuitive Explanation of Bayes’ Theorem}}.}}
+	\begin{example}[Breast Cancer]
+		\small
+		How accurate is a \textbf{breast cancer} test?
+		\begin{vfilleditems}
+			\item \footnotesize 1\% of women have \textbf{breast cancer} (Prevalence)
+			\item \footnotesize 80\% of mammograms detect \textbf{breast cancer} (True Positive)
+			\item \footnotesize 9.6\% of mammograms detect \textbf{breast cancer} when there is no incidence (False Positive)
+		\end{vfilleditems}
+		$$
+			\begin{aligned}
+				P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+)}                                                      \\
+				P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+ \mid C) \cdot P(C) + P(+ \mid \neg C) \cdot P(\neg C)} \\
+				P(C \mid +) & = \frac{0.8 \cdot 0.01}{0.8 \cdot 0.01 + 0.096 \cdot 0.99}                                 \\
+				P(C \mid +) & \approx 0.0776
+			\end{aligned}
+		$$
+	\end{example}
+\end{frame}
 
 
-%\begin{frame}{Porquê o teorema de Bayes é Importante?}
-%	\begin{idea}[Podemos Inverter a Probabilidade Condicional]
-%		$$
-%			\begin{aligned}
-%				P(\text{hipótese} \mid \text{dados}) = \frac{P(\text{hipótese}) \cdot P(\text{dados} \mid \text{hipótese})}{P(\text{data})}
-%			\end{aligned}
-%		$$
-%	\end{idea}
-%	Mas isso não é o $p$-valor? \textcolor{red}{\textbf{NÃO!}}
-%\end{frame}
+\begin{frame}{Why Bayes' Theorem is Important?}
+	\begin{idea}[We can Invert the Conditional Probability]
+		$$
+			\begin{aligned}
+				P(\text{hypothesis} \mid \text{data}) = \frac{P(\text{data} \mid \text{hypothesis}) \cdot P(\text{hypothesis})}{P(\text{data})}
+			\end{aligned}
+		$$
+	\end{idea}
+	But isn't this the $p$-value? \textcolor{red}{\textbf{NO!}}
+\end{frame}
 
-%\subsection{Estatística Frequentista versus Bayesiana}
-%\subsubsection{O que são $p$-valores e Intervalos de Confiança}
-%\begin{frame}{O que é o $p$-valor?}
-%	\begin{defn}[$p$-valor]
-%		$p$-valor é a probabilidade de obter resultados no mínimo tão
-%		extremos quanto os que foram observados, dado que a hipótese nula
-%		$H_0$ é verdadeira
-%		$$P(D \mid H_0)$$
-%	\end{defn}
-%\end{frame}
+\subsection{Frequentist versus Bayesian}
+\subsubsection{What are $p$-values and Confidence Intervals}
+\begin{frame}{What are $p$-values?}
+	\begin{defn}[$p$-value]
+		$p$-value is the probability of obtaining results at least as
+		extreme as the observed,
+		given that the null hypothesis $H_0$ is true:
+		$$P(D \mid H_0)$$
+	\end{defn}
+\end{frame}
 
-%\begin{frame}{O que \textbf{não é} o $p$-valor!}
-%	\centering
-%	\includegraphics[width=0.7\textwidth]{meme-pvalue.jpg}
-%\end{frame}
+\begin{frame}{What $p$-value is \textbf{not}!}
+	\centering
+	\includegraphics[width=0.7\textwidth]{meme-pvalue.jpg}
+\end{frame}
 
-%\begin{frame}{O que \textbf{não é} o $p$-valor!}
-%	\begin{vfilleditems}
-%		\item \textbf{$p$-valor não é a probabilidade da Hipótese nula}
-%		- Famosa confusão entre $P(D \mid H_0)$ e $P(H_0 \mid D)$.
-%		Para obter a $P(H_0 \mid D)$ você precisa de estatística Bayesiana.
-%		\item \textbf{$p$-valor não é a probabilidade dos dados serem produzidos pelo acaso}
-%		- \textcolor{red}{Não!} Ninguém falou nada de acaso.
-%		\item \textbf{$p$-valor mensura o tamanho do efeito de um teste estatístico}
-%		- Também \textcolor{red}{não}... $p$-valor não diz nada sobre o tamanho do efeito.
-%		Apenas sobre se o quanto os dados observados divergem do esperado sob a hipótese nula.
-%		Além disso, $p$-valores podem ser "hackeados" de diversas maneiras \parencite{head2015extent}.
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{What $p$-value is \textbf{not}!}
+	\begin{vfilleditems}
+		\item \textbf{$p$-value is not the probability of the null hypothesis}
+		- Infamous confusion between $P(D \mid H_0)$ and $P(H_0 \mid D)$.
+		To get $P(H_0 \mid D)$ you need Bayesian statistics.
+		\item \textbf{$p$-value is not the probability of data being generated at random}
+		- \textcolor{red}{No!} We haven't stated nothing about randomness.
+		\item \textbf{$p$-value measures the effect size of a statistical test}
+		- Also \textcolor{red}{no}... $p$-value does not say anything about effect sizes.
+		Just about if the observed data diverge of the expected under the null hypothesis.
+		Besides, $p$-values can be hacked in several ways \parencite{head2015extent}.
+	\end{vfilleditems}
+\end{frame}
 
-%\begin{frame}{A relação entre $p$-valor e $H_0$}
-%	Para descobrir o $p$-valor, \textbf{descubra a $H_0$ que está por trás dele}.
-%	Sua definição nunca mudará, pois ela sempre é $P(D \mid H_0)$:
-%	\begin{vfilleditems}
-%		\item \textbf{Teste $t$}: $P(D \mid \text{a diferença entre os grupos é zero})$
-%		\item \textbf{ANOVA}: $P(D \mid \text{não há diferença entre os grupos})$
-%		\item \textbf{Regressão}: $P(D \mid \text{coeficiente é nulo})$
-%		\item \textbf{Shapiro-Wilk}: $P(D \mid \text{população é distribuída como uma normal})$
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{The relationship between $p$-value and $H_0$}
+	To find out about any $p$-value, \textbf{find out what $H_0$ is behind it}.
+	It's definition will never change, since it is always $P(D \mid H_0)$:
+	\begin{vfilleditems}
+		\item \textbf{$t$-test}: $P(D \mid \text{the difference between the groups is zero})$
+		\item \textbf{ANOVA}: $P(D \mid \text{there is no difference between groups})$
+		\item \textbf{Regression}: $P(D \mid \text{coefficient has a null value})$
+		\item \textbf{Shapiro-Wilk}: $P(D \mid \text{population is distributed as a Normal distribution})$
+	\end{vfilleditems}
+\end{frame}
 
-%\begin{frame}{O que são Intervalos de Confiança?}
-%	\begin{columns}
-%		\begin{column}{0.8\textwidth}
-%			\begin{defn}[Intervalos de Confiança]
-%				\begin{quotation}
-%					Um intervalo de confiança de X\% para um parâmetro é um intervalo
-%					$(a, b)$ gerado por um procedimento que em amostragem repetida
-%					tem uma probabilidade de X\% de conter o valor verdadeiro do
-%					parâmetro, para todos os valores possíveis do parâmetro
-%				\end{quotation}
-%				\vfill \vfill
-%				\textcite{neyman1937outline} (o "pai" dos intervalos de confiança)
-%			\end{defn}
-%		\end{column}
-%		\begin{column}{0.2\textwidth}
-%			\centering
-%			\includegraphics[width=0.9\columnwidth]{neyman.jpeg}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+\begin{frame}{What are Confidence Intervals?}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{defn}[Confidence Intervals]
+				\begin{quotation}
+					A confidence interval of X\% for a parameter is an interval
+					$(a, b)$ generated by a repeated sampling procedure
+					has probability X\% of containing the true value of the parameter,
+					for all possible values of the parameter.
+				\end{quotation}
+				\vfill \vfill
+				\textcite{neyman1937outline} (the ``father'' of confidence intervals)
+			\end{defn}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{neyman.jpeg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%\begin{frame}{O que são Intervalos de Confiança?}
-%	\begin{exemplo}[Intervalo de Confiança de uma Política Pública]
-%		Digamos que você executou uma análise estatística para comparar
-%		eficácia de uma política pública em dois grupos e você obteve a
-%		diferença entre a média desses grupos. Você pode expressar essa
-%		diferença como um intervalo de confiança. Geralmente escolhemos a
-%		confiança de 95\%. Isso quer dizer que \textbf{95 estudos de 100},
-%		que usem o \textbf{mesmo tamanho de amostra e população-alvo},
-%		aplicando o \textbf{mesmo teste estatístico}, esperarão encontrar
-%		um resultado de diferenças de média entre grupos entre o intervalo
-%		de confiança.
-%	\end{exemplo}
-%	\footnotesize \textcolor{red}{Não diz nada sobre a sua \textbf{população-alvo},
-%		mas sim sobre a sua \textbf{amostra} num processo maluco de \textbf{amostragem infinita}...}
-%\end{frame}
+\begin{frame}{What are Confidence Intervals?}
+	\begin{example}[Confidence Intervals of a Public Policy Analysis]
+		Say you performed a statistical analysis to compare
+		the efficacy of a public policy between two groups and you obtain a
+		difference between the mean of these groups.
+		You can express this difference as a confidence interval.
+		Often we choose 95\% confidence.
+		This means that \textbf{95 studies out of 100},
+		that uses the \textbf{same sample size and target population},
+		performing the \textbf{same statistical test},
+		will expect to find a result of the mean difference between groups
+		inside the confidence interval.
+	\end{example}
+	\footnotesize \textcolor{red}{Doesn't say anything about you \textbf{target population},
+		but about you \textbf{sample} in an insane process of \textbf{infinite sampling} ...}
+\end{frame}
 
-%\begin{frame}{Intevalos de Confiança versus Intervalos da Posterior}
-%	\centering
-%	\begin{tikzpicture}
-%		\begin{axis}[every axis plot, line width=2pt,
-%				xmin=0, xmax=4,
-%				ymin=0, ymax=1.5,
-%				ylabel=\empty,
-%				xlabel={$\theta$},
-%				samples=200,
-%				axis x line*=bottom, % no box around the plot, only x and y axis
-%				axis y line*=left,
-%				enlarge x limits=true,
-%			] % extend the axes a bit
+\begin{frame}{Confidence Intervals versus Posterior Intervals}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				xmin=0, xmax=4,
+				ymin=0, ymax=1.5,
+				ylabel=\empty,
+				xlabel={$\theta$},
+				samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left,
+				enlarge x limits=true, % extend the axes a bit
+			]
 
-%			\addplot [blue, domain=0:4, forget plot] {lognormal(0, 2)};
-%			\addplot+ [
-%				mark=none,
-%				area legend,
-%				line width=0pt,
-%				color=blue,
-%				fill=blue, fill opacity=0.5,
-%				domain=0.25950495026507125:3.8534910373715427
-%			]
-%			{lognormal(0, 2)} \closedcycle;
-%			\addlegendentry{50\% Posterior}
-%			\addplot[red, mark=none] (-0.09, 1.4739034450607542) to (0.09, 1.4739034450607542);
-%			\addlegendentry{MLE}
-%			\draw [red] (0,0) to (0, 1.4739034450607542);
-%		\end{axis}
-%	\end{tikzpicture}
-%\end{frame}
+			\addplot [blue, domain=0:4, forget plot] {lognormal(0, 2)};
+			\addplot+ [
+				mark=none,
+				area legend,
+				line width=0pt,
+				color=blue,
+				fill=blue, fill opacity=0.5,
+				domain=0.25950495026507125:3.8534910373715427
+			]
+			{lognormal(0, 2)} \closedcycle;
+			\addlegendentry{50\% Posterior}
+			\addplot[red, mark=none] (-0.09, 1.4739034450607542) to (0.09, 1.4739034450607542);
+			\addlegendentry{MLE}
+			\draw [red] (0,0) to (0, 1.4739034450607542);
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
 
-%\begin{frame}{Intevalos de Confiança versus Intervalos da Posterior}
-%	\centering
-%	\begin{tikzpicture}
-%		\begin{axis}[every axis plot, line width=2pt,
-%				xmin=-3, xmax=14,
-%				%ymin=0, ymax=1.5,
-%				ylabel=\empty,
-%				xlabel={$\theta$},
-%				samples=200,
-%				axis x line*=bottom, % no box around the plot, only x and y axis
-%				axis y line*=left,
-%				enlarge x limits=true,
-%				%legend pos=outer north east, %there is one default value for the `legend pos' that is outside the axis
-%				%legend cell align=left, % so the legend looks a bit better
-%			] % extend the axes a bit
+\begin{frame}{Confidence Intervals versus Posterior Intervals}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				xmin=-3, xmax=14,
+				%ymin=0, ymax=1.5,
+				ylabel=\empty,
+				xlabel={$\theta$},
+				samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left,
+				enlarge x limits=true, % extend the axes a bit
+				%legend pos=outer north east, % there is one default value for the `legend pos' that is outside the axis
+				%legend cell align=left, % so the legend looks a bit better
+			]
 
-%			\addplot [blue, domain=-3:14, forget plot] {sumtwonormals(2, 1, 0.6, 10, 1, 0.4)};
-%			\addplot+ [
-%				mark=none,
-%				area legend,
-%				line width=0pt,
-%				color=blue,
-%				fill=blue, fill opacity=0.5,
-%				domain=1.8:9.7
-%			]
-%			{sumtwonormals(2, 1, 0.6, 10, 1, 0.4)} \closedcycle;
-%			\addlegendentry{50\% Posterior}
-%			\addplot[red, mark=none] (1.5, 0.24) to (2.5, 0.24);
-%			\addlegendentry{MLE}
-%			\draw [red] (2,0) to (2, 0.24);
-%		\end{axis}
-%	\end{tikzpicture}
-%\end{frame}
+			\addplot [blue, domain=-3:14, forget plot] {sumtwonormals(2, 1, 0.6, 10, 1, 0.4)};
+			\addplot+ [
+				mark=none,
+				area legend,
+				line width=0pt,
+				color=blue,
+				fill=blue, fill opacity=0.5,
+				domain=1.8:9.7
+			]
+			{sumtwonormals(2, 1, 0.6, 10, 1, 0.4)} \closedcycle;
+			\addlegendentry{50\% Posterior}
+			\addplot[red, mark=none] (1.5, 0.24) to (2.5, 0.24);
+			\addlegendentry{MLE}
+			\draw [red] (2,0) to (2, 0.24);
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
 
-%\begin{frame}{Mas por quê eu nunca vejo estatística sem $p$-valor?}
-%	\begin{columns}
-%		\begin{column}{0.8\textwidth}
-%			Não tem como entendermos $p$-valores se não compreendermos as suas
-%			origens e trajetória histórica. A primeira menção do termo foi feita
-%			pelo estatístico Ronald Fisher em 1925 \parencite{fisher1925statistical}:
-%			\begin{quotation}
-%				[$p$-valor é] índice que mede a força da evidência contra a hipótese nula
-%			\end{quotation}
-%			\begin{vfilleditems}
-%				\item Para quantificar a força da evidência contra a hipótese nula, Fisher defendeu
-%				"$p<0.05$ como um nível padrão para concluir que há evidência contra a hipótese testada"
-%				\item "Não seremos frequentemente perdidos se traçarmos uma linha convencional de 0.05"
-%			\end{vfilleditems}
-%		\end{column}
-%		\begin{column}{0.2\textwidth}
-%			\centering
-%			\includegraphics[width=0.9\columnwidth]{fisher.jpg}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+\begin{frame}{But why I never see stats without $p$-values?}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			We cannot understand $p$-values if we do no not comprehend
+			its origins and historical trajectory.
+			The first mention of $p$-values was made by the statistician
+			Ronald Fischer in 1925 \parencite{fisher1925statistical}:
+			\begin{quotation}
+				[$p$-valor is a] measure of evidence against the null hypothesis
+			\end{quotation}
+			\begin{vfilleditems}
+				\item To quantify the strength of the evidence against the null hypothesis,
+				Fisher defended ``$p<0.05$ as the standard level to conclude that there is evidence against the tested hypothesis''
+				\item ``We should not be off-track if we draw a conventional line at 0.05''
+			\end{vfilleditems}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{fisher.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%\begin{frame}{$p = 0.06$}
-%	\begin{vfilleditems}
-%		\item Como o $p$-valor é uma probabilidade, ele é uma quantidade contínua.
-%		\item Não há razão para diferenciarmos um $p$ de 0.049 contra um $p$ de 0.051.
-%		\item Robert Rosenthal, um psicólogo já dizia "Deus ama $p$ de 0.06 tanto quanto um $p$ de 0.05"~\parencite{rosnow1989statistical}.
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{$p = 0.06$}
+	\begin{vfilleditems}
+		\item Since $p$-value is a probability, it is also a continuous measure.
+		\item There is no reason for us to differentiate $p = 0.049$ against $p = 0.051$.
+		\item Robert Rosenthal, a psychologist said ``surely, God loves the $.06$ nearly as much as the $.05$''~\parencite{rosnow1989statistical}.
+	\end{vfilleditems}
+\end{frame}
 
-%\begin{frame}{Mas por quê eu nunca ouvi falar de Estatística Bayesiana?\footnote{\textit{inverse probability} é como o teorema de Bayes era chamado no começo do século XX}}
-%	\begin{columns}
-%		\begin{column}{0.8\textwidth}
-%			\begin{quotation}
-%				… it will be sufficient … to reaffirm my personal conviction …
-%				that the theory of inverse probability is founded upon an error,
-%				and must be wholly rejected.
-%			\end{quotation}
-%			\vfill \vfill
-%			\textcite{fisher1925statistical}
-%		\end{column}
-%		\begin{column}{0.2\textwidth}
-%			\centering
-%			\includegraphics[width=0.9\columnwidth]{fisher.jpg}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+\begin{frame}{But why I never heard about Bayesian statistics?\footnote{\textit{inverse probability}
+			was how Bayes' theorem was called in the beginning of the 20th century}}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{quotation}
+				… it will be sufficient … to reaffirm my personal conviction …
+				that the theory of inverse probability is founded upon an error,
+				and must be wholly rejected.
+			\end{quotation}
+			\vfill \vfill
+			\textcite{fisher1925statistical}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{fisher.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%\begin{frame}{Dentro de todo não Bayesiano há um Bayesiano querendo sair\footnote{Dennis Lindley "Inside every nonBayesian there is a Bayesian struggling to get out"}}
-%	\begin{columns}
-%		\begin{column}{0.8\textwidth}
-%			\begin{vfilleditems}
-%				\item No último ano de sua vida, Fisher publicou um artigo \parencite{fisherExamplesBayesMethod1962} examinando as possibilidades dos métodos Bayesianos, mas com as probabilidades a \textit{priori} a serem determinadas experimentalmente.
-%				\item Inclusive alguns autores especulam \parencite{jaynesProbabilityTheoryLogic2003} que se Fisher estivesse vivo hoje, ele provavelmente seria um "Bayesiano".
-%			\end{vfilleditems}
-%		\end{column}
-%		\begin{column}{0.2\textwidth}
-%			\centering
-%			\includegraphics[width=0.9\columnwidth]{fisher.jpg}
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+\begin{frame}{Inside every nonBayesian, there is a Bayesian struggling to get out\footnote{
+			quote from Dennis Lindley}}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{vfilleditems}
+				\item In his final year of life,
+				Fisher published a paper \parencite{fisherExamplesBayesMethod1962}
+				examining the possibilities of Bayesian methods,
+				but with the prior probabilities being determined experimentally.
+				\item Some authors speculate \parencite{jaynesProbabilityTheoryLogic2003}
+				that if Fisher were alive today, he would probably be a Bayesian.
+			\end{vfilleditems}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{fisher.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%\subsection{Estatística Bayesiana}
-%\begin{frame}{Teorema de Bayes como Motor de Inferência}
-%	\footnotesize Agora que você já sabe o que é probabilidade e o que é o teorema de Bayes, vou propor o seguinte modelo:
-%	$$
-%		\underbrace{P(\theta \mid y)}_{\text{Posterior}} = \frac{\overbrace{P(y \mid  \theta)}^{\text{Verossimilhança}} \cdot \overbrace{P(\theta)}^{\textit{Priori}}}{\underbrace{P(y)}_{\text{Constante Normalizadora}}}
-%	$$
-%	\begin{vfilleditems}
-%		\item \footnotesize $\theta$ -- parâmetro(s) de interesse
-%		\item \footnotesize $y$ -- dados observados
-%		\item \footnotesize \textbf{\textit{Priori}}: probabilidade prévia do valor do(s) parâmetro(s)
-%		\item \footnotesize \textbf{Verossimilhança}: probabilidade dos dados observados condicionados aos valores do(s) parâmetro(s)
-%		\item \footnotesize \textbf{Posterior}: probabilidade posterior do valor do(s) parâmetros após observamos os dados $y$
-%		\item \footnotesize \textbf{Constante Normalizadora}: $P(y)$ não faz sentido intuitivo. Essa probabilidade é transformada e pode ser interepretada como algo que existe apenas para que o resultado de $P(y \mid \theta) P(\theta)$ seja algo entre 0 e 1 -- uma probabilidade válida.
-%	\end{vfilleditems}
-%\end{frame}
+\subsection{Bayesian Statistics}
+\begin{frame}{Bayes' Theorem as an Inference Engine}
+	\footnotesize Now that you know what is probability and Bayes' theorem,
+	I will propose the following:
+	$$
+		\underbrace{P(\theta \mid y)}_{\text{Posterior}} = \frac{\overbrace{P(y \mid  \theta)}^{\text{Likelihood}} \cdot \overbrace{P(\theta)}^{\text{Prior}}}{\underbrace{P(y)}_{\text{Normalizing Constant}}}
+	$$
+	\begin{vfilleditems}
+		\item \footnotesize $\theta$ -- parameter(s) of interest
+		\item \footnotesize $y$ -- observed data
+		\item \footnotesize \textbf{Priori}: prior probability of the parameter(s) value(s)
+		\item \footnotesize \textbf{Likelihood}: probability of the observed data given the parameter(s) value(s)
+		\item \footnotesize \textbf{Posterior}: posterior probability of the parameter(s) value(s) after we observed data $y$
+		\item \footnotesize \textbf{Normalizing Constant}\footnote{sometimes also called \textit{evidence}.}: $P(y)$ does not make any intuitive sense.
+		This probability is transformed and can be interpreted as something that only exists so that the result $P(y \mid \theta) P(\theta)$ be constrained between $0$ e $1$
+		-- a valid probability.
+	\end{vfilleditems}
+\end{frame}
 
-%\begin{frame}{Teorema de Bayes como Motor de Inferência}
-%	A estatísica Bayesiana nos permite \textbf{quantificar diretamente a incerteza}
-%	relacionada ao valor de um ou mais parâmetros do nosso modelo condicionado aos
-%	dados observados. Isso é a \textbf{característica principal} da estatística
-%	Bayesiana. Pois estamos estimando diretamente $P(\theta \mid y)$ por meio do
-%	teorema de Bayes. A estimativa resultante é totalmente intuitiva:
-%	simplesmente quantifica a intercerteza que temos sobre o valor de um ou mais
-%	parâmetro condicionado nos dados, nos pressupostos do nosso modelo
-%	(verossimilhança) e na probabilidade prévia que temos sobre tais valores.
-%\end{frame}
+\begin{frame}{Bayes' Theorem as an Inference Engine}
+	Bayesian statistics allows us to \textbf{quantify directly the uncertainty}
+	related to the value of one or more parameters of our modelo given the
+	observed data.
+	This is the \textbf{main feature} of Bayesian statistics,
+	since we are estimating directly $P(\theta \mid y)$ using Bayes' theorem.
+	The resulting estimate is totally intuitive:
+	simply quantifies the uncertainty that we have about the value of one or more
+	parameters given the data, model assumptions (likelihood) and the prior
+	probability of these parameter's values.
+\end{frame}
 
-%\subsubsection{Vantagens da Estatísca Bayesiana}
-%\begin{frame}{Estatística Bayesiana vs Frequentista}
-%	%\begin{table}[h!]
-%	\small
-%	\begin{tabular}{|l|p{.3\textwidth}|p{.3\textwidth}|}
-%		\toprule
-%		                       & \textcolor{blue}{\textbf{Estatística Bayesiana}} & \textcolor{red}{\textbf{Estatística Frequentista}}                  \\ \midrule
-%		\textbf{Dados}         & Fixos –- Não Aleatórios                          & Incertos –- Aleatórios                                              \\ \midrule
-%		\textbf{Parâmetros}    & Incertos –- Aleatórios                           & Fixos –- Não Aleatórios                                             \\ \midrule
-%		\textbf{Inferência}    & Incerteza sobre o valor do parâmetro             & Incerteza sobre um processo de amostragem de uma população infinita \\ \midrule
-%		\textbf{Probabilidade} & Subjetiva                                        & Objetiva (mas com diversos pressupostos dos modelos)                \\ \midrule
-%		\textbf{Incerteza}     & Intervalo de Credibilidade –- $P(\theta \mid y)$ & Intervalo de Confiança –- $P(y \mid \theta)$                        \\
-%		\bottomrule
-%	\end{tabular}
-%	%\end{table}
-%\end{frame}
+\subsubsection{Advantages of Bayesian Statistics}
+\begin{frame}{Bayesian vs Frequentist Stats}
+	%\begin{table}[h!]
+	\small
+	\begin{tabular}{|l|p{.3\textwidth}|p{.3\textwidth}|}
+		\toprule
+		                     & \textcolor{blue}{\textbf{Bayesian Statistics}} & \textcolor{red}{\textbf{Frequentist Statistics}}                   \\ \midrule
+		\textbf{Data}        & Fixed –- Non-random                            & Uncertain –- Random                                                \\ \midrule
+		\textbf{Parameters}  & Uncertain –- Random                            & Fixed –- Non-random                                                \\ \midrule
+		\textbf{Inference}   & Uncertainty regarding the parameter value      & Uncertainty regarding the sampling process from an infinite sample \\ \midrule
+		\textbf{Probability} & Subjective                                     & Objective (but with several model assumptions)                     \\ \midrule
+		\textbf{Uncertainty} & Posterior Interval –- $P(\theta \mid y)$       & Confidence Interval –- $P(y \mid \theta)$                          \\
+		\bottomrule
+	\end{tabular}
+	%\end{table}
+\end{frame}
 
-%\begin{frame}{Vantagens da Estatística Bayesiana}
-%	\begin{vfilleditems}
-%		\item Abordagem Natural para expressar Incerteza
-%		\item Habilidade de incorporar Informações Prévias
-%		\item Maior Flexibilidade do Modelo
-%		\item Distribuição Posterior completa dos Parâmetros
-%		\item Propagação Natural da Incerteza
-%	\end{vfilleditems}
-%	\small \textbf{Principal Desvantagem}: Velocidade lenta de estimativa de modelos\footnote{\textit{e.g.} 30 segundos ao invés de 3 segundos na abordagem frequentista}
-%\end{frame}
+\begin{frame}{Advantages of Bayesian Statistics}
+	\begin{vfilleditems}
+		\item Natural approach to express uncertainty
+		\item Ability to incorporate previous information
+		\item Higher model flexibility
+		\item Full posterior distribution of the parameters
+		\item Natural propagation of uncertainty
+	\end{vfilleditems}
+	\small \textbf{Main disadvantage}: Slow model fitting procedure
+\end{frame}
 
-%\begin{frame}{O começo do fim da Estatística Frequentista}
-%	\begin{vfilleditems}
-%		\small
-%		\item Saiba que você está em um momento da história no qual a Estatística está passando por grandes mudanças
-%		\item Acredito que a estatística frequentista, em especial a maneira que qualificamos evidências e hipóteses
-%		com $p$-valores se transformará de maneira "significante".
-%		\item Há cinco anos atrás, a \textit{American Statistical Association} (ASA) publicou uma declaração sobre
-%		$p$-valores \parencite{Wasserstein2016}. A declaração diz exatamente o que falamos aqui: Os conceitos principais do teste de significância de hipótese nula e, em particular $p$-valores não conseguem prover o que os pesquisadores requerem deles. Apesar do que dizem muitos livros de estatística, materiais de ensinos e artigos publicados, $p$-valores abaixo de 0,05 não "provam" a realidade de nada. Nem, chegando a esse ponto, os $p$-valores acima de 0,05 refutam alguma coisa.
-%		\item A declaração da ASA tem mais de 3.600 citações provocando impacto relevante.
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{The beginning of the end of Frequentist Statistics}
+	\begin{vfilleditems}
+		\small
+		\item Know that you are in a very special moment in history of great changes in statistics
+		\item I believe that frequentist statistics, specially the way we qualify evidence and hypotheses with
+		$p$-values will transform in a ``significant''\footnote{pun intended ...} way.
+		\item 6 years ago, the \textit{American Statistical Association} (ASA) published a declaration about
+		$p$-values \parencite{Wasserstein2016}.
+		It states exactly what we exposed here:
+		The main concepts of the null hypothesis significant testing and,
+		in particular $p$-values, cannot provide what researchers demand of them.
+		Despite what says several textbooks, learning materials and published content,
+		$p$-values below $0.05$ doesn't ``prove'' anything.
+		Not, on the other way around, $p$-values higher than acima $0.05$ refute anything.
+		\item ASA statement has more than 4.700 citations with relevant impact.
+	\end{vfilleditems}
+\end{frame}
 
-%\begin{frame}{O começo do fim da Estatística Frequentista}
-%	\begin{vfilleditems}
-%		\small
-%		\item Um simpósio internacional foi promovido em 2017 que originou uma edição especial de acesso aberto da
-%		\textit{The American Statistician} dedicada à maneiras práticas de abandonarmos $p < 0.05$
-%		\parencite{wassersteinMovingWorld052019}.
-%		\item Logo na sequência vieram mais tentativas e reivindicações.
-%		Em setembro de 2017, a \textit{Nature Human Behaviour} publicou um editorial propondo que o nível de
-%		significância do $p$-valor seja reduzido de $0.05$ para $0.005$ \parencite{benjaminRedefineStatisticalSignificance2018}
-%		Diversos autores, inclusive muitos estatísticos altamente influentes e importantes argumentaram que esse simples passo
-%		ajudaria a combater o problema da crise de replicabilidade da ciência, que muitos acreditam ser a principal
-%		consequência do uso abusivo de $p$-valores \parencite{Ioannidis2019}.
-%		\item Além disso, muitos foram um passo além e sugerem que a ciência descarte de uma vez por todas $p$-valores
-%		\parencite{ItTimeTalk2019,lakensJustifyYourAlpha2018}. Muitos sugerem (eu inclusive) que a principal ferramenta
-%		de inferência seja a estatística Bayesiana \parencite{amrheinScientistsRiseStatistical2019, Goodman1180, vandeschootBayesianStatisticsModelling2021}
-%	\end{vfilleditems}
-%\end{frame}
+\begin{frame}{The beginning of the end of Frequentist Statistics}
+	\begin{vfilleditems}
+		\small
+		\item An international symposium was promoted in 2017 which originated an open-access special edition of
+		\textit{The American Statistician} dedicated to practical ways to abandon $p < 0.05$
+		\parencite{wassersteinMovingWorld052019}.
+		\item Soon there were more attempts and claims.
+		In September 2017, \textit{Nature Human Behaviour} published an editorial proposing that the $p$-value's
+		significance level be decreased from $0.05$ to $0.005$ \parencite{benjaminRedefineStatisticalSignificance2018}.
+		Several authors, including highly important and influential statisticians argued that this simple step would
+		help to tackle the replication crisis problem in science, that many believe be the main consequence
+		of the abusive use of $p$-values \parencite{Ioannidis2019}.
+		\item Furthermore, many went a step ahead and suggested that science banish once for all $p$-values
+		\parencite{ItTimeTalk2019,lakensJustifyYourAlpha2018}.
+		Many suggest (including myself) that the main tool of statistical inference
+		be Bayesian statistics \parencite{amrheinScientistsRiseStatistical2019, Goodman1180, vandeschootBayesianStatisticsModelling2021}.
+	\end{vfilleditems}
+\end{frame}
