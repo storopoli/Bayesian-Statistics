@@ -55,7 +55,7 @@ Thousands of users rely on `Stan` for statistical modeling, data analysis, and p
 
 ### `Turing.jl`
 
-[**`Turing.jl`**](http://turing.ml/) (Ge, Xu & Ghahramani, 2018) is a ecosystem of [**Julia**](https://www.julialang.org) packages for Bayesian Inference using [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming).
+[**`Turing.jl`**](http://turing.ml/) (Ge, Xu & Ghahramani, 2018) is an ecosystem of [**Julia**](https://www.julialang.org) packages for Bayesian Inference using [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming).
 Models specified using `Turing.jl` are easy to read and write — models work the way you write them.
 Like everything in Julia, `Turing.jl` is [fast](https://arxiv.org/abs/2002.02702).
 
