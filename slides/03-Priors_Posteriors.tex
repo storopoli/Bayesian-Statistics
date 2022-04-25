@@ -1,0 +1,507 @@
+% \section{\textit{Prioris}}
+
+% \subsection{Leituras Recomendadas}
+% \begin{frame}{\textit{Prioris} - Leituras Recomendadas}
+% 	\begin{vfilleditems}
+% 		\item \textcite{gelman2013bayesian}:
+% 		\begin{vfilleditems}
+% 			\item Capítulo 2: Single-parameter models
+% 			\item Capítulo 3: Introduction to multiparameter models
+% 		\end{vfilleditems}
+% 		\item \textcite{mcelreath2020statistical} - Capítulo 4: Geocentric Models
+% 		\item \textcite{gelman2020regression}:
+% 		\begin{vfilleditems}
+% 			\item Capítulo 9, Seção 9.3: Prior information and Bayesian synthesis
+% 			\item Capítulo 9, Seção 9.5: Uniform, weakly informative, and informative priors in regression
+% 		\end{vfilleditems}
+% 		\item \textcite{vandeschootBayesianStatisticsModelling2021}
+% 		\item \textcite{storopoli2021estatisticabayesianaR} - Priors
+% 		\item \href{http://mc-stan.org/rstanarm/articles/priors.html}{Vinheta do \texttt{rstanarm} sobre \textit{prioris}}
+% 		\item \href{https://paul-buerkner.github.io/brms/reference/set_prior.html}{Documentação sobre \textit{prioris} do \texttt{brms}}
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \begin{frame}{Probabilidade \textit{Priori}}
+% 	A Estatística Bayesiana é caracterizada pelo uso de informação prévia
+% 	embutida como probabilidade prévia $P(\theta)$, chamada de \textit{priori}:
+% 	$$
+% 		\underbrace{P(\theta \mid y)}_{\textit{Posterior}} = \frac{\overbrace{P(y \mid  \theta)}^{\text{Verossimilhança}} \cdot \overbrace{P(\theta)}^{\textit{Priori}}}{\underbrace{P(y)}_{\text{Constante Normalizadora}}}
+% 	$$
+% \end{frame}
+
+% \subsection{A subjetividade da \textit{Priori}}
+% \begin{frame}{A subjetividade da \textit{Priori}}
+% 	\begin{vfilleditems}
+% 		\item Muitas críticas à estatística Bayesiana, se dá pela subjetividade da
+% 		elucidação da probabilidade *a priori* de certas hipóteses ou parâmetros de
+% 		modelos.
+% 		\item A subjetividade é algo indesejado na idealização do cientista e do
+% 		método científico.
+% 		\item Tudo que envolve ação humana nunca será 100\% objetivo.
+% 		Temos subjetividade em tudo e ciência \textcolor{red}{não} é um exceção.
+% 		\item O próprio processo dedutivo e criativo de formulação de teoria e
+% 		hipóteses não é algo objetivo.
+% 		\item A estatística frequentista, que bane o uso de probabilidades \textit{a priori}
+% 		também é subjetiva, pois há \textbf{MUITA} subjetividade em especificar um modelo
+% 		e uma função de verossimilhança \parencite{jaynesProbabilityTheoryLogic2003, vandeschootBayesianStatisticsModelling2021}
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \begin{frame}{Como Incorporar Subjetividade}
+% 	\begin{vfilleditems}
+% 		\item A estatística Bayesiana \textbf{abraça} a subjetividade enquanto a
+% 		estatística frequentista a \textbf{proíbe}.
+% 		\item Para a estatística Bayesiana, \textbf{subjetividade guiam nossas inferências e nos levam a modelos mais robustos},
+% 		confiáveis e que podem auxiliar à tomada de decisão.
+% 		\item Já para a estatística frequentista, \textbf{subjetividade é um tabu e todas inferências devem ser objetivas},
+% 		mesmo que isso resulte em \textbf{esconder pressupostos dos modelos embaixo dos panos}.
+% 		\item Estatística Bayesiana possui também pressupostos e subjetividade,
+% 		mas estes são \textbf{enunciados e formalizados}.
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \subsection{Tipos de \textit{Prioris}}
+
+% \begin{frame}{Tipos de \textit{Prioris}}
+% 	De maneira geral, podemos ter 3 tipos de \textit{priori} em uma abordagem
+% 	Bayesiana \parencite{gelman2013bayesian, mcelreath2020statistical, vandeschootBayesianStatisticsModelling2021}:
+% 	\begin{vfilleditems}
+% 		\item uniforme (\textit{flat}): não recomendada
+% 		\item fracamente informativa (\textit{weakly informative}): pequena restrição
+% 		com um pouco de senso comum e baixo conhecimento de domínio incorporado
+% 		\item informativa (\textit{informative}): conhecimento de domínio incorporado
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \subsubsection{\textit{Priori} Uniforme (\textit{Flat})}
+% \begin{frame}{\textit{Priori} Uniforme (\textit{Flat})}
+% 	Parte da premissa que "tudo é possível". Não há limites na crença de que tamanho
+% 	o valor deve ser ou quaisquer restrições.
+% 	\vfill
+% 	\textit{Prioris} uniformes e super-vagas geralmente não são recomendadas e algum
+% 	esforço deve ser incluído para ter, pelo menos, \textit{prioris} um pouco
+% 	informativas.
+% 	\vfill
+% 	Formalmente uma \textit{priori} uniforme é uma distribuição uniforme em todo o
+% 	suporte possível do valor do parâmetros
+% 	\begin{vfilleditems}
+% 		\item parâmetros a serem estimados: $\{\theta \in \mathbb{R} : -\infty < \theta < \infty\}$
+% 		\item resíduos ou erros do modelo: $\{\sigma \in \mathbb{R}^+ : 0 \leq \theta < \infty\}$
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \subsubsection{\textit{Priori} Fracamente Informativa (\textit{Weekly Informative})}
+% \begin{frame}{\textit{Priori} Fracamente Informativa (\textit{Weekly Informative})}
+% 	Aqui começamos a entrar num palpite informado sobre o valor do parâmetro.
+% 	Portanto não partimos da premissa que "tudo é possível".
+% 	\vfill
+% 	Recomendo sempre traduzir as \textit{prioris} do seu problema em algo
+% 	centrado em $0$ e com desvio padrão $1$\footnote{isso chama-se normalização,
+% 		transformar todas variáveis para terem média $0$ e desvio padrão $1$}:
+% 	\vfill
+% 	\begin{vfilleditems}
+% 		\item $\theta \sim \text{Normal}(0, 1)$ (preferida do Andrew Gelman\footnote{Veja mais sobre a escolha de \textit{prioris} nessa \href{https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations}{wiki do GitHub do \texttt{Stan}}})
+% 		\item $\theta \sim \text{Student}(\nu=3, 0, 1)$ (preferida do Aki Vehtari)
+% 		\item $\sigma \sim \text{Exponencial}(10)$
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \begin{frame}{Um exemplo de uma \textit{Priori} robusta}
+% 	\footnotesize
+% 	Um exemplo interessante vem de uma aula do Ben
+% 	Goodrich\footnote{\url{https://youtu.be/p6cyRBWahRA}, caso queira ver o vídeo na íntegra, a parte que nos interessa de \textit{prioris} começa a partir do minuto 40}
+% 	professor de Columbia e membro do grupo de pesquisa de \texttt{Stan}.
+% 	\vfill
+% 	Aqui ele fala sobre um dos maiores efeitos observados nas ciências sociais.
+% 	Nas pesquisas de intenção de voto à eleição presidencial dos EUA de 2008 (Obama vs McCain),
+% 	havia um apoio de quase 40\% do Obama de maneira geral.
+% 	Se você trocasse a raça de um respondente de \lstinline!race_black = 0!
+% 	para \lstinline!race_black = 1! isso gerava um aumento de aproximadamente 60\%
+% 	na probabilidade do respondente votar no Obama\footnote{ele clama que isso é provavelmente
+% 		o maior efeito encontrado na história das ciências sociais}.
+% 	\vfill
+% 	Em escala logit esses 60\% se
+% 	traduziriam em um modelo binomial como um coeficiente
+% 	$\beta_{\text{Race Black}} = 3.64$\footnote{$\log(\text{chance}) = \frac{e^{0.6}}{1 + e^{0.6}} \approx 3.644$}.
+% 	Esse tamanho de efeito seria facilmente inferido com uma \textit{priori} $$\beta_{\text{Race Black}} \sim \text{Normal}(0, 1)$$
+% \end{frame}
+
+% \subsubsection{\textit{Priori} Informativa (\textit{Informative})}
+% \begin{frame}{\textit{Priori} Informativa (\textit{Informative})}
+% 	Em alguns cenários é interessante usarmos uma \textit{priori} informativa.
+% 	Geralmante são cenários que os dados são raros ou custosos de serem obtidos
+% 	e que temos já algum conhecimento prévio sobre o fenômeno:
+% 	\begin{vfilleditems}
+% 		\item $\text{Normal}(5, 20)$
+% 		\item $\text{Log-Normal}(0, 5)$
+% 		\item $\text{Beta}(100, 9803)$\footnote{esta é usada nos modelos de COVID do grupo de pesquisa \href{https://codatmo.github.io}{CoDatMo} \texttt{Stan}}
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \subsection{\textit{Prioris} do \texttt{rstanarm} e \texttt{brms}}
+% \begin{frame}{\textit{Prioris} do \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} e \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+% 	Tanto \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}
+% 	quanto \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} possui \textit{prioris}
+% 	padrões incorporadas nos seus modelos.
+% 	\vfill
+% 	\textbf{Recomendo fortemente que você use uma \textit{priori} específica e não se atenha
+% 		às prioris padrões do \texttt{rstanarm} ou \texttt{brms}}.
+% 	\vfill
+% 	\begin{vfilleditems}
+% 		\item Elas refletem o estado-da-arte e as melhores práticas
+% 		de especificação de \textit{prioris}
+% 		\item Podem mudar conforme versões dos pacotes
+% 		\item Não faz o seu modelo/código ser \textbf{replicável}
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \subsubsection{\textit{Prioris} do \texttt{rstanarm}}
+% \begin{frame}{\textit{Prioris} do \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
+% 	\footnotesize
+% 	\begin{tabular}{|l|p{.3\textwidth}|p{.3\textwidth}|}
+% 		\toprule
+% 		\textbf{Argumento}         & \textbf{Usado em}                                                                    & \textbf{Aplica-se à}                                                                                                    \\ \midrule
+% 		\texttt{prior\_intercept}  & Todas funções de modelagem exceto \texttt{stan\_polr} e \texttt{stan\_nlmer}         & Constante (\textit{intercept}) do modelo, após centralização dos preditores                                             \\ \midrule
+% 		\texttt{prior}             & Todas funções de modelagem                                                           & Coeficientes de Regressão, não inclui coeficientes que variam por grupo em modelos multiníveis (veja prior\_covariance) \\ \midrule
+% 		\texttt{prior\_aux}        & \texttt{stan\_glm}, \texttt{stan\_glmer}, \texttt{stan\_gamm4}, \texttt{stan\_nlmer} & Parâmetro auxiliar (ex: desvio padrão (standard error – DP), interpretação depende do modelo                            \\ \midrule
+% 		\texttt{prior\_covariance} & \texttt{stan\_glmer}, \texttt{stan\_gamm4}, \texttt{stan\_nlmer}                     & Matrizes de covariância em modelos multiníveis                                                                          \\
+% 		\bottomrule
+% 	\end{tabular}
+% \end{frame}
+
+% \begin{frame}{\href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} -- \textit{Prioris} Uniformes}
+% 	Especifica-se colocando o valor \texttt{NULL} (nulo em \texttt{R}) nos argumentos
+% 	\texttt{prior\_*} dos modelos \texttt{rstanarm}:
+% 	\begin{vfilleditems}
+% 		\item \lstinline!prior_intercept = NULL! -- \textbf{constante} possuirá \textit{priori} uniforme sobre todos os números reais $(-\infty, +\infty)$
+% 		\item \lstinline!prior = NULL! -- \textbf{parâmetros} possuirão \textit{prioris} uniformes sobre todo os números reais $(-\infty, +\infty)$
+% 		\item \lstinline!prior_aux = NULL! -- \textbf{parâmetros auxiliares} (geralmente o erro do modelo) possuirão \textit{prioris} uniforme sobre todos os números reais $(-\infty, +\infty)$\footnote{No caso de erro do modelo, isto se restringe aos numeros reais positivos: $[0, +\infty)$}.
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \begin{frame}[fragile]{\href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} -- \textit{Prioris} Uniformes}
+% 	\begin{lstlisting}
+%     stan_glm(y ~ ...,
+%         @prior = NULL@,
+%         @prior_intercept = NULL@,
+%         @prior_aux = NULL@)
+%     \end{lstlisting}
+% \end{frame}
+
+% \begin{frame}{\href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} -- \textit{Prioris} Informativas}
+% 	Coloca-se qualquer distribuição nos argumentos
+% 	\lstinline!prior_*! dos modelos \texttt{rstanarm}:
+% 	\begin{vfilleditems}
+% 		\item \lstinline!prior = normal(0, 5)! -- $\text{Normal}(0, 5)$
+% 		\item \lstinline!prior_intercept = student_t(4, 0, 10)! -- $\text{Student}(\nu=4, 0, 10)$
+% 		\item  \lstinline!prior_aux = cauchy(0, 3)! -- $\text{Cauchy}^+(0, 3)$\footnote{Note que como ela é especificada como uma \textit{priori} de um parâmetro auxiliar (no caso o erro do modelo), ela somente tomará valores positivos por isso o $\text{Cauchy}^+$}
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \begin{frame}[fragile]{\href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} -- \textit{Prioris} Informativas}
+% 	\begin{lstlisting}
+%     stan_glm(y ~ ...,
+%         @prior = normal(0, 5)@,
+%         @prior_intercept = student_t(4, 0, 10)@,
+%         @prior_aux = cauchy(0, 3)@
+%         )
+%     \end{lstlisting}
+% \end{frame}
+
+% \begin{frame}{\href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} -- \textit{Prioris} Padrões em Modelos Gaussianos}
+% 	\begin{vfilleditems}
+% 		\item \textbf{Constante} (\textit{Intercept}): Normal centralizada com média $\mu_{\boldsymbol{y}}$ e desvio padrão de $2.5 \sigma_{\boldsymbol{y}}$ - \lstinline!prior_intercept = normal(mean_y, 2.5 * sd_y)!
+% 		\item \textbf{Coeficientes}: Normal para cada coeficiente média $\mu = 0$ e desvio padrão de $2.5\times\frac{\sigma_{\boldsymbol{y}}}{\sigma_{\boldsymbol{x}}}$ - \lstinline!prior = normal(0, 2.5 * sd_y/sd_xk)!
+% 	\end{vfilleditems}
+% 	Em notação matemática:
+% 	$$
+% 		\begin{aligned}
+% 			\alpha             & \sim \text{Normal}(\mu_{\boldsymbol{y}}, 2.5 \cdot \sigma_{\boldsymbol{y}})                           \\
+% 			\boldsymbol{\beta} & \sim \text{Normal}\left( 0, 2.5 \cdot \frac{\sigma_{\boldsymbol{y}}}{\sigma_{\boldsymbol{x}}} \right) \\
+% 			\sigma             & \sim \text{Exponential}\left( \frac{1}{\sigma_{\boldsymbol{y}}} \right)
+% 		\end{aligned}
+% 	$$
+% \end{frame}
+
+% \begin{frame}{\href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} -- \textit{Prioris} Padrões em Modelos Lineares Generalizados}
+% 	\begin{vfilleditems}
+% 		\item \textbf{Constante} (\textit{Intercept}): Normal centralizada com média $\mu = 0$ e desvio padrão de $2.5 \sigma_{\boldsymbol{y}}$ - \lstinline!prior_intercept = normal(0, 2.5 * sd_y)!
+% 		\item \textbf{Coeficientes}: Normal para cada coeficiente média $\mu = 0$ e desvio padrão de $2.5\times\frac{1}{\sigma_{\boldsymbol{x}}}$ - \lstinline!prior = normal(0, 2.5 * 1/sd_xk)!
+% 	\end{vfilleditems}
+% 	Em notação matemática:
+% 	$$
+% 		\begin{aligned}
+% 			\alpha             & \sim \text{Normal}(0, 2.5 \cdot \sigma_{\boldsymbol{y}})                        \\
+% 			\boldsymbol{\beta} & \sim \text{Normal}\left( 0, 2.5 \cdot \frac{1}{\sigma_{\boldsymbol{x}}} \right) \\
+% 			\sigma             & \sim \text{Exponential}\left( \frac{1}{\sigma_{\boldsymbol{y}}} \right)
+% 		\end{aligned}
+% 	$$
+% \end{frame}
+
+% \subsubsection{\textit{Prioris} do \texttt{brms}}
+% \begin{frame}{\textit{Prioris} do \texttt{brms}}
+% 	\texttt{rstanarm} faz com que as \textit{prioris} sejam automaticamente
+% 	transformadas para possuírem média $0$ e desvio padrão/variância $1$. O resultado
+% 	disso é que a \textbf{escala das \textit{prioris} são unitárias}.
+% 	\vfill
+% 	\href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} \textbf{não faz isso}.
+% 	Por padrão, as \textit{prioris} não são transformadas, portanto, \textbf{se
+% 		atente com a escala as \textit{prioris} do \texttt{brms}}.
+% \end{frame}
+
+% \begin{frame}[fragile]{\href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} -- \textit{Prioris} Informativas}
+% 	\begin{lstlisting}[basicstyle=\small]
+% brm(y ~ ...,
+%   prior = c(
+%     @set_prior("normal(0, 5)", class = "b", coef = "...")@,
+%         ...
+%     @set_prior("student_t(4, 0, 10)", class = "b", coef = "intercept")@,
+%     @set_prior("cauchy(0, 3)", class = "sigma")@
+%     )
+%   )
+%     \end{lstlisting}
+% \end{frame}
+
+% \begin{frame}{\href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} -- \textit{Prioris} Padrões}
+% 	Como o \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} dá
+% 	muito mais autonomia, poder e flexibilidade ao usuário, todas as \textit{prioris}
+% 	padrões dos coeficientes dos modelos são literalmente \textit{prioris} uniformes
+% 	sobre todo os números reais $(-\infty, +\infty)$. \texttt{brms} apenas ajusta de
+% 	maneira robusta a \textit{priori} para:
+% 	\begin{vfilleditems}
+% 		\item Constante (\textit{Intercept}): $t$ de Student média $\mu = \text{mediana}(y)$, desvio padrão de $\text{MAD}(y)$ e graus de liberdade $\nu = 3$
+% 		\item Erro (\texttt{sigma}): $t$ de Student média $\mu = 0$ e desvio padrão de $\text{MAD}(y)$\footnote{\textit{\textbf{M}edian \textbf{A}bsolute \textbf{D}eviation} -- Desvio Absoluto Mediano}
+% 	\end{vfilleditems}
+% 	Em notação matemática:
+% 	$$
+% 		\begin{aligned}
+% 			\alpha             & \sim \text{Student}(\nu=3, \text{mediana}({\boldsymbol{y}}), \text{MAD}({\boldsymbol{y}})) \\
+% 			\boldsymbol{\beta} & \sim \text{Unif}(-\infty, + \infty)                                                        \\
+% 			\sigma             & \sim \text{Student}(\nu=3, 0, \text{MAD}({\boldsymbol{y}}))
+% 		\end{aligned}
+% 	$$
+% \end{frame}
+
+%\section{Verificações Preditivas}
+
+%\subsection{Leituras Recomendadas}
+%\begin{frame}{Verificações Preditivas - Leituras Recomendadas}
+%	\begin{vfilleditems}
+%		\item \textcite{gelman2013bayesian} - Capítulo 6: Model checking
+%		\item \textcite{mcelreath2020statistical} - Capítulo 5: Geocentric Models
+%		\item \textcite{gelman2020regression}:
+%		\begin{vfilleditems}
+%			\item Capítulo 6: Background on regression modeling
+%			\item Capítulo 11: Assumptions, diagnostics, and model evaluation
+%		\end{vfilleditems}
+%		\item \textcite{gelmanBayesianWorkflow2020}
+%	\end{vfilleditems}
+%\end{frame}
+
+%\subsection{All models are wrong}
+%\begin{frame}{\textit{All models are wrong}}
+%	\begin{columns}
+%		\begin{column}{0.8\textwidth}
+%			\begin{quotation}
+%				All models are wrong but some are useful
+%			\end{quotation}
+%			\vfill
+%			\textcite{boxScienceStatistics1976}
+%		\end{column}
+%		\begin{column}{0.2\textwidth}
+%			\includegraphics[width=0.9\columnwidth]{george_box.jpg}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+
+%\subsection{Fluxo de Trabalho Bayesiano (\textit{Workflow})\footnote{baseado em \textcite{gelmanBayesianWorkflow2020}}}
+%\begin{frame}{Fluxo de Trabalho Bayesiano (\textit{Workflow})\footnote{baseado em \textcite{gelmanBayesianWorkflow2020}}}
+%	\centering
+%	\begin{tikzpicture}[
+%			scale=0.8,
+%			transform shape, thick,
+%			every node/.style={text width=3.5cm, align=center},
+%			constructs/.style = {draw,
+%					ellipse,
+%					minimum width=4cm,
+%					minimum height=2cm}
+%		]
+%		\node[constructs] (Modelo) {Especificação do Modelo};
+%		\node[constructs] [right = of Modelo] (Priori) {Elicitação das \textit{Prioris}};
+%		\node[constructs] [right = of Priori] (Posterior) {Inferência da Posterior};
+%		\draw [<->, line width=1pt] (Modelo) to [out=45,in=135] node[above] {\textit{Prior Predictive Check}} (Priori);
+%		%\draw [->, line width=1pt] (Priori) to [out=225,in=315] {} (Modelo);
+%		\draw [<->, line width=1pt] (Priori) to [out=45,in=135] node[above] {\textit{Posterior Predictive Check}} (Posterior);
+%		%\draw [->, line width=1pt] (Posterior) to [out=225,in=315] {} (Priori);
+%	\end{tikzpicture}
+%\end{frame}
+
+%\subsection{Verificação Preditiva da \textit{Priori} (\textit{Prior Predictive Check})}
+%\begin{frame}{Verificação Preditiva da \textit{Priori} (\textit{Prior Predictive Check})}
+%	Em especial, antes de começar a alimentar o modelo com dados precisamos fazer uma
+%	checagem de todas as nossas \textit{prioris}.
+%	\vfill
+%	De maneira muito simples, consiste em simular parâmetros com base nas suas distribuições
+%	especificadas \textit{a priori} no modelo sem qualquer condicionamento aos dados e
+%	sem envolvimento nenhum da função de verossimilhança.
+%	\vfill
+%	Independentemente do nível de informação especificada na \textit{priori},
+%	é sempre importante realizar uma análise de sensibilidade prévia para entender completamente
+%	a influência que as \textit{prioris} têm na posterior.
+%\end{frame}
+
+%\begin{frame}{Verificação Preditiva da \textit{Priori} no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} e \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+%	\begin{vfilleditems}
+%		\item \texttt{rstanarm}: em qualquer função \text6t{stan\_*()} usar o argumento \texttt{prior\_PD = TRUE}
+%		\item \texttt{brms}: na função \textit{brm()} usar o argumento \texttt{sample\_prior = "only"}
+%	\end{vfilleditems}
+%\end{frame}
+
+%\subsubsection{Verificação Preditiva da \textit{Priori} no \texttt{rstanarm}}
+%\begin{frame}[fragile]{Verificação Preditiva da \textit{Priori} no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
+%	\begin{lstlisting}
+%    stan_glm(y ~ ...,
+%        prior = normal(c(0, 0), c(5, 6)),
+%        prior_intercept = student_t(4, 0, 10),
+%        prior_aux = cauchy(0, 3),
+%        @prior_PD = TRUE@)
+%    \end{lstlisting}
+%\end{frame}
+%\subsubsection{Verificação Preditiva da \textit{Priori} no \texttt{brms}}
+%\begin{frame}[fragile]{Verificação Preditiva da \textit{Priori} no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+%	\begin{lstlisting}
+%    brm(y ~ x1 + x2,
+%        prior = c(
+%          prior(normal(0, 5), class = b, coef = x1),
+%          prior(normal(0, 6), class = b, coef = x2),
+%          prior(student_t(4, 0, 10), class = Intercept),
+%          prior(cauchy(0, 3), class = sigma)
+%        ),
+%        @sample_prior = "only"@)
+%    \end{lstlisting}
+%\end{frame}
+
+%\begin{frame}{Verificação Preditiva da \textit{Priori} no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+%	O interessante do \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} é
+%	que conseguimos naturalmente visualizar hipóteses sobre os valores do parâmetros de modelos
+%	estimados pela função \lstinline!brm()!
+%	% library(brms)
+%	% library(ggplot2)
+%	% library(ggdark)
+%	% library(bayesplot)
+%	% library(tikzDevice)
+%	% theme_set(dark_theme_light())
+%	% bayesplot_theme_set(dark_theme_light())
+%	% brms_custom_prior <- brm(mpg ~ wt + am, data = mtcars, chains = 1,
+%	%  prior = c(
+%	%    prior(normal(0, 5), class = b, coef = wt),
+%	%    prior(normal(0, 6), class = b, coef = am),
+%	%    prior(student_t(4, 0, 10), class = Intercept),
+%	%    prior(cauchy(0, 3), class = sigma)
+%	%  ),
+%	%  sample_prior = "only")
+%	% tikz(file = "slides/images/brms_prior_check.tex")
+%	% plot(hypothesis(brms_custom_prior, "Intercept = 0"))
+%	% dev.off()
+%	\begin{figure}
+%		\centering
+%		\resizebox{.35\linewidth}{!}{\input{images/brms_prior_check.tex}}
+%	\end{figure}
+%\end{frame}
+
+%\subsection{Verificação Preditiva da Posterior (\textit{Posterior Predictive Check})}
+%\begin{frame}{Verificação Preditiva da Posterior (\textit{Posterior Predictive Check})}
+%	Precisamos nos certificar que a nossa distribuição posterior de $\boldsymbol{y}$
+%	consegue capturar todas as nuanças da densidade real de $\boldsymbol{y}$.
+%	\vfill
+%	Isto é um procedimento chamado de Verificação Preditiva da Posterior
+%	(\textit{Posterior Predictive Check}) e é geralmente auferido com uma inspeção
+%	visual\footnote{também fazemos inspeções matemáticas probabilísticas,
+%		veja a seção de Comparação de Modelos} da densidade real de $\boldsymbol{y}$
+%	contrastada com amostragens da densidade
+%	posterior de $\boldsymbol{y}$ estimada pelo modelo Bayesiano.
+%	\vfill
+%	O propósito é comparar o histograma da variável dependente $\boldsymbol{y}$ contra o histograma variáveis dependentes simuladas
+%	pelo modelo $\boldsymbol{y}_{\text{rep}}$ após a estimação dos parâmetros. A ideia é
+%	que os histogramas reais e simulados se misturem e não haja divergências.
+%\end{frame}
+
+%\begin{frame}{Verificação Preditiva da Posterior no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}} e \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+%	\begin{vfilleditems}
+%		\item \texttt{rstanarm}: função \lstinline!pp_check()! em qualquer modelo oriundo das funções \lstinline!stan_*()!
+%		\item \texttt{brms}: função \lstinline!pp_check()! em qualquer modelo oriundo da função \lstinline!brm()!
+%	\end{vfilleditems}
+%\end{frame}
+
+%\subsubsection{Verificação Preditiva da Posterior no \texttt{rstanarm}}
+%\begin{frame}[fragile]{Verificação Preditiva da Posterior no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
+%	\begin{lstlisting}
+%    rstanarm_fit <- stan_glm(mpg ~ wt + am, data = mtcars)
+%    @pp_check(rstanarm_fit)@
+%    \end{lstlisting}
+%\end{frame}
+
+%\begin{frame}{Verificação Preditiva da Posterior no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
+%	% library(rstanarm)
+%	% library(ggplot2)
+%	% library(ggdark)
+%	% library(bayesplot)
+%	% library(tikzDevice)
+%	% theme_set(dark_theme_light())
+%	% bayesplot_theme_set(dark_theme_light())
+%	% rstanarm_fit <- stan_glm(mpg ~ wt + am, data = mtcars)
+%	% tikz(file = "slides/images/pp_check_rstanarm.tex")
+%	% pp_check(rstanarm_fit, nreps = 10, seed = 123, type = "dens_overlay")
+%	% dev.off()
+%	\begin{columns}
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\centering
+%				\resizebox{0.8\columnwidth}{!}{\input{images/pp_check_rstanarm.tex}}
+%			\end{figure}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+
+%\subsubsection{Verificação Preditiva da Posterior no \texttt{brms}}
+%\begin{frame}[fragile]{Verificação Preditiva da Posterior no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+%	O interessante do \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} é
+%	que conseguimos olhar o PPC da distribuição CDF empírica (\textit{ECDF}) também:
+%	\vfill
+%	\begin{lstlisting}
+%    brms_fit <- brm(mpg ~ wt + am, data = mtcars)
+%    @pp_check(brmsfit)@
+%    @pp_check(brmsfit, type = "ecdf_overlay")@
+%    \end{lstlisting}
+%\end{frame}
+
+%\begin{frame}{Verificação Preditiva da Posterior no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+%	% library(brms)
+%	% library(ggplot2)
+%	% library(ggdark)
+%	% library(bayesplot)
+%	% library(tikzDevice)
+%	% theme_set(dark_theme_light())
+%	% bayesplot_theme_set(dark_theme_light())
+%	% brms_fit <- brm(mpg ~ wt + am, data = mtcars)
+%	% tikz(file = "slides/images/pp_check_brms.tex")
+%	% pp_check(brms_fit, nreps = 10, seed = 123)
+%	% dev.off()
+%	% tikz(file = "slides/images/pp_check_brms_ecdf.tex")
+%	% pp_check(brms_fit, nreps = 10, seed = 123, type = "ecdf_overlay")
+%	% dev.off()
+%	\begin{columns}
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\centering
+%				\resizebox{0.8\columnwidth}{!}{\input{images/pp_check_brms.tex}}
+%			\end{figure}
+%		\end{column}
+%		\begin{column}{0.5\textwidth}
+%			\begin{figure}
+%				\centering
+%				\resizebox{0.8\columnwidth}{!}{\input{images/pp_check_brms_ecdf.tex}}
+%			\end{figure}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
