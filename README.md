@@ -61,7 +61,7 @@ Like everything in Julia, `Turing.jl` is [fast](https://arxiv.org/abs/2002.02702
 
 ## Author
 
-Jose Storopoli, PhD - [*Lattes* CV](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - <https://storopoli.io>
+Jose Storopoli, PhD - [*Lattes* CV](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - <https://storopoli.github.io>
 
 
 ## How to use the content?
