@@ -1,0 +1,121 @@
+\section{Predictive Checks}
+
+\subsection{Recommended References}
+\begin{frame}{Predictive Checks - Recommended References}
+	\begin{vfilleditems}
+		\item \textcite{gelman2013bayesian} - Chapter 6: Model checking
+		\item \textcite{mcelreath2020statistical} - Chapter 5: Geocentric Models
+		\item \textcite{gelman2020regression}:
+		\begin{vfilleditems}
+			\item Chapter 6: Background on regression modeling
+			\item Chapter 11: Assumptions, diagnostics, and model evaluation
+		\end{vfilleditems}
+		\item \textcite{gelmanBayesianWorkflow2020}
+	\end{vfilleditems}
+\end{frame}
+
+\subsection{All models are wrong}
+\begin{frame}{All models are wrong}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			\begin{quotation}
+				All models are wrong but some are useful
+			\end{quotation}
+			\vfill
+			\textcite{boxScienceStatistics1976}
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\includegraphics[width=0.9\columnwidth]{george_box.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Bayesian Workflow}
+\begin{frame}{Bayesian Workflow\footnote{based on \textcite{gelmanBayesianWorkflow2020}}}
+	\centering
+	\begin{tikzpicture}[
+			scale=0.8,
+			transform shape, thick,
+			every node/.style={text width=3.5cm, align=center},
+			constructs/.style = {draw,
+					ellipse,
+					minimum width=4cm,
+					minimum height=2cm}
+		]
+		\node[constructs] (Model) {Model Specification};
+		\node[constructs] [right = of Model] (Prior) {Prior Elicitation};
+		\node[constructs] [right = of Prior] (Posterior) {Posterior Inference};
+		\draw [<->, line width=1pt] (Model) to [out=45,in=135] node[above] {\textit{Prior Predictive Check}} (Prior);
+		%\draw [->, line width=1pt] (Prior) to [out=225,in=315] {} (Model);
+		\draw [<->, line width=1pt] (Prior) to [out=45,in=135] node[above] {\textit{Posterior Predictive Check}} (Posterior);
+		%\draw [->, line width=1pt] (Posterior) to [out=225,in=315] {} (Prior);
+	\end{tikzpicture}
+\end{frame}
+
+\subsection{Prior Predictive Check}
+\begin{frame}{Prior Predictive Check}
+	Before we feed data into our model, 
+	we need to check all of our priors.
+	\vfill
+	In a very simple way, it consists in simulate parameter values based on
+	prior distribution without conditioning on any data or employing any
+	likelihood function.
+	\vfill
+	Independent of the level of information specified in the priors,
+	it is always important to perform a prior sensitivity analysis
+	in order to have a deep understanding of the prior influence onto
+	the posterior.
+\end{frame}
+
+\subsection{Posterior Predictive Check}
+\begin{frame}{Posterior Predictive Check}
+	We need to make sure that the posterior distribution of $\boldsymbol{y}$,
+	namely $\boldsymbol{\tilde{y}}$,
+	can capture all the nuances of the real distribution density/mass of $\boldsymbol{y}$.
+	\vfill
+	This procedure is called \textbf{posterior predictive check},
+	and it is generally carried on by a visual inspection\footnote{
+		we also perform mathematical/exact inspections,
+		see the section on \textit{Model Comparison}.}
+	of the real density/mass of $\boldsymbol{y}$ against generated samples
+	of $\boldsymbol{y}$ by the Bayesian model.
+	\vfill
+	The purpose is to compare the histogram of the dependent variable $\boldsymbol{y}$
+	against the histograms of simulated dependent variables $\boldsymbol{y}_{\text{rep}}$
+	by the model after parameter inference.\
+	The ideia is that the real and simulated histograms blend together and
+	we do not observer any divergences.
+\end{frame}
+
+\begin{frame}{Examples of Posterior Predictive Checks}
+	% library(brms)
+	% library(ggplot2)
+	% library(ggdark)
+	% library(bayesplot)
+	% library(tikzDevice)
+	% theme_set(dark_theme_light())
+	% bayesplot_theme_set(dark_theme_light())
+	% brms_fit <- brm(mpg ~ wt + am, data = mtcars)
+	% tikz(file = "slides/images/pp_check_brms.tex")
+	% pp_check(brms_fit, nreps = 10, seed = 123)
+	% dev.off()
+	% tikz(file = "slides/images/pp_check_brms_ecdf.tex")
+	% pp_check(brms_fit, nreps = 10, seed = 123, type = "ecdf_overlay")
+	% dev.off()
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\resizebox{0.8\columnwidth}{!}{\input{images/pp_check_brms.tex}}
+				\caption{Real versus Simulated Densities}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\resizebox{0.8\columnwidth}{!}{\input{images/pp_check_brms_ecdf.tex}}
+				\caption{Real versus Simulated Empirical CDFs}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
