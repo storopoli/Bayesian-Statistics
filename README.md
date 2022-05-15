@@ -18,7 +18,6 @@ where available knowledge about parameters in a statistical model is updated wit
 The background knowledge is expressed as a prior distribution and combined with observational data in the form of a likelihood function to determine the posterior distribution.
 The posterior can also be used for making predictions about future events.
 
-
 **Bayesian statistics** is a departure from classical inferential statistics that prohibits probability statements about parameters and is based on asymptotically sampling infinite samples from a theoretical population and finding parameter values that maximize the likelihood function.
 Mostly notorious is null-hypothesis significance testing (NHST) based on *p*-values.
 Bayesian statistics **incorporate uncertainty** (and prior knowledge) by allowing probability statements about parameters,
@@ -31,15 +30,16 @@ Here is a brief table of contents
 
 1. **What is Bayesian Statistics?**
 2. **Common Probability Distributions**
-3. **Priors and Posteriors**
-4. **Bayesian Linear Regression**
-5. **Bayesian Logistic Regression**
-6. **Bayesian Ordinal Regression**
-7. **Bayesian Regression with Count Data: Poisson Regression**
-8. **Robust Bayesian Regression**
-9. **Multilevel Models (a.k.a. Hierarchical Models)**
-10. **Markov Chain Monte Carlo (MCMC)**
-11. **Model Comparison**
+3. **Priors**
+4. **Predictive Checks**
+5. **Bayesian Linear Regression**
+6. **Bayesian Logistic Regression**
+7. **Bayesian Ordinal Regression**
+8. **Bayesian Regression with Count Data: Poisson Regression**
+9. **Robust Bayesian Regression**
+10. **Multilevel Models (a.k.a. Hierarchical Models)**
+11. **Markov Chain Monte Carlo (MCMC)**
+12. **Model Comparison**
 
 ## Probabilistic Programming Languages (PPLs)
 
