@@ -1,0 +1,115 @@
+\section{Bayesian Linear Regression}
+
+% \subsection{Leituras Recomendadas}
+% \begin{frame}{Regressão Linear - Leituras Recomendadas}
+% 	\begin{vfilleditems}
+% 		\item \textcite{gelman2013bayesian}:
+% 		\begin{vfilleditems}
+% 			\item Capítulo 14: Introduction to regression models
+% 			\item Capítulo 16: Generalized linear models
+% 		\end{vfilleditems}
+% 		\item \textcite{mcelreath2020statistical} - Capítulo 4: Geocentric Models
+% 		\item \textcite{gelman2020regression}:
+% 		\begin{vfilleditems}
+% 			\item Capítulo 7: Linear regression with a single predictor
+% 			\item Capítulo 8: Fitting regression models
+% 			\item Capítulo 10: Linear regression with multiple predictors
+% 		\end{vfilleditems}
+% 		\item \textcite{storopoli2021estatisticabayesianaR} - Regressão Linear
+% 		\item Tutorial de \texttt{rstanarm} de \textcite{muth2018user}
+% 		\item \href{http://mc-stan.org/rstanarm/articles/continuous.html}{Vinheta do \texttt{rstanarm} sobre Modelos Lineares Contínuos}
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \subsection{Especificação da Regressão Linear}
+% \begin{frame}{O que é Regressão Linear?}
+% 	Vamos falar de um classe de modelo conhecido como regressão linear.
+% 	A ideia aqui é modelar uma variável dependente sendo a combinação linear de
+% 	variáveis independentes.
+% 	$$
+% 		\boldsymbol{y} = \alpha +  \mathbf{X} \boldsymbol{\beta} + \epsilon
+% 	$$
+% 	Sendo que:
+% 	\begin{vfilleditems}
+% 		\item $\boldsymbol{y}$ -- variável dependente
+% 		\item $\alpha$ -- constante (também chamada de \textit{intercept})
+% 		\item $\boldsymbol{\beta}$ -- vetor de coeficientes
+% 		\item $\mathbf{X}$ -- matriz de dados
+% 		\item $\epsilon$ -- erro do modelo
+% 	\end{vfilleditems}
+% \end{frame}
+
+% \begin{frame}{Especificação da Regressão Linear}
+% 	Para estimar a constante $\alpha$ e os coeficientes $\boldsymbol{\beta}$ usamos uma função de verosimilhança
+% 	Gaussiana/normal. Matematicamente o modelo de regressão Bayesiano é:
+% 	$$
+% 		\begin{aligned}
+% 			\boldsymbol{y}     & \sim \text{Normal}\left( \alpha +  \mathbf{X} \boldsymbol{\beta}, \sigma \right) \\
+% 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                    \\
+% 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})        \\
+% 			\sigma             & \sim \text{Exponencial}(\lambda_\sigma)
+% 		\end{aligned}
+% 	$$
+% \end{frame}
+
+% \begin{frame}{Especificação da Regressão Linear}
+% 	O que falta é especificar quais são as \textit{prioris} dos parâmetros do modelo:
+% 	\begin{vfilleditems}
+% 		\item Distribuição \textit{priori} de $\alpha$ -- Conhecimento que temos da constante do modelo
+% 		\item Distribuição \textit{priori} de $\boldsymbol{\beta}$ -- Conhecimento que temos dos coeficientes das variáveis independentes do modelo
+% 		\item Distribuição \textit{priori} de $\sigma$ -- Conhecimento que temos sobre o erro do modelo.
+% 	\end{vfilleditems}
+% 	\vfill
+% 	\footnotesize
+% 	Importante que o erro pode ser somente positivo. Além disso é intuitivo colocar uma
+% 	distribuição que dê peso maior para valores próximos de zero, mas que permita
+% 	também valores distantes de zero, portanto uma distribuição com cauda longa é
+% 	bem-vinda. Distribuições candidatas são a $\text{Exponencial}$ que só tem
+% 	suporte nos numeros reais positivos (então já resolve a questão de erros negativos)
+% 	ou a $\text{Cauchy}^+$ truncada para apenas números positivos\footnote{lembrando
+% 		que a distribuição Cauchy é a $t$ de Student com graus de liberdade $\nu = 1$}
+% \end{frame}
+
+% \begin{frame}{Especificação da Regressão Linear}
+% 	O nosso objetivo é \textbf{encontrar a distribuição posterior dos parâmetros de
+% 		interesse} do modelo ($\alpha$ e $\boldsymbol{\beta}$) calculando a distribuição
+% 	posterior completa de:
+% 	$$
+% 		P(\boldsymbol{\theta} \mid \boldsymbol{y}) = P(\alpha, \boldsymbol{\beta}, \sigma \mid \boldsymbol{y})
+% 	$$
+% \end{frame}
+
+% \subsection{Regressão Linear no \texttt{rstarnarm}}
+% \begin{frame}[fragile]{Regressão Linear no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
+% 	Usamos a função \texttt{stan\_glm()} com o argumento \texttt{family = gaussian(link = "identity")}:
+% 	\vfill
+% 	\begin{lstlisting}[basicstyle=\small]
+%     modelo_linear <- stan_glm(
+%     y ~ ...,
+%     data = df,
+%     family = @gaussian(link = "identity")@,
+%     prior = ...,
+%     prior_intercept = ...,
+%     prior_aux = ...
+%     )
+%     \end{lstlisting}
+% \end{frame}
+
+% \subsection{Regressão Linear no \texttt{brms}}
+% \begin{frame}[fragile]{Regressão Linear no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
+% 	Usamos a função \texttt{brm()} com o argumento \texttt{family = gaussian(link = "identity")}:
+% 	\vfill
+% 	\begin{lstlisting}[basicstyle=\small]
+%     modelo_linear <- brm(
+%     y ~ ...,
+%     data = df,
+%     family = @gaussian(link = "identity")@,
+%     prior = c(
+%         set_prior("...", class = "b", coef = "..."),
+%                 ...
+%         set_prior("...", class = "b", coef = "intercept"),
+%         set_prior("...", class = "sigma")
+%         )
+%     )
+%     \end{lstlisting}
+% \end{frame}
