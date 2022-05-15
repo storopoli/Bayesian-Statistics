@@ -1,0 +1,148 @@
+\section{Priors}
+
+\subsection{Recommended References}
+\begin{frame}{Priors and Posteriors - Recommended References}
+	\begin{vfilleditems}
+		\item \textcite{gelman2013bayesian}:
+		\begin{vfilleditems}
+			\item Chapter 2: Single-parameter models
+			\item Chapter 3: Introduction to multiparameter models
+		\end{vfilleditems}
+		\item \textcite{mcelreath2020statistical} - Chapter 4: Geocentric Models
+		\item \textcite{gelman2020regression}:
+		\begin{vfilleditems}
+			\item Chapter 9, Section 9.3: Prior information and Bayesian synthesis
+			\item Chapter 9, Section 9.5: Uniform, weakly informative, and informative priors in regression
+		\end{vfilleditems}
+		\item \textcite{vandeschootBayesianStatisticsModelling2021}
+	\end{vfilleditems}
+\end{frame}
+
+\begin{frame}{Prior Probability }
+	Bayesian statistics is characterized by the use of prior information
+	as the prior probability $P(\theta)$, often just prior:
+	$$
+		\underbrace{P(\theta \mid y)}_{\text{Posterior}} = \frac{\overbrace{P(y \mid  \theta)}^{\text{Likelihood}} \cdot \overbrace{P(\theta)}^{\text{Prior}}}{\underbrace{P(y)}_{\text{Normalizing Constant}}}
+	$$
+\end{frame}
+
+\subsection{The subjectivity of the Prior}
+\begin{frame}{The subjectivity of the Prior}
+	\begin{vfilleditems}
+		\item Many critics to Bayesian statistics are due the subjectivity
+		in eliciting priors probability on certain hypothesis or model parameter's
+		values.
+		\item Subjectivity is something unwanted in the ideal picture of the
+		scientist and the scientific method.
+		\item Anything that involves human action will never be free from
+		subjectivity.
+		We have subjectivity in everything and science is \textcolor{red}{no} exception.
+		\item The creative and deductive process of theory and hypotheses formulations
+		is \textbf{not} objective.
+		\item Frequentist statistics, which bans the use of prior probabilities
+		is also subjective, since there is \textbf{A LOT} of subjectivity in
+		choosing which model and likelihood function \parencite{jaynesProbabilityTheoryLogic2003, vandeschootBayesianStatisticsModelling2021}
+	\end{vfilleditems}
+\end{frame}
+
+\begin{frame}{How to Incorporate Subjectivity}
+	\begin{vfilleditems}
+		\item Bayesian statistics \textbf{embraces} subjectivity while
+		frequentist statistics \textbf{bans} it.
+		\item For Bayesian statistics, \textbf{subjectivity guides our inferences}
+		and leads to more robust and reliable models that can assist in
+		decision making.
+		\item Whereas, for frequentist statistics, \textbf{subjectivity is a taboo}
+		and all inferences should be objective,
+		even if it resorts to \textbf{hiding and omitting model assumptions}.
+		\item Bayesian statistics also has assumptions and subjectivity,
+		but these are \textbf{declared and formalized}
+	\end{vfilleditems}
+\end{frame}
+
+\subsection{Types of Priors}
+
+\begin{frame}{Types of Priors}
+	In general, we can have 3 types of priors in a Bayesian approach
+	\parencite{gelman2013bayesian, mcelreath2020statistical, vandeschootBayesianStatisticsModelling2021}:
+	\begin{vfilleditems}
+		\item \textbf{uniform (flat)}: not recommended.
+		\item \textbf{weakly informative}: small amounts of real-world information
+		along with common sense and low specific domain knowledge added.
+		\item \textbf{informative}: introduction of medium to high domain knowledge.
+	\end{vfilleditems}
+\end{frame}
+
+\subsubsection{Uniform Prior (Flat)}
+\begin{frame}{Uniform Prior (Flat)}
+	Starts from the premise that ``everything is possible''.
+	There is no limits in the degree of beliefs that the distribution of certain
+	values must be or any sort of restrictions.
+	\vfill
+	Flat and super-vague priors are not usually recommended and some thought
+	should included to have at least weakly informative priors.
+	\vfill
+	Formally, an uniform prior is an uniform distribution over all the
+	possible support of the possible values:
+	\begin{vfilleditems}
+		\item \textbf{model parameters}: $\{\theta \in \mathbb{R} : -\infty < \theta < \infty\}$
+		\item \textbf{model error or residuals}: $\{\sigma \in \mathbb{R}^+ : 0 \leq \theta < \infty\}$
+	\end{vfilleditems}
+\end{frame}
+
+\subsubsection{Weekly Informative Prior}
+\begin{frame}{Weekly Informative Prior}
+	Here we start to have ``educated'' guess about our parameter values.
+	Hence, we don't start from the premise that ``anything is possible''.
+	\vfill
+	I recommend always to transform the priors of the problem at hand into
+	something centered in $0$ with standard deviation of $1$\footnote{
+		this is called standardization,
+		transforming all variables into $\mu=0$ and $\sigma=1$.}:
+	\vfill
+	\begin{vfilleditems}
+		\item $\theta \sim \text{Normal}(0, 1)$ (Andrew Gelman's preferred choice\footnote{
+			see more about prior choices in the
+			\href{https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations}{\texttt{Stan}'s GitHub wiki}.})
+		\item $\theta \sim \text{Student}(\nu=3, 0, 1)$ (Aki Vehtari's preffered choice)
+	\end{vfilleditems}
+\end{frame}
+
+\begin{frame}{An Example of a Robust Prior}
+	\small
+	A nice example comes from a Ben Goodrich's lecture\footnote{
+		\url{https://youtu.be/p6cyRBWahRA},
+		in case you want to see the full video,
+		the section about priors related to the argument begins at minute 40}
+	(Columbia professor and member of \texttt{Stan}'s research group.
+	\vfill
+	He discuss about one of the biggest effect sizes observed in social sciences.
+	In the exit pools for the 2008 USA presidential election (Obama vs McCain),
+	there was, in general, around 40\% of support for Obama.
+	If you changed the respondent race from non-black to black,
+	this was associated with an increase of 60\% in the probability of the respondent
+	to vote on Obama
+	\vfill
+	In logodds scales, 2.5x increase (from 40\% to almost 100\%) would be equivalent,
+	on a bernoulli/logistic/binomial model,
+	to a coefficient value of $\approx 0.92$\footnote{
+		$\log(\text{odds ratio}) = \log(2.5) = 0.9163$.}.
+	This effect size would be easily derived from a $\text{Normal}(0, 1)$ prior.
+\end{frame}
+
+\subsubsection{Informative Prior}
+\begin{frame}{Informative Prior}
+	In some contexts, it is interesting to use an informative prior.
+	Good candidates are when data is scarce or expensive and prior knowledge
+	about the phenomena is available.
+	\vfill
+	Some examples:
+	\begin{vfilleditems}
+		\item $\text{Normal}(5, 20)$
+		\item $\text{Log-Normal}(0, 5)$
+		\item $\text{Beta}(100, 9803)$\footnote{
+			this is used in COVID-19 models from the
+			\href{https://codatmo.github.io}{CoDatMo} \texttt{Stan}
+			research group.}
+	\end{vfilleditems}
+\end{frame}
