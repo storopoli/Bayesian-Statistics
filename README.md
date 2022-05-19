@@ -37,9 +37,11 @@ Here is a brief table of contents
 7. **Bayesian Ordinal Regression**
 8. **Bayesian Regression with Count Data: Poisson Regression**
 9. **Robust Bayesian Regression**
-10. **Multilevel Models (a.k.a. Hierarchical Models)**
-11. **Markov Chain Monte Carlo (MCMC)**
-12. **Model Comparison**
+10. **Hierarchical Models**
+11. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
+12. **Hierarchical Models: Centered versus Non-Centered Parametrization**
+13. **Model Comparison: Cross-Validation and Other Metrics**
+14. **ODE Solvers inside a MCMC Sampler**
 
 ## Probabilistic Programming Languages (PPLs)
 
