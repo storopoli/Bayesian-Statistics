@@ -46,7 +46,7 @@ Here is a brief table of contents
 ## Probabilistic Programming Languages (PPLs)
 
 Along with slides for the content, this repository also holds `Stan` code and also `Turing.jl` code for all models.
-`Stan` and `Turing.jl` represents, respectively, the present and future of [probabilistic programming]((https://en.wikipedia.org/wiki/Probabilistic_programming) languages.
+`Stan` and `Turing.jl` represents, respectively, the present and future of [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) languages.
 
 ### `Stan`
 
