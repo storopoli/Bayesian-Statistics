@@ -1,309 +1,284 @@
 \section{Logistic Regression}
 
-% \subsection{Leituras Recomendadas}
-% \begin{frame}{Regressão Logística - Leituras Recomendadas}
-% 	\begin{vfilleditems}
-% 		\item \textcite{gelman2013bayesian} - Capítulo 16: Generalized linear models
-% 		\item \textcite{mcelreath2020statistical}:
-% 		\begin{vfilleditems}
-% 			\item Capítulo 10: Big Entropy and the Generalized Linear Model
-% 			\item Capítulo 11, Seção 11.1: Binomialregression
-% 		\end{vfilleditems}
-% 		\item \textcite{gelman2020regression}:
-% 		\begin{vfilleditems}
-% 			\item Capítulo 13: Logistic regression
-% 			\item Capítulo 14: Working with logistic regression
-% 			\item Capítulo 15, Seção 15.3: Logistic-binomial model
-% 			\item Capítulo 15, Seção 15.4: Probit regression
-% 		\end{vfilleditems}
-% 		\item \textcite{storopoli2021estatisticabayesianaR} - Regressão Logística
-% 		\item Tutorial de \texttt{rstanarm} de \textcite{muth2018user}
-% 		\item \href{http://mc-stan.org/rstanarm/articles/binomial.html}{Vinheta do \texttt{rstanarm} sobre Modelos Lineares Generalizados com dados Binários}
-% 	\end{vfilleditems}
-% \end{frame}
+\subsection{Recommended References}
+\begin{frame}{Logistic Regression - Recommended References}
+	\begin{vfilleditems}
+		\item \textcite{gelman2013bayesian} - Chapter 16: Generalized linear models
+		\item \textcite{mcelreath2020statistical}:
+		\begin{vfilleditems}
+			\item Chapter 10: Big Entropy and the Generalized Linear Model
+			\item Chapter 11, Section 11.1: Binomialregression
+		\end{vfilleditems}
+		\item \textcite{gelman2020regression}:
+		\begin{vfilleditems}
+			\item Chapter 13: Logistic regression
+			\item Chapter 14: Working with logistic regression
+			\item Chapter 15, Section 15.3: Logistic-binomial model
+			\item Chapter 15, Section 15.4: Probit regression
+		\end{vfilleditems}
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{Bem-Vindo ao Mundo Mágico dos Modelos Lineares Generalizados}
-% 	Saindo do universo dos modelos lineares, começamos a nos aventurar nos modelos
-% 	linares generalizados (\textit{generalized linear models} -- GLM).
-% 	\vfill
-% 	O primeiro deles é a \textbf{regressão logística}
-% 	(também chamada de regressão binomial).
-% \end{frame}
+\begin{frame}{Welcome to the Magical World of the Linear Generalized Models}
+	Leaving the realm of the linear models,
+	we start to adventure to the generalized linear models -- GLM.
+	\vfill
+	The first one is \textbf{logistic regression}.
+	(also called Bernoulli regression or
+	binomial regression).
+\end{frame}
 
-% \subsection{Dados Binários}
-% \begin{frame}{Dados Binários\footnote{também conhecido como dicotômico, \textit{dummy}, etc.}}
-% 	Usamos regressão logística quando a nossa variável dependente é \textbf{binária}.
-% 	Ela possui apenas dois valores distintos,
-% 	geralmente codificados como $0$ ou $1$.
-% \end{frame}
+\subsection{Binary Data}
+\begin{frame}{Binary Data\footnote{
+			also known as dichotomous, dummy, indicator variable, etc.}
+	}
+	We use logistic regression when our dependent variable is \textbf{binary}.
+	It only takes two distinct values,
+	usually coded as $0$ and $1$.
+\end{frame}
 
-% \subsection{O que é Regressão Logística?}
-% \begin{frame}{O que é Regressão Logística?}
-% 	Uma regressão logística se comporta exatamente como um modelo linear:
-% 	faz uma predição simplesmente computando uma soma ponderada das variáveis
-% 	independentes $\mathbf{X}$ pelos coeficientes estimados $\boldsymbol{\beta}$,
-% 	mais uma constante $\alpha$. Porém ao invés de retornar um valor contínuo
-% 	$\boldsymbol{y}$, como a regressão linear, retorna a \textbf{função logística}
-% 	desse valor:
-% 	$$
-% 		\text{Logística}(x) = \frac{1}{1 + e^{-x}}
-% 	$$
-% \end{frame}
+\subsection{What is Logistic Regression}
+\begin{frame}{What is Logistic Regression}
+	Logistic regression behaves exactly as a linear model:
+	it makes a prediction by simply computing a weighted sum of the
+	independent variables $\mathbf{X}$ using the estimated coefficients $\boldsymbol{\beta}$,
+	along with a constant term $\alpha$.
+	However, instead of outputting a continuous value $\boldsymbol{y}$,
+	it returns the \textbf{logistic function} of this value:
+	$$
+		\text{logistic}(x) = \frac{1}{1 + e^{-x}}
+	$$
+\end{frame}
 
 
-% \subsubsection{Função Logit}
-% % https://en.wikipedia.org/wiki/Logit
-% % padrão da family binomial(link = "logit")
+\subsubsection{Logistic Functions}
 
-% \begin{frame}{Função Logística}
-% 	\begin{tikzpicture}
-% 		\begin{axis}[every axis plot, line width=2pt,
-% 				ylabel={$\text{Logística}(x)$},
-% 				xlabel={$x$},
-% 				domain=-10:10,samples=200,
-% 				axis x line*=bottom, % no box around the plot, only x and y axis
-% 				axis y line*=left % the * suppresses the arrow tips
-% 			]
+\begin{frame}{Logistic Function}
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel={$\text{logistic}(x)$},
+				xlabel={$x$},
+				domain=-10:10,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left % the * suppresses the arrow tips
+			]
 
-% 			\addplot [blue] (x,{1/(1+exp(-x))});
-% 		\end{axis}
-% 	\end{tikzpicture}
-% \end{frame}
+			\addplot [blue] (x,{1/(1+exp(-x))});
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
 
-% \subsubsection{Função Probit}
-% % https://en.wikipedia.org/wiki/Probit
-% \begin{frame}{Função Probit}
-% 	Às vezes podemos também usar a \textbf{função probit} (usualmente representada
-% 	ela letra grega $\Phi$) que é a CDF da distribuição Normal:
-% 	$$
-% 		\Phi (x)= \frac {1}{\sqrt {2 \pi}}\int _{-\infty }^{x}e^{-t^{2}/2}\,dt
-% 	$$
-% \end{frame}
+\subsubsection{Probit Function}
+\begin{frame}{Probit Function}
+	We can also opt to choose to use the \textbf{probit function}
+	(usually represented by the Greek letter $\Phi$)
+	which is the CDF of a normal distribution:
+	$$
+		\Phi (x)= \frac {1}{\sqrt {2 \pi}}\int _{-\infty }^{x}e^{-t^{2}/2}\,dt
+	$$
+\end{frame}
 
-% \begin{frame}{Função Probit}
-% 	\begin{tikzpicture}
-% 		\begin{axis}[every axis plot, line width=2pt,
-% 				ylabel={$\Phi(x)$},
-% 				xlabel={$x$},
-% 				domain=-10:10,samples=200,
-% 				axis x line*=bottom, % no box around the plot, only x and y axis
-% 				axis y line*=left % the * suppresses the arrow tips
-% 			]
+\begin{frame}{Probit Function}
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel={$\Phi(x)$},
+				xlabel={$x$},
+				domain=-10:10,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left % the * suppresses the arrow tips
+			]
 
-% 			\addplot [blue] {normcdf(0, 1)};
-% 		\end{axis}
-% 	\end{tikzpicture}
-% \end{frame}
+			\addplot [blue] {normcdf(0, 1)};
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
 
-% \subsubsection{Função Logística versus Função Probit}
-% \begin{frame}{Função Logística versus Função Probit}
-% 	\begin{tikzpicture}
-% 		\begin{axis}[every axis plot, line width=1pt,
-% 				ylabel={$f(x)$},
-% 				xlabel={$x$},
-% 				domain=-10:10,samples=200,
-% 				axis x line*=bottom, % no box around the plot, only x and y axis
-% 				axis y line*=left % the * suppresses the arrow tips
-% 			]
-% 			\addplot [blue] (x,{1/(1+exp(-x))});
-% 			\addlegendentry{Logística}
-% 			\addplot [red] {normcdf(0, 1)};
-% 			\addlegendentry{Probit}
-% 		\end{axis}
-% 	\end{tikzpicture}
-% \end{frame}
+\subsubsection{Logistic Function versus Probit Function}
+\begin{frame}{Logistic Function versus Probit Function}
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=1pt,
+				ylabel={$f(x)$},
+				xlabel={$x$},
+				domain=-10:10,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left % the * suppresses the arrow tips
+			]
+			\addplot [blue] (x,{1/(1+exp(-x))});
+			\addlegendentry{logistic}
+			\addplot [red] {normcdf(0, 1)};
+			\addlegendentry{probit}
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
 
-% \subsection{Comparativo com a Regressão Linear}
-% \begin{frame}{Comparativo com a Regressão Linear}
-% 	A regressão linear segue a seguinte formulação matemática:
-% 	\small
-% 	$$
-% 		\text{Linear} = \alpha + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k
-% 	$$
-% 	Onde:
-% 	\begin{vfilleditems}
-% 		\item \small $\alpha$ - constante
-% 		\item \small $\boldsymbol{\beta} = \beta_1, \beta_2, \dots, \beta_k$ - coeficientes das variáveis independentes $x_1, x_2, \dots, x_k$
-% 		\item \small $k$ - número de variáveis independentes
-% 	\end{vfilleditems}
-% 	Se você implementar uma pequena gambiarra matemática, você terá a \textbf{regressão logística}:
-% 	\begin{vfilleditems}
-% 		\item \small $\hat{p} = \text{Logística}(\text{Linear}) = \frac{1}{1 + e^{-\operatorname{Linear}}}$ - probabilidade prevista da observação ser o valor $1$
-% 		\item \small $\hat{y} = \begin{cases} 0 & \text { se } \hat{p} < 0.5 \\ 1 & \text { se } \hat{p} \geq 0.5 \end{cases}$ - previsão do valor discreto de $\boldsymbol{y}$
-% 	\end{vfilleditems}
-% \end{frame}
+\subsection{Comparison with Linear Regression}
+\begin{frame}{Comparison with Linear Regression}
+	Linear regression follows the following mathematical expression:
+	\small
+	$$
+		\text{linear} = \alpha + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k
+	$$
+	Where:
+	\begin{vfilleditems}
+		\item \small $\alpha$ -- intercept.
+		\item \small $\boldsymbol{\beta} = \beta_1, \beta_2, \dots, \beta_k$ -- independent variables' $x_1, x_2, \dots, x_k$ coefficients.
+		\item \small $k$ -- number of independent variables.
+	\end{vfilleditems}
+	If you implement a small mathematical transformation,
+	you'll have \textbf{linear regression}:
+	\begin{vfilleditems}
+		\item \small $\hat{p} = \text{logistic}(\text{linear}) = \frac{1}{1 + e^{-\operatorname{linear}}}$ --
+		probability of an observation taking value $1$.
+		\item \small $\hat{y} = \begin{cases} 0 & \text { if } \hat{p} < 0.5 \\ 1 & \text { if } \hat{p} \geq 0.5 \end{cases}$ --
+		$\boldsymbol{y}$'s predicted binary value.
+	\end{vfilleditems}
+\end{frame}
 
-% \subsection{Especificação da Regressão Logística}
-% \begin{frame}{Especificação da Regressão Logística}
-% 	Podemos modelar regressão logística de duas maneiras:
-% 	\begin{vfilleditems}
-% 		\item com a \textbf{verossimilhança Bernoulli} modelamos uma variável dependente
-% 		\textbf{binária} $\boldsymbol{y}$ que é o resultado de um experimento de
-% 		Bernoulli com uma certa probabilidade $p$.
-% 		\item com a \textbf{verossimilhança binomial} modelamos uma variável dependente
-% 		\textbf{contínua} $\boldsymbol{y}$ que é o número de sucessos de $n$
-% 		experimentos Bernoulli independentes.
-% 	\end{vfilleditems}
-% \end{frame}
+\subsection{Logistic Regression Specification}
+\begin{frame}{Logistic Regression Specification}
+	We can model logistic regression using two approaches:
+	\begin{vfilleditems}
+		\item \textbf{Bernoulli likelihood} --
+		\textbf{binary} dependent variable \textbf{y} which results from a
+		Bernoulli trial with some probability $p$
+		\item \textbf{binomial likelihood} --
+		\textbf{discrete and positive} dependent variable $\textbf{y}$
+		which results from $k$ successes in independent Bernoulli
+		trials.
+	\end{vfilleditems}
+\end{frame}
 
-% \subsubsection{Verossimilhança Bernoulli}
-% \begin{frame}{Verossimilhança Bernoulli}
-% 	\small
-% 	$$
-% 		\begin{aligned}
-% 			\boldsymbol{y}     & \sim \text{Bernoulli}\left( p\right)                                      \\
-% 			p                  & \sim \text{Logística/Logit}(\alpha +  \mathbf{X} \boldsymbol{\beta})      \\
-% 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
-% 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
-% 		\end{aligned}
-% 	$$
-% 	Sendo que:
-% 	\begin{vfilleditems}
-% 		\item \small $\boldsymbol{y}$ - \textbf{variável dependente binária}
-% 		\item \small $p$ - probabilidade de $\boldsymbol{y}$ tomar o valor de $\boldsymbol{y}$ - sucesso de um experimento Bernoulli independente
-% 		\item \small $\text{Logística/Logit}$ - função logística ou logit
-% 		\item \small $\alpha$ - constante (também chamada de \textit{intercept})
-% 		\item \small $\boldsymbol{\beta}$ - vetor de coeficientes
-% 		\item \small $\mathbf{X}$ - matriz de dados
-% 	\end{vfilleditems}
-% \end{frame}
+\subsubsection{Bernoulli Likelihood}
+\begin{frame}{Bernoulli Likelihood}
+	\small
+	$$
+		\begin{aligned}
+			\boldsymbol{y}     & \sim \text{Bernoulli}\left( p\right)                                      \\
+			p                  & \sim \text{logistic/logit}(\alpha +  \mathbf{X} \boldsymbol{\beta})       \\
+			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
+		\end{aligned}
+	$$
+	where:
+	\begin{vfilleditems}
+		\item \small $\boldsymbol{y}$ - \textbf{dependent binary variable}.
+		\item \small $p$ - probability of $\boldsymbol{y}$ taking value of $1$ --
+		success in an independent Bernoulli trial.
+		\item \small $\text{logistic/logit}$ -- logistic or logit function.
+		\item \small $\alpha$ -- intercept (also called constant).
+		\item \small $\boldsymbol{\beta}$ -- coefficient vector.
+		\item \small $\mathbf{X}$ -- data matrix.
+	\end{vfilleditems}
+\end{frame}
 
-% \subsubsection{Verossimilhança Binomial}
-% \begin{frame}{Verossimilhança Binomial}
-% 	\small
-% 	$$
-% 		\begin{aligned}
-% 			\boldsymbol{y}     & \sim \text{Binomial}\left(n,  p\right)                                    \\
-% 			p                  & \sim \text{Logística/Probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})     \\
-% 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
-% 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
-% 		\end{aligned}
-% 	$$
-% 	Sendo que:
-% 	\begin{vfilleditems}
-% 		\item \small $\boldsymbol{y}$ - \textbf{variável dependente contínua} - sucessos de $n$ experimentos Bernoulli independentes
-% 		\item \small $n$ - número de experimentos Bernoulli independentes
-% 		\item \small $p$ - probabilidade de $\boldsymbol{y}$ tomar o valor de $\boldsymbol{y}$ - sucesso de um experimento Bernoulli independente
-% 		\item \small $\text{Logística/Logit}$ - função logística ou logit
-% 		\item \small $\alpha$ - constante (também chamada de \textit{intercept})
-% 		\item \small $\boldsymbol{\beta}$ - vetor de coeficientes
-% 		\item \small $\mathbf{X}$ - matriz de dados
-% 	\end{vfilleditems}
-% \end{frame}
+\subsubsection{Binomial Likelihood}
+\begin{frame}{Binomial Likelihood}
+	\small
+	$$
+		\begin{aligned}
+			\boldsymbol{y}     & \sim \text{Binomial}\left(n,  p\right)                                    \\
+			p                  & \sim \text{logistic/probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})      \\
+			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
+		\end{aligned}
+	$$
+	where:
+	\begin{vfilleditems}
+		\item \small $\boldsymbol{y}$ - \textbf{discrete positive variable} -- $k$ successes of independent Bernoulli trials.
+		\item \small $n$ - número de experimentos Bernoulli independentes
+		\item \small $p$ - probability of $\boldsymbol{y}$ taking value of $1$ --
+		success in an independent Bernoulli trial.
+		\item \small $\text{logistic/logit}$ -- logistic or logit function.
+		\item \small $\alpha$ -- intercept (also called constant).
+		\item \small $\boldsymbol{\beta}$ -- coefficient vector.
+		\item \small $\mathbf{X}$ -- data matrix.
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{Especificação da Regressão Logística}
-% 	O nosso objetivo é \textbf{encontrar a distribuição posterior dos parâmetros de
-% 		interesse} do modelo ($\alpha$ e $\boldsymbol{\beta}$) calculando a distribuição
-% 	posterior completa de:
-% 	$$
-% 		P(\boldsymbol{\theta} \mid \boldsymbol{y}) = P(\alpha, \boldsymbol{\beta} \mid \boldsymbol{y})
-% 	$$
-% \end{frame}
+\subsubsection{Posterior Computation}
+\begin{frame}{Posterior Computation}
+	Our aim to is to \textbf{find the posterior distribution of the
+		model's parameters of interest} ($\alpha$ and $\boldsymbol{\beta}$)
+	by computing the full posterior distribution of:
+	$$
+		P(\boldsymbol{\theta} \mid \boldsymbol{y}) = P(\alpha, \boldsymbol{\beta} \mid \boldsymbol{y})
+	$$
+\end{frame}
 
-% \subsection{Intepretação dos Coeficientes}
-% \begin{frame}{Interpretação dos Coeficientes}
-% 	Ao vermos a fórmula de regressão logística percebemos a interpretação dos
-% 	coeficientes requer uma transformação. A transformação que precisamos fazer á a
-% 	que inverte a função logística.
-% \end{frame}
-% \begin{frame}{Probabilidade versus Chances\footnote{em inglês \textit{probability} e
-% 			\textit{odds}}}
-% 	\small
-% 	Mas antes preciso falar sobre\textbf{qual a diferença matemática
-% 		entre probabilidade e chances}.
-% 	\begin{vfilleditems}
-% 		\item \small \textbf{Probabilidade}: um número real entre $0$ e $1$ que
-% 		representa a certeza de que um evento irá acontecer por meio de frequências
-% 		de longo-prazo (probabilidade frequentista) ou níveis de credibilidade
-% 		(probabilidade Bayesiana).
-% 		\item \small Chances é um número positivo real ($\mathbb{R}^+$) que mensura
-% 		também a certeza de um evento. Mas essa certeza não é expressa como uma
-% 		probabilidade (algo entre $0$ e $1$), mas como uma \textbf{razão entre a
-% 			quantidade de resultados que produzem o evento desejado e a quantidade de
-% 			resultados que \textit{não} produzem o evento desejado}:
-% 		$$
-% 			\text{Chances} = \frac{p}{1-p}
-% 		$$
-% 		onde $p$ é a probabilidade.
-% 	\end{vfilleditems}
-% \end{frame}
+\subsection{How to Interpret Coefficients}
+\begin{frame}{How to Interpret Coefficients}
+	If we revisit logistic transformation mathematical expression,
+	we see that, in order to interpret coefficients $\boldsymbol{\beta}$,
+	we need to perform a transformation.
+	\vfill
+	Specifically, we need to undo the logistic transformation.
+	We are looking for its inverse function.
+\end{frame}
 
-% \begin{frame}{Probabilidade versus Chances}
-% 	$$
-% 		\text{Chances} = \frac{p}{1-p}
-% 	$$
-% 	onde $p$ é a probabilidade.
-% 	\vfill
-% 	\begin{vfilleditems}
-% 		\item Chance com o valor de $1$ é uma chance neutra
-% 		algo como uma moeda justa $p = \frac{1}{2}$
-% 		\item Chances abaixo de $1$ decrescem a probabilidade de vermos um
-% 		certo evento
-% 		\item Chances acima de $1$ aumentam a probabilidade do evento.
-% 	\end{vfilleditems}
-% \end{frame}
+\begin{frame}{Probability versus Odds}
+	\small
+	But before that, we need to discern between
+	\textbf{probability and odds}\footnote{mathematically speaking.}.
+	\begin{vfilleditems}
+		\item \small \textbf{Probability}: a real number between $0$ and $1$
+		that represents the certainty that an event will occur,
+		either by long-term frequencies (frequentist approach) or
+		degrees of belief (Bayesian approach).
+		\item \small \textbf{Odds}: a positive real number ($\mathbb{R}^+$)
+		that also measures the certainty of an event happening.
+		However this measure is not expressed as a probability
+		(between $0$ and $1$),
+		but as the \textbf{ratio between the number of results that
+			generate our desired event and the number of results that
+			\textit{do not} generate our desired event}:
+		$$
+			\text{odds} = \frac{p}{1-p}
+		$$
+		where $p$ is the probability.
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{Log das Chances\footnote{em inglês \textit{logodds}}}
-% 	Se você revisitar a função logística, verá que ela tanto a constante quanto
-% 	os coeficientes de $\boldsymbol{\beta}$ são literalmente o log da
-% 	chance:
-% 	$$
-% 		\begin{aligned}
-% 			p                  & \sim \text{Logística/Logit}(\alpha +  \mathbf{X} \boldsymbol{\beta} )                        \\
-% 			p                  & \sim \text{Logística/Logit}(\alpha) + \text{Logística/Logit}( \mathbf{X} \boldsymbol{\beta}) \\
-% 			\boldsymbol{\beta} & = \frac{1}{1 + e^{(-\boldsymbol{\beta})}}                                                    \\
-% 			\boldsymbol{\beta} & = \log(\text{Chance})
-% 		\end{aligned}
-% 	$$
-% \end{frame}
+\begin{frame}{Probability versus Odds}
+	$$
+		\text{odds} = \frac{p}{1-p}
+	$$
+	where $p$ is the probability.
+	\vfill
+	\begin{vfilleditems}
+		\item Odds with a value of $1$ is a neutral odds,
+		similar to a fair coin: $p = \frac{1}{2}$
+		\item Odds below $1$ decrease the probability of seeing a certain event.
+		\item Odds over $1$ increase the probability of seeing a certain event.
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{Log das Chances}
-% 	Portanto, os coeficientes de uma regressão logística são expressados em
-% 	\textit{logodds} no qual $0$ é o elemento neutro e qualquer número acima ou
-% 	abaixo aumenta ou diminui as chances de obtermos um "sucesso"~de
-% 	$\boldsymbol{y}$. Para termos uma interpretação mais intuitiva
-% 	(igual a das casas de apostas) precisamos converter as \textit{logodds}
-% 	em chances revertendo a função $\log$. Para isso basta "exponenciar"~os
-% 	valores de $\alpha$ e $\boldsymbol{\beta}$:
-% 	$$
-% 		\begin{aligned}
-% 			\text{Chances}(\alpha)               & = e^\alpha               \\
-% 			\text{Chances}({\boldsymbol{\beta}}) & = e^{\boldsymbol{\beta}}
-% 		\end{aligned}
-% 	$$
-% \end{frame}
+\begin{frame}{Logodds}
+	If you revisit the logistic function, you'll se that the intercept $\alpha$
+	and coefficients $\boldsymbol{\beta}$ are literally the \textbf{log of the odds}
+	(logodds):
+	$$
+		\begin{aligned}
+			p                  & = \text{logistic}(\alpha +  \mathbf{X} \boldsymbol{\beta} )                 \\
+			p                  & = \text{logistic}(\alpha) + \text{logistic}( \mathbf{X} \boldsymbol{\beta}) \\
+			p                  & = \frac{1}{1 + e^{(-\boldsymbol{\beta})}}                                   \\
+			\boldsymbol{\beta} & = \log(\text{odds})
+		\end{aligned}
+	$$
+\end{frame}
 
-% \subsection{Regressão Logística no \texttt{rstarnarm}}
-% \begin{frame}[fragile]{Regressão Logística no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
-% 	Usamos a função \texttt{stan\_glm()} com os argumentos \texttt{family = binomial(link = "logit")} ou
-% 	\texttt{family = binomial(link = "probit")}:
-% 	\vfill
-% 	\begin{lstlisting}[basicstyle=\small]
-%     modelo_binomial <- stan_glm(
-%     y ~ ...,
-%     data = df,
-%     family = @binomial(link = "logit")@, # ou link = "probit"
-%     prior = ...,
-%     prior_intercept = ...
-%     )
-%     \end{lstlisting}
-% \end{frame}
-
-% \subsection{Regressão Logística no \texttt{brms}}
-% \begin{frame}[fragile]{Regressão Logística no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
-% 	Usamos a função \texttt{brm()} com os argumentos \texttt{family = binomial(link = "logit")} ou
-% 	\texttt{family = binomial(link = "probit")}:
-% 	\vfill
-% 	\begin{lstlisting}[basicstyle=\small]
-%     modelo_binomial <- brm(
-%     y ~ ...,
-%     data = df,
-%     family = @binomial(link = "logit")@, # ou link = "probit"
-%     prior = c(
-%         set_prior("...", class = "b", coef = "..."),
-%                 ...
-%         set_prior("...", class = "b", coef = "intercept")
-%         )
-%     )
-%     \end{lstlisting}
-% \end{frame}
+\begin{frame}{Logodds}
+	Hence, the coefficients of a logistic regression are expressed in logodds,
+	in which $0$ is the neutral element,
+	and any number above or below it increases or decreases, respectively,
+	the changes of obtaining a ``success'' in $\boldsymbol{y}$.
+	To have a more intuitive interpretation (similar to the betting houses),
+	we need to \textbf{convert the logodds into chances} by undoing the $\log function$.
+	We need to perform an \textbf{exponentiation} of $\alpha$ and $\boldsymbol{\beta}$
+	values:
+	$$
+		\begin{aligned}
+			\text{odds}(\alpha)               & = e^\alpha               \\
+			\text{odds}({\boldsymbol{\beta}}) & = e^{\boldsymbol{\beta}}
+		\end{aligned}
+	$$
+\end{frame}
