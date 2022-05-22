@@ -118,14 +118,13 @@
 	$$
 		\text{linear} = \alpha + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k
 	$$
-	Where:
 	\begin{vfilleditems}
 		\item \small $\alpha$ -- intercept.
 		\item \small $\boldsymbol{\beta} = \beta_1, \beta_2, \dots, \beta_k$ -- independent variables' $x_1, x_2, \dots, x_k$ coefficients.
 		\item \small $k$ -- number of independent variables.
 	\end{vfilleditems}
 	If you implement a small mathematical transformation,
-	you'll have \textbf{linear regression}:
+	you'll have \textbf{logistic regression}:
 	\begin{vfilleditems}
 		\item \small $\hat{p} = \text{logistic}(\text{linear}) = \frac{1}{1 + e^{-\operatorname{linear}}}$ --
 		probability of an observation taking value $1$.
