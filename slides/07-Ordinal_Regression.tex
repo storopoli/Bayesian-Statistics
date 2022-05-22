@@ -1,254 +1,245 @@
 \section{Ordinal Regression}
 
-% \subsection{Leituras Recomendadas}
-% \begin{frame}{Regressão Ordinal - Leituras Recomendadas}
-% 	\begin{vfilleditems}
-% 		\item \textcite{gelman2013bayesian} - Capítulo 16, Seção 16.2: Models for multivariate and multinomial responses
-% 		\item \textcite{mcelreath2020statistical} - Capítulo 12, Seção 12.3: Ordered categorical outcomes
-% 		\item \textcite{gelman2020regression} - Capítulo 15, Seção 15.5: Ordered and unordered categorical regression
-% 		\item \textcite{Burkner_Vuorre_2019}
-% 		\item \textcite{Semenova_2019}
-% 	\end{vfilleditems}
-% \end{frame}
+\subsection{Recommended References}
+\begin{frame}{Recommended References}
+	\begin{vfilleditems}
+		\item \textcite{gelman2013bayesian} - Chapter 16, Section 16.2: Models for multivariate and multinomial responses
+		\item \textcite{mcelreath2020statistical} - Chapter 12, Section 12.3: Ordered categorical outcomes
+		\item \textcite{gelman2020regression} - Chapter 15, Section 15.5: Ordered and unordered categorical regression
+		\item \textcite{Burkner_Vuorre_2019}
+		\item \textcite{Semenova_2019}
+	\end{vfilleditems}
+\end{frame}
 
-% \subsection{O que é Regressão Ordinal?}
-% \begin{frame}{O que é Regressão Ordinal?}
-% 	\textbf{Regressão ordinal} é um modelo de regressão para \textbf{dados discretos} e,
-% 	mais especificamente, quando os \textbf{valores das variáveis dependentes têm uma "ordem natural"}.
-% 	\vfill
-% 	Por exemplo, pesquisas de opinião com seus intervalo de valores plausíveis de discordo-concordo ubíquos,
-% 	ou uma percepção de dor do paciente.
-% \end{frame}
-% \begin{frame}{Por que não usar apenas Regressão Linear?}
-% 	A principal razão para não usar regressão linear simples com resultados ordinais (variável dependente) é
-% 	que as categorias de resposta de uma variável ordinal podem não ser \textbf{equidistantes}.
-% 	Este é um pressuposto na regressão linear (e em quase todos os modelos que usam variáveis dependentes de métricas):
-% 	a distância entre, por exemplo, 2 e 3 não é a mesma distância entre 1 e 2.
-% 	\vfill
-% 	Este pressuposto pode ser \textbf{violado em uma regressão ordinal}.
-% \end{frame}
+\subsection{What is Ordinal Regression?}
+\begin{frame}{What is Ordinal Regression?}
+	\textbf{Ordinal regression} is a regression model for \textbf{discrete data} and,
+	more specific, when the \textbf{values of the dependent variables have a ``natural ordering''}.
+	\vfill
+	For example, opinion polls with its plausible ordered values from agree-disagree,
+	or a patient perception of pain score.
+\end{frame}
 
-% \subsection{Como lidar com uma Variável Dependente Ordinal?}
-% \begin{frame}{Como lidar com uma Variável Dependente Ordinal?}
-% 	Surpresa! Plot twist!
-% 	\vfill
-% 	Temos que fazer uma \textbf{transformação não-linear}.
-% \end{frame}
+\begin{frame}{Why not just use Linear Regression?}
+	The main reason to not simply use linear regression with ordinal discrete outcomes is
+	that the categories of the dependent variable could not be \textbf{equidistant}.
+	This is an assumption in linear regression
+	(and in almost all models that use ``metric'' dependent variables):
+	the distance between, for example, $2$ and $3$ is not the same distance between $1$ and $2$.
+	\vfill
+	This assumption can be \textbf{violated in an ordinal regression}.
+\end{frame}
 
-% \begin{frame}{Função de Distribuição Cumulativa - FDC}
-% 	No caso da regressão ordinal, primeiros temos que transformar a \textbf{variável
-% 		dependente para uma escala cumulativa}.
-% 	\vfill
-% 	Para isso usamos a Função de Distribuição Cumulativa (FDC):
+\subsection{How to deal with an Ordinal Dependent Variable?}
+\begin{frame}{How to deal with an Ordinal Dependent Variable?}
+	Surprise! Plot twist!
+	\vfill
+	Another \textbf{non-linear transformation}.
+\end{frame}
 
-% 	$$P(Y \leq y) = \sum^y_{i=y_{\text{min}}} P(Y = i)$$
+\begin{frame}{Cumulative Distribution Function -- CDF}
+	In the case of ordinal regression,
+	first we need to transform the \textbf{dependent variable into a
+		cumulative scale}
+	\vfill
+	For this, we use the cumulative distribution function (CDF):
 
-% 	A FDC é uma função \textbf{incremental monotônica} que representa a\textbf{ probabilidade
-% 		de uma variável aleatória $Y$ tomar valores menores que um certo valor $y$}.
-% \end{frame}
+	$$P(Y \leq y) = \sum^y_{i=y_{\text{min}}} P(Y = i)$$
 
-% \begin{frame}{\textit{Log-cumulative-odds}}
-% 	Ainda sim, não é o suficiente.
-% 	Precisamos aplicar a \textbf{função logit na FDC}:
+	CDF is a \textbf{monotonically increasing function} that represents the
+	\textbf{probability of a random variable $Y$ taking values less than
+		a certain value $y$}
+\end{frame}
 
-% 	$$\mathrm{logit}(x) = \mathrm{logistic}^{-1}(x) = \ln\left(\frac{x}{1 -x}\right)$$
+\begin{frame}{Log-cumulative-odds}
+	Still, this is not enough.
+	We need to apply the \textbf{logit function onto the CDF}:
 
-% 	onde $\ln$ é a função do log natural.
-% 	\vfill
-% 	A logit é o inverso da transformação logística: ela pega qualquer valor
-% 	entre 0 e 1 (e.g. uma probabilidade) e transforma em um número real que
-% 	chamamos de \textit{log-odds}\footnote{já vimos isso em regressão logística.}
-% 	(log da chance).
-% 	\vfill
-% 	Como a transformação atua no FDC, chamados de \textbf{\textit{log-odds}} do FDC
-% 	ou \textbf{\textit{log-cumulative-odds}} (log da chance cumulativa).
-% \end{frame}
+	$$\mathrm{logit}(x) = \mathrm{logistic}^{-1}(x) = \ln\left(\frac{x}{1 -x}\right)$$
 
-% \begin{frame}{$K-1$ Constantes}
-% 	O que fazemos com essa tal de \textbf{\textit{log-cumulative-odds}}?
-% 	\vfill
-% 	Nos permite construir \textbf{diferentes constantes para os possíveis valores
-% 		da nossa variável ordinal dependente}.
-% 	Criamos uma \textbf{constante única para cada resultado $k \in K$}.
-% 	\vfill
-% 	Na verdade é $k \in K-1$. Note que o valor máximo de $Y$ sempre será $1$.
-% 	O que se traduz em uma \textit{log-cumulative-odds} com valor $\infty$,
-% 	pois $p=1$:
+	where $\log$ is the natural log function.
+	\vfill
+	The logit function is the inverse of the logistic function:
+	it takes as input any value between $0$ and $1$ (e.g. a probability)
+	and outputs an unconstrained real number which we call
+	\textbf{logodds}\footnote{we already seen it in logistic regression.}.
+	\vfill
+	As the transformation is performed onto the CDF,
+	we call the result as the CDF logodds or \textbf{log-cumulative-odds}.
+\end{frame}
 
-% 	$$\ln \frac{p}{1-p} = \ln \frac{1}{1-1} = \ln 0 = \infty$$
+\begin{frame}{$K-1$ Intercepts}
+	What do we do with this \textbf{log-cumulative-odds}?
+	\vfill
+	It allows us to construct \textbf{different intercepts for all possible
+		values of the ordinal dependent variable}.
+	We create an \textbf{unique intercept for $k \in K$}.
+	\vfill
+	Actually is $k \in K-1$.
+	Notice that the maximum value of the CDF of $Y$ will always be $1$.
+	Which translates to a log-cumulative-odds of $\infty$,
+	since $p=1$:
 
-% 	Portanto, precisamos apenas de \textbf{$K-1$ constantes para $K$ possíveis valores
-% 		que $Y$ pode tomar}.
-% \end{frame}
+	$$\ln \frac{p}{1-p} = \ln \frac{1}{1-1} = \ln 0 = \infty$$
 
-% \begin{frame}{Violação da Equidistância}
-% 	Como cada constante implica em um valor diferente de FDC para cada $k \in K$,
-% 	podemos \textbf{violar o pressuposto da equidistância} que é ausente em quase
-% 	todas as variáveis ordinais.
-% \end{frame}
+	Hence, we need only \textbf{$K-1$ intercepts for all $K$ possible
+		values that $Y$ can take}.
+\end{frame}
 
-% \begin{frame}{Cut Points}
-% 	Cada constante implica em uma \textit{log-cumulative-odds} para cada $k \in K$.
-% 	Precisamos também \textbf{desfazer a natureza cumulativa das $K-1$ constantes}.
-% 	Fazemos isso primeiramente \textbf{convertendo uma \textit{log-cumulative-odds}
-% 		de volta para uma probabilidade válida com a função logística}:
+\begin{frame}{Violation of the Equidistant Assumption}
+	Since each intercept implies a different CDF value for each $k \in K$,
+	we can safely \textbf{violate the equidistant assumption} which is
+	not valid in almost all ordinal variables.
+\end{frame}
 
-% 	$$\mathrm{logit}^{-1}(x) = \mathrm{logistic}(x) = \frac{1}{1 + e^{-x}}$$
+\begin{frame}{Cut Points}
+	Each intercept implies in a log-cumulative-odds for each $k \in K$;
+	We need also to \textbf{undo the cumulative nature of the $K-1$ intercepts}.
+	Firstly, we \textbf{convert the log-cumulative-odds back to a
+		valid probability with the logistic function}:
 
-% 	Então finalmente removemos a natureza cumulativa da FDC ao
-% 	\textbf{subtrairmos cada um dos $k$ \textit{cut points} (pontos de corte)
-% 		do seu \textit{cut point} prévio $k-1$}:
+	$$\mathrm{logit}^{-1}(x) = \mathrm{logistic}(x) = \frac{1}{1 + e^{-x}}$$
 
-% 	$$P(Y=k) = P(Y \leq k) - P(Y \leq k-1)$$
-% \end{frame}
+	Then, finally, we remove the cumulative nature of the CDF by
+	\textbf{subtracting every one of the $k$ cut points by the
+		$k-1$ cut point}:
+	$$P(Y=k) = P(Y \leq k) - P(Y \leq k-1)$$
+\end{frame}
 
-% \begin{frame}{Exemplo - Histograma\footnote{também chamado de \textbf{f}unção de \textbf{d}istribuição de \textbf{p}robabilidade (FDP).} de uma Variável Ordinal}
-% 	\centering
-% 	\begin{tikzpicture}[ybar]
-% 		\begin{axis}[
-% 				nodes near coords={\pgfmathprintnumber[fixed,precision=3]{\pgfplotspointmeta}},
-% 				xlabel=Valores,
-% 				ylabel=FDP,
-% 				xtick={1,2,3,4,5,6},
-% 				ytick={0.1,0.2,0.3,0.4},
-% 				ymax=0.45]
-% 			\addplot [draw=blue, fill=blue] coordinates {
-% 					(1, 0.10)
-% 					(2, 0.15)
-% 					(3, 0.33)
-% 					(4, 0.25)
-% 					(5, 0.10)
-% 					(6, 0.07)
-% 				};
-% 		\end{axis}
-% 	\end{tikzpicture}
-% \end{frame}
+\begin{frame}{Example - Probability Mass Function of an Ordinal Variable}
+	\centering
+	\begin{tikzpicture}[ybar]
+		\begin{axis}[
+				nodes near coords={\pgfmathprintnumber[fixed,precision=3]{\pgfplotspointmeta}},
+				xlabel=values,
+				ylabel=PMF,
+				xtick={1,2,3,4,5,6},
+				ytick={0.1,0.2,0.3,0.4},
+				ymax=0.45]
+			\addplot [draw=blue, fill=blue] coordinates {
+					(1, 0.10)
+					(2, 0.15)
+					(3, 0.33)
+					(4, 0.25)
+					(5, 0.10)
+					(6, 0.07)
+				};
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
 
-% \begin{frame}{Exemplo - FDC versus \textit{Log-cumulative-odds}}
-% 	\begin{columns}
-% 		\begin{column}{0.5\textwidth}
-% 			\centering
-% 			\begin{tikzpicture}[
-% 					ybar,
-% 					scale=0.55]
-% 				\begin{axis}[
-% 						nodes near coords={\pgfmathprintnumber[fixed,precision=3]{\pgfplotspointmeta}},
-% 						xlabel=Valores,
-% 						ylabel=FDC,
-% 						xtick={1,2,3,4,5,6},
-% 						ytick={0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0},
-% 						ymax=1.2]
-% 					\addplot [draw=blue, fill=blue] coordinates {
-% 							(1, 0.10)
-% 							(2, 0.25)
-% 							(3, 0.58)
-% 							(4, 0.83)
-% 							(5, 0.93)
-% 							(6, 1.00)
-% 						};
-% 				\end{axis}
-% 			\end{tikzpicture}
-% 		\end{column}
-% 		\begin{column}{0.5\textwidth}
-% 			\centering
-% 			\begin{tikzpicture}[
-% 					ybar,
-% 					scale=0.55]
-% 				\begin{axis}[
-% 						nodes near coords={\pgfmathprintnumber[fixed,precision=3]{\pgfplotspointmeta}},
-% 						xlabel=Valores,
-% 						ylabel=Log-cumulative-odds,
-% 						xtick={1,2,3,4,5,6},
-% 						ytick={-2,-1,0,1,2},
-% 						ymax=3.4,
-% 						ymin=-3]
-% 					\addplot [draw=blue, fill=blue] coordinates {
-% 							(1, -2.19722)
-% 							(2, -1.09861)
-% 							(3, 0.322773)
-% 							(4, 1.58563)
-% 							(5, 2.58669)
-% 							(6, 10.0)
-% 						};
-% 				\end{axis}
-% 			\end{tikzpicture}
-% 		\end{column}
-% 	\end{columns}
-% \end{frame}
+\begin{frame}{Example - CDF versus Log-cumulative-odds}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\begin{tikzpicture}[
+					ybar,
+					scale=0.55]
+				\begin{axis}[
+						nodes near coords={\pgfmathprintnumber[fixed,precision=3]{\pgfplotspointmeta}},
+						xlabel=values,
+						ylabel=CDF,
+						xtick={1,2,3,4,5,6},
+						ytick={0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0},
+						ymax=1.2]
+					\addplot [draw=blue, fill=blue] coordinates {
+							(1, 0.10)
+							(2, 0.25)
+							(3, 0.58)
+							(4, 0.83)
+							(5, 0.93)
+							(6, 1.00)
+						};
+				\end{axis}
+			\end{tikzpicture}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\begin{tikzpicture}[
+					ybar,
+					scale=0.55]
+				\begin{axis}[
+						nodes near coords={\pgfmathprintnumber[fixed,precision=3]{\pgfplotspointmeta}},
+						xlabel=values,
+						ylabel=log-cumulative-odds,
+						xtick={1,2,3,4,5,6},
+						ytick={-2,-1,0,1,2},
+						ymax=3.4,
+						ymin=-3]
+					\addplot [draw=blue, fill=blue] coordinates {
+							(1, -2.19722)
+							(2, -1.09861)
+							(3, 0.322773)
+							(4, 1.58563)
+							(5, 2.58669)
+							(6, 10.0)
+						};
+				\end{axis}
+			\end{tikzpicture}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \subsection{Adicionando Coeficientes $\beta$}
-% \begin{frame}{Adicionando Coeficientes $\beta$}
-% 	Com o pressuposto da equidistância resolvido com as $K-1$ constantes
-% 	podemos adicionar coeficientes como efeitos de variáveis independentes
-% 	na nossa regressão ordinal.
-% \end{frame}
+\subsection{Adding Coefficients $\boldsymbol{\beta}$}
+\begin{frame}{Adding Coefficients $\boldsymbol{\beta}$}
+	With the equidistant assumption solved with $K-1$ intercepts,
+	we can add coefficients to represent the independent variable's
+	effects into our ordinal regression model.
+\end{frame}
 
-% \begin{frame}{Mais \textit{Log-cumulative-odds}}
-% 	Transformamos todas as constantes em \textit{log-cumulative-odds} para
-% 	que possamos adicionar efeitos (coeficientes multiplicando uma variável
-% 	independente) à taxas basais (constantes).
-% 	\vfill
-% 	Para cada $k \in K-1$, nos calculamos:
+\begin{frame}{More Log-cumulative-odds}
+	We've transformed all intercepts into log-cumulative-odds so that we
+	can add effects as weighted sums of the independent variables to our
+	basal rates (intercepts).
+	\vfill
+	For every $k \in K-1$, we calculate:
 
-% 	$$\phi_k = \alpha_k + \beta_i x_i$$
+	$$\phi_k = \alpha_k + \beta_i x_i$$
 
-% 	onde $\alpha_k$ é a \textit{log-cumulative-odds} para as $k \in K-1$ constantes,
-% 	$\beta_i$ é o coeficiente para a $i$nésima variável independente $x$.
-% 	\vfill
-% 	Por fim, $\phi_k$ representa o preditor linear para a $k$nésima constante.
-% \end{frame}
+	where $\alpha_k$ is the log-cumulative-odds for the $k \in K-1$ intercepts,
+	$\beta_i$ is the coefficient for the $i$th independent variable $x_i$.
+	\vfill
+	Lastly, $\phi_k$ represents the linear predictor for the $k$th intercept.
+\end{frame}
 
-% \begin{frame}{Notação de Matriz}
-% 	Tudo isso fica muito mais elegante e computacionalmente eficiente se
-% 	colocarmos em notação de matriz e vetor:
+\begin{frame}{Matrix Notation}
+	This can become more elegant and computationally efficient if we use
+	matrix/vector notation:
 
-% 	$$\boldsymbol{\phi} = \boldsymbol{\alpha} + \mathbf{X} \cdot \boldsymbol{\beta}$$
+	$$\boldsymbol{\phi} = \boldsymbol{\alpha} + \mathbf{X} \cdot \boldsymbol{\beta}$$
 
-% 	onde $\boldsymbol{\phi}$, $\boldsymbol{\alpha}$ e $\boldsymbol{\beta}$\footnote{note que tanto os coeficientes quanto as constantes terão que ser interpretados em chances igual a regressão logística.}
-% 	são vetores e $\mathbf{X}$ é a matriz de dados em que cada linha é uma
-% 	observação e cada coluna uma variável independente.
-% \end{frame}
+	where $\boldsymbol{\phi}$, $\boldsymbol{\alpha}$ e
+	$\boldsymbol{\beta}$\footnote{
+		note that both the coefficients and intercepts will have to be
+		interpret as odds, like we did in logistic regression.}
+	are vectors and $\mathbf{X}$ is the data matrix,
+	in which every line is an observation and every column an independent variable.
+\end{frame}
 
-% \subsection{Modelo Completo}
-% \begin{frame}{Modelo Completo}
-% 	\footnotesize
-% 	$$
-% 		\begin{aligned}
-% 			\mathbf{y}          & \sim \text{Categórica}(\mathbf{p})                                                          \\
-% 			\mathbf{p}          & = \mathrm{logistica}(\boldsymbol{\phi})                                                     \\
-% 			\boldsymbol{\phi}   & = \boldsymbol{\alpha} + \mathbf{X} \cdot \boldsymbol{\beta}                                 \\
-% 			\alpha_1            & = \mathrm{logit}(\mathrm{FDC}(y_1))                                                         \\
-% 			\alpha_k            & = \mathrm{logit}(\mathrm{FDC}(y_k) - \mathrm{FDC}(y_{k-1})) \mathrm{~para~} 2 \leq k \leq K \\
-% 			\alpha_{K}          & = \mathrm{logit}(1 - \mathrm{FDC}(y_{K-1}))                                                 \\
-% 			\boldsymbol{\alpha} & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                               \\
-% 			\boldsymbol{\beta}  & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
-% 		\end{aligned}
-% 	$$
-% 	\begin{vfilleditems}
-% 		\item \footnotesize  $\mathbf{y}$: variável dependente ordinal discreta
-% 		\item \footnotesize  $\mathbf{p}$: vetor de probabilidade de tamanho $K$
-% 		\item \footnotesize  $K$: número de valores possíveis que $\mathbf{y}$ pode tomar, i.e. número de valores ordenados discretos
-% 		\item \footnotesize  $\boldsymbol{\phi}$: \textit{log-cumulative-odds}, i.e. os \textit{cut points} considerando as constantes e os efeitos das variáveis independentes
-% 		\item \footnotesize  $\alpha_k$: constante em \textit{log-cumulative-odds} para cada $k \in K-1$
-% 		\item \footnotesize  $\mathbf{X}$: matriz de dados das variáveis independentes
-% 		\item \footnotesize  $\boldsymbol{\beta}$: vetor de coeficientes do mesmo tamanho do número de colunas em $\mathbf{X}$
-% 	\end{vfilleditems}
-% \end{frame}
-
-% \subsection{Regressão Ordinal no \texttt{brms}}
-% \begin{frame}[fragile]{Regressão Ordinal no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
-% 	Usamos a função \texttt{brm()} com os argumentos \texttt{family = cumulative(link = "logit")}:
-% 	\vfill
-% 	\begin{lstlisting}[basicstyle=\small]
-%     modelo_ordinal <- brm(
-%     y ~ ...,
-%     data = df,
-%     family = @cumulative(link = "logit")@,
-%     prior = c(
-%         set_prior("...", class = "b", coef = "..."),
-%                 ...
-%         set_prior("...", class = "b", coef = "intercept")
-%         )
-%     )
-%     \end{lstlisting}
-% \end{frame}
+\subsection{Ordinal Regression Specification}
+\begin{frame}{Ordinal Regression Specification}
+	\footnotesize
+	$$
+		\begin{aligned}
+			\mathbf{y}          & \sim \text{Categorical}(\mathbf{p})                                                \\
+			\mathbf{p}          & = \text{logistic}(\boldsymbol{\phi})                                               \\
+			\boldsymbol{\phi}   & = \boldsymbol{\alpha} + \mathbf{X} \cdot \boldsymbol{\beta}                        \\
+			\alpha_1            & = \text{logit}(\text{CDF}(y_1))                                                    \\
+			\alpha_k            & = \text{logit}(\text{CDF}(y_k) - \text{CDF}(y_{k-1})) \text{ for } 2 \leq k \leq K \\
+			\alpha_{K}          & = \text{logit}(1 - \text{CDF}(y_{K-1}))                                            \\
+			\boldsymbol{\alpha} & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                      \\
+			\boldsymbol{\beta}  & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
+		\end{aligned}
+	$$
+	\begin{vfilleditems}
+		\footnotesize{
+			\item $\mathbf{y}$ -- ordinal discrete dependent variable.
+			\item $\mathbf{p}$ -- probability vector of size $K$.
+			\item $K$: number of possible values that $\mathbf{y}$ can take, i.e. number of ordered discrete values.
+			\item $\boldsymbol{\phi}$: log-cumulative-odds, i.e. the cut points considering the intercepts and the weighted sum of the independent variables.
+			\item $\alpha_k$: intercept in log-cumulative-odds for every $k \in K-1$.
+			\item $\mathbf{X}$: data matrix of the independent variables.
+			\item $\boldsymbol{\beta}$: coefficient vector with size the same as the number of columns of $\mathbf{X}$.
+		}
+	\end{vfilleditems}
+\end{frame}
