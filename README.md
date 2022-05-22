@@ -37,14 +37,16 @@ Here is a brief table of contents
 7. **Bayesian Ordinal Regression**
 8. **Bayesian Regression with Count Data: Poisson Regression**
 9. **Robust Bayesian Regression**
-10. **Multilevel Models (a.k.a. Hierarchical Models)**
-11. **Markov Chain Monte Carlo (MCMC)**
-12. **Model Comparison**
+10. **Hierarchical Models**
+11. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
+12. **Hierarchical Models: Centered versus Non-Centered Parametrization**
+13. **Model Comparison: Cross-Validation and Other Metrics**
+14. **ODE Solvers inside a MCMC Sampler**
 
 ## Probabilistic Programming Languages (PPLs)
 
 Along with slides for the content, this repository also holds `Stan` code and also `Turing.jl` code for all models.
-`Stan` and `Turing.jl` represents, respectively, the present and future of [probabilistic programming]((https://en.wikipedia.org/wiki/Probabilistic_programming) languages.
+`Stan` and `Turing.jl` represents, respectively, the present and future of [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) languages.
 
 ### `Stan`
 
