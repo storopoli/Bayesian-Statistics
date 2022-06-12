@@ -73,8 +73,8 @@
 \end{frame}
 
 \subsection{Overdispersion Versions of Probabilistic Models}
-\subsubsection{Student's $t$ instead of the Normal}
-\begin{frame}{Student's $t$ instead of the Normal}
+\subsubsection{Student's $t$ instead of Normal}
+\begin{frame}{Student's $t$ instead of Normal}
 	Student's $t$ distribution has \textbf{wider\footnote{or ``fatter''.} tails}
 	than the Normal distribution.
 	\vfill
@@ -88,7 +88,7 @@
 	as a likelihood function.
 \end{frame}
 
-\begin{frame}{Student's $t$ instead of the Normal}
+\begin{frame}{Student's $t$ instead of Normal}
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}[every axis plot, line width=2pt,
@@ -106,7 +106,7 @@
 	\end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Student's $t$ instead of the Normal}
+\begin{frame}{Student's $t$ instead of Normal}
 	By using a Student's $t$ distribution instead of the Normal distribution
 	as likelihood functions,
 	the model's error $\sigma$ does \textit{not} follow a Normal distribution,
@@ -128,7 +128,7 @@
 	A heavy-tailed, positive-only prior is advised.
 \end{frame}
 
-\subsubsection{Beta-Binomial instead of the Binomial}
+\subsubsection{Beta-Binomial instead of Binomial}
 \begin{frame}{Beta-Binomial instead of the Binomial}
 	The binomial distribution has a practical limitation that we only have
 	one free parameter to estimate\footnote{since $n$ already comes from data.} ($p$).
@@ -141,7 +141,7 @@
 	making it \textbf{robust against overdispersion}.
 \end{frame}
 
-\begin{frame}{Beta-Binomial instead of the Binomial}
+\begin{frame}{Beta-Binomial instead of Binomial}
 	The \textbf{beta-binomial distribution} is a binomial distribution, where
 	the probability of success $p$ is parameterized as a $\text{Beta}(\alpha, \beta)$.
 	\vfill
@@ -152,11 +152,11 @@
 	Values of $\beta \geq 1$ make the beta-binomial behave the same as a binomial.
 \end{frame}
 
-\begin{frame}{Beta-Binomial instead of the Binomial}
+\begin{frame}{Beta-Binomial instead of Binomial}
 	$$
 		\begin{aligned}
 			\boldsymbol{y}     & \sim \text{Beta-Binomial}(n, p, \phi)                                     \\
-			p                  & \sim \text{Logística/Probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})     \\
+			p                  & \sim \text{Logistic/Probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})     \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}}) \\
 			\phi               & \sim \text{Exponential}(1)
@@ -169,18 +169,16 @@
 	A heavy-tailed, positive-only prior is advised.
 \end{frame}
 
-\subsubsection{Student's $t$ instead of the Binomial}
-\begin{frame}{Student's $t$ instead of the Binomial}
+\subsubsection{Student's $t$ instead Binomial}
+\begin{frame}{Student's $t$ instead Binomial}
 	\small
 	Also known as Robit\footnote{there is a great discussion between
 		Gelman, Vehtari and Kurz at
 		\href{https://discourse.mc-stan.org/t/robit-regression-not-robust/21245/}{
-			\texttt{Stan}'s Discourse}} \parencite{gelman2013bayesian, gelman2020regression}.
+			\texttt{Stan}'s Discourse}.} \parencite{gelman2013bayesian, gelman2020regression}.
 	The ideia is to make the logistic regression robust by using a
 	\textbf{latent variable $z$} as the linear predictor.
 	$z$'s errors, $\epsilon$, are distributed as a Student's $t$ distribution:
-	A ideia é "robustizar"~ a regressão logística com uma formulação usando dados
-	latentes $z$ e dar uma uma distribução $t$ de Student aos erros latentes $\epsilon$:
 	$$
 		\begin{aligned}
 			y_i        & = \begin{cases} 0 & \text{se } z_i < 0 \\ 1 & \text{se }\ z_i > 0 \end{cases} \\
@@ -190,117 +188,81 @@
 		\end{aligned}
 	$$
 	\footnotesize
-	O grande segredo aqui é usar uma distribuição Gamma como \textit{priori}
-	dos graus de liberdade $\nu$ truncada para valor mínimo de $\nu = 2$. Outra opção
-	é literalmente especificar $\nu=4$.
+	Here we are using the gamma distribution as a truncated Student's $t$
+	distribution for the degrees of freedom parameter $\nu \geq 2$.
+	Another option would be to fix $\nu = 4$.
 \end{frame}
 
-% \begin{frame}[fragile]{\href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} -- $t$ de Student ao invés da Binomial}
-% 	\begin{lstlisting}[basicstyle=\footnotesize]
-% stan_inv_robit <- "
-% real inv_robit(real y, real nu) {
-%     return(student_t_cdf(y, nu, 0, sqrt((nu - 2) / nu)));
-%     }"
-% stanvar_inv_robit <- stanvar(scode = stan_inv_robit, block = "functions")
-% robit_formula <-
-% bf(y_c | trials(1) ~ inv_robit(eta, nu),
-%     nlf(eta ~ b0 + b1 * x),
-%     b0 + b1 ~ 1,
-%     nu ~ 1,
-%     nl = TRUE)
-% brm(formula = robit_formula,
-%     family = @binomial("identity")@,
-%     formula = robit_formula,
-%     prior = c(prior(normal(0, 1), nlpar = b0),
-%     prior(normal(0, 1), nlpar = b1),
-%     prior(gamma(2, 0.1), nlpar = nu, @lb = 2@)),
-%     stanvars = stanvar_inv_robit)
-%     \end{lstlisting}
-% \end{frame}
+\subsubsection{Negative Binomial instead of Poisson}
+\begin{frame}{Negative Binomial instead of Poisson}
+	This is the overdispersion example.
+	The Poisson distribution uses a \textbf{single parameter for both its mean and variance}.
+	\vfill
+	Hence, if you find overdispersion, probably you'll need a robust alternative to Poisson.
+	This is where the \textbf{negative binomial}, with an extra parameter $\phi$,
+	that makes it \textbf{robust to overdispersion}.
+	\vfill
+	$\phi$ controls the probability of success $p$,
+	and we generally use a gamma distribution as its prior.
+	$\phi$ is also known as a ``reciprocal dispersion'' parameter.
+\end{frame}
 
-% \subsubsection{Binomial Negativa ao invés de Poisson}
-% \begin{frame}{Binomial Negativa ao invés de Poisson}
-% 	Esse é o exemplo que falamos sobre superdispersão.
-% 	A distribuição de Poisson possui o mesmo valor como média e variância.
-% 	\vfill
-% 	Então, se você encontrar superdispersão, provavelmente precisará de uma alternativa
-% 	robusta à Poisson. Aqui que entra a binomial negativa que "robustiza"~
-% 	a Poisson com um parâmetro extra $\phi$.
-% 	\vfill
-% 	Esse parâmetro é a probabilidade de sucessos $p$ da distribuição binomial negativa
-% 	e geralmente usamos uma distribuição gamma como \textit{priori} para que $\phi$
-% 	cumpra a função de um parâmetro de~"dispersão recíproca".
-% \end{frame}
+\begin{frame}{Negative Binomial instead of Poisson}
+	$$
+		\begin{aligned}
+			\boldsymbol{y}     & \sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right) \\
+			\phi               & \sim \text{Gamma}(0.01, 0.01)                                                                   \\
+			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                   \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
+		\end{aligned}
+	$$
+	\vfill
+	Here we also give a heavy-tailed, positive-only prior to $\phi$.
+	Something like the $\text{Gamma}(0.01, 0.01)$ works.
+\end{frame}
 
-% \begin{frame}{Binomial Negativa ao invés de Poisson}
-% 	$$
-% 		\begin{aligned}
-% 			\boldsymbol{y}     & \sim \text{Binomial Negativa} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right) \\
-% 			\phi               & \sim \text{Gamma}(0.01, 0.01)                                                                   \\
-% 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                   \\
-% 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
-% 		\end{aligned}
-% 	$$
-% 	A ideia é dar uma \textit{priori} cauda longa para $\phi$, algo como
-% 	$\text{Gamma}(0.01, 0.01)$ funciona.
-% \end{frame}
+\subsubsection{Negative Binomial Mixture instead of Poisson}
+\begin{frame}{Negative Binomial Mixture instead of Poisson}
+	Even using a negative binomial likelihood,
+	if you encounter acute overdispersion,
+	specially when there is a lot of zeros in your data
+	(zero-inflated),
+	your model can still perform a bad fit to the data.
+	\vfill
+	Another suggestion is to use a mixture of negative binomial
+	\parencite{mcelreath2020statistical}.
+\end{frame}
 
-% \begin{frame}[fragile]{\href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} -- Binomial Negativa ao invés de Poisson}
-% 	\begin{lstlisting}
-%     brm(...
-%       family = @negbinomial(link = "log")@
-%     )
-%     \end{lstlisting}
-% \end{frame}
+\begin{frame}{Negative Binomial Mixture instead of Poisson}
+	Here, $S_i$ is a dummy variable,
+	taking value $1$ if the $i$th observation has a value $\neq 0$.
+	$S_i$ can be modeled using logistic regression:
+	$$
+		\begin{aligned}
+			\boldsymbol{y}
+			                    & \begin{cases}
+				                      = 0,                                                                                             & \text{ if } S_i = 0 \\
+				                      \sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right), & \text{ if } S_i = 1
+			                      \end{cases} \\
+			P(S_i = 1)          & = \text{Logistic/Logit}(\mathbf{X} \boldsymbol{\gamma})                                                               \\
+			\boldsymbol{\gamma} & \sim \text{Beta}(1, 1)
+		\end{aligned}
+	$$
+	\vfill
+	$\boldsymbol{\gamma}$ is a new vector of coefficients which we give uniform priors of $\text{Beta} (1, 1)$.
+\end{frame}
 
-% \subsubsection{Mistura de Binomial Negativa ao invés de Poisson}
-% \begin{frame}{Mistura de Binomial Negativa ao invés de Poisson}
-% 	\small
-% 	Mesmo usando uma binomial negativa, caso a superdispersão seja muito acentuada,
-% 	em especial quando temos muita \textbf{inflação de zeros} (\textit{zero-inflated}),
-% 	o seu modelo ainda pode resultar em patologias.
-% 	Uma outra sugestão é usar uma mistura de binomial negativa \parencite{mcelreath2020statistical}.
-% 	Aqui, $S_i$ é uma variável binária (\textit{dummy})
-% 	indicando se a observação $i$ tem valor diferente de zero ou não.
-% 	$S_i$ pode ser modelado usando uma regressão logística:
-% 	$$
-% 		\begin{aligned}
-% 			\boldsymbol{y}
-% 			                    & \begin{cases}
-% 				                      = 0,                                                                                             & \text{ se } S_i = 0 \\
-% 				                      \sim \text{Binomial Negativa} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right), & \text{ se } S_i = 1
-% 			                      \end{cases} \\
-% 			P(S_i = 1)          & = \text{Logística/Logit}(\mathbf{X} \boldsymbol{\gamma})                                                               \\
-% 			\boldsymbol{\gamma} & \sim \text{Beta}(1, 1)
-% 		\end{aligned}
-% 	$$
-% 	\small
-% 	$\boldsymbol{\gamma}$ é um novo conjunto de coeficientes para essa parte do modelo com
-% 	\textit{prioris} uniformes de $\text{Beta} (1, 1)$.
-% \end{frame}
-
-% \begin{frame}[fragile]{\href{https://paul-buerkner.github.io/brms/}{\texttt{brms}} -- Mistura de Binomial Negativa ao invés de Poisson}
-% 	\begin{lstlisting}
-%     brm(...
-%       family = @zero_inflated_negbinomial(link = "log")@,
-%       prior = c(
-%           ...
-%         @prior(gamma(0.01, 0.01), class = shape)@,
-%         @prior(beta(1, 1), class = zi)@
-%     ))
-%     \end{lstlisting}
-% \end{frame}
-
-% \subsection{Por quê usar Modelos Não-Robustos?}
-% \begin{frame}{Por quê usar Modelos Não-Robustos?}
-% 	O \textbf{teorema do limite central} nos diz que a distribuição \textbf{normal}
-% 	é uma modelo apropriado para dados que são formados como a \textbf{soma de um grande número
-% 		de componentes independentes}.
-% 	\vfill
-% 	Mesmo quando não estão naturalmente implícitos na estrutura de um problema,
-% 	os \textbf{modelos simples não-robustos são computacionalmente convenientes}.
-% 	\vfill
-% 	Claro o que deve sempre guiar a sua escolha de modelo, além da natureza específica
-% 	do processo de geração de dados do fenômeno que você está estudando, é
-% 	a \textbf{verificação preditiva da posterior}.
-% \end{frame}
+\subsection{Why Use Non-Robust Models?}
+\begin{frame}{Why Use Non-Robust Models?}
+	The \textbf{central limit theorem} tells us that the \textbf{normal distribution}
+	is an appropriate model for data that arises as a
+	\textbf{sum of independent components}.
+	\vfill
+	Even when they are naturally not implicit in a phenomena structure,
+	\textbf{simpler non-robust models are computational efficient}.
+	\vfill
+	Of course, you must always guide the model choice in a
+	\textbf{principled manner},
+	taking into account the underlying phenomena data generating process.
+	And make sure to make \textbf{posterior predictive checks}.
+\end{frame}
