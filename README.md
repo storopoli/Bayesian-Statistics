@@ -39,7 +39,7 @@ Here is a brief table of contents
 9. **Robust Bayesian Regression**
 10. **Hierarchical Models**
 11. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
-12. **Hierarchical Models: Centered versus Non-Centered Parametrization**
+12. **Hierarchical Models: Centered versus Non-Centered Parameterization**
 13. **Model Comparison: Cross-Validation and Other Metrics**
 14. **ODE Solvers inside a MCMC Sampler**
 
