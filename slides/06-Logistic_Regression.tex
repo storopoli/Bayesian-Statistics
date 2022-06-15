@@ -43,7 +43,7 @@
 	it makes a prediction by simply computing a weighted sum of the
 	independent variables $\mathbf{X}$ using the estimated coefficients $\boldsymbol{\beta}$,
 	along with a constant term $\alpha$.
-	However, instead of outputting a continuous value $\boldsymbol{y}$,
+	However, instead of outputting a continuous value $\mathbf{y}$,
 	it returns the \textbf{logistic function} of this value:
 	$$
 		\text{logistic}(x) = \frac{1}{1 + e^{-x}}
@@ -129,7 +129,7 @@
 		\item \small $\hat{p} = \text{logistic}(\text{linear}) = \frac{1}{1 + e^{-\operatorname{linear}}}$ --
 		probability of an observation taking value $1$.
 		\item \small $\hat{y} = \begin{cases} 0 & \text { if } \hat{p} < 0.5 \\ 1 & \text { if } \hat{p} \geq 0.5 \end{cases}$ --
-		$\boldsymbol{y}$'s predicted binary value.
+		$\mathbf{y}$'s predicted binary value.
 	\end{vfilleditems}
 \end{frame}
 
@@ -152,7 +152,7 @@
 	\small
 	$$
 		\begin{aligned}
-			\boldsymbol{y}     & \sim \text{Bernoulli}\left( p\right)                                      \\
+			\mathbf{y}     & \sim \text{Bernoulli}\left( p\right)                                      \\
 			p                  & \sim \text{logistic/logit}(\alpha +  \mathbf{X} \boldsymbol{\beta})       \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
@@ -160,8 +160,8 @@
 	$$
 	where:
 	\begin{vfilleditems}
-		\item \small $\boldsymbol{y}$ - \textbf{dependent binary variable}.
-		\item \small $p$ - probability of $\boldsymbol{y}$ taking value of $1$ --
+		\item \small $\mathbf{y}$ - \textbf{dependent binary variable}.
+		\item \small $p$ - probability of $\mathbf{y}$ taking value of $1$ --
 		success in an independent Bernoulli trial.
 		\item \small $\text{logistic/logit}$ -- logistic or logit function.
 		\item \small $\alpha$ -- intercept (also called constant).
@@ -175,7 +175,7 @@
 	\small
 	$$
 		\begin{aligned}
-			\boldsymbol{y}     & \sim \text{Binomial}\left(n,  p\right)                                    \\
+			\mathbf{y}     & \sim \text{Binomial}\left(n,  p\right)                                    \\
 			p                  & \sim \text{logistic/probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})      \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
@@ -183,9 +183,9 @@
 	$$
 	where:
 	\begin{vfilleditems}
-		\item \small $\boldsymbol{y}$ - \textbf{discrete positive variable} -- $k$ successes of independent Bernoulli trials.
+		\item \small $\mathbf{y}$ - \textbf{discrete positive variable} -- $k$ successes of independent Bernoulli trials.
 		\item \small $n$ - número de experimentos Bernoulli independentes
-		\item \small $p$ - probability of $\boldsymbol{y}$ taking value of $1$ --
+		\item \small $p$ - probability of $\mathbf{y}$ taking value of $1$ --
 		success in an independent Bernoulli trial.
 		\item \small $\text{logistic/logit}$ -- logistic or logit function.
 		\item \small $\alpha$ -- intercept (also called constant).
@@ -200,7 +200,7 @@
 		model's parameters of interest} ($\alpha$ and $\boldsymbol{\beta}$)
 	by computing the full posterior distribution of:
 	$$
-		P(\boldsymbol{\theta} \mid \boldsymbol{y}) = P(\alpha, \boldsymbol{\beta} \mid \boldsymbol{y})
+		P(\boldsymbol{\theta} \mid \mathbf{y}) = P(\alpha, \boldsymbol{\beta} \mid \mathbf{y})
 	$$
 \end{frame}
 
@@ -269,7 +269,7 @@
 	Hence, the coefficients of a logistic regression are expressed in logodds,
 	in which $0$ is the neutral element,
 	and any number above or below it increases or decreases, respectively,
-	the changes of obtaining a ``success'' in $\boldsymbol{y}$.
+	the changes of obtaining a ``success'' in $\mathbf{y}$.
 	To have a more intuitive interpretation (similar to the betting houses),
 	we need to \textbf{convert the logodds into chances} by undoing the $\log function$.
 	We need to perform an \textbf{exponentiation} of $\alpha$ and $\boldsymbol{\beta}$
