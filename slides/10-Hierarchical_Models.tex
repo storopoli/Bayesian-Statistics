@@ -481,13 +481,13 @@
 	which is a prior's prior:
 	$$
 		\begin{aligned}
-			\boldsymbol{y}      & \sim \text{Normal}(10, \boldsymbol{\theta}) \\
+			\mathbf{y}          & \sim \text{Normal}(10, \boldsymbol{\theta}) \\
 			\boldsymbol{\theta} & \sim \text{Normal}(0, \phi)                 \\
 			\phi                & \sim \text{Exponential(1)}
 		\end{aligned}
 	$$
-	Here $\boldsymbol{y}$ is a variable of interest that belongs to distinct groups.
-	$\boldsymbol{\theta}$, a prior for $\boldsymbol{y}$,
+	Here $\mathbf{y}$ is a variable of interest that belongs to distinct groups.
+	$\boldsymbol{\theta}$, a prior for $\mathbf{y}$,
 	is a vector of group-leve parameters with their own prior
 	(which becomes a hiperprior) $\phi$.
 \end{frame}
@@ -500,256 +500,237 @@
 	\begin{vfilleditems}
 		\item \textbf{optimization of the likelihood function} versus \textbf{posterior approximation via MCMC}.
 		Almost always lead to convergence failure for models that are not extremely simple.
-		\item \textbf{frequentist hierarchical models do not compute $p$-values for the group-level effects}\footnote{veja a explicação \href{https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html}{aqui do Douglas Bates autor do pacote \texttt{lme4}}}.
-		or conta da contorção matemática de diversas aproximações que a estatística
-		frequentista tem que fazer o cálculo de $p$-valores de efeitos de
-		grupo possuem fortes pressupostos. O principal é que os grupos são balanceados.
-		Ou seja, os grupos são homogêneos no seu tamanho.
-		Qualquer desbalanço na composição dos grupos (um grupo com mais observações que outros) resulta em
-		$p$-valores patológicos e que não podem ser confiáveis.
+		\item \textbf{frequentist hierarchical models do not compute $p$-values for the group-level effects}\footnote{
+			see \href{https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html}
+			{Douglas Bates, creator of the \texttt{lme4} package explanation}.}.
+		This is due to the underlying assumptions of the approximations that frequentist
+		statistics has to to do in order to calculate the group-level effects $p$-values.
+		The main one being that the groups must be balanced.
+		In other words, the groups must be homogeneous in size.
+		Hence, any unbalance in group compositions results in pathological $p$-values
+		that should not be trusted.
 	\end{vfilleditems}
 \end{frame}
 
-% \begin{frame}{Abordagem Frequentista versus Abordagem Bayesiana}
-% 	Sumarizando, a abordagem \textbf{frequentista para modelos multiníveis não é robusta}
-% 	tanto no processo da \textbf{inferência} (\textbf{falhas de convergência}
-% 	da estimação de máxima verossimilhança), quanto nos \textbf{resultados} dessa
-% 	inferência (não computa $p$-valores por conta de \textbf{fortes pressupostos
-% 		que quase sempre são violados}).
-% \end{frame}
+\begin{frame}{Frequentist versus Bayesian Approaches}
+	To sum up, \textbf{frequentist approach for hierarchical models is not robust}
+	in both the \textbf{inference process}
+	(\textbf{convergence flaws} during the maximum likelihood estimation),
+	and also in the \textbf{results} from the inference process
+	(do not provide $p$-values due to
+	\textbf{strong assumptions that are almost always violated}).
+\end{frame}
 
-% \subsection{3 Abordagens de Modelos Multiníveis}
+\subsection{Approaches to Hierarchical Modeling}
+\begin{frame}{Approaches to Hierarchical Modeling}
+	\begin{vfilleditems}
+		\item \textbf{Varying-intercept} model:
+		One group-level intercept besides the population-level
+		intercept and coefficients.
+		\item \textbf{Varying-slope} model:
+		One or more group-level coefficient(s) besides the population-level
+		intercept and coefficients.
+		\item \textbf{Varying-intercept-slope} model:
+		One group-level intercept and one or more group-level coefficient(s) besides the population-level
+		intercept and coefficients.
+		\item \textbf{Correlated varying-intercept-slope} model:
+		One group-level intercept and one or more group-level coefficient(s) besides the population-level
+		intercept and coefficients.
+		Here the group-level intercept and coefficients priors
+		are \textbf{sampled from the same multivariate distribution}.
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{3 Abordagens de Modelos Multiníveis}
-% 	\begin{vfilleditems}
-% 		\item \textit{Random-intercept model}: Modelo no qual cada grupo recebe uma
-% 		constante (\textit{intercept}) diferente além da constante global e coeficientes
-% 		globais
-% 		\item \textit{Random-slope model}: Modelo no qual cada grupo recebe um coeficiente
-% 		(\textit{slope}) diferente para cada variável independente além da constante global
-% 		\item \textit{Random-intercept-slope model}: Modelo no qual cada grupo recebe tanto
-% 		uma constante (\textit{intercept}) quanto um coeficiente (\textit{slope})
-% 		diferente para cada variável independente além da constante global
-% 	\end{vfilleditems}
-% 	\small
-% 	\texttt{rstanarm} e \texttt{brms} possuem as funcionalidades completas para rodar
-% 	modelos multiníveis e a única coisa a se fazer é alterar a fórmula. Para
-% 	\texttt{rstanarm}, há uma segunda mudança também que não usamos mais a função
-% 	\texttt{stan\_glm()} mas sim a função \texttt{stan\_glmer()}. Para \texttt{brms}
-% 	não há mudança e usamos a mesma função \texttt{brm()}.
-% \end{frame}
+\begin{frame}{Mathematical Specification of Hierarchical Models}
+	We have $N$ observations organized in $J$ groups with $K$ independent variables.
+	\vfill
+	Here we insert a column filled with $1$s in the data matrix $\mathbf{X}$.
+	\vfill
+	Mathematically, this makes the column behave like an ``identity'' variable
+	(because the number $1$ in the multiplication operation $1 \cdot \beta$ is the identity element.
+	It maps $x \to x$ keeping the value of $x$ intact) and, consequently,
+	we can interpret the column's coefficient as the model's intercept.
+\end{frame}
 
-% \subsubsection{\textit{Random-intercept model}}
-% \begin{frame}[fragile]{\textit{Random-intercept model}}
-% 	A primeira abordagem é o \textit{random-intercept model} na qual especificamos
-% 	para cada grupo uma constante diferente, além da constante global. Essas constantes
-% 	são amostradas de uma \textit{hiperpriori}.
-% 	\vfill
-% 	A fórmula a ser usada segue este padrão:
-% 	\begin{lstlisting}
-%     y ~ (1 | group) + x1 + x2
-%   \end{lstlisting}
-% 	\vfill
-% 	O \texttt{(1 | group)} na fórmula sinaliza que a constante \texttt{1}
-% 	deve ser também especificada para cada um dos grupos listados nos valores
-% 	da variável \texttt{group}.
-% \end{frame}
+\begin{frame}{Mathematical Specification of Hierarchical Models}
+	Hence, we have as a data matrix:
+	$$
+		\mathbf{X} =
+		\begin{bmatrix}
+			1      & x_{11} & x_{12} & \cdots & x_{1K} \\
+			1      & x_{21} & x_{22} & \cdots & x_{2K} \\
+			\vdots & \cdots & \cdots & \ddots & \vdots \\
+			1      & x_{N1} & x_{N2} & \cdots & x_{NK}
+		\end{bmatrix}
+	$$
+\end{frame}
 
-% \begin{frame}[fragile]{\textit{Random-intercept model}}
-% 	Caso queira remover do modelo a constante global\footnote{algo que eu recomendo
-% 		apenas se tiver \textbf{muita fundamentação teórica} para tal manobra}
-% 	é só especificar o \texttt{0} como constante global. Isto sinaliza que o modelo
-% 	possui apenas constantes para cada grupo e que não há uma constante global a
-% 	ser estimada:
-% 	\begin{lstlisting}
-%     y ~ 0 + (1 | group) + x1 + x2
-%   \end{lstlisting}
-% 	\vfill
-% 	Além disso você pode especificar uma constante para quantos grupos quiser.
-% 	É só adicioná-los na fórmula:
-% 	\begin{lstlisting}
-%   y ~ (1 | group1) + (1 | group2) + x1 + x2
-%   \end{lstlisting}
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Varying-Intercept Model}
+	This example is for linear regression:
+	$$
+		\begin{aligned}
+			\mathbf{y}         & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}, \sigma \right) \\
+			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                    \\
+			\alpha_j           & \sim \text{Normal}(0, \tau)                                                                      \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                        \\
+			\tau               & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                           \\
+			\sigma             & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+\end{frame}
 
-% \begin{frame}{Especificações Matemáticas dos Modelos Multiníveis}
-% 	Os modelos hierárquicos geralmente são especificados assim.
-% 	\vfill
-% 	Temos $N$ observações organizadas em $J$ grupos com $K$ variáveis independentes.
-% 	\vfill
-% 	O truque aqui é que inserimos uma coluna de $1$ na matrix de dados $\mathbf{X}$.
-% 	Matematicamente isto se comporta como se esta coluna fosse uma variável de identidade
-% 	(pois o número $1$ na operação de multiplicação $1 \cdot \beta$ é o elemento identidade.
-% 	Ele mapeia $x \to x$ mantendo o valor de $x$) e, consequentemente, podemos interpretar o
-% 	coeficiente dessa coluna como a constante do modelo\footnote{por isso que nas fórmulas do
-% 		\texttt{R} o \texttt{1} é interpretado como a constante do modelo. Substitua-o por uma coluna
-% 		de $0$ de temos um modelo sem constante, por isso o \texttt{0} nas fórmulas é interpretado
-% 		como um modelo ausente de constante}.
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Varying-Intercept Model}
+	If you need to extend to more than one group,
+	such as $J_1, J_2, \dots$:
+	$$
+		\begin{aligned}
+			\mathbf{y}         & \sim \text{Normal}(\alpha + \alpha_{j1} + \alpha_{j2} + \mathbf{X} \boldsymbol{\beta}, \sigma) \\
+			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                  \\
+			\alpha_{j1}        & \sim \text{Normal}(0, \tau_{\alpha j1})                                                        \\
+			\alpha_{j2}        & \sim \text{Normal}(0, \tau_{\alpha j2})                                                        \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                      \\
+			\tau_{\alpha j1}   & \sim \text{Cauchy}^+(0, \psi_{\alpha j1})                                                      \\
+			\tau_{\alpha j2}   & \sim \text{Cauchy}^+(0, \psi_{\alpha j2})                                                      \\
+			\sigma             & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+\end{frame}
 
-% \begin{frame}{Especificações Matemáticas dos Modelos Multiníveis}
-% 	Então temos os dados como uma matriz:
-% 	$$
-% 		\mathbf{X} =
-% 		\begin{bmatrix}
-% 			1      & x_{11} & x_{12} & \cdots & x_{1K} \\
-% 			1      & x_{21} & x_{22} & \cdots & x_{2K} \\
-% 			\vdots & \cdots & \cdots & \ddots & \vdots \\
-% 			1      & x_{N1} & x_{N2} & \cdots & x_{NK}
-% 		\end{bmatrix}
-% 	$$
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Varying-Slope Model}
+	This example is for linear regression:
+	$$
+		\begin{aligned}
+			\mathbf{y}           & \sim \text{Normal}\left( \alpha + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}, \sigma \right) \\
+			\alpha               & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                   \\
+			\boldsymbol{\beta}_j & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                       \\
+			\boldsymbol{\tau}    & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                           \\
+			\sigma               & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+	$\boldsymbol{\tau}$ is a vector of priors for the group-level coefficients'
+	standard deviation.
+\end{frame}
 
-% \begin{frame}{Especificação Matemática -- \textit{Random-intercept model}}
-% 	Matematicamente o \textit{Random-intercept model} para uma regressão linear é:
-% 	$$
-% 		\begin{aligned}
-% 			\mathbf{y}         & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}, \sigma \right) \\
-% 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                    \\
-% 			\alpha_j           & \sim \text{Normal}(0, \tau)                                                                      \\
-% 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                        \\
-% 			\tau               & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                           \\
-% 			\sigma             & \sim \text{Exponential}(\lambda_\sigma)
-% 		\end{aligned}
-% 	$$
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Varying-Slope Model}
+	If you need to extend to more than one group,
+	such as $J_1, J_2, \dots$:
+	$$
+		\begin{aligned}
+			\mathbf{y}                   & \sim \text{Normal}(\alpha + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
+			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                          \\
+			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                        \\
+			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                        \\
+			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                               \\
+			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                               \\
+			\sigma                       & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+\end{frame}
 
-% \subsubsection{\textit{Random-slope model}}
-% \begin{frame}[fragile]{\textit{Random-slope model}}
-% 	A segunda abordagem é o \textit{random-slope model} na qual especificamos para cada
-% 	grupo um coeficiente diferente para cada variável independente desejada,
-% 	além da constante global. Esses coeficientes são amostrados de uma \textit{hiperpriori}.
-% 	\vfill
-% 	A fórmula a ser usada segue este padrão:
-% 	\begin{lstlisting}
-%     y ~ (0 + x1 | group) + (0 + x2 | group)
-%   \end{lstlisting}
-% 	\vfill
-% 	Note que usamos o \texttt{0} pois neste caso sinalizamos que apenas a variável
-% 	independente deve possuir coeficientes para cada grupo e não a constante.
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Varying-Intercept-Slope Model}
+	This example is for linear regression:
+	$$
+		\begin{aligned}
+			\mathbf{y}              & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}_\beta, \sigma \right) \\
+			\alpha                  & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                    \\
+			\alpha_j                & \sim \text{Normal}(0, \tau_\alpha)                                                                                               \\
+			\boldsymbol{\beta}_j    & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                        \\
+			\tau_\alpha             & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                           \\
+			\boldsymbol{\tau}_\beta & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                                            \\
+			\sigma                  & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+	$\boldsymbol{\tau}_\beta$ is a vector of priors for the group-level coefficients'
+	standard deviation.
+\end{frame}
 
-% \begin{frame}{Especificação Matemática -- \textit{Random-slope model}}
-% 	Matematicamente o \textit{Random-slope model} para uma regressão linear é:
-% 	$$
-% 		\begin{aligned}
-% 			\boldsymbol{y}       & \sim \text{Normal}(\alpha + \mathbf{X} \boldsymbol{\beta}_{j}, \sigma)   \\
-% 			\boldsymbol{\beta}_j & \sim \text{Normal Multivariada}(\boldsymbol{\mu}_j, \boldsymbol{\Sigma})
-% 			\quad \text{para}\quad j \in \{ 1, \dots, J \}                                                  \\
-% 			\boldsymbol{\Sigma}  & \sim \text{LKJ}(\eta)                                                    \\
-% 			\alpha               & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                            \\
-% 			\sigma               & \sim \text{Exponencial}(\lambda_\sigma)
-% 		\end{aligned}
-% 	$$
-% 	Cada vetor de coeficientes $\boldsymbol{\beta}_j$ representa os coeficientes
-% 	das colunas de $\mathbf{X}$ para cada grupo $j \in J$.
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Varying-Intercept-Slope Model}
+	If you need to extend to more than one group,
+	such as $J_1, J_2, \dots$:
+	$$
+		\begin{aligned}
+			\mathbf{y}                   & \sim \text{Normal}(\alpha + \alpha_j + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
+			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                                     \\
+			\alpha_j                     & \sim \text{Normal}(0, \tau_\alpha)                                                                                                                                                \\
+			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                                   \\
+			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                                   \\
+			\tau_\alpha                  & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                                                                            \\
+			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                                          \\
+			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                                          \\
+			\sigma                       & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+\end{frame}
 
-% \begin{frame}{Especificação Matemática -- \textit{Random-slope model}}
-% 	Caso queira mais grupos é só adicioná-los ao modelo como $J_1, J_2, \dots$:
-% 	$$
-% 		\begin{aligned}
-% 			\boldsymbol{y}          & \sim \text{Normal}(\alpha + \mathbf{X} \boldsymbol{\beta}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2}, \sigma) \\
-% 			\boldsymbol{\beta}_{j1} & \sim \text{Normal Multivariada}(\boldsymbol{\mu}_{j1}, \boldsymbol{\Sigma}_1)
-% 			\quad \text{para}\quad j_1 \in \{ 1, \dots, J_1 \}                                                                                     \\
-% 			\boldsymbol{\beta}_{j2} & \sim \text{Normal Multivariada}(\boldsymbol{\mu}_{j2}, \boldsymbol{\Sigma}_2)
-% 			\quad \text{para}\quad j_2 \in \{ 1, \dots, J_2 \}                                                                                     \\
-% 			\boldsymbol{\Sigma}_1   & \sim \text{LKJ}(\eta_1)                                                                                      \\
-% 			\boldsymbol{\Sigma}_2   & \sim \text{LKJ}(\eta_2)                                                                                      \\
-% 			\alpha                  & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                \\
-% 			\sigma                  & \sim \text{Exponencial}(\lambda_\sigma)
-% 		\end{aligned}
-% 	$$
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
+	This example is for linear regression:
+	$$
+		\begin{aligned}
+			\mathbf{y}           & \sim \text{Normal}(\mathbf{X} \boldsymbol{\beta}_{j}, \sigma)            \\
+			\boldsymbol{\beta}_j & \sim \text{Multivariate Normal}(\boldsymbol{\mu}_j, \boldsymbol{\Sigma})
+			\quad \text{for}\quad j \in \{ 1, \dots, J \}                                                   \\
+			\boldsymbol{\Sigma}  & \sim \text{LKJ}(\eta)                                                    \\
+			\sigma               & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+	Each coefficient vector $\boldsymbol{\beta}_j$ represents the
+	model columns $\mathbf{X}$ coefficients for every group $j \in J$.
+	Also the first column of $\mathbf{X}$ is a column filled with $1$s
+	(intercept).
+\end{frame}
 
-% \begin{frame}{\textit{Prioris} para Matrizes de Covariância}
-% 	Podemos especificar uma \textit{priori} para a matriz de covariância
-% 	$\boldsymbol{\Sigma}$.
-% 	\vfill
-% 	Para eficiência computacional podemos fazer a matriz de covariância
-% 	$\boldsymbol{\Sigma}$ vire uma matriz de correlação. Toda matriz de
-% 	covariância pode ser decomposta em:
-% 	$$
-% 		\boldsymbol{\Sigma}=\text{diag}_\text{matrix}(\boldsymbol{\tau}) \cdot \boldsymbol{\Omega} \cdot \text{diag}_\text{matrix}(\boldsymbol{\tau})
-% 	$$
-% 	na qual $\boldsymbol{\Omega}$ é uma matriz de correlação com
-% 	$1$ na sua diagonal e os demais elementos entre -1 e 1 $\rho \in (-1, 1)$.
-% 	$\boldsymbol{\tau}$ é um vetor composto pelas variâncias das variáveis de
-% 	$\boldsymbol{\Sigma}$ (a diagonal de $\boldsymbol{\Sigma}$).
-% \end{frame}
+\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
+	If you need to extend to more than one group,
+	such as $J_1, J_2, \dots$:
+	$$
+		\begin{aligned}
+			\mathbf{y}              & \sim \text{Normal}(\alpha + \mathbf{X} \boldsymbol{\beta}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2}, \sigma) \\
+			\boldsymbol{\beta}_{j1} & \sim \text{Multivariate Normal}(\boldsymbol{\mu}_{j1}, \boldsymbol{\Sigma}_1)
+			\quad \text{for}\quad j_1 \in \{ 1, \dots, J_1 \}                                                                                      \\
+			\boldsymbol{\beta}_{j2} & \sim \text{Multivariate Normal}(\boldsymbol{\mu}_{j2}, \boldsymbol{\Sigma}_2)
+			\quad \text{for}\quad j_2 \in \{ 1, \dots, J_2 \}                                                                                      \\
+			\boldsymbol{\Sigma}_1   & \sim \text{LKJ}(\eta_1)                                                                                      \\
+			\boldsymbol{\Sigma}_2   & \sim \text{LKJ}(\eta_2)                                                                                      \\
+			\alpha                  & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                \\
+			\sigma                  & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+\end{frame}
 
-% \begin{frame}{\textit{Prioris} para Matrizes de Covariância}
-% 	\small
-% 	Adicionalmente a matriz de correlação $\boldsymbol{\Omega}$
-% 	pode ser decomposta mais uma vez para maior eficiência computacional.
-% 	Como toda matriz de correlação é simétrica e definitiva positiva
-% 	(todos seus autovalores são numeros reais $\mathbb{R}$ e positivos $>0$),
-% 	podemos usar a \href{https://en.wikipedia.org/wiki/Cholesky_decomposition}{Decomposição
-% 		Cholesky} para decompô-la em uma matriz triangular
-% 	(que é muito mais eficiente computacionalmente):
-% 	$$
-% 		\boldsymbol{\Omega} = \mathbf{L}_\Omega \mathbf{L}^T_\Omega
-% 	$$
-% 	onde $\mathbf{L}_\Omega$ é uma matriz triangular.
-% 	\vfill
-% 	O que falta é definirmos então uma \textit{priori} para a matriz de correlação
-% 	$\boldsymbol{\Omega}$. Até pouco tempo atrás, usávamos uma distribuição de
-% 	Wishart como \textit{priori}\parencite{gelman2013bayesian}. Mas essa prática foi
-% 	abandonada após a proposição da distribuição LKJ de \textcite{lewandowski2009generating}
-% 	(LKJ são os nomes dos autores -- \textbf{L}ewandowski, \textbf{K}urowicka e \textbf{J}oe)
-% 	como \textit{priori} de matrizes de correlação.
-% \end{frame}
+\begin{frame}{Priors for Covariance Matrices}
+	We can specify a prior for a covariance matrix
+	$\boldsymbol{\Sigma}$.
+	\vfill
+	For computational efficiency,
+	we can make the covariance matrix $\boldsymbol{\Sigma}$ into a correlation matrix.
+	Every covariance matrix can be decomposed into:
+	$$
+		\boldsymbol{\Sigma}=\text{diag}_\text{matrix}(\boldsymbol{\tau}) \cdot \boldsymbol{\Omega} \cdot \text{diag}_\text{matrix}(\boldsymbol{\tau})
+	$$
+	where $\boldsymbol{\Omega}$ is a correlation matrix with
+	$1$s in the diagonal and the off-diagonal elements between -1 e 1 $\rho \in (-1, 1)$.
+	$\boldsymbol{\tau}$ is a vector é um vetor composed of the variables' variances from
+	$\boldsymbol{\Sigma}$ (is is the $\boldsymbol{\Sigma}$'s diagonal).
+\end{frame}
 
-% \subsubsection{\textit{Random-intercept-slope model}}
-% \begin{frame}[fragile]{\textit{Random-intercept-slope model}}
-% 	A terceira abordagem é o \textit{random-intercept-slope model} na qual
-% 	especificamos para cada grupo uma constante diferente juntamente com coeficientes
-% 	diferentes para cada variável independente desejada.
-% 	É claro também resulta em uma costante global.
-% 	Essas constantes e coeficientes à nível de grupo são amostrados de
-% 	duas ou mais \textit{hiperprioris}.
-% 	\vfill
-% 	No caso de \textit{random-intercept-slope model}, a formula a ser usada segue este padrão:
-% 	\begin{lstlisting}
-%     y ~ (1 + x1 | group) + (1 + x2 | group)
-%   \end{lstlisting}
-% \end{frame}
-
-% \begin{frame}{Especificação Matemática -- \textit{Random-intercept-slope model}}
-% 	$$
-% 		\begin{aligned}
-% 			\mathbf{y}           & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}_j, \sigma \right) \\
-% 			\alpha               & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                      \\
-% 			\alpha_j             & \sim \text{Normal}(0, \tau)                                                                        \\
-% 			\boldsymbol{\beta}_j & \sim \text{Normal Multivariada}(\boldsymbol{\mu}_j, \boldsymbol{\Sigma})
-% 			\quad \text{para}\quad j \in \{ 1, \dots, J \}                                                                            \\
-% 			\boldsymbol{\Sigma}  & \sim \text{LKJ}(\eta)                                                                              \\
-% 			\tau                 & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                             \\
-% 			\sigma               & \sim \text{Exponential}(\lambda_\sigma)
-% 		\end{aligned}
-% 	$$
-% \end{frame}
-
-% \subsection{Modelos Multiníveis no \texttt{rstarnarm}}
-% \begin{frame}[fragile]{Modelos Multiníveis no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
-% 	\begin{lstlisting}[escapeinside=\{\}]
-% stan_glmer(
-%   y ~ @(1 + x1 | group) + (1 + x2 | group)@
-%   ...
-%   @prior_intercept = ...@,
-%   @prior_covariance = decov(1)@ # LKJ com {$\eta = 1$}
-%   )
-%   \end{lstlisting}
-% \end{frame}
-
-% \subsection{Modelos Multiníveis no \texttt{brms}}
-% \begin{frame}[fragile]{Modelos Multiníveis no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
-% 	\begin{lstlisting}[escapeinside=\{\}]
-% brm(
-%   y ~ @(1 + x1 | group) + (1 + x2 | group)@
-%   ...
-%   # LKJ com {$\eta = 1$}
-%   prior = c(.., @prior(lkj_corr_cholesky(1), class = L)@)
-%   )
-%   \end{lstlisting}
-% \end{frame}
+\begin{frame}{Priors for Covariance Matrices}
+	\small
+	Additionally, the correlation matrix $\boldsymbol{\Omega}$
+	can be decomposed once more for greater computational efficiency.
+	Since all correlations matrices are symmetric and positive definite
+	(all of its eigenvalues are real numbers $\mathbb{R}$ and positive $>0$),
+	we can use the \href{https://en.wikipedia.org/wiki/Cholesky_decomposition}
+	{Cholesky Decomposition}
+	to decompose it into a triangular matrix
+	(which is much more computational efficient to handle):
+	$$
+		\boldsymbol{\Omega} = \mathbf{L}_\Omega \mathbf{L}^T_\Omega
+	$$
+	where $\mathbf{L}_\Omega$ is a lower-triangular matrix.
+	\vfill
+	What we are missing is to define a prior for the correlation matrix $\boldsymbol{\Omega}$.
+	Not a long time ago, we've used a Wishart distribution as a prior \parencite{gelman2013bayesian}.
+	But this has been abandone after the proposal of the LKJ distribution by \textcite{lewandowski2009generating}
+	(LKJ are the authors' last name initials -- \textbf{L}ewandowski, \textbf{K}urowicka and \textbf{J}oe)
+	as a prior for correlation matrices.
+\end{frame}
