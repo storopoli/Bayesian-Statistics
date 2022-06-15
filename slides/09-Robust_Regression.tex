@@ -113,7 +113,7 @@
 	but a Student's $t$ distribution:
 	$$
 		\begin{aligned}
-			\boldsymbol{y}     & \sim \text{Student}\left( \nu, \alpha + \mathbf{X} \boldsymbol{\beta}, \sigma \right) \\
+			\mathbf{y}     & \sim \text{Student}\left( \nu, \alpha + \mathbf{X} \boldsymbol{\beta}, \sigma \right) \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                         \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})             \\
 			\nu                & \sim \text{Log-Normal}(2, 1)                                                          \\
@@ -155,7 +155,7 @@
 \begin{frame}{Beta-Binomial instead of Binomial}
 	$$
 		\begin{aligned}
-			\boldsymbol{y}     & \sim \text{Beta-Binomial}(n, p, \phi)                                     \\
+			\mathbf{y}     & \sim \text{Beta-Binomial}(n, p, \phi)                                     \\
 			p                  & \sim \text{Logistic/Probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})     \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}}) \\
@@ -210,7 +210,7 @@
 \begin{frame}{Negative Binomial instead of Poisson}
 	$$
 		\begin{aligned}
-			\boldsymbol{y}     & \sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right) \\
+			\mathbf{y}     & \sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right) \\
 			\phi               & \sim \text{Gamma}(0.01, 0.01)                                                                   \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                   \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
@@ -239,7 +239,7 @@
 	$S_i$ can be modeled using logistic regression:
 	$$
 		\begin{aligned}
-			\boldsymbol{y}
+			\mathbf{y}
 			                    & \begin{cases}
 				                      = 0,                                                                                             & \text{ if } S_i = 0 \\
 				                      \sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right), & \text{ if } S_i = 1
