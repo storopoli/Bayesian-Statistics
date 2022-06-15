@@ -23,11 +23,11 @@
 	The ideia here is to model a dependent variable as a linear combination
 	of independent variables.
 	$$
-		\boldsymbol{y} = \alpha +  \mathbf{X} \boldsymbol{\beta} + \epsilon
+		\mathbf{y} = \alpha +  \mathbf{X} \boldsymbol{\beta} + \epsilon
 	$$
 	where:
 	\begin{vfilleditems}
-		\item $\boldsymbol{y}$ -- dependent variable
+		\item $\mathbf{y}$ -- dependent variable
 		\item $\alpha$ -- intercept (also called as constant)
 		\item $\boldsymbol{\beta}$ -- coefficient vector
 		\item $\mathbf{X}$ -- data matrix
@@ -41,7 +41,7 @@
 	Mathematically speaking, Bayesian linear regression is:
 	$$
 		\begin{aligned}
-			\boldsymbol{y}     & \sim \text{Normal}\left( \alpha +  \mathbf{X} \boldsymbol{\beta}, \sigma \right) \\
+			\mathbf{y}     & \sim \text{Normal}\left( \alpha +  \mathbf{X} \boldsymbol{\beta}, \sigma \right) \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                    \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})        \\
 			\sigma             & \sim \text{Exponential}(\lambda_\sigma)
@@ -65,8 +65,8 @@
 \begin{frame}{Good Candidates for Prior Distribution}
 	First, center ($\mu = 0$) and standardize ($\sigma = 1$) the independent variables.
 	\begin{vfilleditems}
-		\item $\alpha$ -- either a normal or student-$t$ ($\nu = 3$), with mean as $\mu_{\boldsymbol{y}}$
-		and standard deviation as $2.5 \cdot \sigma_{\boldsymbol{y}}$
+		\item $\alpha$ -- either a normal or student-$t$ ($\nu = 3$), with mean as $\mu_{\mathbf{y}}$
+		and standard deviation as $2.5 \cdot \sigma_{\mathbf{y}}$
 		(also you can use the median and median absolute deviation).
 		\item $\boldsymbol{\beta}$ -- either a normal or student-$t$ ($\nu = 3$), with mean $0$ and
 		standard deviation $2.5$.
@@ -82,6 +82,6 @@
 		model's parameters of interest} ($\alpha$ and $\boldsymbol{\beta}$)
 	by computing the full posterior distribution of:
 	$$
-		P(\boldsymbol{\theta} \mid \boldsymbol{y}) = P(\alpha, \boldsymbol{\beta}, \sigma \mid \boldsymbol{y})
+		P(\boldsymbol{\theta} \mid \mathbf{y}) = P(\alpha, \boldsymbol{\beta}, \sigma \mid \mathbf{y})
 	$$
 \end{frame}

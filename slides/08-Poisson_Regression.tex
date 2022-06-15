@@ -24,15 +24,15 @@
 	Poisson regression behaves exactly like a linear model:
 	it makes a prediction by simply computing a weighted sum of the
 	independent variables $\mathbf{X}$ with the estimated coefficients $\boldsymbol{\beta}$:
-	$\boldsymbol{y}$.
+	$\mathbf{y}$.
 	But, different from linear regression,
-	it outputs the \textbf{natural log} of $\boldsymbol{y}$:
+	it outputs the \textbf{natural log} of $\mathbf{y}$:
 	$$
-		\log(\boldsymbol{y})= \alpha \cdot \beta_1 x_1 \cdot \beta_2 x_2 \cdot \ldots \cdot \beta_k x_k
+		\log(\mathbf{y})= \alpha \cdot \beta_1 x_1 \cdot \beta_2 x_2 \cdot \ldots \cdot \beta_k x_k
 	$$
 	which is the same as:
 	$$
-		\boldsymbol{y} = e^{(\alpha + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_k x_k)}
+		\mathbf{y} = e^{(\alpha + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_k x_k)}
 	$$
 \end{frame}
 
@@ -76,14 +76,14 @@
 \subsection{Poisson Regression Specification}
 \begin{frame}{Poisson Regression Specification}
 	We can use Poisson regression if the dependent variable
-	$\boldsymbol{y}$ has count data, i.e.,
-	$\boldsymbol{y}$ only takes positive values.
+	$\mathbf{y}$ has count data, i.e.,
+	$\mathbf{y}$ only takes positive values.
 	\textbf{Poisson likelihood function} uses an intercept $\alpha$ and
 	coefficients $\boldsymbol{\beta}$,
 	however these are ``exponentiated'' ($e^x$):
 	$$
 		\begin{aligned}
-			\boldsymbol{y}     & \sim \text{Poisson}\left( e^{(\alpha +  \mathbf{X} \boldsymbol{\beta})} \right) \\
+			\mathbf{y}     & \sim \text{Poisson}\left( e^{(\alpha +  \mathbf{X} \boldsymbol{\beta})} \right) \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                   \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
 		\end{aligned}
@@ -101,7 +101,7 @@
 	So, we need to ``exponentiate'' the values of $\alpha$ and $\boldsymbol{\beta}$:
 	$$
 		\begin{aligned}
-			\boldsymbol{y} & = e^{(\alpha +  \mathbf{X} \boldsymbol{\beta})}                                                                                                                                         \\
+			\mathbf{y} & = e^{(\alpha +  \mathbf{X} \boldsymbol{\beta})}                                                                                                                                         \\
 			               & = e^{\alpha} \cdot e^{ \left( X_{(1)} \cdot \beta_{(1)} \right) } \cdot e^{ \left( X_{(2)} \cdot \beta_{(2)} \right) } \cdot \dots \cdot e^{ \left( X_{(k)} \cdot \beta_{(k)} \right) }
 		\end{aligned}
 	$$
@@ -113,7 +113,7 @@
 	independent variables'':
 	$$
 		\begin{aligned}
-			\boldsymbol{y} & = e^{(\alpha +  \mathbf{X} \boldsymbol{\beta})}                                                                                                                                         \\
+			\mathbf{y} & = e^{(\alpha +  \mathbf{X} \boldsymbol{\beta})}                                                                                                                                         \\
 			               & = e^{\alpha} \cdot e^{ \left( X_{(1)} \cdot \beta_{(1)} \right) } \cdot e^{ \left( X_{(2)} \cdot \beta_{(2)} \right) } \cdot \dots \cdot e^{ \left( X_{(k)} \cdot \beta_{(k)} \right) }
 		\end{aligned}
 	$$
