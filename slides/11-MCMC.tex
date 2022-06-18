@@ -266,7 +266,7 @@
 \begin{frame}{MCMC Algorithms -- Hamiltonian Monte Carlo}
 	The current most efficient MCMC algorithms.
 	They try to \textbf{avoid the random walk behavior by introducing an auxiliar vector of momenta
-	using Hamiltonian dynamics}.
+		using Hamiltonian dynamics}.
 	The proposals are ``guided'' to higher density regions of the sample space.
 	This makes \textbf{HMC more efficient in orders of magnitude when compared to MH and Gibbs}.
 	\vfill
@@ -275,82 +275,81 @@
 	where $d$ is the number of dimension in the parameter space \parencite{beskosOptimalTuningHybrid2013}.
 \end{frame}
 
-% \subsubsection{Metropolis}
-% \begin{frame}{Algoritmo de Metropolis}
-%   \begin{columns}
-%     \begin{column}{0.8\textwidth}
-%       O primeiro algoritmo MCMC amplamente utilizado para gerar amostras de
-%       correntes Markov foi originário na física na década de 1950 e chama-se Metropolis
-%       \parencite{metropolisEquationStateCalculations1953} em homenagem ao primeiro
-%       autor \href{https://en.wikipedia.org/wiki/Nicholas_Metropolis}{Nicholas Metropolis}.
-%       \vfill
-%       Em síntese, o algoritmo de Metropolis é uma adaptação de um passeio aleatório
-%       com uma regra de aceitação/rejeição para convergir à distribuição-alvo.
-%       \vfill
-%       O algorimo de Metropolis usa uma \textbf{distribuição de propostas}
-%       $J_t(\boldsymbol{\theta}^{(*)})$
-%       para definir próximos valores da distribuição
-%       $P^*(\boldsymbol{\theta}^{(*)} \mid \text{data})$.
-%       Essa distribuição deve ser simétrica:
-%       $$
-%       J_t (\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)}) = J_t(\boldsymbol{\theta}^{(t-1)} \mid \boldsymbol{\theta}^{(*)})
-%       $$
-%     \end{column}
-%     \begin{column}{0.2\textwidth}
-%       \centering
-%       \includegraphics[width=0.9\columnwidth]{nicholas_metropolis.png}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\subsubsection{Metropolis}
+\begin{frame}{Metropolis Algorithm}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			The first broadly used MCMC algorithm to generate samples from a Markov chain
+			was originated in the physics literature in the 1950s and is called Metropolis
+			\parencite{metropolisEquationStateCalculations1953},
+			in honor of the first author
+			\href{https://en.wikipedia.org/wiki/Nicholas_Metropolis}{Nicholas Metropolis}.
+			\vfill
+			In sum, the Metropolis algorithm is an adaptation of a random walk coupled
+			with an acceptance/rejection rule to converge to the target distribution.
+			\vfill
+			Metropolis algorithm uses a \textbf{proposal distribution}
+			$J_t(\boldsymbol{\theta}^{(*)})$
+			to define the next values of the distribution
+			$P^*(\boldsymbol{\theta}^{(*)} \mid \text{data})$.
+			This distribution must be symmetric:
+			$$
+				J_t (\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)}) = J_t(\boldsymbol{\theta}^{(t-1)} \mid \boldsymbol{\theta}^{(*)})
+			$$
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{nicholas_metropolis.png}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \begin{frame}{Algoritmo de Metropolis}
-%   A essência do algoritmo é um passeio aleatório pelo espaço amostral dos parâmetros,
-%   onde a probabilidade da corrente Markov mudar de estado é definida como:
+\begin{frame}{Metropolis Algorithm}
+	Metropolis is a random walk through the parameter sample space,
+	where the probability of the Markov chain changing its state is defined as:
+	$$
+		P_{\text{change}} = \min\left({\frac{P (\boldsymbol{\theta}_{\text{proposed}})}{P (\boldsymbol{\theta}_{\text{current}})}},1\right).
+	$$
+	This means that the Markov chain will only change to a new state based in one of two conditions:
+	\begin{vfilleditems}
+		\small
+		\item when the probability of the random walk proposed parameters
+		$P(\boldsymbol{\theta}_{\text{proposed}})$ is \textbf{\textcolor{blue}{higher}}
+		than the probability of the current state parameters
+		$P(\boldsymbol{\theta}_{\text{current}})$,
+		we change with 100\% probability.
+		\item when the probability of the random walk proposed parameters
+		$P(\boldsymbol{\theta}_{\text{proposed}})$ is \textbf{\textcolor{red}{lower}}
+		than the probability of the current state parameters
+		$P(\boldsymbol{\theta}_{\text{current}})$,
+		we change with probability equal to the proportion of this probability difference.
+	\end{vfilleditems}
+\end{frame}
 
-%   $$
-%   P_{\text{mudar}} = \min\left({\frac{P (\boldsymbol{\theta}_{\text{proposto}})}{P (\boldsymbol{\theta}_{\text{atual}})}},1\right).
-%   $$
-
-%   Isso quer dizer a corrente Markov somente mudará para um novo estado em duas condições:
-%   \begin{vfilleditems}
-%     \small
-%     \item \small Quando a probabilidade dos parâmetros propostos pelo passeio aleatório
-%     $P(\boldsymbol{\theta}_{\text{proposto}})$ é \textbf{\textcolor{blue}{maior}}
-%     que a probabilidade dos parâmetros do estado atual
-%     $P(\boldsymbol{\theta}_{\text{atual}})$, mudamos com 100\% de probabilidade.
-
-%     \item \small Quando a probabilidade dos parâmetros propostos pelo passeio aleatório
-%     $P(\boldsymbol{\theta}_{\text{proposto}})$ é \textbf{\textcolor{red}{menor}}
-%     que a probabilidade dos parâmetros do estado atual
-%     $P(\boldsymbol{\theta}_{\text{atual}})$, mudamos com probabilidade igual a
-%     proporção dessa diferença.
-%   \end{vfilleditems}
-% \end{frame}
-
-% \begin{frame}[fragile]{Algoritmo de Metropolis}
-%     \SetAlCapFnt{\normalsize}
-%     \SetAlCapNameFnt{\normalsize}
-%     \begin{algorithm}[H]
-%     \DontPrintSemicolon
-%     \SetAlgoNoEnd
-%     \SetAlgoLined
-%     Defina um ponto inicial $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ do qual $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
-%      \Para{$t = 1, 2, \dots$}{
-%       Amostra uma proposta $\boldsymbol{\theta}^{(*)}$ de uma distribuição de propostas no tempo $t$, $J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)$\;
-%       Como regra de aceitação/rejeição calcule a proporção das probabilidades:
-%       $r = \frac{P\left(\boldsymbol{\theta}^{(*)}  \mid \mathbf{y} \right)}{P\left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right)}$\;
-%       Designe:
-%       $
-%         \boldsymbol{\theta}^{(t)} =
-%           \begin{cases}
-%           \boldsymbol{\theta}^{(*)} & \text{com probabilidade $\min(r,1)$}\\
-%           \boldsymbol{\theta}^{(t-1)} & \text{caso contrário}
-%         \end{cases}
-%       $\;
-%      }
-%      \caption{Metropolis}
-%     \end{algorithm}
-% \end{frame}
+\begin{frame}{Metropolis Algorithm}
+    \SetAlCapFnt{\normalsize}
+    \SetAlCapNameFnt{\normalsize}
+    \begin{algorithm}[H]
+    \DontPrintSemicolon
+    \SetAlgoNoEnd
+    \SetAlgoLined
+    Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
+     \For{$t = 1, 2, \dots$}{
+      Sample a proposal of $\boldsymbol{\theta}^{(*)}$ from a proposal distribution in time $t$, $J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)$\;
+      As an acceptance/rejection rule, compute the proportion of the probabilities:
+      $r = \frac{P\left(\boldsymbol{\theta}^{(*)}  \mid \mathbf{y} \right)}{P\left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right)}$\;
+      Assign
+      $
+        \boldsymbol{\theta}^{(t)} =
+          \begin{cases}
+          \boldsymbol{\theta}^{(*)} & \text{with probability $\min(r,1)$}\\
+          \boldsymbol{\theta}^{(t-1)} & \text{otherwise}
+        \end{cases}
+      $\;
+     }
+     \caption{Metropolis}
+    \end{algorithm}
+\end{frame}
 
 % \begin{frame}{Intuição Visual de Metropolis}
 % \centering
