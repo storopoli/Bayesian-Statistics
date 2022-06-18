@@ -327,333 +327,327 @@
 \end{frame}
 
 \begin{frame}{Metropolis Algorithm}
-    \SetAlCapFnt{\normalsize}
-    \SetAlCapNameFnt{\normalsize}
-    \begin{algorithm}[H]
-    \DontPrintSemicolon
-    \SetAlgoNoEnd
-    \SetAlgoLined
-    Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
-     \For{$t = 1, 2, \dots$}{
-      Sample a proposal of $\boldsymbol{\theta}^{(*)}$ from a proposal distribution in time $t$, $J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)$\;
-      As an acceptance/rejection rule, compute the proportion of the probabilities:
-      $r = \frac{P\left(\boldsymbol{\theta}^{(*)}  \mid \mathbf{y} \right)}{P\left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right)}$\;
-      Assign
-      $
-        \boldsymbol{\theta}^{(t)} =
-          \begin{cases}
-          \boldsymbol{\theta}^{(*)} & \text{with probability $\min(r,1)$}\\
-          \boldsymbol{\theta}^{(t-1)} & \text{otherwise}
-        \end{cases}
-      $\;
-     }
-     \caption{Metropolis}
-    \end{algorithm}
+	\SetAlCapFnt{\normalsize}
+	\SetAlCapNameFnt{\normalsize}
+	\begin{algorithm}[H]
+		\DontPrintSemicolon
+		\SetAlgoNoEnd
+		\SetAlgoLined
+		Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
+		\For{$t = 1, 2, \dots$}{
+			Sample a proposal of $\boldsymbol{\theta}^{(*)}$ from a proposal distribution in time $t$, $J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)$\;
+			As an acceptance/rejection rule, compute the proportion of the probabilities:
+			$r = \frac{P\left(\boldsymbol{\theta}^{(*)}  \mid \mathbf{y} \right)}{P\left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right)}$\;
+			Assign:
+			$
+				\boldsymbol{\theta}^{(t)} =
+				\begin{cases}
+					\boldsymbol{\theta}^{(*)}   & \text{with probability $\min(r,1)$} \\
+					\boldsymbol{\theta}^{(t-1)} & \text{otherwise}
+				\end{cases}
+			$\;
+		}
+		\caption{Metropolis}
+	\end{algorithm}
 \end{frame}
 
-% \begin{frame}{Intuição Visual de Metropolis}
-% \centering
-%     \begin{tikzpicture}
-%         \begin{axis}[every axis plot, line width=2pt,
-%             ylabel=PDF,
-%             domain=-4:4,samples=200,
-%             ymax = 0.6, ytick={0, 0.2, 0.4},
-%             axis x line*=bottom, % no box around the plot, only x and y axis
-%             axis y line*=left, % the * suppresses the arrow tips
-%             enlargelimits=true,
-%             ] % extend the axes a bit
+\begin{frame}{Visual Intuition -- Metropolis}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel=PDF,
+				domain=-4:4,samples=200,
+				ymax = 0.6, ytick={0, 0.2, 0.4},
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left, % the * suppresses the arrow tips
+				enlargelimits=true,
+			] % extend the axes a bit
 
-%             \addplot [blue] {gaussian(0, 1)};
-%             \node[inner sep=0pt] (hikerlower) at (-2,0.13){\Strichmaxerl[2pt]};
-%             \node[inner sep=0pt] (hikerupper) at (0,0.5){\Strichmaxerl[2pt]};
-%             \node[inner sep=0pt] (hikerlower2) at (2,0.13){\Strichmaxerl[2pt]};
-%             \draw[->, red, line width=2pt] (hikerlower) to [out=90,in=135] node[above left] {\large$P=1$} (hikerupper);
-%             \draw[->, yellow, line width=2pt] (hikerupper) to [out=45,in=135] node[right] {\large$P\approx\frac{0.1}{0.4}\approx\frac{1}{4}$} (hikerlower2);
-%         \end{axis}
-%         \end{tikzpicture}
+			\addplot [blue] {gaussian(0, 1)};
+			\node[inner sep=0pt] (hikerlower) at (-2,0.13){\Strichmaxerl[2pt]};
+			\node[inner sep=0pt] (hikerupper) at (0,0.5){\Strichmaxerl[2pt]};
+			\node[inner sep=0pt] (hikerlower2) at (2,0.13){\Strichmaxerl[2pt]};
+			\draw[->, red, line width=2pt] (hikerlower) to [out=90,in=135] node[above left] {\large$P=1$} (hikerupper);
+			\draw[->, yellow, line width=2pt] (hikerupper) to [out=45,in=135] node[right] {\large$P\approx\frac{0.1}{0.4}\approx\frac{1}{4}$} (hikerlower2);
+		\end{axis}
+	\end{tikzpicture}
 
-% \end{frame}
+\end{frame}
 
-% \subsubsection{Metropolis-Hastings}
-% \begin{frame}{Algoritmo de Metropolis}
-%   \begin{columns}
-%     \begin{column}{0.8\textwidth}
-%       Na década de 1970, surgiu um generalização do algoritmo de Metropolis
-%       que \textbf{não} necessita que as distribuições de proposta sejam simétricas:
-%       $$
-%       J_t (\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)}) \neq J_t(\boldsymbol{\theta}^{(t-1)} \mid \boldsymbol{\theta}^{(*)})
-%       $$
-%       A generalização foi proposta por \href{https://en.wikipedia.org/wiki/W._K._Hastings}{Wilfred Keith Hastings}
-%       \parencite{hastingsMonteCarloSampling1970} e chama-se algoritmo
-%       de \textbf{Metropolis-Hastings}.
-%     \end{column}
-%     \begin{column}{0.2\textwidth}
-%       \centering
-%       \includegraphics[width=0.9\columnwidth]{hastings.jpg}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\subsubsection{Metropolis-Hastings (MH)}
+\begin{frame}{Metropolis-Hastings Algorithm}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			In the 1970s emerged a generalization of the Metropolis algorithm,
+			which \textbf{does not need that the proposal distributions be symmetric}:
+			$$
+				J_t (\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)}) \neq J_t(\boldsymbol{\theta}^{(t-1)} \mid \boldsymbol{\theta}^{(*)})
+			$$
+			The generalization was proposed by \href{https://en.wikipedia.org/wiki/W._K._Hastings}{Wilfred Keith Hastings}
+			\parencite{hastingsMonteCarloSampling1970} and is called \textbf{Metropolis-Hastings algorithm}.
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\centering
+			\includegraphics[width=0.9\columnwidth]{hastings.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \begin{frame}[fragile]{Algoritmo de Metropolis - Hastings}
-%     \SetAlCapFnt{\normalsize}
-%     \SetAlCapNameFnt{\normalsize}
-%     \small
-%     \begin{algorithm}[H]
-%     \DontPrintSemicolon
-%     \SetAlgoNoEnd
-%     \SetAlgoLined
-%     Defina um ponto inicial $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ do qual $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
-%      \Para{$t = 1, 2, \dots$}{
-%       Amostra uma proposta $\boldsymbol{\theta}^{(*)}$ de uma distribuição de propostas no tempo $t$, $J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)$\;
-%       Como regra de aceitação/rejeição calcule a proporção das probabilidades:
-%       $r = \frac{\frac{P \left(\boldsymbol{\theta}^{(*)} \mid \mathbf{y} \right)}{J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)}}{\frac{P \left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right)}{J_t \left(\boldsymbol{\theta}^{(t-1)} \mid \boldsymbol{\theta}^{(*)} \right)}}$\;
-%       Designe:
-%       $
-%         \boldsymbol{\theta}^{(t)} =
-%           \begin{cases}
-%           \boldsymbol{\theta}^{(*)} & \text{com probabilidade $\min(r,1)$}\\
-%           \boldsymbol{\theta}^{(t-1)} & \text{caso contrário}
-%         \end{cases}
-%       $\;
-%      }
-%      \caption{Metropolis-Hastings}
-%     \end{algorithm}
-% \end{frame}
+\begin{frame}{Metropolis-Hastings Algorithm}
+	\SetAlCapFnt{\normalsize}
+	\SetAlCapNameFnt{\normalsize}
+	\small
+	\begin{algorithm}[H]
+		\DontPrintSemicolon
+		\SetAlgoNoEnd
+		\SetAlgoLined
+		Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
+		\For{$t = 1, 2, \dots$}{
+			Sample a proposal $\boldsymbol{\theta}^{(*)}$ from a proposal distribution in time $t$, $J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)$\;
+			As an acceptance/rejection rule, compute the proportion of the probabilities:
+			$r = \frac{\frac{P \left(\boldsymbol{\theta}^{(*)} \mid \mathbf{y} \right)}{J_t \left(\boldsymbol{\theta}^{(*)} \mid \boldsymbol{\theta}^{(t-1)} \right)}}{\frac{P \left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right)}{J_t \left(\boldsymbol{\theta}^{(t-1)} \mid \boldsymbol{\theta}^{(*)} \right)}}$\;
+			Assign:
+			$
+				\boldsymbol{\theta}^{(t)} =
+				\begin{cases}
+					\boldsymbol{\theta}^{(*)}   & \text{with probability} \\
+					\boldsymbol{\theta}^{(t-1)} & \text{otherwise}
+				\end{cases}
+			$\;
+		}
+		\caption{Metropolis-Hastings}
+	\end{algorithm}
+\end{frame}
 
-% \begin{frame}{Animação Metropolis\footnote{veja Metropolis em ação no \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=RandomWalkMH&target=banana}{\texttt{chi-feng/mcmc-demo}}}}
-%   \centering
-%   \movie[loop, width=9cm, height=6cm]{Animação Metropolis}{animations/rwmh.m4v}
-% \end{frame}
+\begin{frame}{Metropolis-Hastings Animation\footnote{see Metropolis-Hastings in action at \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=RandomWalkMH&target=banana}{\texttt{chi-feng/mcmc-demo}}.}}
+	\centering
+	\movie[loop, width=9cm, height=6cm]{Metropolis Animation}{animations/rwmh.m4v}
+\end{frame}
 
-% \subsubsection{Limitações dos Algoritmos Metropolis}
-% \begin{frame}{Limitações dos Algoritmos Metropolis}
-%   As limitações do algoritmo de Metropolis-Hastings são principalmente
-%   \textbf{computacionais}:
-%   \begin{vfilleditems}
-%     \item Com propostas geradas aleatoriamente, geralmente leva um grande número de
-%     iterações para entrar em áreas de densidade posterior mais alta (mais provável).
+\subsubsection{Limitations of the Metropolis Algorithms}
+\begin{frame}{Limitations of the Metropolis Algorithms}
+	The limitations of the Metropolis-Hastings algorithms are mainly \textbf{computational}:
+	\begin{vfilleditems}
+		\item with the proposals randomly generated,
+		it can take a large number of iterations for the
+		Markov chain to enter higher posterior densities spaces.
+		\item even highly-efficient MH algorithms sometimes accept less than
+		25\% of the proposals \parencite{robertsWeakConvergenceOptimal1997, beskosOptimalTuningHybrid2013}.
+		\item in lower-dimensional contexts, higher computational power can compensate the low efficiency up to a point.
+		But in higher-dimensional (and higher-complexity) modeling situations,
+		higher computational power alone are rarely sufficient to overcome the low efficiency.
+	\end{vfilleditems}
+\end{frame}
 
-%     \item Mesmo algoritmos de Metropolis-Hastings eficientes às vezes aceitam menos de
-%     25\% das propostas \parencite{robertsWeakConvergenceOptimal1997, beskosOptimalTuningHybrid2013}.
+\subsubsection{Gibbs}
+\begin{frame}{Gibbs Algorithm}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			To circumvent Metropolis' low acceptance rate, the Gibbs algorithm was conceived.
+			Gibbs \textbf{do not have an acceptance/rejection rule} for the Markov chain state change:
+			\textbf{all proposals are accepted!}
+			\vfill
+			Gibbs algorithm was originally conceived by the physicist Josiah Willard Gibbs
+			while referencing an analogy between a sampling algorithm and
+			statistical physics (a physics field that originates from statistical mechanics).
+			The algorithm was described by the Geman brothers in 1984
+			\parencite{gemanStochasticRelaxationGibbs1984},
+			about 8 decades after Gibbs death.
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\includegraphics[width=0.9\columnwidth]{josiah_gibbs.jpg}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-%     \item Em situações dimensionais mais baixas, o poder computacional aumentado pode compensar a eficiência mais baixa até certo ponto.
-%     Mas em situações de modelagem de dimensões mais altas e mais complexas, computadores maiores
-%     e mais rápidos sozinhos raramente são suficientes para superar o desafio.
-%   \end{vfilleditems}
-% \end{frame}
+\begin{frame}{Gibbs Algorithm}
+	The Gibbs algorithm is very useful in multidimensional sample spaces.
+	It is also known as \textbf{alternating conditional sampling},
+	because we always sample a parameter \textbf{conditioned} on the probability of the other model's parameters.
+	\vfill
+	The Gibbs algorithm can be seen as a \textbf{special case} of the Metropolis-Hastings algorithm,
+	because all proposals are accepted
+	\parencite{gelmanIterativeNonIterativeSimulation1992}.
+	\vfill
+	The essence of the Gibbs algorithm is the sampling of parameters conditioned in other parameters:
+	$$P(\theta_1 \mid \theta_2, \dots \theta_p)$$
+\end{frame}
 
-% \subsubsection{Gibbs}
-% \begin{frame}{Algoritmo de Gibbs}
-%   \begin{columns}
-%     \begin{column}{0.8\textwidth}
-%       Para contornar o problema de baixa taxa de aceitação dos algoritmos de Metropolis
-%       foi desenvolvido o algoritmo de Gibbs que
-%       \textbf{não possui uma regra de aceitação/rejeição}
-%       para a mudança de estado da corrente Markov:
-%       \textbf{Todas as propostas são aceitas}!
-%       \vfill
-%       O algoritmo de Gibbs teve ideia original concebida pelo físico Josiah Willard Gibbs
-%       em referência a uma analogia entre um algoritmo de amostragem e a
-%       física estatística (\textit{statistical physics} um ramo da física que tem sua
-%       base em mecânica estatística, \textit{statistical mechanics}).
-%       O algoritmo foi descrito pelos irmãos Stuart e Donald Geman em 1984
-%       \parencite{gemanStochasticRelaxationGibbs1984}, cerca de oito décadas após
-%       a morte de Gibbs.
-%     \end{column}
-%     \begin{column}{0.2\textwidth}
-%       \includegraphics[width=0.9\columnwidth]{josiah_gibbs.jpg}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}[fragile]{Algoritmo de Gibbs}
+	\SetAlCapFnt{\normalsize}
+	\SetAlCapNameFnt{\normalsize}
+	\begin{algorithm}[H]
+		\DontPrintSemicolon
+		\SetAlgoNoEnd
+		\SetAlgoLined
+		Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
+		\For{$t = 1, 2, \dots$}{
+			Assign:
+			$ \boldsymbol{\theta}^{(t)} =
+				\begin{cases}
+					\theta^{(t)}_1 & \sim P \left(\theta_1 \mid \theta^{(0)}_2, \dots, \theta^{(0)}_p \right)         \\
+					\theta^{(t)}_2 & \sim P \left(\theta_2 \mid \theta^{(t-1)}_1, \dots, \theta^{(0)}_p \right)       \\
+					               & \vdots                                                                           \\
+					\theta^{(t)}_p & \sim P \left(\theta_p \mid \theta^{(t-1)}_1, \dots, \theta^{(t-1)}_{p-1} \right)
+				\end{cases}
+			$\;
+		}
+		\caption{Gibbs}
+	\end{algorithm}
+\end{frame}
 
-% \begin{frame}{Algoritmo de Gibbs}
-%   O algoritmo de Gibbs é muito útil em espaços amostrais multidimensionais\footnote{
-%   no qual há bem mais que 2 parâmetros a serem amostrados da probabilidade posterior}.
-%   Também é conhecido como amostragem condicional alternativa
-%   (\textit{alternating conditional sampling}), pois amostramos sempre um parâmetro
-%   \textbf{condicionado} à probabilidade dos outros parâmetros do modelo.
-%   \vfill
-%   O algoritmo de Gibbs pode ser visto como um \textbf{caso especial} do algoritmo
-%   de Metropolis-Hastings porque todas as propostas são aceitas
-%   \parencite{gelmanIterativeNonIterativeSimulation1992}.
-%   \vfill
-%   A essência do algoritmo de Gibbs é a amostragem de parâmetros condicionada à outros parâmetros:
-%   $$P(\theta_1 \mid \theta_2, \dots \theta_p)$$
-% \end{frame}
+\begin{frame}{Gibbs Animation\footnote{see Gibbs in action at \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=GibbsSampling&target=banana}{\texttt{chi-feng/mcmc-demo}}.}}
+	\centering
+	\movie[loop, width=9cm, height=6cm]{Gibbs Animation}{animations/gibbs.m4v}
+\end{frame}
 
-% \begin{frame}[fragile]{Algoritmo de Gibbs}
-%     \SetAlCapFnt{\normalsize}
-%     \SetAlCapNameFnt{\normalsize}
-%     \begin{algorithm}[H]
-%     \DontPrintSemicolon
-%     \SetAlgoNoEnd
-%     \SetAlgoLined
-%     Defina um ponto inicial $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ do qual $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
-%      \Para{$t = 1, 2, \dots$}{
-%       Designe:
-%       $ \boldsymbol{\theta}^{(t)} =
-%         \begin{cases}
-%         \theta^{(t)}_1 &\sim P \left(\theta_1 \mid \theta^{(0)}_2, \dots, \theta^{(0)}_p \right) \\
-%         \theta^{(t)}_2 &\sim P \left(\theta_2 \mid \theta^{(t-1)}_1, \dots, \theta^{(0)}_p \right) \\
-%         &\vdots \\
-%         \theta^{(t)}_p &\sim P \left(\theta_p \mid \theta^{(t-1)}_1, \dots, \theta^{(t-1)}_{p-1} \right)
-%      \end{cases}
-%       $\;
-%      }
-%      \caption{Gibbs}
-%     \end{algorithm}
-% \end{frame}
+\subsubsection{Limitations of the Gibbs Algorithm}
+\begin{frame}{Limitations of the Gibbs Algorithm}
+	The main limitation of Gibbs algorithm is with relation to
+	\textbf{alternating conditional sampling}:
+	\begin{vfilleditems}
+		\item In Metropolis, the parameters' random proposals are sampled
+		\textbf{unconditionally}, \textbf{jointly}, and \textbf{simultaneous}.
+		The Markov chain state changes are executed in a
+		\textbf{multidimensional} manner.
+		This makes \textbf{multidimensional diagonal movements}.
+		\item In the case of the Gibbs algorithm,
+		this movement only happens one parameter at a time,
+		because we sample parameters in a
+		\textbf{conditional} and \textbf{sequential} manner with respect
+		to other parameters.
+		This makes \textbf{unidimensional horizontal/vertical movements},
+		and never multidimensional diagonal movements.
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{Animação Gibbs\footnote{Veja Gibbs em ação no \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=GibbsSampling&target=banana}{\texttt{chi-feng/mcmc-demo}}}}
-%   \centering
-%   \movie[loop, width=9cm, height=6cm]{Animação Gibbs}{animations/gibbs.m4v}
-% \end{frame}
+\subsubsection{Hamiltonian Monte Carlo (HMC)}
+\begin{frame}{Hamiltonian Monte Carlo (HMC)}
+	\begin{columns}
+		\begin{column}{0.8\textwidth}
+			Metropolis' low acceptance rate and Gibbs' low performance in multidimensional problems
+			(where the posterior geometry is highly complex)
+			made a new class of MCMC algorithms to emerge.
+			These are called Hamiltonian Monte Carlo (HMC),
+			because they incorporate Hamiltonian dynamics
+			(in honor of Irish physicist
+			\href{https://en.wikipedia.org/wiki/William_Rowan_Hamilton}{William Rowan Hamilton}).
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			\includegraphics[width=0.9\columnwidth]{hamilton.png}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \subsubsection{Limitações do Algoritmo de Gibbs}
-% \begin{frame}{Limitações do Algoritmo de Gibbs}
-%   A principal limitação do algoritmo de Gibbs é com relação a
-%   \textbf{amostragem condicional alternativa}:
-%   \begin{vfilleditems}
-%     \item Em Metropolis temos propostas aleatórias
-%     de uma distribuição de propostas na qual amostramos cada parâmetro
-%     \textbf{incondicionalmente} à outros parâmetros e de maneira \textbf{simultânea} usando a
-%     probabilidade conjunta desses parâmetros. As mudanças de estado da corrente
-%     Markov são então executadas \textbf{multidimensionalmente}.
-%     Isto provoca movimentos "\textbf{diagonais}"~multidimensionais.
+\begin{frame}{HMC Algorithm}
+	HMC algorithm is an adaptation of the MH algorithm,
+	and employs a guidance scheme to the generation of new proposals.
+	It boosts the acceptance rate, and, consequently, has a better efficiency.
+	\vfill
+	More specifically, HMC uses the gradient of the posterior's log density
+	to guide the Markov chain to higher density regions of the sample space,
+	where most of the samples are sampled:
+	$$
+		\frac{d \log P(\boldsymbol{\theta} \mid \mathbf{y})}{d \theta}
+	$$
+	As a result, a Markov chain that uses a well-adjusted HMC algorithm will accept
+	proposals with a much higher rate than if using the MH algorithm
+	\parencite{robertsWeakConvergenceOptimal1997, beskosOptimalTuningHybrid2013}.
+\end{frame}
 
-%     \item No caso do algoritmo de Gibbs essa movimentação se dá apenas em um
-%     único parâmetro, pois amostramos \textbf{sequencialmente} e
-%     \textbf{condicionalmente} à outros parâmetros.
-%     Isto provoca movimentos \textbf{horizontais/verticais} unidimensionais,
-%     mas nunca movimentos diagonais multidimensionais.
-%   \end{vfilleditems}
-% \end{frame}
+\begin{frame}{History of HMC Algorithm}
+	HMC was originally described in the physics literature\footnote{where is called ``Hybrid'' Monte Carlo (HMC)}
+	\parencite{duaneHybridMonteCarlo1987}.
+	\vfill
+	Soon after, HMC was applied to statistical problems by
+	\textcite{nealImprovedAcceptanceProcedure1994} who named it as Hamiltonian Monte Carlo (HMC).
+	\vfill
+	For a much more detailed and in-depth discussion (not our focus here) of HMC,
+	I recommend
+	\textcite{neal2011mcmc} and \textcite{betancourtConceptualIntroductionHamiltonian2017}.
+\end{frame}
 
-% \subsubsection{Hamiltonian Monte Carlo (HMC)}
-% \begin{frame}{Classe de Algoritmos MCMC - Hamiltoninan Monte Carlo (HMC)}
-%   \begin{columns}
-%     \begin{column}{0.8\textwidth}
-%       Os problemas de baixas taxas de aceitação de propostas das técnicas de
-%       Metropolis e do desempenho baixo do algoritmo de Gibbs em problemas
-%       multidimensionais nas quais a geometria da posterior é complexa
-%       fizeram com que surgisse uma nova técnica MCMC usando dinâmica Hamiltoniana
-%       (em homenagem ao físico irlandês
-%       \href{https://en.wikipedia.org/wiki/William_Rowan_Hamilton}{William Rowan Hamilton}.
-%     \end{column}
-%     \begin{column}{0.2\textwidth}
-%       \includegraphics[width=0.9\columnwidth]{hamilton.png}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{What Changes With HMC?}
+	HMC uses Hamiltonian dynamics applied to particles efficiently exploring
+	a posterior probability geometry,
+	while also being robust to complex posterior's geometries.
+	\vfill
+	Besides that, HMC is much more efficiently than Metropolis and
+	does \textit{not} suffer Gibbs' parameters correlation issues
+\end{frame}
 
-% \begin{frame}{Algoritmo de HMC}
-%   O HMC é uma adaptação da técnica de Metropolis e emprega um esquema guiado de
-%   geração de novas proposta: isso melhora a taxa de aceitação de propostas e,
-%   consequentemente, a eficiência.
-%   \vfill
-%   Mais especificamente, o HMC usa o gradiente do log da posterior para direcionar
-%   a cadeia de Markov para regiões de maior densidade posterior,
-%   onde a maioria das amostras são coletadas.
-%   $$
-%   \frac{d \log P(\boldsymbol{\theta} \mid \mathbf{y})}{d \theta}
-%   $$
-%   Como resultado, uma corrente Markov com o algoritmo HMC bem ajustada aceitará
-%   propostas em uma taxa muito mais alta do que o algoritmo Metropolis tradicional
-%   \parencite{robertsWeakConvergenceOptimal1997, beskosOptimalTuningHybrid2013}.
-% \end{frame}
+\begin{frame}{Intuition Behind the HMC Algorithm}
+	\small
+	For every parameter $\theta_j$, HMC adds a momentum variable $\phi_j$.
+	The posterior density $P(\boldsymbol{\theta} \mid y)$ is incremented by an
+	independent momenta distribution $P(\boldsymbol{\phi})$,
+	hence defining the following joint probability:
+	$$
+		P(\boldsymbol{\theta}, \boldsymbol{\phi} \mid y) = P(\boldsymbol{\phi}) \cdot P(\boldsymbol{\theta} \mid y)
+	$$
+	\small
+	HMC uses a proposal distribution that changes depending on the Markov chain current state.
+	HMC finds the direction where the posterior density increases,
+	the \textbf{gradient},
+	and alters the proposal distribution towards the gradient direction.
+	\vfill
+	The probability of the Markov chain to change its state in HMC is defined as:
+	$$
+		P_{\text{change}} = \min\left({\frac{P(\boldsymbol{\theta}_{\text{proposed}}) \cdot P(\boldsymbol{\phi}_{\text{proposed}})}{P(\boldsymbol{\theta}_{\text{current}})\cdot P(\boldsymbol{\phi}_{\text{current}})}}, 1\right)
+	$$
+\end{frame}
 
-% \begin{frame}{História do Algoritmo de HMC}
-%   HMC foi inicialmente descrito na literatura de física\footnote{que chamaram de \textit{"Hybrid"~Monte Carlo} -- HMC}
-%   \parencite{duaneHybridMonteCarlo1987}.
-%   \vfill
-%   Logo depois, HMC foi aplicado a problemas estatísticos por
-%   \textcite{nealImprovedAcceptanceProcedure1994} que chamou de \textit{Hamiltonian Monte Carlo}
-%   -- HMC).
-%   \vfill
-%   Para uma discussão aprofundada (que não é o foco deste conteúdo) de HMC eu recomendo
-%   \textcite{neal2011mcmc} e \textcite{betancourtConceptualIntroductionHamiltonian2017}.
-% \end{frame}
+\begin{frame}{Momenta Distribution -- $P(\boldsymbol{\phi})$}
+	Generally we give $\boldsymbol{\phi}$ a multivariate normal distribution
+	with mean $0$ and covariance$\mathbf{M}$,
+	a ``mass matrix''.
+	\vfill
+	To keep things computationally simple,
+	we used a \textbf{diagonal} mass matrix $\mathbf{M}$.
+	This makes that the diagonal elements (components) $\boldsymbol{\phi}$ are independent,
+	each one having a normal distribution:
+	$$\phi_j \sim \text{Normal}(0, M_{jj})$$
+\end{frame}
 
-% \begin{frame}{O que muda com HMC?}
-%   HMC usa dinâmica Hamiltoniana aplicada para partículas explorando de maneira mais
-%   eficiente a geometria de uma probabilidade posterior.
-%   \vfill
-%   Além de explorar melhor a geometria da posterior e tolerar geometrias complexas,
-%   HMC é muito mais eficiente que Metropolis e não sofre do problema de correlação
-%   dos parâmetros que Gibbs.
-% \end{frame}
+\begin{frame}[fragile]{HMC Algorithm}
+	\SetAlCapFnt{\normalsize}
+	\SetAlCapNameFnt{\normalsize}
+	\begin{algorithm}[H]
+		\DontPrintSemicolon
+		\SetAlgoNoEnd
+		\SetAlgoLined
+		\footnotesize
+		Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
+		Sample $\boldsymbol{\phi}$ from a $\text{Multivariate Normal}(\mathbf{0},\mathbf{M})$\;
+		Simultaneously sample $\boldsymbol{\theta}^{(*)}$ and $\boldsymbol{\phi}$ with $L$ steps and step-size $\epsilon$.\;
+		Define the current value of $\boldsymbol{\theta}$ as the proposed value $\boldsymbol{\theta}^{(*)}$:
+		$\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}$\;
+		\For{$1, 2, \dots, L$}{
+			Use the $\log$ of the posterior's gradient $\boldsymbol{\theta}^{(*)}$ to produce a half-step of $\boldsymbol{\phi}$:
+			$\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
+			Use $\boldsymbol{\phi}$ to update $\boldsymbol{\theta}^{(*)}$:
+			$\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}^{(*)} + \epsilon \mathbf{M}^{-1} \boldsymbol{\phi}$\;
+			Use again $\boldsymbol{\theta}^{(*)}$ $\log$ gradient to produce a half-step of $\boldsymbol{\phi}$:
+			$\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
+		}
+		As an acceptance/rejection rule, compute:
+		$r = \frac{P \left(\boldsymbol{\theta}^{(*)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(*)} \right)}{P \left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(t-1)} \right)}$\;
+		Assign:
+		$
+			\boldsymbol{\theta}^{(t)} =
+			\begin{cases}
+				\boldsymbol{\theta}^{(*)}   & \text{with probability $\min(r,1)$} \\
+				\boldsymbol{\theta}^{(t-1)} & \text{otherwise}
+			\end{cases}
+		$\;
+		\caption{Hamiltonian Monte Carlo (HMC)}
+	\end{algorithm}
+\end{frame}
 
-% \begin{frame}{Intuição por trás do Algoritmo de HMC}
-%   \small
-%   Para cada componente $\theta_j$, o HMC adiciona uma variável de momento
-%   $\phi_j$. A densidade posterior $P(\boldsymbol{\theta} \mid y)$ é incrementada
-%   por uma distribuição independente $P(\boldsymbol{\phi})$ dos momentos,
-%   definindo assim uma distribuição conjunta:
-%   $$
-%   P(\boldsymbol{\theta}, \boldsymbol{\phi} \mid y) = P(\boldsymbol{\phi}) \cdot P(\boldsymbol{\theta} \mid y)
-%   $$
-%   \small
-%   O HMC usa uma distribuição de propostas que muda dependendo do estado atual na
-%   corrente Markov. O HMC descobre a direção em que a distribuição posterior aumenta,
-%   chamada de \textit{gradiente}, e distorce a distribuição de propostas em
-%   direção ao \textit{gradiente}.
-%   \vfill
-%   A probabilidade da corrente Markov mudar de estado no algoritmo HMC é definida como:
-%   $$
-%   P_{\text{mudar}} = \min\left({\frac{P(\boldsymbol{\theta}_{\text{proposto}}) \cdot P(\boldsymbol{\phi}_{\text{proposto}})}{P(\boldsymbol{\theta}_{\text{atual}})\cdot P(\boldsymbol{\phi}_{\text{atual}})}}, 1\right)
-%   $$
-% \end{frame}
-
-% \begin{frame}{Distribuição dos Momentos -- $P(\boldsymbol{\phi})$}
-%   Normalmente damos a $\boldsymbol{\phi}$ uma distribuição normal multivariada
-%   com média 0 e covariância de $\mathbf{M}$,
-%   uma "matriz de massa".
-%   \vfill
-%   Para mantêr as coisas um pouco mais simples, usamos uma matriz de massa diagonal
-%   $\mathbf{M}$. Isso faz com que os componentes de $\boldsymbol{\phi}$ sejam
-%   independentes com
-%   $$\phi_j \sim \text{Normal}(0, M_{jj})$$
-% \end{frame}
-
-% \begin{frame}[fragile]{Algoritmo de HMC}
-%     \SetAlCapFnt{\normalsize}
-%     \SetAlCapNameFnt{\normalsize}
-%     \begin{algorithm}[H]
-%     \DontPrintSemicolon
-%     \SetAlgoNoEnd
-%     \SetAlgoLined
-%     \footnotesize
-%     Defina um ponto inicial $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ do qual $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
-%     Amostre $\boldsymbol{\phi}$ de uma $\text{Normal}(\mathbf{0},\mathbf{M})$\;
-%     Simultaneamente amostre $\boldsymbol{\theta}^{(*)}$ e $\boldsymbol{\phi}$ com $L$ passos e tamanho de passo $\epsilon$.\;
-%     Defina o valor atual $\boldsymbol{\theta}$ como valor proposto $\boldsymbol{\theta}^{(*)}$:
-%     $\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}$\;
-%     \Para{$1, 2, \dots, L$}{
-%      Use o gradiente do $\log$ da posterior de $\boldsymbol{\theta}^{(*)}$ para produzir um meio-passo de $\boldsymbol{\phi}$:
-%      $\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
-%      Use $\boldsymbol{\phi}$ para atualizar $\boldsymbol{\theta}^{(*)}$:
-%      $\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}^{(*)} + \epsilon \mathbf{M}^{-1} \boldsymbol{\phi}$\;
-%      Novamente use o gradiente de $\boldsymbol{\theta}$ para produzir um meio-passo de $\boldsymbol{\phi}$:
-%      $\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
-%     }
-%     Como regra de aceitação/rejeição calcule:
-%     $r = \frac{P \left(\boldsymbol{\theta}^{(*)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(*)} \right)}{P \left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(t-1)} \right)}$\;
-%     Designe:
-%       $
-%         \boldsymbol{\theta}^{(t)} =
-%           \begin{cases}
-%           \boldsymbol{\theta}^{(*)} & \text{com probabilidade $\min(r,1)$}\\
-%           \boldsymbol{\theta}^{(t-1)} & \text{caso contrário}
-%         \end{cases}
-%       $\;
-%     \caption{Hamiltonian Monte Carlo (HMC)}
-%     \end{algorithm}
-% \end{frame}
-
-% \begin{frame}{Animação HMC\footnote{Veja HMC em ação no \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=HamiltonianHMC&target=banana}{\texttt{chi-feng/mcmc-demo}}}}
-%   \centering
-%   \movie[loop, width=9cm, height=6cm]{Animação HMC}{animations/hmc.m4v}
-% \end{frame}
+\begin{frame}{HMC Animation\footnote{see HMC in action at \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=HamiltonianHMC&target=banana}{\texttt{chi-feng/mcmc-demo}}.}}
+	\centering
+	\movie[loop, width=9cm, height=6cm]{HMC Animation}{animations/hmc.m4v}
+\end{frame}
 
 % \begin{frame}{Um interlúdio de Integrador Numéricos}
 %   No campo das equações diferenciais ordinais temos a ideia de discretizar um
