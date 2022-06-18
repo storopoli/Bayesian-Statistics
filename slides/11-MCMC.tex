@@ -649,268 +649,292 @@
 	\movie[loop, width=9cm, height=6cm]{HMC Animation}{animations/hmc.m4v}
 \end{frame}
 
-% \begin{frame}{Um interlúdio de Integrador Numéricos}
-%   No campo das equações diferenciais ordinais temos a ideia de discretizar um
-%   sistema de equações diferenciais ordinais ao aplicar um pequeno passo $\epsilon$\footnote{algumas vezes também chamado de $h$}.
-%   Tais abordagem são chamadas de \textbf{integradores numéricos} e comportam uma
-%   \textbf{ampla classe} de ferramentas.
-%   \vfill
-%   O mais famoso e simples desses integradores numéricos é o método de Euler. No qual
-%   usa-se um tamamho de passo $\epsilon$ para calcular a solução numérica do estado
-%   em um futuro tempo $t$ a partir de condições iniciais específicas.
-% \end{frame}
+\begin{frame}{An Interlude into Numerical Integration}
+	In the field of ordinary differential equations (ODE),
+	we have the idea of ``discretizing'' a system of ODEs by applying a
+	small step-size $\epsilon$\footnote{sometimes also called $h$}.
+	Such approaches are called \textbf{numerical integrators} and are composed by
+	an ample class of tools.
+	\vfill
+	The most famous and simple of these numerical integrators is the Euler method,
+	where we use a step-size $\epsilon$ to compute a numerical solution of system
+	in a future time $t$ from specific initial conditions.
+\end{frame}
 
-% \begin{frame}{Um interlúdio de Integrador Numéricos}
-%   \begin{columns}
-%     \begin{column}{0.6\textwidth}
-%       O problema é que o método de Euler quando aplicado para dinâmicas Hamiltonianas
-%       é que ele não preserva o volume. Uma das propriedades fundamentais das dinâmicas
-%       Hamiltonianas é que elas preservam volume, um resultado chamado de Teorema de
-%       Liouville. Isto faz com que o método de Euler seja uma péssima escolha como
-%       integrador numérico de um algoritmo HMC.
-%     \end{column}
-%     \begin{column}{0.4\textwidth}
-%       \begin{figure}
-%       \includegraphics[width=0.8\columnwidth]{euler_0_3.jpg}
-%       \caption{Método de Euler num algoritmo HMC com $\epsilon = 0.3$ e $L = 20$}
-%       \end{figure}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{An Interlude into Numerical Integration}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			The problem is that Euler method, when applied to Hamiltonian dynamics,
+			\textbf{does not preserve volume}.
+			One of the fundamental properties of Hamiltonian dynamics if
+			\textbf{volume preservation}\footnote{a result called Liouville theorem.}.
+			This makes the Euler method a bad choice as a HMC's numerical integrator.
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[width=0.8\columnwidth]{euler_0_3.jpg}
+				\caption{HMC numerically integrated using Euler with $\epsilon = 0.3$ and $L = 20$}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \begin{frame}{Um interlúdio de Integrador Numéricos\footnote{Um excelente livro-texto
-%   para integradores numéricos e integradores simpléticos é
-%   \textcite{irseles2008numericalanalysis}}}
-%   \begin{columns}
-%     \begin{column}{0.6\textwidth}
-%       Para preservação de volumes precisamos usar um
-%       \textbf{integrador simplético}. Integradores simpléticos são no máximo
-%       de ordem 2 e precisam ser usados com um tamanho de passo $\epsilon$ constante.
-%       Um dos principais integradores numéricos simpléticos usado em dinânimcas
-%       Hamiltonianas é o integrador \textbf{Störmer–Verlet}, também conhecido
-%       como \textit{leapfrog}.
-%     \end{column}
-%     \begin{column}{0.4\textwidth}
-%       \begin{figure}
-%         \includegraphics[width=0.8\columnwidth]{leapfrog_0_3.jpg}
-%         \caption{Integrador \textit{Leapfrog} num algoritmo HMC com $\epsilon = 0.3$ e $L = 20$}
-%         \end{figure}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{An Interlude into Numerical Integration\footnote{
+			An excellent textbook for numerical and symplectic integrator is
+			\textcite{irseles2008numericalanalysis}.}}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			To preserve volume, we need a numerical \textbf{symplectic integrator}.
+			Sympletic integrators are at most second-order
+			and demands a constant step-size $\epsilon$.
+			One of the main numerical symplectic integrator used
+			in Hamiltonian dynamics is the \textbf{Störmer–Verlet integrator},
+			also known as \textbf{leapfrog integrator}.
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[width=0.8\columnwidth]{leapfrog_0_3.jpg}
+				\caption{HMC numerically integrated using leapfrog with $\epsilon = 0.3$ and $L = 20$}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \begin{frame}{Limitações do Algorito HMC}
-%   \begin{columns}
-%     \begin{column}{0.6\textwidth}
-%       Como vocês podem ver o algoritmo de HMC é muito sensível a escolhe da quantidade
-%       de passos $L$ e do tamanho do passo $\epsilon$. Em especial o integrador
-%       \textit{leapfrog} permite apenas um $\epsilon$ constante, portanto temos um
-%       equilíbrio delicado entre $L$ e $\epsilon$. Em  termos algorítmicos, $L$
-%       e $\epsilon$ são hiperparâmetros (tem que ser cuidadosamente ajustados).
-%     \end{column}
-%     \begin{column}{0.4\textwidth}
-%       \begin{figure}
-%         \includegraphics[width=0.8\columnwidth]{leapfrog_1_2.jpg}
-%         \caption{Integrador \textit{Leapfrog} num algoritmo HMC com $\epsilon = 1.2$ e $L = 20$}
-%         \end{figure}
-%     \end{column}
-%     \end{columns}
-% \end{frame}
+\begin{frame}{Limitations of the HMC Algorithm}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			As you can see, HMC algorithm is highly sensible to the choice of
+			leapfrog steps $L$ and step-size $\epsilon$,
+			More specific, the leapfrog integrator allows only a constant $\epsilon$.
+			There is a delicate balance between $L$ and $\epsilon$,
+			that are hyperparameters and need to be carefully adjusted.
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[width=0.8\columnwidth]{leapfrog_1_2.jpg}
+				\caption{HMC numerically integrated using leapfrog with $\epsilon = 1.2$ and $L = 20$}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-% \subsubsection{No-U-Turn-Sampler (NUTS)}
-% \begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
-%   Em HMC, conseguimos ajustar o $\epsilon$ durante a execução do algoritmo. Mas, geralmente
-%   precisamos executar algumas vezes o amostrador HMC para ajustar o $L$.
-%   \vfill
-%   Aqui vem a ideia do \textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)
-%   \parencite{hoffman2014no}.
-%   Não é preciso ajustar \textbf{nada} apenas "apertar"~o botão. Ele calcula automaticamente
-%   $\epsilon$ e $L$.
-% \end{frame}
+\subsubsection{No-U-Turn-Sampler (NUTS)}
+\begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
+	In HMC, we can adjust $\epsilon$ during the algorithm runtime.
+	But, for $L$, we need to to ``dry run'' the HMC sampler to find a good candidate value for $L$.
+	\vfill
+	Here is where the idea for \textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)
+	\parencite{hoffman2014no} enters:
+	you don't need to \textbf{adjust anything},
+	just ``press the button''.
+	It will automatically find $\epsilon$ and $L$.
+\end{frame}
 
-% \begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
-%   Mais especificamente precisamos de um critério que informe que já simulamos as dinâmicas
-%   Hamiltonianas por "tempo suficiente". \textit{i.e.} simular as dinâmicas por mais tempo
-%   não aumentaria a distância entre a proposta $\boldsymbol{\theta}^{(*)}$ e o valor atual
-%   $\boldsymbol{\theta}$.
-%   \vfill
-%   NUTS então usa um critério baseado no produto interno entre os vetores do momento
-%   atual $\boldsymbol{\phi}$ e a diferença entre os vetores
-%   da proposta $\boldsymbol{\theta}^{(*)}$ e o valor atual $\boldsymbol{\theta}$,
-%   que é a derivada com respeito ao tempo $t$ de metade da distância ao quadrado
-%   entre $\boldsymbol{\theta}$ e $\boldsymbol{\theta}^{(*)}$
-%   $$
-%   (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}) \cdot \boldsymbol{\phi}
-%   = (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}) \cdot \frac{d}{dt} (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta})
-%   = \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta})}{2}
-%   $$
-% \end{frame}
+\begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
+	More specifically, we need a criterion that informs that we performed
+	enough Hamiltonian dynamics simulation.
+	In other words, to simulate past beyond would not increase the distance
+	between the proposal $\boldsymbol{\theta}^{(*)}$ and the current value $\boldsymbol{\theta}$.
+	\vfill
+	NUTS uses a criterion based on the dot product between the current momenta vector
+	$\boldsymbol{\phi}$ and the difference between the proposal vector $\boldsymbol{\theta}^{(*)}$
+	and the current vector $\boldsymbol{\theta}$,
+	which turns into the derivative with respect to time $t$ of half of the distance squared between
+	$\boldsymbol{\theta}$ e $\boldsymbol{\theta}^{(*)}$:
+	$$
+		(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}) \cdot \boldsymbol{\phi}
+		= (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}) \cdot \frac{d}{dt} (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta})
+		= \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta})}{2}
+	$$
+\end{frame}
 
-% \begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
-%   Isso sugere um algorimo que não permite com que as propostas sejam guiadas de maneira
-%   infinita até que a distância entre a proposta $\boldsymbol{\theta}^{(*)}$ e o valor atual
-%   $\boldsymbol{\theta}$ seja menor que zero.
-%   \vfill
-%   Isto quer dizer que tal algoritmo não \textbf{permitirá meia-voltas} (\textit{u-turns}).
-% \end{frame}
+\begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
+	This suggests an algorithms that does not allow proposals be guided infinitely
+	until the distance between the proposal $\boldsymbol{\theta}^{(*)}$ and the current
+	$\boldsymbol{\theta}$ is less than zero.
+	\vfill
+	This means that such algorithm will \textbf{not allow u-turns}.
+\end{frame}
 
-% \begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
-%   NUTS usa o integrador \textit{leapfrog} para criar uma árvore binária da qual os nós-folha
-%   são as posições do momento $\boldsymbol{\phi}$ traçando tanto um caminho para frente
-%   ($t+1$) quanto para trás ($t-1$) em um tempo fictício em um determinado tempo $t$.
-%   O crescimento dos nós-folha são \textbf{interrompidos} quando é detectado meia-volta
-%   tanto para frente quanto para trás.
-%   \begin{figure}
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{nuts.jpg}
-%     \caption{NUTS crescendo nós-folha para frente}
-%   \end{figure}
-% \end{frame}
+\begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
+	NUTS uses the leapfrog integrator to create a binary tree where each leaf node
+	is a proposal of the momenta vector $\boldsymbol{\phi}$ tracing both a forward
+	($t+1$) as well as a backward ($t-1$) path in a determined fictitious time $t$.
+	The growing of the leaf nodes are \textbf{interrupted} when an u-turn is detected,
+	both forward or backward.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\textwidth]{nuts.jpg}
+		\caption{NUTS growing leaf nodes forward}
+	\end{figure}
+\end{frame}
 
-% \begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
-%   NUTS também um procedimento chamado \textit{Dual Averaging}
-%   \parencite{nesterov2009primal} para ajustar simultaneamente $\epsilon$ e $L$ ao
-%   considerar o produto $\epsilon \cdot L$.
-%   \vfill
-%   Tal ajuste é feito durante a fase de \textit{warmup} e os valores definidos de
-%   $\epsilon$ e $L$ são mantidos fixos durante a fase de amostragem.
-% \end{frame}
+\begin{frame}{\textbf{N}o-\textbf{U}-\textbf{T}urn-\textbf{S}ampler (NUTS)}
+	NUTS also uses a procedure called Dual Averaging
+	\parencite{nesterov2009primal} to simultaneously adjust $\epsilon$ and $L$
+	by considering the product $\epsilon \cdot L$.
+	\vfill
+	Such adjustment is done during the warmup phase and the defined values of
+	$\epsilon$ and $L$ are kept fixed during the sampling phase.
+\end{frame}
 
-% \begin{frame}{Algoritmo de NUTS}
-%     \SetAlCapFnt{\footnotesize}
-%     \SetAlCapNameFnt{\footnotesize}
-%     \begin{algorithm}[H]
-%     \DontPrintSemicolon
-%     \SetAlgoNoEnd
-%     \SetAlgoLined
-%     \fontsize{4.5pt}{6.5pt}\selectfont
-%     Defina um ponto inicial $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ do qual $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
-%     \textcolor{blue}{Inicie uma árvore binária vazia com $2^L$ nós}\;
-%     Amostre $\boldsymbol{\phi}$ de uma $\text{Normal}(\mathbf{0},\mathbf{M})$\;
-%     Simultaneamente amostre $\boldsymbol{\theta}$ e $\boldsymbol{\phi}$ com $L$ passos e tamanho de passo $\epsilon$.\;
-%     Defina o valor atual $\boldsymbol{\theta}$ como valor proposto $\boldsymbol{\theta}^{(*)}$:
-%     $\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}$\;
-%     \Para{$1, 2, \dots, 2L$}{
-%      \textcolor{blue}{Escolha uma direção $v \sim \text{Uniforme}\left( \left\{-1, 1 \right\} \right)$}\;
-%      Use o gradiente do $\log$ da posterior de $\boldsymbol{\theta}^{(*)}$ para produzir um meio-passo de $\boldsymbol{\phi}$ na direção $v$:
-%      $\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + v \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
-%      Use $\boldsymbol{\phi}$ para atualizar $\boldsymbol{\theta}^{(*)}$:
-%      $\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}^{(*)} + \epsilon \mathbf{M}^{-1} \boldsymbol{\phi}$\;
-%      Novamente use o gradiente de $\boldsymbol{\theta}^{(*)}$ para produzir um meio-passo de $\boldsymbol{\phi}$ na direção $v$:
-%      $\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + v \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
-%      Defina o nó $L_t^v$ como a proposta $\boldsymbol{\theta}$\;
-%      \eSe{
-%        A diferença entre os vetores
-%        da proposta $\boldsymbol{\theta}^{(*)}$ e o valor atual $\boldsymbol{\theta}$ na direção $v$ for menor que zero: $v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$\;
-%      }{
-%        \textcolor{red}{Pare a amostragem de $\boldsymbol{\theta}^{(*)}$ na direção $v$ e continue apenas amostrando na direção $-v$}\;
-%        }{
-%         \Se{A distância entre os vetores
-%         da proposta $\boldsymbol{\theta}^{(*)}$ e o valor atual $\boldsymbol{\theta}$ na direção restante $-v$ for menor que zero: $-v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$\;
-%        }{
-%         \textcolor{red}{Pare a amostragem de $\boldsymbol{\theta}^{(*)}$\;
-%         }
-%        }
-%      }
-%     }
-%     Como regra de aceitação/rejeição calcule:
-%     $r = \frac{P \left(\boldsymbol{\theta}^{(*)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(*)} \right)}{P \left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(t-1)} \right)}$\;
-%     Designe:
-%       $
-%         \boldsymbol{\theta}^{(t)} =
-%           \begin{cases}
-%           \boldsymbol{\theta}^{(*)} & \text{com probabilidade $\min(r,1)$}\\
-%           \boldsymbol{\theta}^{(t-1)} & \text{caso contrário}
-%         \end{cases}
-%       $\;
-%     \caption{No-U-Turn-Sampler (NUTS)}
-%     \end{algorithm}
-% \end{frame}
+\begin{frame}{NUTS Algorithm}
+	\SetAlCapFnt{\footnotesize}
+	\SetAlCapNameFnt{\footnotesize}
+	\begin{algorithm}[H]
+		\DontPrintSemicolon
+		\SetAlgoNoEnd
+		\SetAlgoLined
+		\fontsize{4.5pt}{6.5pt}\selectfont
+		Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
+		\textcolor{blue}{Instantiate an empty binary tree with $2^L$ leaf nodes}\;
+		Sample $\boldsymbol{\phi}$ from a $\text{Multivariate Normal}(\mathbf{0},\mathbf{M})$\;
+		Simultaneously sample $\boldsymbol{\theta}$ and $\boldsymbol{\phi}$ with $L$ leapfrog steps and step-size $\epsilon$.\;
+		Define the current value $\boldsymbol{\theta}$ as the proposed value $\boldsymbol{\theta}^{(*)}$:
+		$\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}$\;
+		\For{$1, 2, \dots, 2L$}{
+			\textcolor{blue}{Choose a direction $v \sim \text{Uniform}\left( \left\{-1, 1 \right\} \right)$}\;
+			Use the gradient of the $\log$ posterior $\boldsymbol{\theta}^{(*)}$ for a half-step of $\boldsymbol{\phi}$ in the direction $v$:
+			$\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + v \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
+			Use $\boldsymbol{\phi}$ to update $\boldsymbol{\theta}^{(*)}$:
+			$\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}^{(*)} + \epsilon \mathbf{M}^{-1} \boldsymbol{\phi}$\;
+			Again use the gradient of the $\log$ posterior $\boldsymbol{\theta}^{(*)}$ for a half-step of $\boldsymbol{\phi}$ in the direction $v$:
+			$\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + v \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
+			Define the node $L_t^v$ as the proposal $\boldsymbol{\theta}$\;
+			\If{
+				The difference between proposal vector $\boldsymbol{\theta}^{(*)}$
+				and current vector $\boldsymbol{\theta}$ in the direction $v$ is lower than zero: $v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$\;
+			}{
+				\textcolor{red}{Stop sampling $\boldsymbol{\theta}^{(*)}$ in the direction $v$ and continue sampling only in the direction $-v$}\;
+			}{
+				\If{
+					The difference between proposal vector $\boldsymbol{\theta}^{(*)}$
+					and current vector $\boldsymbol{\theta}$ in the direction $-v$ is lower than zero: $-v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$\;
+				}{
+					\textcolor{red}{Stop sampling $\boldsymbol{\theta}^{(*)}$\;
+					}
+				}
+			}
+		}
+		As an acceptance/rejection rule, compute:
+		$r = \frac{P \left(\boldsymbol{\theta}^{(*)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(*)} \right)}{P \left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(t-1)} \right)}$\;
+		Assign:
+		$
+			\boldsymbol{\theta}^{(t)} =
+			\begin{cases}
+				\boldsymbol{\theta}^{(*)}   & \text{with probability $\min(r,1)$} \\
+				\boldsymbol{\theta}^{(t-1)} & \text{otherwise}
+			\end{cases}
+		$\;
+		\caption{No-U-Turn-Sampler (NUTS)}
+	\end{algorithm}
+\end{frame}
 
-% \begin{frame}{Animação NUTS\footnote{Veja NUTS em ação no \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=EfficientNUTS&target=banana}{\texttt{chi-feng/mcmc-demo}}}}
-%   \centering
-%   \movie[loop, width=9cm, height=6cm]{Animação NUTS}{animations/nuts.m4v}
-% \end{frame}
+\begin{frame}{NUTS Animation\footnote{see NUTS in action at \href{https://chi-feng.github.io/mcmc-demo/app.html?algorithm=EfficientNUTS&target=banana}{\texttt{chi-feng/mcmc-demo}}.}}
+	\centering
+	\movie[loop, width=9cm, height=6cm]{Animação NUTS}{animations/nuts.m4v}
+\end{frame}
 
-% \subsubsection{Limitações de HMC e NUTS}
-% \begin{frame}{Limitações do Algorito HMC e NUTS - Funil de \textcite{nealSliceSampling2003}}
-%   O famoso funil da morte \footnote{muito comum em modelos hierárquicos}.
-%   Aqui vemos que os algoritmos HMC e NUTS, durante a exploração da
-%   posterior, tem que a todo momento trocar valores\footnote{lembre-se que
-%   $\epsilon$ e $L$ são definidos na fase de \textit{warmup} e
-%   mantidos fixos durante a fase de amostragem} de $\epsilon$ e $L$.
-% % https://crackedbassoon.com/writing/funneling
-% % import numpy as np
-% % import matplotlib
-% % import matplotlib.pyplot as plt
-% % from matplotlib import rcParams
-% % from scipy.stats import norm
-% % fs = rcParams["figure.figsize"]
-% % rcParams["figure.figsize"] = (fs[0], fs[0] / 2)
-% % rcParams["lines.linewidth"] = 2
-% % rcParams["font.size"] = 14
-% % rcParams["axes.edgecolor"] = 'b'
-% % rcParams["xtick.labelcolor"] = 'w'
-% % rcParams["ytick.labelcolor"] = 'w'
+\subsubsection{Limitations of HMC and NUTS}
+\begin{frame}{Limitations of HMC and NUTS Algorithms -- \textcite{nealSliceSampling2003}'s Funnel}
+	The famous ``Devil's Funnel''\footnote{very common em hierarchical models.}.
+	Here we see that HMC and NUTS, during the exploration of the posterior,
+	have to change often $L$ and $\epsilon$ values\footnote{
+		remember that $L$ and $\epsilon$ are defined in the warmup phase and kept fixed during sampling.}.
+	% https://crackedbassoon.com/writing/funneling
+	% import numpy as np
+	% import matplotlib
+	% import matplotlib.pyplot as plt
+	% from matplotlib import rcParams
+	% from scipy.stats import norm
+	% fs = rcParams["figure.figsize"]
+	% rcParams["figure.figsize"] = (fs[0], fs[0] / 2)
+	% rcParams["lines.linewidth"] = 2
+	% rcParams["font.size"] = 14
+	% rcParams["axes.edgecolor"] = 'b'
+	% rcParams["xtick.labelcolor"] = 'w'
+	% rcParams["ytick.labelcolor"] = 'w'
 
 
-% % # generate data
-% % np.random.seed(0)
-% % k = 9
-% % n = 10000
-% % v = norm.rvs(0, 3, n)
-% % x = norm.rvs(0, np.exp(v / 2), (k, n))
+	% # generate data
+	% np.random.seed(0)
+	% k = 9
+	% n = 10000
+	% v = norm.rvs(0, 3, n)
+	% x = norm.rvs(0, np.exp(v / 2), (k, n))
 
-% % # plot data and analytic log-likelihood
-% % r = 500
-% % x, v = np.meshgrid(np.linspace(-20, 20, r), np.linspace(-9, 9, r))
-% % logp = norm.logpdf(v, 0, 3) + norm.logpdf(x, 0, np.exp(v / 2))
-% % plt.imshow(logp, vmin=-7.5, vmax=-2.5, cmap="viridis", origin="lower")
-% % plt.xticks(np.linspace(0, 499, 5), labels=np.linspace(-20, 20, 5).astype(int))
-% % plt.yticks(np.linspace(0, 499, 5), labels=np.linspace(-9, 9, 5).astype(int))
+	% # plot data and analytic log-likelihood
+	% r = 500
+	% x, v = np.meshgrid(np.linspace(-20, 20, r), np.linspace(-9, 9, r))
+	% logp = norm.logpdf(v, 0, 3) + norm.logpdf(x, 0, np.exp(v / 2))
+	% plt.imshow(logp, vmin=-7.5, vmax=-2.5, cmap="viridis", origin="lower")
+	% plt.xticks(np.linspace(0, 499, 5), labels=np.linspace(-20, 20, 5).astype(int))
+	% plt.yticks(np.linspace(0, 499, 5), labels=np.linspace(-9, 9, 5).astype(int))
 
-% % # save figure
-% % plt.savefig('slides/images/funnel.png', bbox_inches=0, transparent=True, dpi=300)
-%   \centering
-%   \includegraphics[width=0.65\textwidth]{funnel.png}
-% \end{frame}
+	% # save figure
+	% plt.savefig('slides/images/funnel.png', bbox_inches=0, transparent=True, dpi=300)
+	\centering
+	\includegraphics[width=0.65\textwidth]{funnel.png}
+\end{frame}
 
-% \begin{frame}{Funil de \textcite{nealSliceSampling2003} e Parametrização Não-Centralizada\footnote{\textit{Non-Centered Parametrization} (NCP)}}
-%   \small
-%   O funil ocorre quando temos uma variável que a sua variância depende da variância
-%   de outra em uma escala exponencial. Um exemplo canônico de uma parametrização
-%   centralizada é:
-%   $$
-%   P(y,x) = \text{Normal}(y \mid 0 ,3) \cdot
-%   \text{Normal}\left(x \mid 0, e^{\left(\frac{y}{2}\right)}\right)
-%   $$
-%   Isto ocorre bastante em modelos hierárquicos, na relação dos \textit{prioris} de grupo
-%   com a(s) \textit{hiperpriori(s)} global(is). Então, reparametrizamos de maneira
-%   não-centrada alterando a geometria da posterior para facilitar a vida do amostrador
-%   MCMC:
-%   $$
-%   \begin{aligned}
-%     P(\tilde{y},\tilde{x}) &= \text{Normal}(\tilde{y} \mid 0, 1) \cdot
-%   \text{Normal}(\tilde{x} \mid 0, 1) \\
-%     y &= \tilde{y} \cdot 3 + 0 \\
-%     x &= \tilde{x} \cdot  e^{\left(\frac{y}{2}\right)} + 0
-%   \end{aligned}
-%   $$
-% \end{frame}
+\begin{frame}{\textcite{nealSliceSampling2003}'s Funnel and Non-Centered Parameterization (NCP)}
+	Sometimes the group-level effects do not constrain the hierarchical distribution tightly.
+	\vfill
+	Examples arise when there are not many groups,
+	or when the inter-group variation is high.
+	\vfill
+	In such cases, hierarchical models can be made much more efficient by shifting the
+	data's correlation with the parameters to the hyperparameters.
+\end{frame}
 
-% \begin{frame}{\href{https://mc-stan.org}{\texttt{Stan}} e NUTS}
-%   \href{https://mc-stan.org}{\texttt{Stan}} foi o primeiro amostrador MCMC a
-%   implementar NUTS. Além disso tem uma rotina otimizada automática de ajuste de $L$
-%   e $\epsilon$ durante a fase de \textit{warmup}. Possui os seguintes valores como
-%   hiperparâmetros padrões do NUTS\footnote{para mais informações sobre como
-%   modificar esses hiperparâmetros consulte a \href{
-%     https://mc-stan.org/docs/reference-manual/hmc-algorithm-parameters.html}{
-%     Seção 15.2 do \textit{Stan Reference Manual}}}:
-%   \begin{vfilleditems}
-%     \item \textbf{Taxa-alvo de aceitação de propostas Metropolis}: \lstinline!adapt_delta = 0.8!
-%     \item \textbf{Profundidade máxima de árvore} (em potências de 2): \lstinline!max_treedepth = 10! (quer dizer $2^{10} = 1024$)
-%   \end{vfilleditems}
-% \end{frame}
+\begin{frame}{\textcite{nealSliceSampling2003}'s Funnel and Non-Centered Parameterization (NCP)}
+	\small
+	The funnel occurs when we have a variable that its variance depends on another variable variance
+	in an exponential scale.
+	A canonical example of a centered parameterization (CP) is:
+	$$
+		P(y,x) = \text{Normal}(y \mid 0 ,3) \cdot
+		\text{Normal}\left(x \mid 0, e^{\left(\frac{y}{2}\right)}\right)
+	$$
+	This occurs often in hierarchical models,
+	in the relationship between group-level priors and population-level hyperpriors.
+	Hence, we reparameterize in a non-centered way,
+	changing the posterior geometry to make life easier for our MCMC sampler:
+	$$
+		\begin{aligned}
+			P(\tilde{y},\tilde{x}) & = \text{Normal}(\tilde{y} \mid 0, 1) \cdot
+			\text{Normal}(\tilde{x} \mid 0, 1)                                           \\
+			y                      & = \tilde{y} \cdot 3 + 0                             \\
+			x                      & = \tilde{x} \cdot  e^{\left(\frac{y}{2}\right)} + 0
+		\end{aligned}
+	$$
+\end{frame}
+
+\begin{frame}{\texttt{Stan} and NUTS}
+	\texttt{Stan} was the first MCMC sampler to implement NUTS.
+	Besides that, it has an automatic optimized adjustment routine for values of $L$ and $\epsilon$ during warmup.
+	It has the following default NUTS hyperparameters' values\footnote{
+		for more information about how to change those values, see \href{
+			https://mc-stan.org/docs/reference-manual/hmc-algorithm-parameters.html}{
+			Section 15.2 of the \texttt{Stan} Reference Manual}.}:
+	\begin{vfilleditems}
+		\item \textbf{target acceptance rate of Metropolis proposals}: 0.8
+		\item \textbf{max tree depth} (in powers of $2$): 10 (which means $2^{10} = 1024$)
+	\end{vfilleditems}
+\end{frame}
+
+\begin{frame}{\texttt{Turing.jl} and NUTS}
+	\texttt{Turing.jl} also implements NUTS which lives, along with other MCMC samplers, inside the package \texttt{AdvancedHMC.jl}.
+	It also has an automatic optimized adjustment routine for values of $L$ and $\epsilon$ during warmup.
+	It has the same default NUTS hyperparameters' values\footnote{
+		for more information about how to change those values, see \href{
+			https://turing.ml/dev/docs/library/#Turing.Inference.NUTS}{
+			\texttt{Turing.jl} Documentation}.}:
+	\begin{vfilleditems}
+		\item \textbf{target acceptance rate of Metropolis proposals}: 0.65
+		\item \textbf{max tree depth} (in powers of $2$): 10 (which means $2^{10} = 1024$)
+	\end{vfilleditems}
+\end{frame}
 
 % \subsection{Convergência de Correntes Markov}
 % \begin{frame}{Convergência de Correntes Markov}
