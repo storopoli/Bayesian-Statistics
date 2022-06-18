@@ -242,7 +242,7 @@
 \subsection{MCMC Algorithms}
 \begin{frame}{MCMC Algorithms}
 	We have \textbf{TONS} of MCMC algorithms\footnote{see the \href{https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo}
-	{Wikipedia page for a full list}.}.
+		{Wikipedia page for a full list}.}.
 	Here we are going to cover two classes of MCMC algorithms:
 	\begin{vfilleditems}
 		\item Metropolis-Hastings \parencite{metropolisEquationStateCalculations1953, hastingsMonteCarloSampling1970}.
@@ -251,27 +251,29 @@
 	\end{vfilleditems}
 \end{frame}
 
-% \begin{frame}{Classe de Algoritmos MCMC -- Metropolis-Hastings}
-%   Os primeiros algoritmos de MCMC. Usam uma regra de aceitação/rejeição das
-%   propostas. Caracterizados por propostas oriundas de um passeio aleatório\footnote{\textit{random walk}}
-%   no espaço amostral. O algoritmo de \textbf{Gibbs} pode ser visto como um
-%   \textbf{caso especial} do algoritmo de MH porque
-%   todas as propostas são aceitas \parencite{gelmanIterativeNonIterativeSimulation1992}
-%   \vfill
-%   Assintoticamente, possuem uma taxa de aceitação de 23.4\% e o custo de cada iteração é
-%   $\mathcal{O}(d)$, na qual $d$ é a dimensão do espaço amostral \parencite{beskosOptimalTuningHybrid2013}.
-% \end{frame}
+\begin{frame}{MCMC Algorithms -- Metropolis-Hastings}
+	These are the first MCMC algorithms.
+	They use an \textbf{acceptance/rejection rule for the proposals}.
+	They are characterized by proposals originated from a random walk in the parameter space.
+	The \textbf{Gibbs algorithm} can be seen as a \textbf{special case} of MH
+	because all proposals are automatically accepted \parencite{gelmanIterativeNonIterativeSimulation1992}
+	\vfill
+	Asymptotically, they have an acceptance rate of 23.4\%,
+	and the computational cost of every iteration is $\mathcal{O}(d)$,
+	where $d$ is the number of dimension in the parameter space \parencite{beskosOptimalTuningHybrid2013}.
+\end{frame}
 
-% \begin{frame}{Classe de Algortimos MCMC -- Hamiltonian Monte Carlo}
-%   Os algoritmos MCMC mais eficientes na atualidade. Tenta evitar o comportamento
-%   de passeio aleatório introduzindo um vetor de momento auxiliar e
-%   implementando dinâmicas Hamiltonianas. As propostas são "guiadas"~
-%   para regiões de maior densidade do espaço amostral. Isso faz com que HMC seja
-%   \textbf{ordens de magnitude mais eficiente que MH e Gibbs}.
-%   \vfill
-%   Assintoticamente, possuem uma taxa de aceitação de 65.1\% e o custo de cada iteração é
-%   $\mathcal{O}(d^{\frac{1}{4}})$, na qual $d$ é a dimensão do espaço amostral \parencite{beskosOptimalTuningHybrid2013}.
-% \end{frame}
+\begin{frame}{MCMC Algorithms -- Hamiltonian Monte Carlo}
+	The current most efficient MCMC algorithms.
+	They try to \textbf{avoid the random walk behavior by introducing an auxiliar vector of momenta
+	using Hamiltonian dynamics}.
+	The proposals are ``guided'' to higher density regions of the sample space.
+	This makes \textbf{HMC more efficient in orders of magnitude when compared to MH and Gibbs}.
+	\vfill
+	Asymptotically, they have an acceptance rate of 65.1\%,
+	and the computational cost of every iteration is $\mathcal{O}(d^{\frac{1}{4}})$,
+	where $d$ is the number of dimension in the parameter space \parencite{beskosOptimalTuningHybrid2013}.
+\end{frame}
 
 % \subsubsection{Metropolis}
 % \begin{frame}{Algoritmo de Metropolis}
