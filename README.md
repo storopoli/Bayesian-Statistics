@@ -61,6 +61,28 @@ Thousands of users rely on `Stan` for statistical modeling, data analysis, and p
 Models specified using `Turing.jl` are easy to read and write — models work the way you write them.
 Like everything in Julia, `Turing.jl` is [fast](https://arxiv.org/abs/2002.02702).
 
+## Datasets
+
+- `kidiq` (linear regression): data from a survey of adult American women and their children
+   (a subsample from the National Longitudinal Survey of Youth).
+   Source: Gelman and Hill (2007).
+- `wells` (logistic regression): a survey of 3200 residents in a small area of Bangladesh suffering
+   from arsenic contamination of groundwater.
+   Respondents with elevated arsenic levels in their wells had been encouraged to switch their water source
+   to a safe public or private well in the nearby area
+   and the survey was conducted several years later to
+   learn which of the affected residents had switched wells.
+   Souce: Gelman and Hill (2007).
+- `esoph` (ordinal regression): data from a case-control study of (o)esophageal cancer in Ille-et-Vilaine, France.
+   Source: Breslow and Day (1980).
+- `roaches` (Poisson regression): data on the efficacy of a pest management system at reducing the number of roaches in urban apartments.
+   Source: Gelman and Hill (2007).
+- `duncan` (robust regression): data from occupation's prestige filled with outliers.
+   Source: Duncan (1961).
+- `cheese` (hierarchical models): data from cheese ratings.
+   A group of 10 rural and 10 urban raters rated 4 types of different cheeses (A, B, C and D) in two samples.
+   Source: Boatwright, McCulloch and Rossi (1999).
+
 ## Author
 
 Jose Storopoli, PhD - [*Lattes* CV](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - <https://storopoli.github.io>
@@ -77,7 +99,7 @@ I've made it to be how I would have liked to be introduced to Bayesian statistic
 
 ## References
 
-The references are divided in **books**, **papers** and **software**.
+The references are divided in **books**, **papers**, **software**, and **datasets**.
 
 ### Books
 
@@ -158,6 +180,14 @@ The papers section of the references are divided into **required** and **complem
     problems of p values. *Psychonomic Bulletin & Review*, *14*(5),
     779–804.
     https://doi.org/[10.3758/BF03194105](https://doi.org/10.3758/BF03194105)
+-   Vandekerckhove, J., Matzke, D., Wagenmakers, E.-J., & others. (2015).
+    Model comparison and the principle of parsimony.
+    In J. R. Busemeyer, Z. Wang, J. T. Townsend, & A. Eidels (Eds.),
+    Oxford handbook of computational and mathematical psychology (pp. 300–319).
+    Oxford University Press Oxford.
+-   Vehtari, A., Gelman, A., & Gabry, J. (2015). Practical Bayesian model evaluation
+    using leave-one-out cross-validation and WAIC.
+    https://doi.org/10.1007/s11222-016-9696-4
 
 #### Complementary
 
@@ -220,6 +250,14 @@ The papers section of the references are divided into **required** and **complem
 -   Ge, H., Xu, K., & Ghahramani, Z. (2018). Turing: A Language for Flexible Probabilistic Inference. International Conference on Artificial Intelligence and Statistics, 1682–1690. http://proceedings.mlr.press/v84/ge18b.html
 -   Tarek, M., Xu, K., Trapp, M., Ge, H., & Ghahramani, Z. (2020). DynamicPPL: Stan-like Speed for Dynamic Probabilistic Models. ArXiv:2002.02702 [Cs, Stat]. http://arxiv.org/abs/2002.02702
 -   Xu, K., Ge, H., Tebbutt, W., Tarek, M., Trapp, M., & Ghahramani, Z. (2020). AdvancedHMC.jl: A robust, modular and efficient implementation of advanced HMC algorithms. Symposium on Advances in Approximate Bayesian Inference, 1–10. http://proceedings.mlr.press/v118/xu20a.html
+
+### Datasets
+
+-   Boatwright, P., McCulloch, R., & Rossi, P. (1999). Account-level modeling for trade promotion: An application of a constrained parameter hierarchical model. _Journal of the American Statistical Association_, 94(448), 1063–1073.
+-   Breslow, N. E. & Day, N. E. (1980). **Statistical Methods in Cancer Research. Volume 1: The Analysis of Case-Control Studies**. IARC Lyon / Oxford University Press.
+-   Duncan, O. D. (1961). A socioeconomic index for all occupations. Class: Critical Concepts, 1, 388–426.
+-   Gelman, A., & Hill, J. (2007). **Data analysis using regression and
+    multilevel/hierarchical models**. Cambridge university press.
 
 ## How to cite
 
