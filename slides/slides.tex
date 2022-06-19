@@ -111,6 +111,8 @@
 % Math Font Default (Fira is strange)
 \renewcommand\mathfamilydefault{\rmdefault}
 
+% footnotes
+\renewcommand{\thefootnote}{\roman{footnote}}
 
 % if loaded after begin{document} a warning will appear: "pdfauthor already used"
 \title[Bayesian Statistics]{Bayesian Statistics}
@@ -197,7 +199,7 @@
 \include{09-Robust_Regression}
 \include{10-Hierarchical_Models}
 \include{11-MCMC}
-%\include{12-Comparacao_Modelos}
+\include{12-Model_Comparison}
 
 %--- Citations -------------------------------------------------------%
 
