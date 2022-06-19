@@ -1,311 +1,281 @@
 \section{Model Comparison}
 
-% \subsection{Leituras Recomendadas}
-% \begin{frame}{Comparação de Modelos - Leituras Recomendadas}
-% 	\begin{vfilleditems}
-% 		\item \textcite{gelman2013bayesian} - Capítulo 7: Evaluating, comparing, and expanding models
-% 		\item \textcite{gelman2020regression} - Capítulo 11, Seção 11.8: Cross validation
-% 		\item \textcite{mcelreath2020statistical} - Capítulo 7, Seção 7.5: Model comparison
-% 		\item \textcite{vehtariPracticalBayesianModel2015}
-% 		\item Tutorial do \texttt{loo} de \textcite{loo}
-% 		\item \textcite{storopoli2021estatisticabayesianaR} - Comparação de Modelos
-% 		\item \textcite{spiegelhalter2002bayesian}
-% 		\item \textcite{van2005dic}
-% 		\item \textcite{watanabe2010asymptotic}
-% 		\item \textcite{gelfand1996model}
-% 		\item \textcite{watanabe2010asymptotic}
-% 		\item \textcite{geisser1979predictive}
-% 	\end{vfilleditems}
-% \end{frame}
+\subsection{Model Comparison - Recommended References}
+\begin{frame}{Model Comparison - Recommended References}
+	\begin{vfilleditems}
+		\item \textcite{gelman2013bayesian} - Chapter 7: Evaluating, comparing, and expanding models
+		\item \textcite{gelman2020regression} - Chapter 11, Section 11.8: Cross validation
+		\item \textcite{mcelreath2020statistical} - Chapter 7, Section 7.5: Model comparison
+		\item \textcite{vehtariPracticalBayesianModel2015}
+		\item \textcite{spiegelhalter2002bayesian}
+		\item \textcite{van2005dic}
+		\item \textcite{watanabe2010asymptotic}
+		\item \textcite{gelfand1996model}
+		\item \textcite{watanabe2010asymptotic}
+		\item \textcite{geisser1979predictive}
+	\end{vfilleditems}
+\end{frame}
 
-% \subsection{Por quê Comparar Modelos?}
-% \begin{frame}{Por quê Comparar Modelos?}
-% 	Depois de estimarmos um modelo Bayesiano,
-% 	muitas vezes queremos medir sua precisão preditiva, por si só ou para
-% 	fins de comparação, seleção ou cálculo de média do modelo \parencite{geisser1979predictive}.
-% \end{frame}
+\subsection{Why Compare Models?}
+\begin{frame}{Why Compare Models?}
+	After model parameters estimation,
+	many times we want to measure its \textbf{predictive accuracy} by itself,
+	or for \textbf{model comparison}, \textbf{model selection}, or computing a \textbf{model performance metric}
+	\parencite{geisser1979predictive}.
+\end{frame}
 
-% \begin{frame}{Mas, e as Verificações Preditivas da Posterior?}
-% 	É uma maneira subjetiva e arbitrária de analisarmos e compararmos modelos
-% 	entre si usando sua precisão preditiva.
-% 	\vfill
-% 	Há uma maneira objetiva de compararmos modelos Bayesianos com uma
-% 	métrica robusta que nos ajude a selecionar qual o melhor modelo dentre o rol
-% 	de modelos candidatos.
-% 	\vfill
-% 	Ter uma maneira objetiva de comparar modelos e escolher o melhor dentre eles
-% 	é muito importante pois no \textit{workflow} Bayesiano geralmente temos diversas
-% 	iterações entre \textit{prioris} e funções de verossimilhança o que ocasiona na
-% 	criação de diversos modelos diferentes \parencite{gelmanBayesianWorkflow2020}.
-% \end{frame}
+\begin{frame}{But What About Posterior Predictive Checks?}
+	To analyze and compare models using predictive accuracy is a
+	\textbf{subjective and arbitrary approach}.
+	\vfill
+	There is an \textbf{objective approach to compare Bayesian models}
+	which uses a robust metric that helps us
+	select the best model in a set of candidate models.
+	\vfill
+	Having an objective way of comparing and choosing the best model is very important.
+	In the \textbf{Bayesian workflow},
+	we generally have several iterations between priors and likelihood functions
+	resulting in several different models \parencite{gelmanBayesianWorkflow2020}.
+\end{frame}
 
-% \subsection{Técnicas de Comparação de Modelos}
-% \begin{frame}{Técnicas de Comparação de Modelos}
-% 	Temos diversas técnicas de comparação de modelos que usam a precisão preditiva,
-% 	sendo as principais:
-% 	\begin{vfilleditems}
-% 		\item \textit{Leave-one-out cross-validation} (LOO)
-% 		\parencite{vehtariPracticalBayesianModel2015}
-% 		\item \textit{Deviance Information Criterion} (DIC)
-% 		\parencite{spiegelhalter2002bayesian},  mas sabe-se que tem alguns problemas,
-% 		que surgem em parte por não ser totalmente Bayesiano,
-% 		pois se baseia em uma estimativa pontual \parencite{van2005dic}
-% 		\item \textit{Widely Applicable Information Criteria} (WAIC)
-% 		\parencite{watanabe2010asymptotic}, totalmente Bayesiano no sentido
-% 		de que usa toda a distribuição posterior, e é assintoticamente igual ao
-% 		LOO \parencite{vehtariPracticalBayesianModel2015}
-% 	\end{vfilleditems}
-% \end{frame}
+\subsection{Model Comparison Techniques}
+\begin{frame}{Model Comparison Techniques}
+	We have several model comparison techniques that use \textbf{predictive accuracy},
+	but the main ones are:
+	\begin{vfilleditems}
+		\item Leave-one-out cross-validation (LOO)
+		\parencite{vehtariPracticalBayesianModel2015}.
+		\item Deviance Information Criterion (DIC)
+		\parencite{spiegelhalter2002bayesian},
+		but it is known to have some issues,
+		due to not being full-Bayesian,
+		because it is only based on point estimates \parencite{van2005dic},
+		\item Widely Applicable Information Criteria (WAIC) \parencite{watanabe2010asymptotic},
+		full-Bayesian,
+		in the sense that uses the full posterior distribution density,
+		and it is asymptotically equal to LOO \parencite{vehtariPracticalBayesianModel2015}.
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{Interlúdio Histórico}
-% 	\small
-% 	Antigamente, não havia esse poder computacional e abundância de dados.
-% 	Comparação de modelos eram baseados em uma métrica de divergência teórica
-% 	oriunda da entropia da teoria da informação:
-% 	$$
-% 		H(p) = - \operatorname{E}\log(p_i) = -\sum^N_{i=1} p_i \log(p_i)
-% 	$$
-% 	\small
-% 	Calculamos a divergência\footnote{\textit{divergence}} multiplicando por
-% 	$-2$\footnote{razões históricas},
-% 	então menores valores são melhores:
-% 	$$
-% 		D(y, \boldsymbol{\theta}) = -2 \cdot \underbrace{\sum^N_{i=1} \log \frac{1}{S}\sum^S_{s=1} P(y_i \mid \boldsymbol{\theta}^s)}_{\text{\textit{log pointwise predictive density} -- lppd}}
-% 	$$
-% 	\footnotesize
-% 	onde $N$ é o tamanho da amostra e $S$ é o número de amostras simuladas da posterior.
-% \end{frame}
+\begin{frame}{Historical Interlude}
+	\small
+	In the past, we did not have computational power and data abundance.
+	Model comparison was done based on a theoretical divergence metric
+	originated from information theory's entropy:
+	$$
+		H(p) = - \operatorname{E}\log(p_i) = -\sum^N_{i=1} p_i \log(p_i)
+	$$
+	\small
+	We compute the divergence by multiplying entropy by $-2$\footnote{historical reasons.},
+	so lower values are preferable:
+	$$
+		D(y, \boldsymbol{\theta}) = -2 \cdot \underbrace{\sum^N_{i=1} \log \frac{1}{S}\sum^S_{s=1} P(y_i \mid \boldsymbol{\theta}^s)}_{\text{\textit{log pointwise predictive density} -- lppd}}
+	$$
+	\footnotesize
+	where $n$ is the sample size and $S$ is the number of posterior draws.
+\end{frame}
 
-% \begin{frame}{Interlúdio Histórico -- AIC \parencite{akaike1998information}}
-% 	$$\text{AIC} = D(y, \boldsymbol{\theta}) + 2k = -2 \text{lppd}_{\text{mle}} + 2k$$
-% 	onde $k$ é o número de parâmetros livres do modelo e $\text{lppd}_{\text{mle}}$ é
-% 	a estimação de máxima verossimilhança (MLE) da lppd.
-% 	\vfill
-% 	AIC é uma aproximação que somente pode ser confiável quando:
-% 	\begin{vfilleditems}
-% 		\item As \textit{prioris} são uniformes (\textit{flat priors}) ou dominadas totalmente pela função de verossimilhança
-% 		\item A posterior é aproximadamente uma distribuição Gaussiana/normal multivariada
-% 		\item O tamanho da amostra $N$ é muito maior que número de parâmetros livres $k$: $N \gg k$
-% 	\end{vfilleditems}
-% \end{frame}
+\begin{frame}{Historial Interlude -- AIC \parencite{akaike1998information}}
+	$$
+		\text{AIC} = D(y, \boldsymbol{\theta}) + 2k = -2 \text{lppd}_{\text{mle}} + 2k
+	$$
+	where $k$ is the number of the model's free parameters and
+	$\text{lppd}_{\text{mle}}$ is the
+	\textbf{m}aximum \textbf{l}ikelihood \textbf{e}stimate of the
+	\textbf{l}og \textbf{p}ointwise \textbf{p}redictive \textbf{d}ensity.
+	\vfill
+	AIC is an approximation and can only be reliable when:
+	\begin{vfilleditems}
+		\item The priors are uniforme (flat priors) or totally dominated by the likelihood function.
+		\item The posterior is approximate a multivariate normal distribution.
+		\item The sample size $N$ is much larger than the number of the model's free parameters $k$: $N \gg k$
+	\end{vfilleditems}
+\end{frame}
 
-% \begin{frame}{Interlúdio Histórico -- DIC \parencite{spiegelhalter2002bayesian}}
-% 	Uma generalização do AIC, onde substituímos a estimação de máxima verossimilhança
-% 	pela média da posterior e $k$ por uma correção de viés baseada nos dados:
-% 	$$
-% 		DIC = D(y, \boldsymbol{\theta}) + k_{\text{DIC}} = -2 \text{lppd}_{\text{Bayes}}
-% 		+2 \underbrace{\left( \text{lppd}_{\text{Bayes}} - \frac{1}{S} \sum^S_{s=1} \log P(y \mid \boldsymbol{\theta}^s) \right)}_{\text{$k$ corrigido de viés}}
-% 	$$
-% 	DIC remove a restrição das \textit{prioris} uniformes de AIC, mas mesmo assim
-% 	mantém os presupostos da posterior ser uma distribuição Gaussiana/normal multivariada
-% 	e que $N \gg k$
-% \end{frame}
+\begin{frame}{Historical Interlude -- DIC \parencite{spiegelhalter2002bayesian}}
+	A generalization of the AIC,
+	where we replace the maximum likelihood estimate for the posterior mean
+	and $k$ by a data-based bias correction:
+	$$
+		\text{DIC} = D(y, \boldsymbol{\theta}) + k_{\text{DIC}} = -2 \text{lppd}_{\text{Bayes}}
+		+2 \underbrace{\left( \text{lppd}_{\text{Bayes}} - \frac{1}{S} \sum^S_{s=1} \log P(y \mid \boldsymbol{\theta}^s) \right)}_{\text{bias-corrected $k$}}
+	$$
+	DIC remove a restrição das \textit{prioris} uniformes de AIC, mas mesmo assim
+	mantém os presupostos da posterior ser uma distribuição Gaussiana/normal multivariada
+	e que $N \gg k$
+\end{frame}
 
-% \subsubsection{Precisão Preditiva}
-% \begin{frame}{Precisão Preditiva}
-% 	Com o poder computacional que temos hoje não precisamos de aproximações\footnote{AIC, DIC etc.}.
-% 	\vfill
-% 	Podemos discutir métricas objetivas de \textbf{precisão preditiva}.
-% 	\vfill
-% 	Mas antes vamos definir o que é precisão preditiva.
-% \end{frame}
+\subsubsection{Predictive Accuracy}
+\begin{frame}{Predictive Accuracy}
+	With current computational power, we do not need approximations\footnote{AIC, DIC etc.}.
+	\vfill
+	We can discuss \textbf{predictive accuracy objective metrics}
+	\vfill
+	But, first, let's define what is predictive accuracy.
+\end{frame}
 
-% \begin{frame}{Precisão Preditiva}
-% 	\begin{defn}[Precisão Preditiva]
-% 		Bayesianos mensuram precisão preditiva usando simulações da distribuição posterior
-% 		$\tilde{y}$ do modelo. Para isso temos a distribuição preditiva posterior
-% 		(\textit{predictive posterior distribution}):
-% 		$$
-% 			p(\tilde{y} \mid y) = \int p(\tilde{y}_i \mid \theta) p(\theta \mid y) d \theta
-% 		$$
-% 		\small
-% 		Onde $p(\theta \mid y)$ é a distribuição posterior do modelo\footnote{aquela
-% 			que o \texttt{rstanarm} e \texttt{brms} estima para nós}.
-% 		A fórmula acima significa que calculamos a integral de toda a
-% 		probabilidade conjunta da distribuição posterior preditiva com a
-% 		distribuição posterior do nosso modelo
-% 		\normalsize
-% 		Quanto \textbf{maior} a distribuição preditiva posterior
-% 		$p(\tilde{y} \mid y)$ \textbf{melhor} será a precisão preditiva do modelo.
-% 	\end{defn}
-% \end{frame}
+\begin{frame}{Predictive Accuracy}
+	\begin{defn}[Predictive Accuracy]
+		Bayesian approaches measure predictive accuracy using posterior draws
+		$\tilde{y}$ from the model.
+		For that we have the predictive posterior distribution:
+		$$
+			p(\tilde{y} \mid y) = \int p(\tilde{y}_i \mid \theta) p(\theta \mid y) d \theta
+		$$
+		\small
+		Where $p(\theta \mid y)$ is the model's posterior distribution.
+		The above equation means that we evaluate the integral
+		with respect to the whole joint probability of the model's
+		predictive posterior distribution and posterior distribution.
+		\vfill
+		\normalsize
+		The \textbf{higher} the predictive posterior distribution
+		$p(\tilde{y} \mid y)$,
+		the \textbf{better} will be the model's predictive accuracy.
+	\end{defn}
+\end{frame}
 
-% \begin{frame}{Precisão Preditiva}
-% 	Para mantermos comparabilidade entre amostras, calculamos a
-% 	esperança dessa medida\footnote{do inglês \textit{expectation} que pode ser
-% 		também interpretada como a média ponderada} para cada uma das $N$ observações
-% 	da amostra:
+\begin{frame}{Predictive Accuracy}
+	To make samples comparable,
+	we calculate the expectation of this measure for each one of the $N$ sample observations:
 
-% 	$$
-% 		\operatorname{elpd} = \sum_{i=1}^N \int p_t(\tilde{y}_i) \log p(\tilde{y}_i \mid y) d \tilde{y}
-% 	$$
+	$$
+		\operatorname{elpd} = \sum_{i=1}^N \int p_t(\tilde{y}_i) \log p(\tilde{y}_i \mid y) d \tilde{y}
+	$$
+	where $\operatorname{elpd}$ is the \textbf{e}xpected \textbf{l}og \textbf{p}ointwise \textbf{p}redictive \textbf{d}ensity,
+	and $p_t(\tilde{y}_i)$ is the distribution that represents the
+	$\tilde{y}_i$'s true underlying data generating process.
+	The $p_t(\tilde{y}_i)$ are unknown and we generally use
+	cross-validation or approximations to esimate $\operatorname{elpd}$.
+\end{frame}
 
-% 	onde $\operatorname{elpd}$ é esperança do log da densidade preditiva pontual
-% 	(\textit{expected log pointwise predictive density}) e
-% 	$p_t(\tilde{y}_i)$ é a distribuição representando o verdadeiro processo
-% 	generativo dos dados para $\tilde{y}_i$.
-% 	Os $p_t(\tilde{y}_i)$ são desconhecidos e geralmente usamos validação
-% 	cruzada\footnote{\textit{Cross Validation}} ou aproximação para
-% 	a estimação da $\operatorname{elpd}$.
-% \end{frame}
+\subsubsection{Leave-One-Out Cross-Validation (LOO)}
+\begin{frame}{Leave-One-Out Cross-Validation (LOO)}
+	We can compute the $\operatorname{elpd}$ using LOO
+	\parencite{vehtariPracticalBayesianModel2015}:
+	$$
+		\operatorname{elpd}_{\text{loo}} = \sum_{i=1}^N \log p(y_i \mid y_{-i})
+	$$
+	where
+	$$
+		p(y_i \mid y_{-i}) = \int p(y_i \mid \theta) p(\theta \mid y_{-i}) d \theta
+	$$
+	which is the predictive density conditioned on the data without a single observation $i$ ($y_{-i}$).
+	Almost always we use the PSIS-LOO\footnote{upcoming...} approximation
+	due to its robustness and low computational cost.
+\end{frame}
 
-% \subsubsection{\textit{Leave-One-Out Cross-Validation} (LOO)}
-% \begin{frame}{\textit{Leave-One-Out Cross-Validation} (LOO)}
-% 	Podemos calcular a $\operatorname{elpd}$ usando LOO
-% 	\parencite{vehtariPracticalBayesianModel2015}:
-% 	$$
-% 		\operatorname{elpd}_{\text{loo}} = \sum_{i=1}^N \log p(y_i \mid y_{-i})
-% 	$$
-% 	onde
-% 	$$
-% 		p(y_i \mid y_{-i}) = \int p(y_i \mid \theta) p(\theta \mid y_{-i}) d \theta
-% 	$$
-% 	que é a densidade preditiva com uma observação a menos condicionada nos
-% 	dados sem a observação $i$ ($y_{-i}$). Quase sempre usamos a aproximação
-% 	PSIS-LOO\footnote{mais sobre isso já já...} pela sua robustez e baixo custo
-% 	computacional.
-% \end{frame}
+\subsubsection{Widely Applicable Information Criteria (WAIC)}
+\begin{frame}{Widely Applicable Information Criteria (WAIC)}
+	\footnotesize
+	WAIC \parencite{watanabe2010asymptotic}, like LOO,
+	is also an alternative approach to compute the $\operatorname{elpd}$,
+	and is defined as:
+	$$
+		\widehat{\operatorname{elpd}}_{\text{waic}} = \widehat{\operatorname{lppd}} - \widehat{p}_{\text{waic}}
+	$$
+	where $\widehat{p}_{\text{waic}}$ is the number of effective parameters based on:
+	$$
+		\widehat{p}_{\text{waic}} = \sum_{i=1}^N \operatorname{var}_{\text{post}} (\log p(y_i \mid \theta))
+	$$
+	which we can compute using the posterior variance of the log predictive density for each observation $y_i$:
+	$$
+		\widehat{p}_{\text{waic}} = \sum_{i=1}^N V^S_{s=1} (\log p(y_i \mid \theta^s))
+	$$
+	where $V^S_{s=1}$ is the sample's variance:
+	$$
+		V^S_{s=1} a_s = \frac{1}{S-1} \sum^S_{s=1} (a_s - \bar{a})^2
+	$$
+\end{frame}
 
-% \subsubsection{\textit{Widely Applicable Information Criteria} (WAIC)}
-% \begin{frame}{\textit{Widely Applicable Information Criteria} (WAIC)}
-% 	\footnotesize
-% 	WAIC \parencite{watanabe2010asymptotic}, assim como o LOO também é uma
-% 	abordagem alternativa para calcularmos a $\operatorname{elpd}$ e é definida como:
+\subsubsection{$K$-fold Cross-Validation ($K$-fold CV)}
+\begin{frame}{$K$-fold Cross-Validation ($K$-fold CV)}
+	In the same manner that we can compute the $\operatorname{elpd}$
+	using LOO with $N-1$ sample partitions,
+	we can also compute it with any desired partition number.
+	\vfill
+	Such approach is called \textbf{$K$-fold cross-validation} ($K$-fold CV).
+	\vfill
+	Contrary to LOO, we cannot approximate the actual $\operatorname{elpd}$
+	using $K$-fold CV,
+	and we need to compute the actual $\operatorname{elpd}$ over $K$ partitions,
+	which almost involves a \textbf{high computational cost}.
+\end{frame}
 
-% 	$$
-% 		\widehat{\operatorname{elpd}}_{\text{waic}} = \widehat{\operatorname{lppd}} - \widehat{p}_{\text{waic}}
-% 	$$
+\subsection{Pareto Smoothed Importance Sampling LOO (PSIS-LOO)}
+\begin{frame}{Pareto Smoothed Importance Sampling LOO (PSIS-LOO)}
+	PSIS uses \textbf{importance sampling}\footnote{another class of MCMC algorithm that we did not cover yet.},
+	which means a importance weighting scheme approach.
+	\vfill
+	The \textbf{Pareto smoothing} is a technique to increase the importance weights' reliability.
+\end{frame}
 
-% 	onde $\widehat{p}_{\text{waic}}$ é o número estimado efetivo de paramêtros e
-% 	calculado com base em:
+\begin{frame}{Importance Sampling}
+	If the $N$ samples are conditionally independent\footnote{
+		that is, they are independent if conditioned on the model's parameters,
+		which is a basic assumption in any Bayesian (and frequentist) model}
+	\parencite{gelfand1992model},
+	we can compute LOO with $\boldsymbol{\theta}^s$ posterior' samples
+	$P(\theta \mid y)$ using \textbf{importance weights}:
+	$$
+		r_i^s=\frac{1}{P(y_i|\theta^s)} \propto \frac{P(\theta^s|y_{-i})}{P(\theta^s|y)}
+	$$
+	Hence, to get Importance Sampling Leave-One-Out (IS-LOO):
+	$$
+		P(\tilde{y}_i|y_{-i})
+		\approx
+		\frac{\sum_{s=1}^S r_i^s P(\tilde{y}_i|\theta^s)}{\sum_{s=1}^S r_i^s}
+	$$
+\end{frame}
 
-% 	$$
-% 		\widehat{p}_{\text{waic}} = \sum_{i=1}^N \operatorname{var}_{\text{post}} (\log p(y_i \mid \theta))
-% 	$$
+\begin{frame}{Importance Sampling}
+	However, the posterior $P(\theta \mid y)$ often has low variance and shorter tails
+	than the LOO distributions $P(\theta \mid y_{-1})$.
+	Hence, if we use:
+	$$
+		P(\tilde{y}_i|y_{-i}) \approx \frac{\sum_{s=1}^S r_i^s P(\tilde{y}_i|\theta^s)}{\sum_{s=1}^S r_i^s}
+	$$
+	we will have \textbf{instabilities} because the $r_i$ can have \textbf{high, or even infinite, variance}.
+\end{frame}
 
-% 	que conseguimos calcular usando a variância posterior do log da densidade preditiva para cada observação $y_i$:
+\begin{frame}{Pareto Smoothed Importance Sampling}
+	We can enhance the IS-LOO estimate using a \textbf{Pareto Smoothed Importance Sampling}
+	\parencite{vehtariPracticalBayesianModel2015}.
+	\vfill
+	When the tails of the importance weights' distribution are long,
+	a direct usage of the importance is sensible to one or more large value.
+	By \textbf{fitting a generalized Pareto distribution to the importance weights' upper-tail},
+	we smooth out these values.
+\end{frame}
 
-% 	$$
-% 		\widehat{p}_{\text{waic}} = \sum_{i=1}^N V^S_{s=1} (\log p(y_i \mid \theta^s))
-% 	$$
-% 	onde $V^S_{s=1}$ representa a variância da amostra:
+\begin{frame}{Pareto Smoothed Importance Sampling LOO (PSIS-LOO)}
+	Finally, we have PSIS-LOO:
+	$$
+		\widehat{\operatorname{elpd}}_{\rm psis-loo} =
+		\sum_{i=1}^n \log
+		\left(\frac{\sum_{s=1}^S w_i^s P(y_i|\theta^s)}{\sum_{s=1}^Sw_i^s} \right)
+	$$
+	where $w$ is the truncated weights.
+\end{frame}
 
-% 	$$
-% 		V^S_{s=1} a_s = \frac{1}{S-1} \sum^S_{s=1} (a_s - \bar{a})^2
-% 	$$
-% \end{frame}
-
-% \subsubsection{\textit{K-fold Cross-Validation} (K-fold CV)}
-% \begin{frame}{\textit{K-fold Cross-Validation} (K-fold CV)}
-% 	Da mesma maneira que conseguimos cacular a $\operatorname{elpd}$ usando LOO
-% 	com $N-1$ partições da amostra podemos também calcular com qualquer número de
-% 	partições que quisermos.
-% 	\vfill
-% 	Tal abordagem é chamada de \textbf{validação cruzada usando $K$ partições}
-% 	(\textit{$K$-fold Cross-Validation}, encurtado para \textit{$K$-fold CV}).
-% 	\vfill
-% 	Ao contrário de LOO, não conseguimos aproximar a
-% 	$\operatorname{elpd}$ usando \textit{$K$-fold CV} e precisamos fazer a computação
-% 	atual da $\operatorname{elpd}$ sobre $K$ partições que quase sempre envolve
-% 	um \textbf{alto custo computacional}.
-% \end{frame}
-
-% \subsection{\textit{Pareto Smoothed Importance Sampling} LOO (PSIS-LOO)}
-% \begin{frame}{\textit{Pareto Smoothed Importance Sampling} LOO (PSIS-LOO)}
-% 	O PSIS usa \textbf{amostragem de importância}\footnote{\textit{importance sampling}},
-% 	o que significa apenas que usa a abordagem de pesos de importância.
-% 	\vfill
-% 	A \textbf{suavização de Pareto} é uma técnica para tornar os pesos de importância
-% 	mais confiáveis.
-% \end{frame}
-% \begin{frame}{Amostragem de Importância (\textit{Importance Sampling})}
-% 	Se as $N$ amostras são condicionalmente independentes\footnote{ou seja
-% 		são independentes condicionadas aos parâmetros do modelo, que é o pressuposto
-% 		básico de qualquer modelo probabilístico Bayesiano} \parencite{gelfand1992model}
-% 	podemos avaliar LOO com amostras $\boldsymbol{\theta}^s$ da posterior
-% 	$P(\theta \mid y)$ usando \textbf{pesos de importância}:
-% 	$$
-% 		r_i^s=\frac{1}{P(y_i|\theta^s)} \propto \frac{P(\theta^s|y_{-i})}{P(\theta^s|y)}
-% 	$$
-% 	Para então conseguirmos \textit{Importance Sampling Leave-One-Out} (IS-LOO):
-% 	$$
-% 		P(\tilde{y}_i|y_{-i})
-% 		\approx
-% 		\frac{\sum_{s=1}^S r_i^s P(\tilde{y}_i|\theta^s)}{\sum_{s=1}^S r_i^s}
-% 	$$
-% \end{frame}
-
-% \begin{frame}{Amostragem de Importância (\textit{Importance Sampling})}
-% 	Porém a posterior $P(\theta \mid y)$ geralmente possui baixa variância e caudas
-% 	mais curtas que as distribuições LOO $P(\theta \mid y_{-1})$ então se usarmos:
-% 	$$
-% 		P(\tilde{y}_i|y_{-i}) \approx \frac{\sum_{s=1}^S r_i^s P(\tilde{y}_i|\theta^s)}{\sum_{s=1}^S r_i^s}
-% 	$$
-% 	podemos gerar instabilidades pois os $r_i$ podem ter variância alta ou até infinita.
-% \end{frame}
-
-% \begin{frame}{Amostragem de Importância com Suavização de Pareto \textit{Pareto Smoothed Importance Sampling}}
-% 	Podemos aprimorar a estimativa IS-LOO usando uma \textbf{suavização de Pareto}
-% 	(\textit{Pareto Smoothed Importance Sampling}) \parencite{vehtariPracticalBayesianModel2015}
-% 	\vfill
-% 	Quando a cauda da distribuição dos pesos de importância é longa, um uso direto
-% 	da amostragem de importância é sensível a um ou alguns valores grandes.
-% 	Ajustando uma distribuição de Pareto generalizada à cauda superior dos pesos de
-% 	importância, suavizamos esses valores.
-% \end{frame}
-% \begin{frame}{\textit{Pareto Smoothed Importance Sampling} LOO (PSIS-LOO)}
-% 	Por fim temos PSIS-LOO:
-% 	$$
-% 		\widehat{\operatorname{elpd}}_{\rm psis-loo} =
-% 		\sum_{i=1}^n \log
-% 		\left(\frac{\sum_{s=1}^S w_i^s P(y_i|\theta^s)}{\sum_{s=1}^Sw_i^s} \right)
-% 	$$
-% 	onde $w$ é o peso truncado.
-% \end{frame}
-
-% \begin{frame}{\textit{Pareto Smoothed Importance Sampling} LOO (PSIS-LOO)}
-% 	\small
-% 	Usamos o parâmetro estimado de forma $\widehat{k}$ da distribuição de Pareto
-% 	dos pesos de importância para avaliar a confiabilidade da estimativa:
-% 	\begin{vfilleditems}
-% 		\item \small $k < \frac{1}{2}$ a variância dos pesos de importância é finita,
-% 		o teorema do limite central se mantém, e a estimativa converge rapidamente
-% 		\item \small $\frac{1}{2} < k < 1$ a variância dos pesos de importância é infinitas,
-% 		mas a média existe, o teorema do limite central generalizado
-% 		para distribuições estáveis se mantém, e a convergência da estimativa é mais
-% 		lenta
-% 		A variação da estimativa PSIS é finita, mas pode ser grande.
-% 		\item \small $k > 1$ a variância e a média da distribuição de pesos de importância não
-% 		existe. A variação da estimativa PSIS é finita, mas pode ser grande
-% 	\end{vfilleditems}
-% 	\vfill
-% 	\small
-% 	Qualquer valor de $\widehat{k}$ maior que $0.5$ é sinal de alerta mas na prática
-% 	ainda há um bom desempenho com $\widehat{k}$ até $0.7$
-% \end{frame}
-
-% \subsection{Comparação de Modelos no \texttt{rstarnarm}}
-% \begin{frame}[fragile]{Comparação de Modelos no \href{http://mc-stan.org/rstanarm/}{\texttt{rstanarm}}}
-% 	\begin{lstlisting}
-%     library(loo)
-
-%     loo_1 <- loo(rstanarm_model_1)
-%     loo_2 <- loo(rstanarm_model_2)
-%     loo_3 <- loo(rstanarm_model_3)
-
-%     loo_compare(loo_1, loo_2, loo_3)
-%     \end{lstlisting}
-% \end{frame}
-
-% \subsection{Comparação de Modelos no \texttt{brms}}
-% \begin{frame}[fragile]{Comparação de Modelos no \href{https://paul-buerkner.github.io/brms/}{\texttt{brms}}}
-% 	\begin{lstlisting}
-%     library(loo)
-
-%     loo_1 <- loo(brms_model_1)
-%     loo_2 <- loo(brms_model_2)
-%     loo_3 <- loo(brms_model_3)
-
-%     loo_compare(loo_1, loo_2, loo_3)
-%     \end{lstlisting}
-% \end{frame}
+\begin{frame}{Pareto Smoothed Importance Sampling LOO (PSIS-LOO)}
+	\small
+	We use the importance weights Pareto distribution's estimated shape parameter
+	$\widehat{k}$ to assess its reliability:
+	\begin{vfilleditems}
+		\item \small $k < \frac{1}{2}$: the importance weights variance is finite,
+		the central limit theorem holds, and the estimate rapidly converges.
+		\item \small $\frac{1}{2} < k < 1$ the importance weights variance is infinite,
+		but the mean exists (is finite),
+		the generalized central limit theorem for stable distributions holds,
+		and the estimate converges, but slower.
+		The PSIS variance estimate is finite, but could be large.
+		\item \small $k > 1$ both the importance weights variance and mean do not exist
+		(they are infinite).
+		The PSIS variance estimate is finite, but could be large.
+	\end{vfilleditems}
+	\vfill
+	\small
+	Any $\widehat{k} > 0.5$ is a warning sign,
+	but empirically there is still a good performance up to $\widehat{k} < 0.7$.
+\end{frame}
