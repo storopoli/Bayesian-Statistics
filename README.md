@@ -55,6 +55,9 @@ Thousands of users rely on `Stan` for statistical modeling, data analysis, and p
 
 `Stan` models are specified in its own language (similar to C++) and compiled into an executable binary that can generate Bayesian statistical inferences using a high-performance Markov Chain Montecarlo (MCMC).
 
+You can find `Stan` models for all the content discussed in the slides at [`stan/`](stan/) folder.
+These were tested with `Stan` version 2.29.2.
+
 ### `Turing.jl`
 
 [**`Turing.jl`**](http://turing.ml/) (Ge, Xu & Ghahramani, 2018) is an ecosystem of [**Julia**](https://www.julialang.org) packages for Bayesian Inference using [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming).
