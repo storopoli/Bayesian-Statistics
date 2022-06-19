@@ -25,8 +25,8 @@ and the process of parameter value inference is a direct result of the **Bayes' 
 
 ## Content
 
-The whole content is a set of several slides found at `slides/slides.pdf`.
-Here is a brief table of contents
+The whole content is a set of several slides found at [`slides/slides.pdf`](slides/slides.pdf) (349 slides).
+Here is a brief table of contents:
 
 1. **What is Bayesian Statistics?**
 2. **Common Probability Distributions**
