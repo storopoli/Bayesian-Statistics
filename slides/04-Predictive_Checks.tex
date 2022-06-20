@@ -52,9 +52,42 @@
 	\end{tikzpicture}
 \end{frame}
 
+\begin{frame}{Bayesian Workflow\footnote{
+			adapted from \href{https://github.com/elizavetasemenova}
+			{Elizaveta Semenova}.}}
+	\begin{vfilleditems}
+		\item Understand the domain and problem.
+		\item Formulate the model mathematically.
+		\item Implement model, test, and debug.
+		\item Perform prior predictive checks.
+		\item Fit the model.
+		\item Assess convergence diagnostics.
+		\item Perform posterior predictive checks.
+		\item Improve the model iteratively: from baseline to complex and computationally efficient models.
+	\end{vfilleditems}
+
+\end{frame}
+
+\begin{frame}{Actual Bayesian Workflow}
+	\centering
+	\begin{figure}
+		\includegraphics[height=0.75\textheight]{workflow_overview.pdf}
+		\caption{Bayesian workflow by \textcite{gelmanBayesianWorkflow2020}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Not a ``new ideia''...}
+	\centering
+	\begin{figure}
+		\includegraphics[width=0.8\textwidth]{box_loop.png}
+		\caption{Box's Loop from \textcite{boxScienceStatistics1976}
+			but taken from \textcite{Blei_Workflow2014}}
+	\end{figure}
+\end{frame}
+
 \subsection{Prior Predictive Check}
 \begin{frame}{Prior Predictive Check}
-	Before we feed data into our model, 
+	Before we feed data into our model,
 	we need to check all of our priors.
 	\vfill
 	In a very simple way, it consists in simulate parameter values based on

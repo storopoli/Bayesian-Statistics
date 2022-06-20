@@ -25,7 +25,7 @@ and the process of parameter value inference is a direct result of the **Bayes' 
 
 ## Content
 
-The whole content is a set of several slides found at [`slides/slides.pdf`](slides/slides.pdf) (349 slides).
+The whole content is a set of several slides found at [`slides/slides.pdf`](slides/slides.pdf) (342 slides).
 Here is a brief table of contents:
 
 1. **What is Bayesian Statistics?**
@@ -39,8 +39,7 @@ Here is a brief table of contents:
 9. **Robust Bayesian Regression**
 10. **Hierarchical Models**
 11. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
-12. **Hierarchical Models: Centered versus Non-Centered Parameterization**
-13. **Model Comparison: Cross-Validation and Other Metrics**
+12. **Model Comparison: Cross-Validation and Other Metrics**
 
 ## Probabilistic Programming Languages (PPLs)
 
