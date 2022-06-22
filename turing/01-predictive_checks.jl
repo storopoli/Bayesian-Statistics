@@ -1,7 +1,7 @@
 using Turing
 using Random: seed!
 
-const RNG = seed!(123)
+seed!(123)
 
 # simulated data
 real_p = 0.75
