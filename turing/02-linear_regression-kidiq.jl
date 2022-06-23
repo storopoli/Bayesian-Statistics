@@ -10,11 +10,11 @@ using Random: seed!
 seed!(123)
 
 # load data
-kidiq = CSV.read("../datasets/kidiq.csv", DataFrame)
+kidiq = CSV.read("datasets/kidiq.csv", DataFrame)
 
 # define data matrix X and standardize
 X = select(kidiq, Not(:kid_score)) |> Matrix
-X = standardize(ZScoreTransform, X; dims=2)
+X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y and standardize
 y = kidiq[:, :kid_score] |> float
@@ -39,15 +39,14 @@ model = linear_regression(X, y)
 chn = sample(model, NUTS(), MCMCThreads(), 2_000, 4)
 
 # results:
-#Summary Statistics
-#  parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec
-#      Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
+# parameters      mean       std   naive_se      mcse          ess      rhat   ess_per_sec
+#      Symbol   Float64   Float64    Float64   Float64      Float64   Float64       Float64
 #
-#           α   -0.0961    2.5327     0.0283    0.0433   3724.6454    1.0001       28.8766
-#        β[1]    2.6815    2.4488     0.0274    0.0490   2827.0992    1.0025       21.9180
-#        β[2]    0.7224    2.3884     0.0267    0.0423   3388.2018    1.0010       26.2682
-#        β[3]   -3.9614    2.2743     0.0254    0.0448   2772.6104    1.0032       21.4956
-#           σ    0.9493    0.0327     0.0004    0.0005   5032.3461    1.0015       39.0150
+#           α   -0.0005    0.0422     0.0005    0.0003   13197.2563    0.9996     3566.8260
+#        β[1]    0.1137    0.0453     0.0005    0.0005    8497.2771    0.9997     2296.5614
+#        β[2]    0.4130    0.0445     0.0005    0.0005   10759.8419    0.9997     2908.0654
+#        β[3]    0.0292    0.0435     0.0005    0.0005    9389.3471    1.0001     2537.6614
+#           σ    0.8909    0.0302     0.0003    0.0003   11543.4624    1.0003     3119.8547
 
 # QR Decomposition
 Q, R = qr(X)
@@ -65,3 +64,17 @@ chn_qr = sample(model_qr, NUTS(), MCMCThreads(), 2_000, 4)
 betas = mapslices(x -> R_ast^-1 * x, chn_qr[:, namesingroup(chn_qr, :β),:].value.data, dims=[2])
 chain_beta = setrange(Chains(betas, ["real_β[$i]" for i in 1:size(Q_ast, 2)]), 1_001:1:3_000)
 chn_qr_reconstructed = hcat(chain_beta, chn_qr)
+
+# results:
+#Summary Statistics
+#  parameters      mean       std   naive_se      mcse          ess      rhat
+#      Symbol   Float64   Float64    Float64   Float64      Float64   Float64
+#
+#   real_β[1]    0.1134    0.0454     0.0005    0.0004   12505.8900    0.9997
+#   real_β[2]    0.4133    0.0452     0.0005    0.0004   14460.7545    0.9997
+#   real_β[3]    0.0294    0.0441     0.0005    0.0004   14193.3541    0.9997
+#           α   -0.0007    0.0433     0.0005    0.0004   13789.3541    0.9998
+#        β[1]   -0.2365    0.0430     0.0005    0.0004   12087.5090    0.9997
+#        β[2]    0.3974    0.0433     0.0005    0.0004   14416.3665    0.9997
+#        β[3]   -0.0287    0.0431     0.0005    0.0004   14193.3541    0.9997
+#           σ    0.8909    0.0305     0.0003    0.0003   12349.2157    1.0005
