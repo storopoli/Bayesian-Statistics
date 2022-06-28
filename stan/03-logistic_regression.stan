@@ -24,7 +24,7 @@ model {
 
   // likelihood
   y ~ bernoulli_logit(alpha + X * beta);
-  // you could also do binomial_logit if you can group the successes
+  // you could also do binomial_logit(n, logitp) if you can group the successes
 }
 // results:
 //All 4 chains finished successfully.
