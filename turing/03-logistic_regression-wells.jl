@@ -22,12 +22,13 @@ y = wells[:, :switch]
 
 # define the model
 @model function logistic_regression(X,  y; predictors=size(X, 2))
-    #priors
+    # priors
     α ~ Normal(0, 2.5)
     β ~ filldist(TDist(3), predictors)
 
-    #likelihood
+    # likelihood
     y ~ arraydist(LazyArray(@~ BernoulliLogit.(α .+ X * β)))
+    # you could also do BinomialLogit(n, logitp) if you can group the successes
     return(; y, α, β)
 end
 
