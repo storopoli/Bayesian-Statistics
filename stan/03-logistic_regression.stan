@@ -8,14 +8,14 @@
 // 3. assoc
 // 4. educ
 data {
-  int<lower=0> N;   // number of observations
-  int<lower=0> K;   // number of independent variables
-  matrix[N, K] X;   // data matrix
-  array[N] int y;   // dependent variable vector
+  int<lower=0> N;                     // number of observations
+  int<lower=0> K;                     // number of independent variables
+  matrix[N, K] X;                     // data matrix
+  array[N] int<lower=0, upper=1> y;   // dependent variable vector
 }
 parameters {
-  real alpha;           // intercept
-  vector[K] beta;       // coefficients for independent variables
+  real alpha;                         // intercept
+  vector[K] beta;                     // coefficients for independent variables
 }
 model {
   // priors
