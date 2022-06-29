@@ -30,20 +30,20 @@ model {
   beta ~ student_t(3, 0, 2.5);
 
   // likelihood
-  y ~ ordered_logistic(X * beta, cutpoints);
+  y ~ ordered_logistic_glm(X, beta, cutpoints);
 }
 // results:
 //All 4 chains finished successfully.
-//Mean chain execution time: 0.5 seconds.
+//Mean chain execution time: 0.4 seconds.
 //Total execution time: 0.5 seconds.
 //
-//Warning: 4 of 4000 (0.0%) transitions ended with a divergence.
+//Warning: 1 of 4000 (0.0%) transitions ended with a divergence.
 //See https://mc-stan.org/misc/warnings for details.
 //
 //     variable   mean median   sd  mad     q5    q95 rhat ess_bulk ess_tail
-// lp__         -14.35 -14.03 1.77 1.59 -17.66 -12.19 1.00      883     1265
-// cutpoints[1]  13.69  13.17 3.57 3.13   9.07  19.96 1.00      984     1219
-// cutpoints[2]  24.02  23.20 5.75 5.12  16.74  34.37 1.00      878     1217
-// cutpoints[3]  34.11  32.98 8.10 7.17  23.78  48.08 1.00      825     1087
-// beta[1]       -0.46  -0.42 0.65 0.60  -1.55   0.54 1.00     1461     1261
-// beta[2]       10.12   9.73 2.41 2.13   7.09  14.40 1.00      845     1095
+// lp__         -14.34 -13.96 1.76 1.58 -17.79 -12.18 1.00      960     1026
+// cutpoints[1]  13.68  13.15 3.55 3.14   9.12  20.11 1.00     1099     1232
+// cutpoints[2]  24.05  23.09 5.78 4.99  16.67  34.60 1.00      894     1043
+// cutpoints[3]  34.13  32.76 8.04 6.91  23.99  48.58 1.00      841      937
+// beta[1]       -0.45  -0.40 0.66 0.61  -1.58   0.52 1.00     1394     1119
+// beta[2]       10.12   9.69 2.39 2.07   7.15  14.38 1.00      807      903
