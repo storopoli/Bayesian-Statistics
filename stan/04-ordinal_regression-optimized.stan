@@ -5,7 +5,7 @@
 // esoph$alcgp <- ordered( # 4 levels
 //    esoph$alcgp,
 //    levels=c("0-39g/day", "40-79", "80-119", "120+"))
-// X <- data.matrix(esoph[2:3])
+// X <- data.matrix(esoph[1:2])
 // y <- as.numeric(ordered(
 //    esoph$tobgp,
 //    levels=c("0-9g/day", "10-19", "20-29", "30+"))
@@ -34,16 +34,13 @@ model {
 }
 // results:
 //All 4 chains finished successfully.
-//Mean chain execution time: 0.4 seconds.
-//Total execution time: 0.5 seconds.
+//Mean chain execution time: 0.2 seconds.
+//Total execution time: 0.3 seconds.
 //
-//Warning: 1 of 4000 (0.0%) transitions ended with a divergence.
-//See https://mc-stan.org/misc/warnings for details.
-//
-//     variable   mean median   sd  mad     q5    q95 rhat ess_bulk ess_tail
-// lp__         -14.34 -13.96 1.76 1.58 -17.79 -12.18 1.00      960     1026
-// cutpoints[1]  13.68  13.15 3.55 3.14   9.12  20.11 1.00     1099     1232
-// cutpoints[2]  24.05  23.09 5.78 4.99  16.67  34.60 1.00      894     1043
-// cutpoints[3]  34.13  32.76 8.04 6.91  23.99  48.58 1.00      841      937
-// beta[1]       -0.45  -0.40 0.66 0.61  -1.58   0.52 1.00     1394     1119
-// beta[2]       10.12   9.69 2.39 2.07   7.15  14.38 1.00      807      903
+//     variable    mean  median   sd  mad      q5     q95 rhat ess_bulk ess_tail
+// lp__         -123.67 -123.32 1.60 1.36 -126.74 -121.74 1.00     1841     2380
+// cutpoints[1]   -1.47   -1.47 0.63 0.63   -2.52   -0.45 1.00     2037     1967
+// cutpoints[2]   -0.27   -0.27 0.61 0.60   -1.25    0.72 1.00     2193     2365
+// cutpoints[3]    0.82    0.81 0.61 0.62   -0.18    1.83 1.00     2346     2678
+// beta[1]        -0.08   -0.08 0.12 0.11   -0.27    0.11 1.00     2622     2353
+// beta[2]        -0.08   -0.08 0.17 0.17   -0.36    0.20 1.00     2546     2534
