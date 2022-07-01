@@ -60,7 +60,7 @@ Models specified using `Turing.jl` are easy to read and write — models work th
 Like everything in Julia, `Turing.jl` is [fast](https://arxiv.org/abs/2002.02702).
 
 You can find `Turing.jl` models for all the content discussed in the slides at [`turing/`](turing/) folder.
-These were tested with `Turing.jl` version 0.21.6 and Julia 1.7.3.
+These were tested with `Turing.jl` version 0.21.8 and Julia 1.7.3.
 
 ## Datasets
 

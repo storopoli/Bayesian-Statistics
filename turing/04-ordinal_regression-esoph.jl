@@ -36,7 +36,7 @@ y = esoph[:, :tobgp]
 # define the model
 @model function ordered_regression(X, y; predictors=size(X, 2), ncateg=maximum(y))
     # priors
-    cutpoints ~ Bijectors.ordered(filldist(TDist(3) * 5, ncateg-1))
+    cutpoints ~ Bijectors.ordered(filldist(TDist(3) * 5, ncateg - 1))
     β ~ filldist(TDist(3) * 2.5, predictors)
 
     # likelihood
