@@ -36,7 +36,7 @@ BetaBinomial2(n, μ, ϕ) = BetaBinomial(n, μ*ϕ, (1-μ)*ϕ)
     # likelihood
     p̂ = logistic.(α .+ X * β)
     y ~ arraydist(LazyArray(@~ BetaBinomial2.(1, p̂, ϕ)))
-    # you could also do BetaBinomial2(n, p̂, θ) if you can group the successes
+    # you could also do BetaBinomial2.(n, p̂, θ) if you can group the successes
     return(; y, α, β, ϕ)
 end
 
