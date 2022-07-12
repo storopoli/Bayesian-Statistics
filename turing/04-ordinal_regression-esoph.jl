@@ -51,7 +51,6 @@ model = ordered_regression(X, y)
 chn = sample(model, NUTS(), MCMCThreads(), 2_000, 4)
 
 # results:
-#Summary Statistics
 #    parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec
 #        Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
 #
