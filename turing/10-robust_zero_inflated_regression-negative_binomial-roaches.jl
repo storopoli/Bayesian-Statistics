@@ -3,7 +3,6 @@ using CSV
 using DataFrames
 using StatsBase
 using LinearAlgebra
-using LazyArrays
 
 # reproducibility
 using Random: seed!
@@ -23,14 +22,7 @@ y = roaches[:, :y]
 # alternative parameterization
 function NegativeBinomial2(μ, ϕ)
     p = 1 / (1 + μ / ϕ)
-
-    # numerical stability
-    if p <= 0
-        p = 1e-4
-    elseif p > 1
-        p = 1.0
-    end
-
+    p = p > 0 ? p : 1e-4 # numerical stability
     r = ϕ
     return NegativeBinomial(r, p)
 end
@@ -49,10 +41,10 @@ end
         if y[n] == 0
             Turing.@addlogprob! logpdf(Bernoulli(γ), 0) +
                                 logpdf(Bernoulli(γ), 1) +
-                                logpdf(NegativeBinomial2(α + X[n, :] ⋅ β, ϕ), y[n])
+                                logpdf(NegativeBinomial2(exp(α + X[n, :] ⋅ β), ϕ), y[n])
         else
             Turing.@addlogprob! logpdf(Bernoulli(γ), 0) +
-                                logpdf(NegativeBinomial2(α + X[n, :] ⋅ β, ϕ), y[n])
+                                logpdf(NegativeBinomial2(exp(α + X[n, :] ⋅ β), ϕ), y[n])
         end
     end
     return(; y, α, β, γ, ϕ)
@@ -65,14 +57,13 @@ model = zero_inflated_negative_binomial_regression(X, y)
 chn = sample(model, NUTS(), MCMCThreads(), 2_000, 4)
 
 # results:
-# TODO: this model is not working
-#  parameters       mean       std   naive_se      mcse       ess      rhat   ess_per_sec
-#      Symbol    Float64   Float64    Float64   Float64   Float64   Float64       Float64
+#  parameters      mean       std   naive_se      mcse          ess      rhat   ess_per_sec
+#      Symbol   Float64   Float64    Float64   Float64      Float64   Float64       Float64
 #
-#           α   -15.0511   30.0401     0.3359    3.1506   16.8077    3.0841        0.0955
-#        β[1]     6.3093   14.8544     0.1661    1.5595   16.6091    3.7006        0.0943
-#        β[2]    24.5615   47.5034     0.5311    4.9914   16.6773    3.3367        0.0947
-#        β[3]     3.9758    6.8270     0.0763    0.7236   16.2720    7.4169        0.0924
-#        β[4]     1.4100    2.0867     0.0233    0.2193   17.1930    3.1680        0.0977
-#           γ     0.2414    0.0677     0.0008    0.0070   16.8259    4.3579        0.0956
-#          ϕ⁻     3.2534    0.6385     0.0071    0.0674   16.2059    9.0365        0.0921
+#           α    2.8276    0.0762     0.0009    0.0008    9670.1381    0.9996      213.9837
+#        β[1]    0.9534    0.1160     0.0013    0.0012    8532.2489    0.9998      188.8042
+#        β[2]   -0.3696    0.0779     0.0009    0.0008   10404.6173    1.0001      230.2365
+#        β[3]   -0.1548    0.0781     0.0009    0.0007   10702.4068    0.9996      236.8261
+#        β[4]    0.1453    0.1197     0.0013    0.0013    9770.7302    0.9998      216.2096
+#           γ    0.2656    0.0235     0.0003    0.0002   10083.4400    0.9997      223.1294
+#          ϕ⁻    1.4085    0.0808     0.0009    0.0008   11352.8432    1.0003      251.2191

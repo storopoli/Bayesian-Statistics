@@ -3,7 +3,6 @@ using CSV
 using DataFrames
 using StatsBase
 using LinearAlgebra
-using LazyArrays
 
 # reproducibility
 using Random: seed!
