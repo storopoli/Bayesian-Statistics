@@ -28,19 +28,19 @@ model {
   phi_inv ~ gamma(0.01, 0.01);
 
   // likelihood
-  y ~ neg_binomial_2_log(alpha + X * beta, phi);
+  y ~ neg_binomial_2_log_glm(X, alpha, beta, phi);
 }
 // results:
 //All 4 chains finished successfully.
-//Mean chain execution time: 0.4 seconds.
-//Total execution time: 0.5 seconds.
+//Mean chain execution time: 0.2 seconds.
+//Total execution time: 0.2 seconds.
 //
-// variable    mean  median   sd  mad      q5     q95 rhat ess_bulk ess_tail
-//  lp__    -895.51 -895.13 1.74 1.59 -898.89 -893.36 1.00     1969     2709
-//  alpha      2.84    2.84 0.12 0.12    2.64    3.05 1.00     5980     3147
-//  beta[1]    0.98    0.97 0.19 0.18    0.68    1.31 1.00     6160     2848
-//  beta[2]   -0.38   -0.37 0.12 0.12   -0.58   -0.17 1.00     6075     3104
-//  beta[3]   -0.15   -0.15 0.12 0.12   -0.35    0.05 1.00     5584     3130
-//  beta[4]    0.18    0.16 0.19 0.19   -0.11    0.52 1.00     5501     2923
-//  phi_inv    3.79    3.78 0.35 0.35    3.24    4.42 1.00     5897     3107
-//  phi        0.27    0.26 0.02 0.02    0.23    0.31 1.00     5897     3107
+// variable     mean   median   sd  mad       q5      q95 rhat ess_bulk ess_tail
+//  lp__    22802.42 22802.80 1.77 1.63 22799.10 22804.60 1.00     1855     2499
+//  alpha       2.84     2.84 0.12 0.12     2.64     3.05 1.00     6039     2740
+//  beta[1]     0.98     0.97 0.19 0.18     0.69     1.31 1.00     5735     3173
+//  beta[2]    -0.38    -0.37 0.12 0.12    -0.57    -0.18 1.00     6237     2911
+//  beta[3]    -0.15    -0.15 0.12 0.12    -0.36     0.05 1.00     5817     3275
+//  beta[4]     0.18     0.17 0.20 0.19    -0.11     0.53 1.00     4593     2750
+//  phi_inv     3.78     3.76 0.36 0.35     3.25     4.40 1.00     5702     2794
+//  phi         0.27     0.27 0.02 0.03     0.23     0.31 1.00     5702     2794
