@@ -8,8 +8,8 @@
 // 3. senior
 // 4. exposure2
 data {
-  int<lower=0> N;               // number of observations
-  int<lower=0> K;               // number of independent variables
+  int<lower=1> N;               // number of observations
+  int<lower=1> K;               // number of independent variables
   matrix[N, K] X;               // data matrix
   array[N] int<lower=0> y;      // dependent variable vector
 }

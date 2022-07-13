@@ -2,7 +2,7 @@
 // So, run the model with stan fixed parameter arguments:
 // fixed_param=TRUE
 data {
-  int<lower=0> N;
+  int<lower=1> N;
   vector[N] y;
 }
 generated quantities {

@@ -14,8 +14,8 @@
 // 1. agegp
 // 2. alcgp
 data {
-  int<lower=0> N;                       // number of observations
-  int<lower=0> K;                       // number of independent variables
+  int<lower=1> N;                       // number of observations
+  int<lower=1> K;                       // number of independent variables
   int<lower=2> cat;                     // number of categories
   matrix[N, K] X;                       // data matrix
   array[N] int<lower=1, upper=cat> y;   // dependent variable vector

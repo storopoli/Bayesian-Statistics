@@ -16,8 +16,8 @@
 // 1. urban
 // 2. rural
 data {
-  int<lower=0> N;                        // number of observations
-  int<lower=0> K;                        // number of independent variables
+  int<lower=1> N;                        // number of observations
+  int<lower=1> K;                        // number of independent variables
   matrix[N, K] X;                        // data matrix
   vector[N] y;                           // dependent variable vector
   int<lower=0> J;                        // number of groups

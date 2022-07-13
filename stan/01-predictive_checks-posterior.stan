@@ -1,5 +1,5 @@
 data {
-  int<lower=0> N;
+  int<lower=1> N;
   array[N] int y;
 }
 parameters {
