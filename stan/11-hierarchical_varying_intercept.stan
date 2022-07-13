@@ -17,7 +17,7 @@ data {
   int<lower=1> K;                        // number of independent variables
   matrix[N, K] X;                        // data matrix
   vector[N] y;                           // dependent variable vector
-  int<lower=0> J;                        // number of groups
+  int<lower=2> J;                        // number of groups
   array[N] int<lower=1, upper=J> idx;    // group membership
 }
 parameters {
