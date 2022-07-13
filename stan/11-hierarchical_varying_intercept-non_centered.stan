@@ -25,10 +25,10 @@ parameters {
   vector[K] beta;                        // coefficients for independent variables
   real<lower=0> sigma;                   // model error
   real<lower=0> tau;                     // group-level SD intercepts
-  vector[J] z_j;                         // group-level non-centered intercepts
+  vector[J] z;                           // group-level non-centered intercepts
 }
 transformed parameters {
-  vector[J] alpha_j = z_j * tau;         // group-level intercepts
+  vector[J] alpha_j = z * tau;           // group-level intercepts
 }
 model {
   // priors
@@ -36,7 +36,7 @@ model {
   beta ~ student_t(3, 0, 2.5);
   sigma ~ exponential(1);
   tau ~ cauchy(0, 2);
-  z_j ~ normal(0, 1);
+  z ~ normal(0, 1);
 
   // likelihood
   y ~ normal(alpha + alpha_j[idx] + X * beta, sigma);
@@ -58,7 +58,7 @@ model {
 // beta[4]     0.10   0.09 1.16 1.11 -1.72 1.92 1.00      845      900
 // sigma       0.60   0.60 0.03 0.03  0.55 0.66 1.00     2302     1830
 // tau         1.11   0.83 0.85 0.60  0.27 2.86 1.01     1005     1178
-// z_j[1]      0.43   0.40 0.73 0.71 -0.73 1.67 1.00     1659     1799
-// z_j[2]     -0.49  -0.45 0.74 0.71 -1.79 0.64 1.00     1618     1473
+// z[1]        0.43   0.40 0.73 0.71 -0.73 1.67 1.00     1659     1799
+// z[2]       -0.49  -0.45 0.74 0.71 -1.79 0.64 1.00     1618     1473
 // alpha_j[1]  0.29   0.30 0.76 0.51 -1.00 1.51 1.00     1495     1361
 // alpha_j[2] -0.34  -0.32 0.76 0.52 -1.62 0.89 1.00     1493     1500
