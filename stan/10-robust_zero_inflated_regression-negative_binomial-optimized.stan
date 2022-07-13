@@ -37,7 +37,7 @@ model {
                             neg_binomial_2_log_glm_lpmf(y[n] | to_matrix(X[n]), alpha, beta, phi));
     } else {
       target += bernoulli_lpmf(0 | gamma) +
-                 neg_binomial_2_log_glm_lpmf(y[n] | to_matrix(X[n]), alpha, beta, phi);
+                neg_binomial_2_log_glm_lpmf(y[n] | to_matrix(X[n]), alpha, beta, phi);
     }
   }
 }
