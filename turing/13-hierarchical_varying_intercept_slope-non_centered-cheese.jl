@@ -44,12 +44,12 @@ idx = cheese[:, :background_int]
 
     # prior for variance of random intercepts and slopes
     # usually requires thoughtful specification
-    τₐ ~ truncated(Cauchy(0, 2), 0, Inf)                 # group-level SDs intercepts
-    τᵦ ~ filldist(truncated(Cauchy(0, 2), 0, Inf), n_gr) # group-level SDs slopes
-    zⱼ ~ filldist(Normal(0, 1), n_gr)                    # group-level non-centered intercepts
-    Zⱼ ~ filldist(Normal(0, 1), predictors, n_gr)        # group-level non-centered slopes
-    αⱼ = zⱼ .* τₐ                                        # group-level intercepts
-    βⱼ = Zⱼ * τᵦ                                         # group-level slopes
+    τₐ ~ truncated(Cauchy(0, 2); lower=0)                 # group-level SDs intercepts
+    τᵦ ~ filldist(truncated(Cauchy(0, 2); lower=0), n_gr) # group-level SDs slopes
+    zⱼ ~ filldist(Normal(0, 1), n_gr)                     # group-level non-centered intercepts
+    Zⱼ ~ filldist(Normal(0, 1), predictors, n_gr)         # group-level non-centered slopes
+    αⱼ = zⱼ .* τₐ                                         # group-level intercepts
+    βⱼ = Zⱼ * τᵦ                                          # group-level slopes
 
     # likelihood
     y ~ MvNormal(α .+ αⱼ[idx] .+ X * β .+ X * βⱼ, σ^2 * I)

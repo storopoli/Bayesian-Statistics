@@ -44,8 +44,8 @@ idx = cheese[:, :background_int]
 
     # prior for variance of random intercepts
     # usually requires thoughtful specification
-    τ ~ truncated(Cauchy(0, 2), 0, Inf) # group-level SDs intercepts
-    αⱼ ~ filldist(Normal(0, τ), n_gr)   # group-level intercepts
+    τ ~ truncated(Cauchy(0, 2); lower=0) # group-level SDs intercepts
+    αⱼ ~ filldist(Normal(0, τ), n_gr)    # group-level intercepts
 
     # likelihood
     y ~ MvNormal(α .+ αⱼ[idx] .+ X * β, σ^2 * I)
