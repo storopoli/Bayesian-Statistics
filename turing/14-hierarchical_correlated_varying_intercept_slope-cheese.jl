@@ -52,9 +52,9 @@ idx = cheese[:, :background_int]
 
 #     # prior for variance of random intercepts and slopes
 #     # usually requires thoughtful specification
-#     τ ~ filldist(truncated(Cauchy(0, 2), 0, Inf), predictors) # group-level SDs
-#     γ ~ filldist(Normal(0, 5), predictors, n_gr)              # matrix of group coefficients
-#     Z ~ filldist(Normal(0, 1), predictors, n_gr)              # matrix of non-centered group coefficients
+#     τ ~ filldist(truncated(Cauchy(0, 2); lower=0), predictors) # group-level SDs
+#     γ ~ filldist(Normal(0, 5), predictors, n_gr)               # matrix of group coefficients
+#     Z ~ filldist(Normal(0, 1), predictors, n_gr)               # matrix of non-centered group coefficients
 
 #     # reconstruct β from Ω and τ
 #     β = γ + τ .* Ω.L * Z
@@ -85,12 +85,12 @@ using PDMats
 
     # prior for variance of random intercepts and slopes
     # usually requires thoughtful specification
-    τ ~ filldist(truncated(Cauchy(0, 2), 0, Inf), predictors) # group-level SDs
-    γ ~ filldist(Normal(0, 5), predictors, n_gr)              # matrix of group coefficients
-    Z ~ filldist(Normal(0, 1), predictors, n_gr)              # matrix of non-centered group coefficients
+    τ ~ filldist(truncated(Cauchy(0, 2); lower=0), predictors) # group-level SDs
+    γ ~ filldist(Normal(0, 5), predictors, n_gr)               # matrix of group coefficients
+    Z ~ filldist(Normal(0, 1), predictors, n_gr)               # matrix of non-centered group coefficients
 
     # reconstruct β from Ω and τ
-    Ω_L = LowerTriangular(collect(τ .* L_U'))                 # collect is necessary for ReverseDiff for some reason
+    Ω_L = LowerTriangular(collect(τ .* L_U'))                  # collect is necessary for ReverseDiff for some reason
     Ω = PDMat(Cholesky(Ω_L))
     β = γ + Ω * Z
 

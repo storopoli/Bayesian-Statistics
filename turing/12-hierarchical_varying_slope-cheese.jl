@@ -45,8 +45,8 @@ idx = cheese[:, :background_int]
 
     # prior for variance of random slopes
     # usually requires thoughtful specification
-    τ ~ filldist(truncated(Cauchy(0, 2), 0, Inf), n_gr)                             # group-level SDs slopes
-    βⱼ ~ arraydist([MvNormal(Diagonal(fill(τ[j], predictors).^2)) for j in 1:n_gr]) # group-level slopes
+    τ ~ filldist(truncated(Cauchy(0, 2); lower=0), n_gr)                             # group-level SDs slopes
+    βⱼ ~ arraydist([MvNormal(Diagonal(fill(τ[j], predictors).^2)) for j in 1:n_gr])  # group-level slopes
 
     # likelihood
     for i in 1:N
