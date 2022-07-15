@@ -48,7 +48,7 @@
 
 \begin{frame}{What are Hierarchical Models?\footnote{figure adapted from \href{https://betanalpha.github.io/assets/case_studies/hierarchical_modeling.html}{Michael Betancourt (CC-BY-SA-4.0)}}}
 	\small
-	Hiperparameter $\phi$ that parameterizes $\theta_1, \theta_2, \dots, \theta_K$,
+	Hyperparameter $\phi$ that parameterizes $\theta_1, \theta_2, \dots, \theta_K$,
 	that are used to infer the posterior density of some random variable
 	$\mathbf{y} = y_1, y_2, \dots, y_K$
 	\begin{adjustbox}{max width=1.0\textwidth}
@@ -709,7 +709,7 @@
 	$$
 	where $\boldsymbol{\Omega}$ is a correlation matrix with
 	$1$s in the diagonal and the off-diagonal elements between -1 e 1 $\rho \in (-1, 1)$.
-	$\boldsymbol{\tau}$ is a vector é um vetor composed of the variables' variances from
+	$\boldsymbol{\tau}$ is a vector composed of the variables' variances from
 	$\boldsymbol{\Sigma}$ (is is the $\boldsymbol{\Sigma}$'s diagonal).
 \end{frame}
 
@@ -730,7 +730,7 @@
 	\vfill
 	What we are missing is to define a prior for the correlation matrix $\boldsymbol{\Omega}$.
 	Not a long time ago, we've used a Wishart distribution as a prior \parencite{gelman2013bayesian}.
-	But this has been abandone after the proposal of the LKJ distribution by \textcite{lewandowski2009generating}
+	But this has been abandoned after the proposal of the LKJ distribution by \textcite{lewandowski2009generating}
 	(LKJ are the authors' last name initials -- \textbf{L}ewandowski, \textbf{K}urowicka and \textbf{J}oe)
 	as a prior for correlation matrices.
 \end{frame}
