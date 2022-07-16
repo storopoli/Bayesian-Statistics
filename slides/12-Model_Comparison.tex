@@ -100,9 +100,9 @@
 		\text{DIC} = D(y, \boldsymbol{\theta}) + k_{\text{DIC}} = -2 \text{lppd}_{\text{Bayes}}
 		+2 \underbrace{\left( \text{lppd}_{\text{Bayes}} - \frac{1}{S} \sum^S_{s=1} \log P(y \mid \boldsymbol{\theta}^s) \right)}_{\text{bias-corrected $k$}}
 	$$
-	DIC remove a restrição das \textit{prioris} uniformes de AIC, mas mesmo assim
-	mantém os presupostos da posterior ser uma distribuição Gaussiana/normal multivariada
-	e que $N \gg k$
+	DIC removes the restriction on uniform AIC \textit{priors}, but still
+	keeps the assumptions of the posterior being a multivariate Gaussian/normal distribution
+	and that $N \gg k$.
 \end{frame}
 
 \subsubsection{Predictive Accuracy}
