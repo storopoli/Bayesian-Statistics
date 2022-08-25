@@ -15,6 +15,7 @@ Manifest.toml
 *.cb
 *.cb2
 .*.lb
+*.out.ps
 
 ## Intermediate documents:
 *.dvi
