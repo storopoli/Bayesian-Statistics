@@ -24,7 +24,7 @@ transform!(
         x -> categorical(x; levels=["0-39g/day", "40-79", "80-119", "120+"], ordered=true),
     :tobgp =>
         x -> categorical(x; levels=["0-9g/day", "10-19", "20-29", "30+"], ordered=true);
-    renamecols=false,
+    renamecols=false
 )
 transform!(esoph, [:agegp, :alcgp, :tobgp] .=> ByRow(levelcode); renamecols=false)
 
@@ -47,15 +47,14 @@ end
 # instantiate the model
 model = ordered_regression(X, y)
 
-# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters
-chn = sample(model, NUTS(), MCMCThreads(), 2_000, 4)
+# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters with 1k warmup
+chn = sample(model, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
 
 # results:
-#    parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec
-#        Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
-#
-#  cutpoints[1]   -1.4140    0.6359     0.0071    0.0092   4165.4455    1.0002      440.5548
-#  cutpoints[2]   -0.2446    0.6182     0.0069    0.0089   4330.7124    1.0001      458.0341
-#  cutpoints[3]    0.8074    0.6286     0.0070    0.0087   4580.5094    1.0002      484.4537
-#          β[1]   -0.0740    0.1184     0.0013    0.0017   5576.9867    1.0000      589.8452
-#          β[2]   -0.0727    0.1704     0.0019    0.0022   5732.0269    1.0005      606.2429
+#     parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec 
+#         Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
+#   cutpoints[1]   -1.4154    0.6353     0.0100    0.0135   1799.8496    1.0021       78.8820
+#   cutpoints[2]   -0.2437    0.6054     0.0096    0.0127   1949.7758    1.0025       85.4528
+#   cutpoints[3]    0.8066    0.6168     0.0098    0.0122   2152.8488    1.0018       94.3528
+#           β[1]   -0.0733    0.1151     0.0018    0.0022   2636.8129    1.0012      115.5635
+#           β[2]   -0.0735    0.1719     0.0027    0.0029   2440.2544    1.0007      106.9490

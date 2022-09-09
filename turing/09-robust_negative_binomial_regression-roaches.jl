@@ -29,7 +29,7 @@ function NegativeBinomial2(μ, ϕ)
 end
 
 # define the model
-@model function negative_binomial_regression(X,  y; predictors=size(X, 2))
+@model function negative_binomial_regression(X, y; predictors=size(X, 2))
     # priors
     α ~ TDist(3) * 2.5
     β ~ filldist(TDist(3) * 2.5, predictors)
@@ -38,22 +38,21 @@ end
 
     # likelihood
     y ~ arraydist(LazyArray(@~ NegativeBinomial2.(exp.(α .+ X * β), ϕ)))
-    return(; y, α, β, ϕ)
+    return (; y, α, β, ϕ)
 end
 
 # instantiate the model
 model = negative_binomial_regression(X, y)
 
-# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters
-chn = sample(model, NUTS(), MCMCThreads(), 2_000, 4)
+# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters with 1k warmup
+chn = sample(model, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
 
 # results:
-#  parameters      mean       std   naive_se      mcse          ess      rhat   ess_per_sec
-#      Symbol   Float64   Float64    Float64   Float64      Float64   Float64       Float64
-#
-#           α    2.8260    0.0759     0.0008    0.0008    9864.8871    1.0000      261.3561
-#        β[1]    0.9536    0.1148     0.0013    0.0012    8856.1048    1.0006      234.6299
-#        β[2]   -0.3712    0.0773     0.0009    0.0007    9403.3178    0.9999      249.1275
-#        β[3]   -0.1538    0.0760     0.0008    0.0007   11360.4621    0.9999      300.9793
-#        β[4]    0.1459    0.1168     0.0013    0.0011    9233.2377    1.0000      244.6215
-#          ϕ⁻    1.4091    0.0787     0.0009    0.0009    9940.3546    1.0001      263.3555
+#   parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec 
+#       Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
+#            α    2.8263    0.0776     0.0012    0.0011   5151.7518    1.0000      263.2205
+#         β[1]    0.9501    0.1142     0.0018    0.0015   5775.2010    0.9994      295.0746
+#         β[2]   -0.3690    0.0754     0.0012    0.0011   5572.7346    1.0007      284.7300
+#         β[3]   -0.1568    0.0764     0.0012    0.0009   5676.4081    0.9994      290.0270
+#         β[4]    0.1454    0.1212     0.0019    0.0020   4262.6961    0.9996      217.7956
+#           ϕ⁻    1.4097    0.0791     0.0013    0.0011   5411.2014    0.9999      276.4767
