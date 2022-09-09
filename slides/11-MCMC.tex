@@ -1039,7 +1039,7 @@ http://mc-stan.org/misc/warnings.html#tail-ess
 	%    y ~ Normal(0, 3)
 	%    x ~ Normal(0, exp(y/2))
 	% end
-	%chn = sample(funnel_cp(), NUTS(), MCMCThreads(), 2_000, 4)
+	%chn = sample(funnel_cp(), NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
 	\begin{lstlisting}[basicstyle=\footnotesize]
 Summary Statistics
       parameters     mean      std  naive_se     mcse      ess     rhat  ess_per_sec

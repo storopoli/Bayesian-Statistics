@@ -35,9 +35,9 @@ idx = cheese[:, :background_int]
 
 # define the model
 @model function varying_slope_regression(X, idx, y;
-                                         predictors=size(X, 2),
-                                         N=size(X,1),
-                                         n_gr=length(unique(idx)))
+    predictors=size(X, 2),
+    N=size(X, 1),
+    n_gr=length(unique(idx)))
     # priors
     α ~ TDist(3) * 2.5
     β ~ filldist(TDist(3) * 2.5, predictors)
@@ -46,38 +46,37 @@ idx = cheese[:, :background_int]
     # prior for variance of random slopes
     # usually requires thoughtful specification
     τ ~ filldist(truncated(Cauchy(0, 2); lower=0), n_gr)                             # group-level SDs slopes
-    βⱼ ~ arraydist([MvNormal(Diagonal(fill(τ[j], predictors).^2)) for j in 1:n_gr])  # group-level slopes
+    βⱼ ~ arraydist([MvNormal(Diagonal(fill(τ[j], predictors) .^ 2)) for j in 1:n_gr])  # group-level slopes
 
     # likelihood
     for i in 1:N
         y[i] ~ Normal(α + X[i, :] ⋅ β + X[i, :] ⋅ βⱼ[:, idx[i]], σ)
     end
-    return(; y, α, β, σ, βⱼ, τ)
+    return (; y, α, β, σ, βⱼ, τ)
 end
 
 # instantiate the model
 model = varying_slope_regression(X, idx, y)
 
-# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters
-chn = sample(model, NUTS(), MCMCThreads(), 2_000, 4)
+# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters with 1k warmup
+chn = sample(model, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
 
 # results:
-#  parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec
-#      Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
-#
-#           α    0.0120    1.0714     0.0120    0.0209   2402.9015    1.0008        3.5961
-#        β[1]    0.3221    1.1209     0.0125    0.0222   2502.0644    1.0013        3.7445
-#        β[2]   -1.1962    1.1273     0.0126    0.0200   2614.6932    1.0004        3.9131
-#        β[3]    0.7043    1.1153     0.0125    0.0210   2474.0642    1.0013        3.7026
-#        β[4]    0.1114    1.1078     0.0124    0.0194   2558.5036    1.0004        3.8290
-#           σ    0.6083    0.0349     0.0004    0.0005   5209.6270    0.9997        7.7966
-#        τ[1]    0.6807    0.5446     0.0061    0.0142   1461.2217    1.0017        2.1868
-#        τ[2]    0.6698    0.5554     0.0062    0.0131   1738.2249    1.0007        2.6014
-#     βⱼ[1,1]    0.3426    0.4845     0.0054    0.0104   2646.5691    1.0005        3.9608
-#     βⱼ[2,1]    0.2127    0.4752     0.0053    0.0094   2775.7427    1.0017        4.1541
-#     βⱼ[3,1]    0.3898    0.4834     0.0054    0.0112   2238.3910    1.0016        3.3499
-#     βⱼ[4,1]    0.2616    0.4790     0.0054    0.0097   2674.8577    1.0003        4.0031
-#     βⱼ[1,2]   -0.3318    0.4855     0.0054    0.0106   2556.1696    1.0005        3.8255
-#     βⱼ[2,2]   -0.2693    0.4796     0.0054    0.0095   2622.0417    1.0016        3.9241
-#     βⱼ[3,2]   -0.3185    0.4821     0.0054    0.0109   2345.4008    1.0014        3.5101
-#     βⱼ[4,2]   -0.2559    0.4780     0.0053    0.0093   2671.3866    1.0006        3.9979
+#  parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec 
+#       Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
+#            α    0.0437    1.0995     0.0174    0.0334   1087.7242    1.0058        1.2794
+#         β[1]    0.2502    1.1344     0.0179    0.0335   1185.0469    1.0038        1.3938
+#         β[2]   -1.2413    1.1361     0.0180    0.0335   1152.7612    1.0049        1.3559
+#         β[3]    0.6729    1.1137     0.0176    0.0346   1055.1768    1.0032        1.2411
+#         β[4]    0.0597    1.1145     0.0176    0.0329   1228.1565    1.0046        1.4445
+#            σ    0.6073    0.0345     0.0005    0.0008   2371.1387    1.0010        2.7889
+#         τ[1]    0.6481    0.4984     0.0079    0.0174    728.6358    1.0012        0.8570
+#         τ[2]    0.6231    0.5212     0.0082    0.0226    601.6737    1.0016        0.7077
+#      βⱼ[1,1]    0.3795    0.4764     0.0075    0.0131   1108.7295    1.0006        1.3041
+#      βⱼ[2,1]    0.2257    0.4087     0.0065    0.0101   1532.1411    1.0005        1.8021
+#      βⱼ[3,1]    0.3822    0.4379     0.0069    0.0144    968.8675    1.0026        1.1396
+#      βⱼ[4,1]    0.2823    0.4291     0.0068    0.0111   1409.2813    1.0011        1.6576
+#      βⱼ[1,2]   -0.2962    0.4737     0.0075    0.0139   1033.3318    1.0008        1.2154
+#      βⱼ[2,2]   -0.2548    0.4108     0.0065    0.0113   1356.0370    1.0000        1.5949
+#      βⱼ[3,2]   -0.3212    0.4324     0.0068    0.0142    953.0274    1.0027        1.1209
+#      βⱼ[4,2]   -0.2353    0.4288     0.0068    0.0121   1375.0647    1.0007        1.6173
