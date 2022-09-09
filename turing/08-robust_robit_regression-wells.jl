@@ -23,7 +23,7 @@ y = wells[:, :switch]
 # define the model
 # setting ν to 4 since we have a lot of parameters
 # and Turing v0.21.9 samples slower than Stan
-@model function robit_regression(X,  y; predictors=size(X, 2), N=size(X, 1), ν=4)
+@model function robit_regression(X, y; predictors=size(X, 2), N=size(X, 1), ν=4)
     # priors
     α ~ TDist(3) * 2.5
     β ~ filldist(TDist(3) * 2.5, predictors)
@@ -31,11 +31,11 @@ y = wells[:, :switch]
     # likelihood
     ϵ ~ filldist(TDist(ν), N)
     y ~ arraydist(LazyArray(@~ BernoulliLogit.(α .+ X * β .+ ϵ)))
-    return(; y, α, β)
+    return (; y, α, β)
 end
 
 # instantiate the model
 model = robit_regression(X, y)
 
-# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters
-chn = sample(model, NUTS(), MCMCThreads(), 2_000, 4)
+# sample with NUTS, 4 multi-threaded parallel chains, and 2k iters with 1k warmup
+chn = sample(model, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
