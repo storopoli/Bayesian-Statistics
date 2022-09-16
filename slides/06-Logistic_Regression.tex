@@ -142,7 +142,7 @@
 		Bernoulli trial with some probability $p$
 		\item \textbf{binomial likelihood} --
 		\textbf{discrete and positive} dependent variable $\textbf{y}$
-		which results from $k$ successes in independent Bernoulli
+		which results from $k$ successes in $n$ independent Bernoulli
 		trials.
 	\end{vfilleditems}
 \end{frame}
@@ -153,7 +153,7 @@
 	$$
 		\begin{aligned}
 			\mathbf{y}         & \sim \text{Bernoulli}\left( p\right)                                      \\
-			p                  & \sim \text{logistic/logit}(\alpha +  \mathbf{X} \boldsymbol{\beta})       \\
+			p                  & = \text{logistic/logit}(\alpha +  \mathbf{X} \boldsymbol{\beta})          \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
 		\end{aligned}
@@ -176,18 +176,18 @@
 	$$
 		\begin{aligned}
 			\mathbf{y}         & \sim \text{Binomial}\left(n,  p\right)                                    \\
-			p                  & \sim \text{logistic/probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})      \\
+			p                  & = \text{logistic/probit}(\alpha +  \mathbf{X} \boldsymbol{\beta})         \\
 			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                             \\
 			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
 		\end{aligned}
 	$$
 	where:
 	\begin{vfilleditems}
-		\item \small $\mathbf{y}$ - \textbf{discrete positive variable} -- $k$ successes of independent Bernoulli trials.
+		\item \small $\mathbf{y}$ - \textbf{discrete positive variable} -- $k$ successes of $n$ independent Bernoulli trials.
 		\item \small $n$ - number of independent Bernoulli trials.
 		\item \small $p$ - probability of $\mathbf{y}$ taking value of $1$ --
 		success in an independent Bernoulli trial.
-		\item \small $\text{logistic/logit}$ -- logistic or logit function.
+		\item \small $\text{logistic/probit}$ -- logistic or probit function.
 		\item \small $\alpha$ -- intercept (also called constant).
 		\item \small $\boldsymbol{\beta}$ -- coefficient vector.
 		\item \small $\mathbf{X}$ -- data matrix.
@@ -271,7 +271,7 @@
 	and any number above or below it increases or decreases, respectively,
 	the changes of obtaining a ``success'' in $\mathbf{y}$.
 	To have a more intuitive interpretation (similar to the betting houses),
-	we need to \textbf{convert the logodds into chances} by undoing the $\log function$.
+	we need to \textbf{convert the logodds into chances} by undoing the $\log$ function.
 	We need to perform an \textbf{exponentiation} of $\alpha$ and $\boldsymbol{\beta}$
 	values:
 	$$
