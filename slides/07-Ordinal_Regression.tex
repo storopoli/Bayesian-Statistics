@@ -221,13 +221,13 @@
 	\footnotesize
 	$$
 		\begin{aligned}
-			\mathbf{y}          & \sim \text{Categorical}(\mathbf{p})                                                \\
-			\mathbf{p}          & = \text{logistic}(\boldsymbol{\phi})                                               \\
-			\boldsymbol{\phi}   & = \boldsymbol{\alpha} + \mathbf{X} \cdot \boldsymbol{\beta}                        \\
-			\alpha_1            & = \text{logit}(\text{CDF}(y_1))                                                    \\
-			\alpha_k            & = \text{logit}(\text{CDF}(y_k) - \text{CDF}(y_{k-1})) \text{ for } 2 \leq k \leq K \\
-			\alpha_{K}          & = \text{logit}(1 - \text{CDF}(y_{K-1}))                                            \\
-			\boldsymbol{\alpha} & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                      \\
+			\mathbf{y}          & \sim \text{Categorical}(\mathbf{p})                                                  \\
+			\mathbf{p}          & = \text{logistic}(\boldsymbol{\phi})                                                 \\
+			\boldsymbol{\phi}   & = \boldsymbol{\alpha} + \mathbf{X} \cdot \boldsymbol{\beta}                          \\
+			\alpha_1            & = \text{logit}(\text{CDF}(y_1))                                                      \\
+			\alpha_k            & = \text{logit}(\text{CDF}(y_k) - \text{CDF}(y_{k-1})) \text{ for } 2 \leq k \leq K-1 \\
+			\alpha_{K}          & = \text{logit}(1 - \text{CDF}(y_{K-1}))                                              \\
+			\boldsymbol{\alpha} & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                        \\
 			\boldsymbol{\beta}  & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})
 		\end{aligned}
 	$$
