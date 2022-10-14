@@ -146,7 +146,7 @@
 	the probability of success $p$ is parameterized as a $\text{Beta}(\alpha, \beta)$.
 	\vfill
 	Generally, we use $\alpha$ as the binomial's probability of the success $p$,
-	and $\beta$\footnote(sometimes specified as $\phi$) is the additional parameter
+	and $\beta$\footnote{sometimes specified as $\phi$} is the additional parameter
 	to control and allow for overdispersion.
 	\vfill
 	Values of $\beta \geq 1$ make the beta-binomial behave the same as a binomial.
@@ -181,9 +181,9 @@
 	$z$'s errors, $\epsilon$, are distributed as a Student's $t$ distribution:
 	$$
 		\begin{aligned}
-			y_i        & = \begin{cases} 0 & \text{se } z_i < 0 \\ 1 & \text{se }\ z_i > 0 \end{cases} \\
-			z_i        & = X_i \boldsymbol{\beta} + \epsilon_i                                         \\
-			\epsilon_i & \sim \text{Student} \left (\nu, 0, \sqrt{\frac{\nu - 2}{\nu}} \right)         \\
+			y_i        & = \begin{cases} 0 & \text{se } z_i < 0 \\ 1 & \text{se }\ z_i > 0 \end{cases}                                          \\
+			z_i        & = X_i \boldsymbol{\beta} + \epsilon_i                                 \\
+			\epsilon_i & \sim \text{Student} \left (\nu, 0, \sqrt{\frac{\nu - 2}{\nu}} \right) \\
 			\nu        & \sim \text{Gamma}(2, 0.1) \in \left[2, \infty \right)
 		\end{aligned}
 	$$
@@ -240,16 +240,16 @@
 	$$
 		\begin{aligned}
 			\mathbf{y}
-			                    & \begin{cases}
-				                      = 0,                                                                                             & \text{ if } S_i = 0 \\
-				                      \sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right), & \text{ if } S_i = 1
-			                      \end{cases} \\
-			P(S_i = 1)          & = \text{Logistic/Logit}(\mathbf{X} \boldsymbol{\gamma})                                                                \\
-			\boldsymbol{\gamma} & \sim \text{Beta}(1, 1)
+			           & \begin{cases}
+				= 0,                                                                                             & \text{ if } S_i = 0 \\
+				\sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right), & \text{ if } S_i = 1
+			\end{cases}                               \\
+			P(S_i = 1) & = \text{Logistic/Probit}(\mathbf{X} \boldsymbol{\gamma}) \\
+			\gamma     & \sim \text{Beta}(1, 1)
 		\end{aligned}
 	$$
 	\vfill
-	$\boldsymbol{\gamma}$ is a new vector of coefficients which we give uniform priors of $\text{Beta} (1, 1)$.
+	$\gamma$ is a new coefficients which we give uniform prior of $\text{Beta} (1, 1)$.
 \end{frame}
 
 \subsection{Why Use Non-Robust Models?}
@@ -260,6 +260,10 @@
 	\vfill
 	Even when they are naturally not implicit in a phenomena structure,
 	\textbf{simpler non-robust models are computational efficient}.
+	\vfill
+	Finally, there's \textbf{occam's razor},
+	also known as the \textbf{principle of parsimony},
+	which states the preference for simplicity in the scientific method.
 	\vfill
 	Of course, you must always guide the model choice in a
 	\textbf{principled manner},
