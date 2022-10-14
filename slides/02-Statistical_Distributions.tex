@@ -541,6 +541,45 @@
 	\end{tikzpicture}
 \end{frame}
 
+\subsubsection{Gamma}
+\begin{frame}{Gamma}
+	The gammma distribution is a long-tailed distribution with support only for positive real numbers.
+	\vfill
+	The gamma distribution has two parameters and its notation is
+	$\text{Gamma}(\alpha, \theta)$:
+	\begin{vfilleditems}
+		\item $\alpha$ -- shape parameter
+		\item $\theta$ -- rate parameter
+	\end{vfilleditems}
+	\vfill
+	Example: Any waiting time can be modelled with a gamma distribution.
+\end{frame}
+
+\begin{frame}{Gamma}
+	$$\text{Gamma}(\alpha, \theta) = f(x, \alpha, \theta) = \frac{x^{\alpha-1} e^{-x/\theta}}{\Gamma(\alpha) \theta^\alpha} \text{ for $x,\alpha,\theta > 0$}$$
+\end{frame}
+
+\begin{frame}{Gamma}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel=PDF,
+				domain=0:14,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left, % the * suppresses the arrow tips
+				enlarge x limits=true, % extend the axes a bit
+			]
+
+			\addplot [blue] {gammadist(1, 2)};
+			\addlegendentry{$\alpha=1, \theta=2$}
+			\addplot [red] {gammadist(2, 2)};
+			\addlegendentry{$\alpha=2, \theta=2$}
+			\addplot [yellow] {gammadist(3, 1)};
+			\addlegendentry{$\alpha=3, \theta=\frac{1}{2}$}
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
 \subsubsection{Student's $t$}
 \begin{frame}{Student's $t$}
 	Student's $t$ distribution arises by estimating the mean of a normally-distributed
@@ -589,6 +628,45 @@
 			\addlegendentry{$\nu=3$}
 			\addplot [yellow] {student(30)};
 			\addlegendentry{$\nu=30$}
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\subsubsection{Cauchy}
+\begin{frame}{Cauchy}
+	The Cauchy distribution is bell-shaped distribution and a special case for Student's $t$ with $\nu=1$.
+	\vfill
+	But, differently than Student's $t$, the Cauchy distribution has two parameters and its notation is
+	$\text{Gamma}(\alpha, \theta)$:
+	\begin{vfilleditems}
+		\item $\mu$ -- location parameter
+		\item $\sigma$ -- scale parameter
+	\end{vfilleditems}
+	\vfill
+	Example: a dataset full of outliers.
+\end{frame}
+
+\begin{frame}{Cauchy}
+	$$\text{Cauchy}(\mu, \sigma) = \frac{1}{\pi \sigma \left(1 + \left(\frac{x - \mu}{\sigma} \right)^2 \right)} \text{ for $\sigma \geq 0$}$$
+\end{frame}
+
+\begin{frame}{Cauchy}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel=PDF,
+				domain=-4:4,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left, % the * suppresses the arrow tips
+				enlarge x limits=true, % extend the axes a bit
+			]
+
+			\addplot [blue] {cauchy(0, 1)};
+			\addlegendentry{$\mu=0, \sigma=1$}
+			\addplot [red] {cauchy(0, 0.5)};
+			\addlegendentry{$\mu=0, \sigma=\frac{1}{2}$}
+			\addplot [yellow] {cauchy(-2, 1)};
+			\addlegendentry{$\mu=-2, \sigma=1$}
 		\end{axis}
 	\end{tikzpicture}
 \end{frame}
