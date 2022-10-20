@@ -543,26 +543,6 @@
 
 \begin{frame}{Mathematical Specification of Hierarchical Models}
 	We have $N$ observations organized in $J$ groups with $K$ independent variables.
-	\vfill
-	Here we insert a column filled with $1$s in the data matrix $\mathbf{X}$.
-	\vfill
-	Mathematically, this makes the column behave like an ``identity'' variable
-	(because the number $1$ in the multiplication operation $1 \cdot \beta$ is the identity element.
-	It maps $x \to x$ keeping the value of $x$ intact) and, consequently,
-	we can interpret the column's coefficient as the model's intercept.
-\end{frame}
-
-\begin{frame}{Mathematical Specification of Hierarchical Models}
-	Hence, we have as a data matrix:
-	$$
-		\mathbf{X} =
-		\begin{bmatrix}
-			1      & x_{11} & x_{12} & \cdots & x_{1K} \\
-			1      & x_{21} & x_{22} & \cdots & x_{2K} \\
-			\vdots & \cdots & \cdots & \ddots & \vdots \\
-			1      & x_{N1} & x_{N2} & \cdots & x_{NK}
-		\end{bmatrix}
-	$$
 \end{frame}
 
 \begin{frame}{Mathematical Specification -- Varying-Intercept Model}
@@ -659,6 +639,28 @@
 			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                                          \\
 			\sigma                       & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
+	$$
+\end{frame}
+
+\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
+	Here we insert a column filled with $1$s in the data matrix $\mathbf{X}$.
+	\vfill
+	Mathematically, this makes the column behave like an ``identity'' variable
+	(because the number $1$ in the multiplication operation $1 \cdot \beta$ is the identity element.
+	It maps $x \to x$ keeping the value of $x$ intact) and, consequently,
+	we can interpret the column's coefficient as the model's intercept.
+\end{frame}
+
+\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
+	Hence, we have as a data matrix:
+	$$
+		\mathbf{X} =
+		\begin{bmatrix}
+			1      & x_{11} & x_{12} & \cdots & x_{1K} \\
+			1      & x_{21} & x_{22} & \cdots & x_{2K} \\
+			\vdots & \cdots & \cdots & \ddots & \vdots \\
+			1      & x_{N1} & x_{N2} & \cdots & x_{NK}
+		\end{bmatrix}
 	$$
 \end{frame}
 
