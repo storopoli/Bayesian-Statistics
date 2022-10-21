@@ -580,10 +580,11 @@
 	This example is for linear regression:
 	$$
 		\begin{aligned}
-			\mathbf{y}           & \sim \text{Normal}\left( \alpha + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}, \sigma \right) \\
-			\alpha               & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                   \\
-			\boldsymbol{\beta}_j & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                       \\
-			\boldsymbol{\tau}    & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                           \\
+			\mathbf{y}           & \sim \text{Normal}\left( \alpha + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}, \sigma \right) \\
+			\alpha               & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                         \\
+			\boldsymbol{\beta}   & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                             \\
+			\boldsymbol{\beta}_j & \sim \text{Normal}(\mu_{\boldsymbol{\beta j}}, \sigma_{\boldsymbol{\beta j}})                                                                         \\
+			\boldsymbol{\tau}    & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                                                                 \\
 			\sigma               & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
 	$$
@@ -596,12 +597,13 @@
 	such as $J_1, J_2, \dots$:
 	$$
 		\begin{aligned}
-			\mathbf{y}                   & \sim \text{Normal}(\alpha + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
-			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                          \\
-			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                        \\
-			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                        \\
-			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                               \\
-			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                               \\
+			\mathbf{y}                   & \sim \text{Normal}(\alpha + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
+			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                                                                \\
+			\boldsymbol{\beta}           & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                                                                                    \\
+			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                                                              \\
+			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                                                              \\
+			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                                                                     \\
+			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                                                                     \\
 			\sigma                       & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
 	$$
@@ -611,12 +613,13 @@
 	This example is for linear regression:
 	$$
 		\begin{aligned}
-			\mathbf{y}              & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}_\beta, \sigma \right) \\
-			\alpha                  & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                    \\
-			\alpha_j                & \sim \text{Normal}(0, \tau_\alpha)                                                                                               \\
-			\boldsymbol{\beta}_j    & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                        \\
-			\tau_\alpha             & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                           \\
-			\boldsymbol{\tau}_\beta & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                                            \\
+			\mathbf{y}              & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}_\beta, \sigma \right) \\
+			\alpha                  & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                          \\
+			\alpha_j                & \sim \text{Normal}(0, \tau_\alpha)                                                                                                                                     \\
+			\boldsymbol{\beta}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                                              \\
+			\boldsymbol{\beta}_j    & \sim \text{Normal}(\mu_{\boldsymbol{\beta j}}, \sigma_{\boldsymbol{\beta j}})                                                                                          \\
+			\tau_\alpha             & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                                                                 \\
+			\boldsymbol{\tau}_\beta & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                                                                                  \\
 			\sigma                  & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
 	$$
@@ -629,14 +632,15 @@
 	such as $J_1, J_2, \dots$:
 	$$
 		\begin{aligned}
-			\mathbf{y}                   & \sim \text{Normal}(\alpha + \alpha_j + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
-			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                                     \\
-			\alpha_j                     & \sim \text{Normal}(0, \tau_\alpha)                                                                                                                                                \\
-			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                                   \\
-			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                                   \\
-			\tau_\alpha                  & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                                                                            \\
-			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                                          \\
-			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                                          \\
+			\mathbf{y}                   & \sim \text{Normal}(\alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
+			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                                                                           \\
+			\alpha_j                     & \sim \text{Normal}(0, \tau_\alpha)                                                                                                                                                                                      \\
+			\boldsymbol{\beta}           & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                                                                                               \\
+			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                                                                         \\
+			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                                                                         \\
+			\tau_\alpha                  & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                                                                                                                  \\
+			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                                                                                \\
+			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                                                                                \\
 			\sigma                       & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
 	$$
@@ -693,7 +697,6 @@
 			\quad \text{for}\quad j_2 \in \{ 1, \dots, J_2 \}                                                                                      \\
 			\boldsymbol{\Sigma}_1   & \sim \text{LKJ}(\eta_1)                                                                                      \\
 			\boldsymbol{\Sigma}_2   & \sim \text{LKJ}(\eta_2)                                                                                      \\
-			\alpha                  & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                \\
 			\sigma                  & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
 	$$
@@ -711,7 +714,7 @@
 	$$
 	where $\boldsymbol{\Omega}$ is a correlation matrix with
 	$1$s in the diagonal and the off-diagonal elements between -1 e 1 $\rho \in (-1, 1)$.
-	$\boldsymbol{\tau}$ is a vector composed of the variables' variances from
+	$\boldsymbol{\tau}$ is a vector composed of the variables' standard deviation from
 	$\boldsymbol{\Sigma}$ (is is the $\boldsymbol{\Sigma}$'s diagonal).
 \end{frame}
 
