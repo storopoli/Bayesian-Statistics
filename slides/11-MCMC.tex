@@ -599,7 +599,7 @@
 
 \begin{frame}{Momenta Distribution -- $P(\boldsymbol{\phi})$}
 	Generally we give $\boldsymbol{\phi}$ a multivariate normal distribution
-	with mean $0$ and covariance$\mathbf{M}$,
+	with mean $0$ and covariance $\mathbf{M}$,
 	a ``mass matrix''.
 	\vfill
 	To keep things computationally simple,
@@ -667,7 +667,7 @@
 			The problem is that Euler method, when applied to Hamiltonian dynamics,
 			\textbf{does not preserve volume}.
 			One of the fundamental properties of Hamiltonian dynamics if
-			\textbf{volume preservation}\footnote{a result called Liouville theorem.}.
+			\textbf{volume preservation}.
 			This makes the Euler method a bad choice as a HMC's numerical integrator.
 		\end{column}
 		\begin{column}{0.4\textwidth}
@@ -785,14 +785,14 @@
 		\DontPrintSemicolon
 		\SetAlgoNoEnd
 		\SetAlgoLined
-		\fontsize{4.5pt}{6.5pt}\selectfont
+		\fontsize{4pt}{6pt}\selectfont
 		Define an initial set $\boldsymbol{\theta}^{(0)} \in \mathbb{R}^p$ that $P\left(\boldsymbol{\theta}^{(0)} \mid \mathbf{y} \right) > 0$\;
 		\textcolor{blue}{Instantiate an empty binary tree with $2^L$ leaf nodes}\;
 		Sample $\boldsymbol{\phi}$ from a $\text{Multivariate Normal}(\mathbf{0},\mathbf{M})$\;
 		Simultaneously sample $\boldsymbol{\theta}$ and $\boldsymbol{\phi}$ with $L$ leapfrog steps and step-size $\epsilon$.\;
 		Define the current value $\boldsymbol{\theta}$ as the proposed value $\boldsymbol{\theta}^{(*)}$:
 		$\boldsymbol{\theta}^{(*)} \leftarrow \boldsymbol{\theta}$\;
-		\For{$1, 2, \dots, 2L$}{
+		\For{$1, 2, \dots, L$}{
 			\textcolor{blue}{Choose a direction $v \sim \text{Uniform}\left( \left\{-1, 1 \right\} \right)$}\;
 			Use the gradient of the $\log$ posterior $\boldsymbol{\theta}^{(*)}$ for a half-step of $\boldsymbol{\phi}$ in the direction $v$:
 			$\boldsymbol{\phi} \leftarrow \boldsymbol{\phi} + v \frac{1}{2} \epsilon \frac{d \log P(\boldsymbol{\theta}^{(*)} \mid \mathbf{y})}{d \theta}$\;
@@ -803,19 +803,22 @@
 			Define the node $L_t^v$ as the proposal $\boldsymbol{\theta}$\;
 			\If{
 				The difference between proposal vector $\boldsymbol{\theta}^{(*)}$
-				and current vector $\boldsymbol{\theta}$ in the direction $v$ is lower than zero: $v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$\;
+				and current vector $\boldsymbol{\theta}$ in the direction $v$ is lower than zero: $v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$
+				or $L$ steps have been reached\;
 			}{
 				\textcolor{red}{Stop sampling $\boldsymbol{\theta}^{(*)}$ in the direction $v$ and continue sampling only in the direction $-v$}\;
 			}{
 				\If{
 					The difference between proposal vector $\boldsymbol{\theta}^{(*)}$
-					and current vector $\boldsymbol{\theta}$ in the direction $-v$ is lower than zero: $-v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$\;
+					and current vector $\boldsymbol{\theta}$ in the direction $-v$ is lower than zero: $-v \frac{d}{dt} \frac{(\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)}) \cdot (\boldsymbol{\theta}^{(*)} - \boldsymbol{\theta}^{(*)})}{2} < 0$
+					or $L$ steps have been reached\;
 				}{
 					\textcolor{red}{Stop sampling $\boldsymbol{\theta}^{(*)}$\;
 					}
 				}
 			}
 		}
+		\textcolor{blue}{Choose a random node from the binary tree as the proposal}\;
 		As an acceptance/rejection rule, compute:
 		$r = \frac{P \left(\boldsymbol{\theta}^{(*)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(*)} \right)}{P \left(\boldsymbol{\theta}^{(t-1)} \mid \mathbf{y} \right) P \left(\boldsymbol{\phi}^{(t-1)} \right)}$\;
 		Assign:
