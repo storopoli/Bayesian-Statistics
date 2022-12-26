@@ -1,3 +1,4 @@
+% !TeX root = slides.tex
 \section{Robust Regression}
 
 \subsection{Recommended References}
@@ -181,9 +182,9 @@
 	$z$'s errors, $\epsilon$, are distributed as a Student's $t$ distribution:
 	$$
 		\begin{aligned}
-			y_i        & = \begin{cases} 0 & \text{se } z_i < 0 \\ 1 & \text{se }\ z_i > 0 \end{cases}                                          \\
-			z_i        & = X_i \boldsymbol{\beta} + \epsilon_i                                 \\
-			\epsilon_i & \sim \text{Student} \left (\nu, 0, \sqrt{\frac{\nu - 2}{\nu}} \right) \\
+			y_i        & = \begin{cases} 0 & \text{se } z_i < 0 \\ 1 & \text{se }\ z_i > 0 \end{cases} \\
+			z_i        & = X_i \boldsymbol{\beta} + \epsilon_i                                         \\
+			\epsilon_i & \sim \text{Student} \left (\nu, 0, \sqrt{\frac{\nu - 2}{\nu}} \right)         \\
 			\nu        & \sim \text{Gamma}(2, 0.1) \in \left[2, \infty \right)
 		\end{aligned}
 	$$
@@ -241,10 +242,10 @@
 		\begin{aligned}
 			\mathbf{y}
 			           & \begin{cases}
-				= 0,                                                                                             & \text{ if } S_i = 0 \\
-				\sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right), & \text{ if } S_i = 1
-			\end{cases}                               \\
-			P(S_i = 1) & = \text{Logistic/Probit}(\mathbf{X} \boldsymbol{\gamma}) \\
+				             = 0,                                                                                             & \text{ if } S_i = 0 \\
+				             \sim \text{Negative Binomial} \left( e^{(\alpha + \mathbf{X} \boldsymbol{\beta})}, \phi \right), & \text{ if } S_i = 1
+			             \end{cases} \\
+			P(S_i = 1) & = \text{Logistic/Probit}(\mathbf{X} \boldsymbol{\gamma})                                                               \\
 			\gamma     & \sim \text{Beta}(1, 1)
 		\end{aligned}
 	$$

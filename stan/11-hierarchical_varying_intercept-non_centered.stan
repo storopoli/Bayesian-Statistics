@@ -28,7 +28,7 @@ parameters {
   vector[J] z;                           // group-level non-centered intercepts
 }
 transformed parameters {
-  vector[J] alpha_j = z * tau;           // group-level intercepts
+  vector[J] alpha_j = z * tau .+ alpha;           // group-level intercepts
 }
 model {
   // priors
@@ -39,7 +39,7 @@ model {
   z ~ normal(0, 1);
 
   // likelihood
-  y ~ normal(alpha + alpha_j[idx] + X * beta, sigma);
+  y ~ normal(alpha_j[idx] + X * beta, sigma);
 }
 // results:
 //All 4 chains finished successfully.

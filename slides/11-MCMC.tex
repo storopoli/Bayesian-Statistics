@@ -1,3 +1,4 @@
+% !TeX root = slides.tex
 \section{Markov Chain Monte Carlo (MCMC) and Model Metrics}
 
 \subsection{Markov Chain Monte Carlo (MCMC) and Model Metrics - Recommended References}
@@ -911,6 +912,39 @@
 			x                      & = \tilde{x} \cdot  e^{\left(\frac{y}{2}\right)} + 0
 		\end{aligned}
 	$$
+\end{frame}
+
+\begin{frame}{Non-Centered Parameterization -- Varying-Intercept Model}
+	This example is for linear regression:
+	$$
+		\begin{aligned}
+			\mathbf{y}         & \sim \text{Normal}\left(\alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}, \sigma \right) \\
+			\alpha_j           & = z_j \cdot \tau + \alpha                                                              \\
+			z_j                & \sim \text{Normal}(0, 1)                                                               \\
+			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                          \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})              \\
+			\tau               & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                 \\
+			\sigma             & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+\end{frame}
+
+\begin{frame}{Non-Centered Parameterization -- Varying-(Intercept-)Slope Model}
+	This example is for linear regression:
+	$$
+		\begin{aligned}
+			\mathbf{y}            & \sim \text{Normal}(\mathbf{X} \boldsymbol{\beta}_{j}, \sigma)                 \\
+			\boldsymbol{\beta}_j  & = \boldsymbol{\gamma}_j \cdot \boldsymbol{\Sigma} \cdot \boldsymbol{\gamma}_j \\
+			\boldsymbol{\gamma}_j & \sim \text{Multivariate Normal}(\mathbf{0}, \mathbf{I})
+			\quad \text{for}\quad j \in \{ 1, \dots, J \}                                                         \\
+			\boldsymbol{\Sigma}   & \sim \text{LKJ}(\eta)                                                         \\
+			\sigma                & \sim \text{Exponential}(\lambda_\sigma)
+		\end{aligned}
+	$$
+	Each coefficient vector $\boldsymbol{\beta}_j$ represents the
+	model columns $\mathbf{X}$ coefficients for every group $j \in J$.
+	Also the first column of $\mathbf{X}$ could be a column filled with $1$s
+	(intercept).
 \end{frame}
 
 \begin{frame}{\texttt{Stan} and NUTS}
