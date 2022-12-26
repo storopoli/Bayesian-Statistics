@@ -33,10 +33,10 @@ model {
   beta ~ student_t(3, 0, 2.5);
   sigma ~ exponential(1);
   tau ~ cauchy(0, 2);
-  alpha_j ~ normal(0, tau);
+  alpha_j ~ normal(alpha, tau);
 
   // likelihood
-  y ~ normal(alpha + alpha_j[idx] + X * beta, sigma);
+  y ~ normal(alpha_j[idx] + X * beta, sigma);
 }
 // results:
 //All 4 chains finished successfully.
