@@ -1,3 +1,4 @@
+% !TeX root = slides.tex
 \section{Hierarchical Models}
 
 \subsection{Hierarchical Models - Recommended References}
@@ -525,19 +526,11 @@
 \begin{frame}{Approaches to Hierarchical Modeling}
 	\begin{vfilleditems}
 		\item \textbf{Varying-intercept} model:
-		One group-level intercept besides the population-level
-		intercept and coefficients.
+		One group-level intercept besides the population-level coefficients.
 		\item \textbf{Varying-slope} model:
-		One or more group-level coefficient(s) besides the population-level
-		intercept and coefficients.
+		One or more group-level coefficient(s) besides the population-level intercept.
 		\item \textbf{Varying-intercept-slope} model:
-		One group-level intercept and one or more group-level coefficient(s) besides the population-level
-		intercept and coefficients.
-		\item \textbf{Correlated varying-intercept-slope} model:
-		One group-level intercept and one or more group-level coefficient(s) besides the population-level
-		intercept and coefficients.
-		Here the group-level intercept and coefficients priors
-		are \textbf{sampled from the same multivariate distribution}.
+		One group-level intercept and one or more group-level coefficient(s).
 	\end{vfilleditems}
 \end{frame}
 
@@ -549,11 +542,11 @@
 	This example is for linear regression:
 	$$
 		\begin{aligned}
-			\mathbf{y}         & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}, \sigma \right) \\
-			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                    \\
-			\alpha_j           & \sim \text{Normal}(0, \tau)                                                                      \\
-			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                        \\
-			\tau               & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                           \\
+			\mathbf{y}         & \sim \text{Normal}\left(\alpha_j + \mathbf{X} \cdot \boldsymbol{\beta}, \sigma \right) \\
+			\alpha_j           & \sim \text{Normal}(\alpha, \tau)                                                       \\
+			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                          \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})              \\
+			\tau               & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                 \\
 			\sigma             & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
 	$$
@@ -564,90 +557,21 @@
 	such as $J_1, J_2, \dots$:
 	$$
 		\begin{aligned}
-			\mathbf{y}         & \sim \text{Normal}(\alpha + \alpha_{j1} + \alpha_{j2} + \mathbf{X} \boldsymbol{\beta}, \sigma) \\
-			\alpha             & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                  \\
-			\alpha_{j1}        & \sim \text{Normal}(0, \tau_{\alpha j1})                                                        \\
-			\alpha_{j2}        & \sim \text{Normal}(0, \tau_{\alpha j2})                                                        \\
-			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                      \\
-			\tau_{\alpha j1}   & \sim \text{Cauchy}^+(0, \psi_{\alpha j1})                                                      \\
-			\tau_{\alpha j2}   & \sim \text{Cauchy}^+(0, \psi_{\alpha j2})                                                      \\
+			\mathbf{y}         & \sim \text{Normal}(\alpha_{j1} + \alpha_{j2} + \mathbf{X} \boldsymbol{\beta}, \sigma) \\
+			\alpha_{j1}        & \sim \text{Normal}(\alpha_1, \tau_{\alpha j1})                                        \\
+			\alpha_{j2}        & \sim \text{Normal}(\alpha_2, \tau_{\alpha j2})                                        \\
+			\alpha_1           & \sim \text{Normal}(\mu_{\alpha 1}, \sigma_{\alpha 1})                                 \\
+			\alpha_2           & \sim \text{Normal}(\mu_{\alpha 2}, \sigma_{\alpha 2})                                 \\
+			\boldsymbol{\beta} & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})             \\
+			\tau_{\alpha j1}   & \sim \text{Cauchy}^+(0, \psi_{\alpha j1})                                             \\
+			\tau_{\alpha j2}   & \sim \text{Cauchy}^+(0, \psi_{\alpha j2})                                             \\
 			\sigma             & \sim \text{Exponential}(\lambda_\sigma)
 		\end{aligned}
 	$$
 \end{frame}
 
-\begin{frame}{Mathematical Specification -- Varying-Slope Model}
-	This example is for linear regression:
-	$$
-		\begin{aligned}
-			\mathbf{y}           & \sim \text{Normal}\left( \alpha + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}, \sigma \right) \\
-			\alpha               & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                         \\
-			\boldsymbol{\beta}   & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                             \\
-			\boldsymbol{\beta}_j & \sim \text{Normal}(\mu_{\boldsymbol{\beta j}}, \sigma_{\boldsymbol{\beta j}})                                                                         \\
-			\boldsymbol{\tau}    & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                                                                 \\
-			\sigma               & \sim \text{Exponential}(\lambda_\sigma)
-		\end{aligned}
-	$$
-	$\boldsymbol{\tau}$ is a vector of priors for the group-level coefficients'
-	standard deviation.
-\end{frame}
-
-\begin{frame}{Mathematical Specification -- Varying-Slope Model}
-	If you need to extend to more than one group,
-	such as $J_1, J_2, \dots$:
-	$$
-		\begin{aligned}
-			\mathbf{y}                   & \sim \text{Normal}(\alpha + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
-			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                                                                \\
-			\boldsymbol{\beta}           & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                                                                                    \\
-			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                                                              \\
-			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                                                              \\
-			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                                                                     \\
-			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                                                                     \\
-			\sigma                       & \sim \text{Exponential}(\lambda_\sigma)
-		\end{aligned}
-	$$
-\end{frame}
-
-\begin{frame}{Mathematical Specification -- Varying-Intercept-Slope Model}
-	This example is for linear regression:
-	$$
-		\begin{aligned}
-			\mathbf{y}              & \sim \text{Normal}\left( \alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \cdot \boldsymbol{\beta}_j \cdot \boldsymbol{\tau}_\beta, \sigma \right) \\
-			\alpha                  & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                          \\
-			\alpha_j                & \sim \text{Normal}(0, \tau_\alpha)                                                                                                                                     \\
-			\boldsymbol{\beta}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                                              \\
-			\boldsymbol{\beta}_j    & \sim \text{Normal}(\mu_{\boldsymbol{\beta j}}, \sigma_{\boldsymbol{\beta j}})                                                                                          \\
-			\tau_\alpha             & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                                                                 \\
-			\boldsymbol{\tau}_\beta & \sim \text{Cauchy}^+(0, \psi_{\beta})                                                                                                                                  \\
-			\sigma                  & \sim \text{Exponential}(\lambda_\sigma)
-		\end{aligned}
-	$$
-	$\boldsymbol{\tau}_\beta$ is a vector of priors for the group-level coefficients'
-	standard deviation.
-\end{frame}
-
-\begin{frame}{Mathematical Specification -- Varying-Intercept-Slope Model}
-	If you need to extend to more than one group,
-	such as $J_1, J_2, \dots$:
-	$$
-		\begin{aligned}
-			\mathbf{y}                   & \sim \text{Normal}(\alpha + \alpha_j + \mathbf{X} \cdot \boldsymbol{\beta} + \mathbf{X} \boldsymbol{\beta}_{j1} \cdot \boldsymbol{\tau}_{j1} + \mathbf{X} \boldsymbol{\beta}_{j2} \cdot \boldsymbol{\tau}_{j2}, \sigma) \\
-			\alpha                       & \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)                                                                                                                                                                           \\
-			\alpha_j                     & \sim \text{Normal}(0, \tau_\alpha)                                                                                                                                                                                      \\
-			\boldsymbol{\beta}           & \sim \text{Normal}(\mu_{\boldsymbol{\beta}}, \sigma_{\boldsymbol{\beta}})                                                                                                                                               \\
-			\boldsymbol{\beta}_{j1}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j1}}, \sigma_{\boldsymbol{\beta j1}})                                                                                                                                         \\
-			\boldsymbol{\beta}_{j2}      & \sim \text{Normal}(\mu_{\boldsymbol{\beta j2}}, \sigma_{\boldsymbol{\beta j2}})                                                                                                                                         \\
-			\tau_\alpha                  & \sim \text{Cauchy}^+(0, \psi_{\alpha})                                                                                                                                                                                  \\
-			\boldsymbol{\tau}_{\beta j1} & \sim \text{Cauchy}^+(0, \psi_{\beta j1})                                                                                                                                                                                \\
-			\boldsymbol{\tau}_{\beta j2} & \sim \text{Cauchy}^+(0, \psi_{\beta j2})                                                                                                                                                                                \\
-			\sigma                       & \sim \text{Exponential}(\lambda_\sigma)
-		\end{aligned}
-	$$
-\end{frame}
-
-\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
-	Here we insert a column filled with $1$s in the data matrix $\mathbf{X}$.
+\begin{frame}{Mathematical Specification -- Varying-(Intercept-)Slope Model}
+	If we want a varying intercept, we just insert a column filled with $1$s in the data matrix $\mathbf{X}$.
 	\vfill
 	Mathematically, this makes the column behave like an ``identity'' variable
 	(because the number $1$ in the multiplication operation $1 \cdot \beta$ is the identity element.
@@ -655,7 +579,7 @@
 	we can interpret the column's coefficient as the model's intercept.
 \end{frame}
 
-\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
+\begin{frame}{Mathematical Specification -- Varying-(Intercept-)Slope Model}
 	Hence, we have as a data matrix:
 	$$
 		\mathbf{X} =
@@ -668,7 +592,7 @@
 	$$
 \end{frame}
 
-\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
+\begin{frame}{Mathematical Specification -- Varying-(Intercept-)Slope Model}
 	This example is for linear regression:
 	$$
 		\begin{aligned}
@@ -681,11 +605,11 @@
 	$$
 	Each coefficient vector $\boldsymbol{\beta}_j$ represents the
 	model columns $\mathbf{X}$ coefficients for every group $j \in J$.
-	Also the first column of $\mathbf{X}$ is a column filled with $1$s
+	Also the first column of $\mathbf{X}$ could be a column filled with $1$s
 	(intercept).
 \end{frame}
 
-\begin{frame}{Mathematical Specification -- Correlated Varying-Slope Model}
+\begin{frame}{Mathematical Specification -- Varying-(Intercept-)Slope Model}
 	If you need to extend to more than one group,
 	such as $J_1, J_2, \dots$:
 	$$
