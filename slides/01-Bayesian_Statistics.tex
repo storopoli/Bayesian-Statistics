@@ -21,13 +21,9 @@
 
 \subsection{What is Bayesian Statistics?}
 \begin{frame}{What is Bayesian Statistics?}
-	Bayesian statistics is a \textbf{data analysis approach based on Bayes' theorem}
-	where available knowledge about the parameters of a statistical model
-	is updated with the information of observed data.
+	Bayesian statistics is a \textbf{data analysis approach based on Bayes' theorem} where available knowledge about the parameters of a statistical model is updated with the information of observed data.
 	\parencite{gelman2013bayesian}.
-	Previous knowledge is expressed as a \textbf{prior} distribution
-	and combined with the observed data in the form of a \textbf{likelihood} function
-	to generate a \textbf{posterior} distribution.
+	Previous knowledge is expressed as a \textbf{prior} distribution and combined with the observed data in the form of a \textbf{likelihood} function to generate a \textbf{posterior} distribution.
 	The posterior can also be used to make predictions about future events.
 \end{frame}
 
@@ -408,11 +404,11 @@
 		We define $A$ is an event and $P(A)$ the probability of event $A$.
 		$P(A)$ has to be between $0$ and $1$, where higher values defines
 		higher probability of $A$ happening.
-		$$\begin{aligned}
-				P(A)   & \in \mathbb{R} \\
-				P(A)   & \in [0,1]      \\
-				0 \leq & P(A) \leq 1
-			\end{aligned}$$
+		$$
+			\begin{aligned}
+				P(A) & \in \mathbb{R} \\ P(A) & \in [0,1] \\ 0 \leq & P(A) \leq 1
+			\end{aligned}
+		$$
 	\end{defn}
 \end{frame}
 
@@ -420,148 +416,65 @@
 	\begin{columns}
 		\begin{column}{0.8\textwidth}
 			\begin{vfilleditems}
-				\item \textbf{Non-negativity}: For every $A$:
-				$$P(A) \geq 0$$
-				\item \textbf{Additivity}: For every two \textit{mutually exclusive}
-				$A$ and $B$:
-				$$P(A) = 1 - P(B) \text{ and } P(B) = 1 - P(A)$$
-				\item \textbf{Normalization}: The probability of all possible
-				events $A_1, A_2, \dots$ must sum up to $1$:
-				$$\sum_{n \in \mathbb{N}} A_n = 1$$
+				\item \textbf{Non-negativity}: For every $A$: $$P(A) \geq 0$$ \item \textbf{Additivity}: For every two \textit{mutually exclusive} $A$ and $B$: $$P(A) = 1 - P(B) \text{ and } P(B) = 1 - P(A)$$ \item \textbf{Normalization}: The probability of all possible events $A_1, A_2, \dots$ must sum up to $1$: $$\sum_{n \in \mathbb{N}} A_n = 1$$
 			\end{vfilleditems}
 		\end{column}
-		\begin{column}{0.2\textwidth}
-			\centering
-			\includegraphics[width=0.9\columnwidth]{kolmogorov.jpg}
+		\begin{column}{0.2\textwidth} \centering \includegraphics[width=0.9\columnwidth]{kolmogorov.jpg}
 		\end{column}
 	\end{columns}
 \end{frame}
 
 \begin{frame}{Sample Space}
 	\begin{vfilleditems}
-		\item Discrete $$\Theta = \left\{1, 2, \ldots \right\}$$
-		\item Continuous $$\Theta \in \left(-\infty, \infty \right)$$
+		\item Discrete $$\Theta = \left\{1, 2, \ldots \right\}$$ \item Continuous $$\Theta \in \left(-\infty, \infty \right)$$
 	\end{vfilleditems}
 \end{frame}
 
-\begin{frame}{Discrete Sample Space}
-	8 planets in our solar system:
+\begin{frame}{Discrete Sample Space} 8 planets in our solar system:
 	\begin{vfilleditems}
-		\item Mercury - $\mercury$
-		\item Venus - $\venus$
-		\item Earth - $\earth$
-		\item Mars $\mars$
-		\item Jupiter - $\jupiter$
-		\item Saturn $\saturn$
-		\item Uranus - $\uranus$
-		\item Neptune $\neptune$
+		\item Mercury - $\mercury$ \item Venus - $\venus$ \item Earth - $\earth$ \item Mars $\mars$ \item Jupiter - $\jupiter$ \item Saturn $\saturn$ \item Uranus - $\uranus$ \item Neptune $\neptune$
 	\end{vfilleditems}
 \end{frame}
 
-\begin{frame}[fragile]{Discrete Sample Space\footnote{figure adapted from \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}}}
-	\footnotesize
+\begin{frame}[fragile]{Discrete Sample Space\footnote{figure adapted from \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}}} \footnotesize
 	\begin{figure}
-		\centering
-		\subfigure{
-			\begin{tikzpicture}[scale=0.25, thick]
-				\draw[color=black] (-25, 0) to (10, 0);
-				\node[] at (-15, 0) {The planet has a magnetic field};
-				\node[] at (7, 2) {$\theta \in E_{1}$};
+		\centering \subfigure{
+			\begin{tikzpicture}[scale=0.25, thick] \draw[color=black] (-25, 0) to (10, 0); \node[] at (-15, 0) {The planet has a magnetic field}; \node[] at (7, 2) {$\theta \in E_{1}$}; 
 
-				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-				\fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$};
-				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-				\fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$};
-				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$}; \fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$}; \fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$}; \fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$}; \fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$}; \fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$}; \fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$}; \fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		} \subfigure{
+			\begin{tikzpicture}[scale=0.25, thick] \draw[color=black] (-25, 0) to (10, 0); \node[] at (-15, 0) {The planet has moon(s)}; \node[] at (7, 2) {$\theta \in E_{2}$}; 
+
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$}; \fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$}; \fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$}; \fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$}; \fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$}; \fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$}; \fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$}; \fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		} \subfigure{
+			\begin{tikzpicture}[scale=0.25, thick] \draw[color=black] (-25, 0) to (10, 0); \node[] at (-15, 0) {The planet has a magnetic field \textit{and} moon(s)}; \node[] at (7, 2) {$\theta \in E_{1} \cap E_{2}$}; 
+
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$}; \fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$}; \fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$}; \fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$}; \fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$}; \fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$}; \fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$}; \fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		} \subfigure{
+			\begin{tikzpicture}[scale=0.25, thick] \node[] at (-15, 0) {The planet has a magnetic field \textit{or} moon(s)}; \node[] at (7, 2) {$\theta \in E_{1} \cup E_{2}$}; 
+
+				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$}; \fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$}; \fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$}; \fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$}; \fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$}; \fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$}; \fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$}; \fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
+			\end{tikzpicture}
+		} \subfigure{
+			\begin{tikzpicture}[scale=0.25, thick] \node[] at (-15, 0) {The planet does \textit{not} have a magnetic field}; \node[] at (7, 2) {$\theta \in \neg E_{1}$}; 
+
+				\fill[color=blue] (0, 0) circle (25pt) node[color=black] {$\mercury$}; \fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$}; \fill[color=gray60] (4, 0) circle (25pt) node[color=black] {$\earth$}; \fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$}; \fill[color=gray60] (8, 0) circle (25pt) node[color=black] {$\jupiter$}; \fill[color=gray60] (10, 0) circle (25pt) node[color=black] {$\saturn$}; \fill[color=gray60] (12, 0) circle (25pt) node[color=black] {$\uranus$}; \fill[color=gray60] (14, 0) circle (25pt) node[color=black] {$\neptune$};
 			\end{tikzpicture}
 		}
-		%
-		\subfigure{
-			\begin{tikzpicture}[scale=0.25, thick]
-				\draw[color=black] (-25, 0) to (10, 0);
-				\node[] at (-15, 0) {The planet has moon(s)};
-				\node[] at (7, 2) {$\theta \in E_{2}$};
-
-				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
-				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
-				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-			\end{tikzpicture}
-		}
-		%
-		\subfigure{
-			\begin{tikzpicture}[scale=0.25, thick]
-				\draw[color=black] (-25, 0) to (10, 0);
-				\node[] at (-15, 0) {The planet has a magnetic field \textit{and} moon(s)};
-				\node[] at (7, 2) {$\theta \in E_{1} \cap E_{2}$};
-
-				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
-				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-				\fill[color=gray60] (6, 0) circle (25pt) node[color=black] {$\mars$};
-				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-			\end{tikzpicture}
-		}
-		%
-		\subfigure{
-			\begin{tikzpicture}[scale=0.25, thick]
-				\node[] at (-15, 0) {The planet has a magnetic field \textit{or} moon(s)};
-				\node[] at (7, 2) {$\theta \in E_{1} \cup E_{2}$};
-
-				\fill[color=gray60] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-				\fill[color=blue] (2, 0) circle (25pt) node[color=black] {$\venus$};
-				\fill[color=blue] (4, 0) circle (25pt) node[color=black] {$\earth$};
-				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
-				\fill[color=blue] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-				\fill[color=blue] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-				\fill[color=blue] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-				\fill[color=blue] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-			\end{tikzpicture}
-		}
-		%
-		\subfigure{
-			\begin{tikzpicture}[scale=0.25, thick]
-				\node[] at (-15, 0) {The planet does \textit{not} have a magnetic field};
-				\node[] at (7, 2) {$\theta \in \neg E_{1}$};
-
-				\fill[color=blue] (0, 0) circle (25pt) node[color=black] {$\mercury$};
-				\fill[color=gray60] (2, 0) circle (25pt) node[color=black] {$\venus$};
-				\fill[color=gray60] (4, 0) circle (25pt) node[color=black] {$\earth$};
-				\fill[color=blue] (6, 0) circle (25pt) node[color=black] {$\mars$};
-				\fill[color=gray60] (8, 0) circle (25pt) node[color=black] {$\jupiter$};
-				\fill[color=gray60] (10, 0) circle (25pt) node[color=black] {$\saturn$};
-				\fill[color=gray60] (12, 0) circle (25pt) node[color=black] {$\uranus$};
-				\fill[color=gray60] (14, 0) circle (25pt) node[color=black] {$\neptune$};
-			\end{tikzpicture}
-		}
-		%
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Continuous Sample Space\footnote{
-			figure adapted from \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}}
-	}
-	\footnotesize
+\begin{frame}{Continuous Sample Space\footnote{ figure adapted from \href{https://github.com/betanalpha/stan_intro}{Michael Betancourt (CC-BY-SA-4.0)}} } \footnotesize
 	\begin{figure}
-		\centering
-		\subfigure{
-			\begin{tikzpicture}[scale=0.25, thick]
-				\draw[color=black] (-27, 0) to (17, 0);
-				\node[align=center] at (-15, 0) {The distance is less than five centimeters};
-				\node[] at (7.5, 2) {$\theta \in E_{1}$};
+		\centering \subfigure{
+			\begin{tikzpicture}[scale=0.25, thick] \draw[color=black] (-27, 0) to (17, 0); \node[align=center] at (-15, 0) {The distance is less than five centimeters}; \node[] at (7.5, 2) {$\theta \in E_{1}$}; 
 
-				\draw[|->] (0, 0) -- (14,0) node[right] {$x$};
-				\draw[line width=1mm, color=blue] (0, 0) node[] {$\,($} -- (5, 0) node[] {$\!)$};
+				\draw[|->] (0, 0) -- (14,0) node[right] {$x$}; \draw[line width=1mm, color=blue] (0, 0) node[] {$\,($} -- (5, 0) node[] {$\!
+						%%%%%
+						)$};
 			\end{tikzpicture}
 		}
 		%
@@ -614,21 +527,15 @@
 
 \begin{frame}{Discrete versus Continuous Parameters}
 
-	Everything that has been exposed here was under the assumption that the
-	parameters are discrete.
+	Everything that has been exposed here was under the assumption that the parameters are discrete.
 	This was done with the intent to provide an intuition what is probability.
 	Not always we work with discrete parameters.
-	Parameters can be continuous, such as: age, height, weight etc.
-	But don't despair!
+	Parameters can be continuous, such as: age, height, weight etc. But don't despair!
 	All probability rules and axioms are valid also for continuous parameters.
 	The only thing we have to do is to change all s $\sum$ for integrals $\int$.
-	For example, the third axiom of \textbf{Normalization} for \textit{continuous}
-	random variables becomes:
-	$$
-		\int_{x \in X} p(x) dx = 1.
+	For example, the third axiom of \textbf{Normalization} for \textit{continuous} random variables becomes: $$ \int_{x \in X} p(x) dx = 1.
 	$$
 \end{frame}
-
 
 \begin{frame}{Conditional Probability}
 	\begin{defn}[Conditional Probability]
@@ -637,12 +544,9 @@
 		observing $A$ given that we already observed $B$''. \newline \newline
 		$$
 			\begin{aligned}
-				P(A \mid B) & = \frac{\text{number of elements in $A$ and $B$}}{\text{number of elements in $B$}} \\
-				P(A \mid B) & = \frac{P(A \cap B)}{P(B)}
+				P(A \mid B) & = \frac{\text{number of elements in $A$ and $B$}}{\text{number of elements in $B$}} \\ P(A \mid B) & = \frac{P(A \cap B)}{P(B)}
 			\end{aligned}
-		$$
-		\newline \hspace{0.7\textwidth}
-		{\footnotesize assuming that $P(B) > 0$}.
+		$$ \newline \hspace{0.7\textwidth} {\footnotesize assuming that $P(B) > 0$}.
 	\end{defn}
 \end{frame}
 
@@ -658,26 +562,11 @@
 	\end{example}
 \end{frame}
 
-\begin{frame}{Caution! Not always $P(A \mid B) = P(B \mid A)$}
-	In the previous example we have the symmetry $P(A \mid K) = P(K \mid A)$,
-	\textbf{but not always this is true}\footnote{
-		More specific, if the basal rates $P(A)$ and $P(B)$ aren't equal,
-		the symmetry is broken $P(A \mid B) \neq P(B \mid A)$}
+\begin{frame}{Caution!
+		Not always $P(A \mid B) = P(B \mid A)$} In the previous example we have the symmetry $P(A \mid K) = P(K \mid A)$, \textbf{but not always this is true}\footnote{ More specific, if the basal rates $P(A)$ and $P(B)$ aren't equal, the symmetry is broken $P(A \mid B) \neq P(B \mid A)$}
 	\begin{example}[The Pope is catholic]
 		\begin{vfilleditems}
-			\small{
-				\item $P(\text{pope})$:
-				Probability of some random person being the Pope,
-				something really small, 1 in 8 billion $\left( \frac{1}{8 \cdot 10^9} \right)$
-				\item $P(\text{catholic})$:
-				Probability of some random person being catholic,
-				1.34 billion in 8 billion $\left( \frac{1.34}{8} \approx 0.17 \right)$
-				\item $P(\text{catholic} \mid \text{pope})$:
-				Probability of the Pope being catholic $\left( \frac{999}{1000} = 0.999 \right)$
-				\item $P(\text{pope} \mid \text{catholic})$:
-				Probability of a catholic person being the Pope $\left( \frac{1}{1.34 \cdot 10^9} \cdot 0.999 \approx 7.46 \cdot 10^{-10} \right)$
-			}
-			\item \large{\textbf{Hence}: $P(\text{catholic} \mid \text{pope}) \neq P(\text{pope} \mid \text{catholic})$}
+			\small{ \item $P(\text{pope})$: Probability of some random person being the Pope, something really small, 1 in 8 billion $\left( \frac{1}{8 \cdot 10^9} \right)$ \item $P(\text{catholic})$: Probability of some random person being catholic, 1.34 billion in 8 billion $\left( \frac{1.34}{8} \approx 0.17 \right)$ \item $P(\text{catholic} \mid \text{pope})$: Probability of the Pope being catholic $\left( \frac{999}{1000} = 0.999 \right)$ \item $P(\text{pope} \mid \text{catholic})$: Probability of a catholic person being the Pope $\left( \frac{1}{1.34 \cdot 10^9} \cdot 0.999 \approx 7.46 \cdot 10^{-10} \right)$ } \item \large{\textbf{Hence}: $P(\text{catholic} \mid \text{pope}) \neq P(\text{pope} \mid \text{catholic})$}
 		\end{vfilleditems}
 	\end{example}
 \end{frame}
@@ -687,16 +576,9 @@
 		\begin{column}{0.6\textwidth}
 			\begin{example}[Monty Hall]
 				\begin{vfilleditems}
-					\small
-					\item A TV presenter shows you 3 doors
-					\item One of them has a prize: a car!
-					The others have a goat
-					\item You must choose a door (that is not open or revealed)
-					\item In this moment, the presenter opens one of the other two doors
-					that you did not choose,
-					revealing one of the two goats
-					\item The presenter then asks you
-					``Do you want to change your door or stay with your choice?''
+					\small \item A TV presenter shows you 3 doors \item One of them has a prize: a car!
+					The others have a goat \item You must choose a door (that is not open or revealed) \item In this moment, the presenter opens one of the other two doors that you did not choose, revealing one of the two goats \item The presenter then asks you ``Do you want to change your door or stay with your choice?
+					''
 				\end{vfilleditems}
 			\end{example}
 		\end{column}
@@ -714,31 +596,20 @@
 	\begin{idea}[Probability of winning a car]
 		$$
 			\begin{aligned}
-				P(\text{car} \mid C_i) & = \frac{1}{3}                                                                                                                    \\
-				P(\text{car})          & = \frac{1}{3} \cdot P(\text{car} \mid C_1) + \frac{1}{3} \cdot P(\text{car} \mid C_2) + \frac{1}{3} \cdot P(\text{car} \mid C_3) \\
-				P(\text{car})          & = \frac{\sum^3_{i=1}P(\text{car} \mid C_i)}{3}                                                                                   \\
-				P(\text{car})          & = \frac{1}{3}
+				P(\text{car} \mid C_i) & = \frac{1}{3} \\ P(\text{car}) & = \frac{1}{3} \cdot P(\text{car} \mid C_1) + \frac{1}{3} \cdot P(\text{car} \mid C_2) + \frac{1}{3} \cdot P(\text{car} \mid C_3) \\ P(\text{car}) & = \frac{\sum^3_{i=1}P(\text{car} \mid C_i)}{3} \\ P(\text{car}) & = \frac{1}{3}
 			\end{aligned}
 		$$
 	\end{idea}
-	\vfill \vfill
-	$C_i$ is the event that the car is behind door $i$, $i=1,2,3$
+	\vfill \vfill $C_i$ is the event that the car is behind door $i$, $i=1,2,3$
 \end{frame}
 
 \begin{frame}[t]{Solution for the Monty Hall Problem}
 	\begin{columns}[t]
-		\begin{column}{0.5\textwidth}
-			{\Large \textbf{Scenario 1}: Don't change doors} \newline \newline
-			Simple: $$\frac{1}{3}$$
+		\begin{column}{0.5\textwidth} {\Large \textbf{Scenario 1}: Don't change doors} \newline \newline Simple: $$\frac{1}{3}$$
 		\end{column}
-		\begin{column}{0.5\textwidth}
-			{\Large \textbf{Scenario 2}: Change doors} \newline \newline
-			Choose any door $i$ to be $C_i = 0$
-			\vfill
-			$$
+		\begin{column}{0.5\textwidth} {\Large \textbf{Scenario 2}: Change doors} \newline \newline Choose any door $i$ to be $C_i = 0$ \vfill $$
 				\begin{aligned}
-					P(\text{car}) & = 0 \cdot P(\text{car} \mid C_i) + \frac{1}{3} + \frac{1}{3} \\
-					P(\text{car}) & = \frac{2}{3}
+					P(\text{car}) & = 0 \cdot P(\text{car} \mid C_i) + \frac{1}{3} + \frac{1}{3} \\ P(\text{car}) & = \frac{2}{3}
 				\end{aligned}
 			$$
 		\end{column}
@@ -747,11 +618,9 @@
 
 \begin{frame}{Visualization of the Monty Hall Problem}
 	\begin{figure}
-		\centering
-		\subfigure{
-			\begin{tikzpicture}[
-					scale=0.55,
-					header/.style = {draw, rectangle, fill = blue!50!black, minimum size = 10mm},
+		\centering \subfigure{
+			\begin{tikzpicture}[ scale=0.55, header/.style = {draw, rectangle, fill = blue!
+							50!black, minimum size = 10mm},
 					level distance = 3.5cm,
 					transform shape, thick,
 					grow = right, sloped,
@@ -845,9 +714,7 @@
 		``the probability of observing $A$ and also observing $B$''. \newline \newline
 		$$
 			\begin{aligned}
-				P(A,B) & = \text{number of elements in $A$ or $B$} \\
-				P(A,B) & = P(A \cup B)                             \\
-				P(A,B) & = P(B,A)
+				P(A,B) & = \text{number of elements in $A$ or $B$} \\ P(A,B) & = P(A \cup B) \\ P(A,B) & = P(B,A)
 			\end{aligned}
 		$$
 	\end{defn}
@@ -855,9 +722,7 @@
 
 \begin{frame}{Example of Joint Probability}
 	\begin{example}[Revisiting Poker Texas Hold'em]
-		\begin{vfilleditems}
-			{\footnotesize
-				\item \textbf{Sample Space}: $52$ cards in a deck, $13$ types of cards and $4$ types of suits.
+		\begin{vfilleditems} {\footnotesize \item \textbf{Sample Space}: $52$ cards in a deck, $13$ types of cards and $4$ types of suits.
 				\item $P(A)$: Probability of being dealt an Ace $\left( \frac{4}{52} = \frac{1}{13}\right)$
 				\item $P(K)$: Probability of being dealt a King $\left( \frac{4}{52} = \frac{1}{13} \right)$
 				\item $P(A \mid K)$: Probability of being dealt an Ace, given that you have already a King $\left( \frac{4}{51} \approx 0.078 \right)$
@@ -866,55 +731,22 @@
 			\item $P(A, K)$: Probability of being dealt an Ace \textit{and} being dealt a King
 			$$
 				\begin{aligned}
-					P(A, K)                         & = P(K, A)                         \\
-					P(A) \cdot P(K \mid A)          & = P(K) \cdot P(A \mid K)          \\
-					\frac{1}{13} \cdot \frac{4}{51} & = \frac{1}{13} \cdot \frac{4}{51} \\
-					                                & \approx 0.006
+					P(A, K) & = P(K, A) \\ P(A) \cdot P(K \mid A) & = P(K) \cdot P(A \mid K) \\ \frac{1}{13} \cdot \frac{4}{51} & = \frac{1}{13} \cdot \frac{4}{51} \\  & \approx 0.006
 				\end{aligned}
 			$$
 		\end{vfilleditems}
 	\end{example}
 \end{frame}
 
-%% Bivariate Normal adapted from: https://github.com/walmes/Tikz/blob/master/src/bivariate-normal.pgf
-\begin{frame}{Visualization of Joint Probability versus Conditional Probability}
-	\centering
+\begin{frame}{Visualization of Joint Probability versus Conditional Probability} \centering
 	\begin{tikzpicture}[scale=0.9]
-		\begin{axis}[
-				domain   = -3.5:3.5,
-				domain y = -3.5:3.5,
-				view = {-70}{20},
-				title={$P(X,Y)$ versus $P(X \mid Y=-0.75)$},
-				xlabel={$X$},
-				ylabel={$Y$},
-				% zlabel={$SSE(\beta_0, \beta_1)$},
-				zmin = -0,
-				%xticklabels=\empty,
-				%yticklabels=\empty,
-				zticklabels=\empty,
-				xtick=\empty,
-				ytick={-0.75},
-				ztick=\empty,
-				axis z line*=none,
-				axis y line*=left,
-				axis x line*= bottom]
-			\addplot3 [
-				domain = -3.5:3.5,
-				samples = 50, samples y = 0,
-				thick, smooth, color = red, fill = orange, opacity = 0.75]
-			(x, -0.75, {conditionalbinormal(-0.75, 0, 1, 0, 1, 0.75)});
+		\begin{axis}[ domain = -3.5:3.5, domain y = -3.5:3.5, view = {-70}{20}, title={$P(X,Y)$ versus $P(X \mid Y=-0.75)$}, xlabel={$X$}, ylabel={$Y$}, zmin = -0, zticklabels=\empty, xtick=\empty, ytick={-0.75}, ztick=\empty, axis z line*=none, axis y line*=left, axis x line*= bottom] \addplot3 [ domain = -3.5:3.5, samples = 50, samples y = 0, thick, smooth, color = red, fill = orange, opacity = 0.75] (x, -0.75, {conditionalbinormal(-0.75, 0, 1, 0, 1, 0.75)}); 
 
-			\draw (-3.5, -0.75, 0) -- (3.5, -0.75, 0);
+			\draw (-3.5, -0.75, 0) -- (3.5, -0.75, 0); 
 
-			\addplot3 [
-				surf,
-				domain = -3.5:3.5,
-				samples = 50,
-				opacity = 0.15,
-				faceted color = colorB,
-				colormap = {blueblack}{
-						color = (colorB)
-						color = (colorA!50!white)
+			\addplot3 [ surf, domain = -3.5:3.5, samples = 50, opacity = 0.15, faceted color = colorB, colormap = {blueblack}{ color = (colorB) color = (colorA!
+						%% Bivariate Normal adapted from: https://github.com/walmes/Tikz/blob/master/src/bivariate-normal.pgf% zlabel={$SSE(\beta_0, \beta_1)$},%xticklabels=\empty,%yticklabels=\empty,
+						50!white)
 						color = (colorA)}]
 			{binormal(0, 1, 0, 1, 0.7)};
 		\end{axis}
@@ -974,15 +806,15 @@
 		product of two probabilities:
 		$$
 			\begin{aligned}
-				P(A,B)                 & = P(B,A)                 \\
-				P(A) \cdot P(B \mid A) & = P(B) \cdot P(A \mid B)
+				P(A,B) & = P(B,A) \\ P(A) \cdot P(B \mid A) & = P(B) \cdot P(A \mid B)
 			\end{aligned}
 		$$
 	\end{defn}
 \end{frame}
 
 \subsubsection{Bayes Theorem}
-\begin{frame}{Who was Thomas Bayes?}
+\begin{frame}{Who was Thomas Bayes?
+	}
 	\begin{columns}
 		\begin{column}{0.8\textwidth}
 			\begin{vfilleditems}
@@ -1017,26 +849,21 @@
 \end{frame}
 
 \begin{frame}{Bayes' Theorem Proof}
-	Remember the following probability identity:
-	$$
+	Remember the following probability identity: $$
 		\begin{aligned}
-			P(A,B)                 & = P(B,A)                 \\
-			P(A) \cdot P(B \mid A) & = P(B) \cdot P(A \mid B)
+			P(A,B) & = P(B,A) \\ P(A) \cdot P(B \mid A) & = P(B) \cdot P(A \mid B)
 		\end{aligned}
-	$$
+	$$ 
 
-	OK, now divide everything by $P(B)$:
-	$$
+	OK, now divide everything by $P(B)$: $$
 		\begin{aligned}
-			\frac{P(A) \cdot P(B \mid A)}{P(B)} & = \frac{P(B) \cdot \quad P(A \mid B)}{P(B)} \\
-			                                    &                                             \\
-			\frac{P(A) \cdot P(B \mid A)}{P(B)} & = P(A \mid B)                               \\
-			P(A \mid B)                         & = \frac{P(A) \cdot P(B \mid A)}{P(B)}
+			\frac{P(A) \cdot P(B \mid A)}{P(B)} & = \frac{P(B) \cdot \quad P(A \mid B)}{P(B)} \\  & \\ \frac{P(A) \cdot P(B \mid A)}{P(B)} & = P(A \mid B) \\ P(A \mid B) & = \frac{P(A) \cdot P(B \mid A)}{P(B)}
 		\end{aligned}
 	$$
 \end{frame}
 
-\begin{frame}{Another Probability Textbook Classic\footnote{Adapted from: \href{https://www.yudkowsky.net/rational/bayes}{Yudkowski - \textit{An Intuitive Explanation of Bayes’ Theorem}}.}}
+\begin{frame}{Another Probability Textbook Classic\footnote{Adapted from: \href{https://www.yudkowsky.net/rational/bayes}{Yudkowski - \textit{An Intuitive Explanation of Bayes’ Theorem}}.
+		}}
 	\begin{example}[Breast Cancer]
 		\small
 		How accurate is a \textbf{breast cancer} test?
@@ -1047,17 +874,14 @@
 		\end{vfilleditems}
 		$$
 			\begin{aligned}
-				P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+)}                                                      \\
-				P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+ \mid C) \cdot P(C) + P(+ \mid \neg C) \cdot P(\neg C)} \\
-				P(C \mid +) & = \frac{0.8 \cdot 0.01}{0.8 \cdot 0.01 + 0.096 \cdot 0.99}                                 \\
-				P(C \mid +) & \approx 0.0776
+				P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+)} \\ P(C \mid +) & = \frac{P(+ \mid C) \cdot P(C)}{P(+ \mid C) \cdot P(C) + P(+ \mid \neg C) \cdot P(\neg C)} \\ P(C \mid +) & = \frac{0.8 \cdot 0.01}{0.8 \cdot 0.01 + 0.096 \cdot 0.99} \\ P(C \mid +) & \approx 0.0776
 			\end{aligned}
 		$$
 	\end{example}
 \end{frame}
 
-
-\begin{frame}{Why Bayes' Theorem is Important?}
+\begin{frame}{Why Bayes' Theorem is Important?
+	}
 	\begin{idea}[We can Invert the Conditional Probability]
 		$$
 			\begin{aligned}
@@ -1065,7 +889,8 @@
 			\end{aligned}
 		$$
 	\end{idea}
-	But isn't this the $p$-value? \textcolor{red}{\textbf{NO!}}
+	But isn't this the $p$-value?
+	\textcolor{red}{\textbf{NO!}}
 \end{frame}
 
 \subsection{Frequentist versus Bayesian}
@@ -1090,7 +915,8 @@
 		- Infamous confusion between $P(D \mid H_0)$ and $P(H_0 \mid D)$.
 		To get $P(H_0 \mid D)$ you need Bayesian statistics.
 		\item \textbf{$p$-value is not the probability of data being generated at random}
-		- \textcolor{red}{No!} We haven't stated nothing about randomness.
+		- \textcolor{red}{No!}
+		We haven't stated nothing about randomness.
 		\item \textbf{$p$-value measures the effect size of a statistical test}
 		- Also \textcolor{red}{no}... $p$-value does not say anything about effect sizes.
 		Just about if the observed data diverge of the expected under the null hypothesis.
@@ -1102,22 +928,17 @@
 	To find out about any $p$-value, \textbf{find out what $H_0$ is behind it}.
 	It's definition will never change, since it is always $P(D \mid H_0)$:
 	\begin{vfilleditems}
-		\item \textbf{$t$-test}: $P(D \mid \text{the difference between the groups is zero})$
-		\item \textbf{ANOVA}: $P(D \mid \text{there is no difference between groups})$
-		\item \textbf{Regression}: $P(D \mid \text{coefficient has a null value})$
-		\item \textbf{Shapiro-Wilk}: $P(D \mid \text{population is distributed as a Normal distribution})$
+		\item \textbf{$t$-test}: $P(D \mid \text{the difference between the groups is zero})$ \item \textbf{ANOVA}: $P(D \mid \text{there is no difference between groups})$ \item \textbf{Regression}: $P(D \mid \text{coefficient has a null value})$ \item \textbf{Shapiro-Wilk}: $P(D \mid \text{population is distributed as a Normal distribution})$
 	\end{vfilleditems}
 \end{frame}
 
-\begin{frame}{What are Confidence Intervals?}
+\begin{frame}{What are Confidence Intervals?
+	}
 	\begin{columns}
 		\begin{column}{0.8\textwidth}
 			\begin{defn}[Confidence Intervals]
 				\begin{quotation}
-					A confidence interval of X\% for a parameter is an interval
-					$(a, b)$ generated by a repeated sampling procedure
-					has probability X\% of containing the true value of the parameter,
-					for all possible values of the parameter.
+					A confidence interval of X\% for a parameter is an interval $(a, b)$ generated by a repeated sampling procedure has probability X\% of containing the true value of the parameter, for all possible values of the parameter.
 				\end{quotation}
 				\vfill \vfill
 				\textcite{neyman1937outline} (the ``father'' of confidence intervals)
@@ -1137,11 +958,8 @@
 		difference between the mean of these groups.
 		You can express this difference as a confidence interval.
 		Often we choose 95\% confidence.
-		This means that \textbf{95 studies out of 100},
-		that uses the \textbf{same sample size and target population},
-		performing the \textbf{same statistical test},
-		will expect to find a result of the mean difference between groups
-		inside the confidence interval.
+		In other words, 95\% is \textit{not} the probability of obtaining data such that the estimate of the true parameter is contained in the interval that we obtained, it is the \textbf{probability of obtaining data such that, if we compute another confidence interval in the same way, it contains the true parameter}.
+		The interval that we got in this particular instance is irrelevant and might as well be thrown away.
 	\end{example}
 	\footnotesize \textcolor{red}{Doesn't say anything about you \textbf{target population},
 		but about you \textbf{sample} in an insane process of \textbf{infinite sampling} ...}
@@ -1216,22 +1034,15 @@
 \begin{frame}{But why I never see stats without $p$-values?}
 	\begin{columns}
 		\begin{column}{0.8\textwidth}
-			We cannot understand $p$-values if we do no not comprehend
-			its origins and historical trajectory.
-			The first mention of $p$-values was made by the statistician
-			Ronald Fischer in 1925 \parencite{fisher1925statistical}:
-			\begin{quotation}
-				[$p$-value is a] measure of evidence against the null hypothesis
+			We cannot understand $p$-values if we do no not comprehend its origins and historical trajectory.
+			The first mention of $p$-values was made by the statistician Ronald Fischer in 1925 \parencite{fisher1925statistical}:
+			\begin{quotation} [$p$-value is a] measure of evidence against the null hypothesis
 			\end{quotation}
 			\begin{vfilleditems}
-				\item To quantify the strength of the evidence against the null hypothesis,
-				Fisher defended ``$p<0.05$ as the standard level to conclude that there is evidence against the tested hypothesis''
-				\item ``We should not be off-track if we draw a conventional line at 0.05''
+				\item To quantify the strength of the evidence against the null hypothesis, Fisher defended ``$p<0.05$ as the standard level to conclude that there is evidence against the tested hypothesis'' \item ``We should not be off-track if we draw a conventional line at 0.05''
 			\end{vfilleditems}
 		\end{column}
-		\begin{column}{0.2\textwidth}
-			\centering
-			\includegraphics[width=0.9\columnwidth]{fisher.jpg}
+		\begin{column}{0.2\textwidth} \centering \includegraphics[width=0.9\columnwidth]{fisher.jpg}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -1297,28 +1108,22 @@
 		\item \footnotesize \textbf{Likelihood}: probability of the observed data given the parameter(s) value(s)
 		\item \footnotesize \textbf{Posterior}: posterior probability of the parameter(s) value(s) after we observed data $y$
 		\item \footnotesize \textbf{Normalizing Constant}\footnote{sometimes also called \textit{evidence}.}: $P(y)$ does not make any intuitive sense.
-		This probability is transformed and can be interpreted as something that only exists so that the result $P(y \mid \theta) P(\theta)$ be constrained between $0$ e $1$
-		-- a valid probability.
+		This probability is transformed and can be interpreted as something that only exists so that the result $P(y \mid \theta) P(\theta)$ be constrained between $0$ e $1$ -- a valid probability.
 	\end{vfilleditems}
 \end{frame}
 
 \begin{frame}{Bayes' Theorem as an Inference Engine}
-	Bayesian statistics allows us to \textbf{quantify directly the uncertainty}
-	related to the value of one or more parameters of our model given the
-	observed data.
-	This is the \textbf{main feature} of Bayesian statistics,
-	since we are estimating directly $P(\theta \mid y)$ using Bayes' theorem.
-	The resulting estimate is totally intuitive:
-	simply quantifies the uncertainty that we have about the value of one or more
-	parameters given the data, model assumptions (likelihood) and the prior
-	probability of these parameter's values.
+	Bayesian statistics allows us to \textbf{quantify directly the uncertainty} related to the value of one or more parameters of our model given the observed data.
+	This is the \textbf{main feature} of Bayesian statistics, since we are estimating directly $P(\theta \mid y)$ using Bayes' theorem.
+	The resulting estimate is totally intuitive: simply quantifies the uncertainty that we have about the value of one or more parameters given the data, model assumptions (likelihood) and the prior probability of these parameter's values.
 \end{frame}
 
 \subsubsection{Advantages of Bayesian Statistics}
 \begin{frame}{Bayesian vs Frequentist Stats}
 	%\begin{table}[h!]
 	\small
-	\begin{tabular}{|l|p{.3\textwidth}|p{.3\textwidth}|}
+	\begin{tabular}
+		{|l|p{.3\textwidth}|p{.3\textwidth}|}
 		\toprule
 		                     & \textcolor{blue}{\textbf{Bayesian Statistics}} & \textcolor{red}{\textbf{Frequentist Statistics}}                       \\ \midrule
 		\textbf{Data}        & Fixed –- Non-random                            & Uncertain –- Random                                                    \\ \midrule
@@ -1350,11 +1155,8 @@
 		$p$-values will transform in a ``significant''\footnote{pun intended ...} way.
 		\item 6 years ago, the \textit{American Statistical Association} (ASA) published a declaration about
 		$p$-values \parencite{Wasserstein2016}.
-		It states exactly what we exposed here:
-		The main concepts of the null hypothesis significant testing and,
-		in particular $p$-values, cannot provide what researchers demand of them.
-		Despite what says several textbooks, learning materials and published content,
-		$p$-values below $0.05$ doesn't ``prove'' anything.
+		It states exactly what we exposed here: The main concepts of the null hypothesis significant testing and, in particular $p$-values, cannot provide what researchers demand of them.
+		Despite what says several textbooks, learning materials and published content, $p$-values below $0.05$ doesn't ``prove'' anything.
 		Not, on the other way around, $p$-values higher than $0.05$ refute anything.
 		\item ASA statement has more than 4.700 citations with relevant impact.
 	\end{vfilleditems}
@@ -1367,14 +1169,10 @@
 		\textit{The American Statistician} dedicated to practical ways to abandon $p < 0.05$
 		\parencite{wassersteinMovingWorld052019}.
 		\item Soon there were more attempts and claims.
-		In September 2017, \textit{Nature Human Behaviour} published an editorial proposing that the $p$-value's
-		significance level be decreased from $0.05$ to $0.005$ \parencite{benjaminRedefineStatisticalSignificance2018}.
-		Several authors, including highly important and influential statisticians argued that this simple step would
-		help to tackle the replication crisis problem in science, that many believe be the main consequence
-		of the abusive use of $p$-values \parencite{Ioannidis2019}.
+		In September 2017, \textit{Nature Human Behaviour} published an editorial proposing that the $p$-value's significance level be decreased from $0.05$ to $0.005$ \parencite{benjaminRedefineStatisticalSignificance2018}.
+		Several authors, including highly important and influential statisticians argued that this simple step would help to tackle the replication crisis problem in science, that many believe be the main consequence of the abusive use of $p$-values \parencite{Ioannidis2019}.
 		\item Furthermore, many went a step ahead and suggested that science banish once for all $p$-values
 		\parencite{ItTimeTalk2019,lakensJustifyYourAlpha2018}.
-		Many suggest (including myself) that the main tool of statistical inference
-		be Bayesian statistics \parencite{amrheinScientistsRiseStatistical2019, Goodman1180, vandeschootBayesianStatisticsModelling2021}.
+		Many suggest (including myself) that the main tool of statistical inference be Bayesian statistics \parencite{amrheinScientistsRiseStatistical2019, Goodman1180, vandeschootBayesianStatisticsModelling2021}.
 	\end{vfilleditems}
 \end{frame}
