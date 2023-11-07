@@ -89,7 +89,7 @@ These were tested with `Turing.jl` version 0.21.9 and Julia 1.7.3.
 
 ## Author
 
-Jose Storopoli, PhD - [_Lattes_ CV](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - <https://storopoli.io>
+Jose Storopoli, PhD - [ORCID](https://orcid.org/0000-0002-0559-5176) - <https://storopoli.io>
 
 ## How to use the content?
 
