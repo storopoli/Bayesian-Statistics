@@ -1,0 +1,45 @@
+name: Build Slides
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  build-release:
+    name: Build Slides
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      working-directory: ./slides
+    defaults:
+      run:
+        working-directory: ${{ env.working-directory }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v6
+
+      - name: Cache Nix artifacts
+        uses: DeterminateSystems/magic-nix-cache-action@v2
+
+      - name: Build Slides
+        run: nix build -L
+
+      - name: Copy result out of nix store
+        run: cp -v result/slides.pdf slides.pdf
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: ./slides/slides.pdf
+          if-no-files-found: error
