@@ -17,6 +17,8 @@
           inherit (pkgs.texlive) lstbayes ulem subfigure ifoddpage relsize;
           inherit (pkgs.texlive) adjustbox media9 ocgx2 biblatex-apa wasy;
         };
+        julia = pkgs.julia-bin.overrideDerivation (oldAttrs: { doInstallCheck = false; });
+
       in
       {
         checks = {
@@ -33,6 +35,8 @@
             bashInteractive
             # pdfpc # FIXME: broken on darwin
             typos
+            cmdstan
+            julia
           ];
 
           inherit (self.checks.${system}.pre-commit-check) shellHook;
@@ -49,6 +53,7 @@
           phases = [ "unpackPhase" "buildPhase" "installPhase" ];
           buildPhase = ''
             export PATH="${pkgs.lib.makeBinPath buildInputs}";
+            cd slides
             export HOME=$(pwd)
             latexmk -pdflatex -shell-escape slides.tex
           '';

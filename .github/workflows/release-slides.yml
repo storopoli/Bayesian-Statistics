@@ -11,12 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      working-directory: ./slides
-    defaults:
-      run:
-        working-directory: ${{ env.working-directory }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,6 +20,9 @@ jobs:
 
       - name: Cache Nix artifacts
         uses: DeterminateSystems/magic-nix-cache-action@v2
+
+      - name: Nix Flake Check
+        run: nix flake check -L
 
       - name: Build Slides
         run: nix build -L
@@ -37,4 +34,4 @@ jobs:
         uses: ncipollo/release-action@v1
         id: release
         with:
-          artifacts: ./slides/slides.pdf
+          artifacts: ./slides.pdf
