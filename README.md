@@ -76,7 +76,7 @@ These were tested with `Turing.jl` version 0.21.9 and Julia 1.7.3.
   to a safe public or private well in the nearby area
   and the survey was conducted several years later to
   learn which of the affected residents had switched wells.
-  Souce: Gelman and Hill (2007).
+  Source: Gelman and Hill (2007).
 - `esoph` (ordinal regression): data from a case-control study of (o)esophageal cancer in Ille-et-Vilaine, France.
   Source: Breslow and Day (1980).
 - `roaches` (Poisson regression): data on the efficacy of a pest management system at reducing the number of roaches in urban apartments.
@@ -280,6 +280,6 @@ Or in BibTeX format (LaTeX):
 
 ## License
 
-This content is licensed under [Creative Commons Attribution-ShareAlike 4.0 Internacional](http://creativecommons.org/licenses/by-sa/4.0/).
+This content is licensed under [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/).
 
 [![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
