@@ -295,3 +295,4 @@ TSWLatexianTemp*
 
 # glossaries
 *.glstex
+.pre-commit-config.yaml

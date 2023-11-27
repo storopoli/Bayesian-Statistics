@@ -1,0 +1,23 @@
+[default]
+extend-ignore-re = [
+  # citation keys
+  "textcite\\{.*\\}",
+]
+
+[default.extend-words]
+# code stuff
+lik = "lik"
+# surnames
+Yau = "Yau"
+
+[type.bib]
+extend-glob = ["*.bib"]
+check-file = false
+
+[type.sty]
+extend-glob = ["*.sty"]
+check-file = false
+
+[type.gitignore]
+extend-glob = [".gitignore"]
+check-file = false
