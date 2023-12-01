@@ -101,6 +101,13 @@ The content is aimed towards PhD candidates in applied sciences.
 I chose to provide an **intuitive approach** along with some rigorous mathematical formulations.
 I've made it to be how I would have liked to be introduced to Bayesian statistics.
 
+If you want to build the slides locally without having to worry with $\LaTeX$
+packages, [install Nix](https://nixos.org/download.html) and run:
+
+```shell
+nix build github:storopoli/Bayesian-Statistics
+```
+
 ## References
 
 The references are divided in **books**, **papers**, **software**, and **datasets**.
