@@ -24,7 +24,14 @@ X = standardize(ZScoreTransform, X; dims=1)
 y = wells[:, :switch]
 
 # define alternate parameterizations
-BetaBinomial2(n, μ, ϕ) = BetaBinomial(n, μ * ϕ, (1 - μ) * ϕ)
+function BetaBinomial2(n, μ, ϕ)
+    α = μ * ϕ
+    β = (1 - μ) * ϕ
+    α = α > 0 ? α : 1e-4 # numerical stability
+    β = β > 0 ? β : 1e-4 # numerical stability
+
+    return BetaBinomial(n, α, β)
+end
 
 # define the model
 @model function beta_binomial_regression(X, y; predictors=size(X, 2))

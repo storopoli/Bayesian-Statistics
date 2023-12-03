@@ -22,7 +22,7 @@ y = wells[:, :switch]
 
 # define the model
 # setting ν to 4 since we have a lot of parameters
-# and Turing v0.21.9 samples slower than Stan
+# and Turing v0.29 samples slower than Stan
 @model function robit_regression(X, y; predictors=size(X, 2), N=size(X, 1), ν=4)
     # priors
     α ~ TDist(3) * 2.5

@@ -1,9 +1,10 @@
 using Turing
-using Bijectors
 using CSV
 using DataFrames
 using LinearAlgebra
 using CategoricalArrays
+using Bijectors: transformed, OrderedBijector
+using DataFrames: transform!
 
 # reproducibility
 using Random: seed!
@@ -36,7 +37,7 @@ y = esoph[:, :tobgp]
 # define the model
 @model function ordered_regression(X, y; predictors=size(X, 2), ncateg=maximum(y))
     # priors
-    cutpoints ~ Bijectors.ordered(filldist(TDist(3) * 5, ncateg - 1))
+    cutpoints ~ transformed(filldist(TDist(3) * 5, ncateg - 1), OrderedBijector())
     β ~ filldist(TDist(3) * 2.5, predictors)
 
     # likelihood
