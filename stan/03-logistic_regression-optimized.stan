@@ -24,7 +24,7 @@ model {
 
   // likelihood
   y ~ bernoulli_logit_glm(X, alpha, beta);
-  // no binomial_logit_glm available in Stan <=2.29
+  // no binomial_logit_glm available in Stan 2.33
 }
 // results:
 //All 4 chains finished successfully.
