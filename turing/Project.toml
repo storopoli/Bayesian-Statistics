@@ -13,5 +13,6 @@ Turing = "fce5fe82-541a-59a6-adf8-730c64b5f9a0"
 
 [compat]
 Bijectors = "0.13"
+StatsBase = "0.34"
 Turing = "0.29"
 julia = "1"
