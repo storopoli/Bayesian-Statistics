@@ -53,83 +53,107 @@ jobs:
       matrix:
         stan:
           [
-            { model: "01-predictive_checks-posterior", data: false },
-            { model: "01-predictive_checks-prior", data: false },
-            { model: "02-linear_regression-QR", data: "kidiq.data.json" },
+            { model: "01-predictive_checks-posterior", data: "" },
+            { model: "01-predictive_checks-prior", data: "" },
+            {
+              model: "02-linear_regression-QR",
+              data: "data file=stan/kidiq.data.json",
+            },
             {
               model: "02-linear_regression-optimized",
-              data: "kidiq.data.json",
+              data: "data file=stan/kidiq.data.json",
             },
-            { model: "02-linear_regression", data: "kidiq.data.json" },
+            {
+              model: "02-linear_regression",
+              data: "data file=stan/kidiq.data.json",
+            },
             {
               model: "03-logistic_regression-optimized",
-              data: "wells.data.json",
+              data: "data file=stan/wells.data.json",
             },
-            { model: "03-logistic_regression", data: "wells.data.json" },
+            {
+              model: "03-logistic_regression",
+              data: "data file=stan/wells.data.json",
+            },
             {
               model: "04-ordinal_regression-optimized",
-              data: "esoph.data.json",
+              data: "data file=stan/esoph.data.json",
             },
-            { model: "04-ordinal_regression", data: "esoph.data.json" },
+            {
+              model: "04-ordinal_regression",
+              data: "data file=stan/esoph.data.json",
+            },
             {
               model: "05-poisson_regression-optimized",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
-            { model: "05-poisson_regression", data: "roaches.data.json" },
-            { model: "06-robust_linear_regression", data: "kidiq.data.json" },
+            {
+              model: "05-poisson_regression",
+              data: "data file=stan/roaches.data.json",
+            },
+            {
+              model: "06-robust_linear_regression",
+              data: "data file=stan/kidiq.data.json",
+            },
             {
               model: "07-robust_beta_binomial_regression",
-              data: "wells.data.json",
+              data: "data file=stan/wells.data.json",
             },
-            { model: "08-robust_robit_regression", data: "wells.data.json" },
+            {
+              model: "08-robust_robit_regression",
+              data: "data file=stan/wells.data.json",
+            },
             {
               model: "09-robust_negative_binomial_regression-optimized",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
             {
               model: "09-robust_negative_binomial_regression",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
             {
               model: "10-robust_zero_inflated_regression-negative_binomial-optimized",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
             {
               model: "10-robust_zero_inflated_regression-negative_binomial",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
             {
               model: "10-robust_zero_inflated_regression-poisson-optimized",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
             {
               model: "10-robust_zero_inflated_regression-poisson",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
             {
               model: "11-hierarchical_varying_intercept-non_centered",
-              data: "cheese.data.json",
+              data: "data file=stan/cheese.data.json",
             },
             {
               model: "11-hierarchical_varying_intercept",
-              data: "cheese.data.json",
+              data: "data file=stan/cheese.data.json",
             },
             {
               model: "12-hierarchical_varying_intercept_slope",
-              data: "cheese.data.json",
+              data: "data file=stan/cheese.data.json",
             },
             {
               model: "13-model_comparison-negative_binomial",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
-            { model: "13-model_comparison-poisson", data: "roaches.data.json" },
+            {
+              model: "13-model_comparison-poisson",
+              data: "data file=stan/roaches.data.json",
+            },
             {
               model: "13-model_comparison-zero_inflated-negative_binomial",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
             {
               model: "13-model_comparison-zero_inflated-poisson",
-              data: "roaches.data.json",
+              data: "data file=stan/roaches.data.json",
             },
           ]
     steps:
@@ -142,8 +166,8 @@ jobs:
       - name: Cache Nix artifacts
         uses: DeterminateSystems/magic-nix-cache-action@v2
 
-      - name: Test ${{ matrix.stan.file }}
+      - name: Test ${{ matrix.stan.model }}
         run: |
-          echo "Compiling: ${{ matrix.stan.file }}"
+          echo "Compiling: ${{ matrix.stan.model }}"
           nix develop -L . --command bash -c "stan stan/${{ matrix.stan.model }}"
-          nix develop -L . --command bash -c "stan/${{ matrix.stan.model }} sample data file=stan/${{ matrix.stan.data }} "
+          nix develop -L . --command bash -c "stan/${{ matrix.stan.model }} sample ${{ matrix.stan.data }}"
