@@ -40,6 +40,7 @@
           ];
 
           shellHook = ''
+            export JULIA_NUM_THREADS="auto"
             export JULIA_PROJECT="turing"
             ${self.checks.${system}.pre-commit-check.shellHook}
           '';

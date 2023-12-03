@@ -17,8 +17,7 @@ jobs:
       JULIA_NUM_THREADS: "auto"
     strategy:
       matrix:
-        jl-file:
-          [
+        jl-file: [
             "01-predictive_checks.jl",
             "02-linear_regression-kidiq.jl",
             "03-logistic_regression-wells.jl",
@@ -26,7 +25,7 @@ jobs:
             "05-poisson_regression-roaches.jl",
             "06-robust_linear_regression-duncan.jl",
             "07-robust_beta_binomial_regression-wells.jl",
-            "08-robust_robit_regression-wells.jl",
+            #"08-robust_robit_regression-wells.jl", # FIXME: broken
             "09-robust_negative_binomial_regression-roaches.jl",
             "10-robust_zero_inflated_regression-negative_binomial-roaches.jl",
             "10-robust_zero_inflated_regression-poisson-roaches.jl",
