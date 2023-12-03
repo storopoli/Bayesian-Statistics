@@ -42,6 +42,7 @@
           shellHook = ''
             export JULIA_NUM_THREADS="auto"
             export JULIA_PROJECT="turing"
+            export CMDSTAN_HOME="${pkgs.cmdstan}/opt/cmdstan"
             ${self.checks.${system}.pre-commit-check.shellHook}
           '';
         };

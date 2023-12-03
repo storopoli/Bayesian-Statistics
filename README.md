@@ -29,22 +29,25 @@ The whole content is a set of several slides found at [`the latest release`](htt
 Here is a brief table of contents:
 
 1. **What is Bayesian Statistics?**
-2. **Common Probability Distributions**
-3. **Priors**
-4. **Predictive Checks**
-5. **Bayesian Linear Regression**
-6. **Bayesian Logistic Regression**
-7. **Bayesian Ordinal Regression**
-8. **Bayesian Regression with Count Data: Poisson Regression**
-9. **Robust Bayesian Regression**
-10. **Hierarchical Models**
-11. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
-12. **Model Comparison: Cross-Validation and Other Metrics**
+1. **Common Probability Distributions**
+1. **Priors**
+1. **Predictive Checks**
+1. **Bayesian Linear Regression**
+1. **Bayesian Logistic Regression**
+1. **Bayesian Ordinal Regression**
+1. **Bayesian Regression with Count Data: Poisson Regression**
+1. **Robust Bayesian Regression**
+1. **Hierarchical Models**
+1. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
+1. **Model Comparison: Cross-Validation and Other Metrics**
 
 ## Probabilistic Programming Languages (PPLs)
 
 Along with slides for the content, this repository also holds `Stan` code and also `Turing.jl` code for all models.
 `Stan` and `Turing.jl` represents, respectively, the present and future of [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) languages.
+
+All model files are tested in [GitHub Actions](https://github.com/storopoli/Bayesian-Statistics/actions/workflows/models.yml)
+against the latest `Stan` and Julia/`Turing.jl` versions.
 
 ### `Stan`
 

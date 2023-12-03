@@ -26,7 +26,7 @@ model {
 
   // likelihood
   vector[N] p_hat;
-  for (n in 1:N) p_hat[n] = student_t_cdf(alpha + X[n] * beta, nu, 0, sqrt((nu - 2)/nu));
+  for (n in 1:N) p_hat[n] = student_t_cdf(alpha + X[n] * beta | nu, 0, sqrt((nu - 2)/nu));
   y ~ bernoulli(p_hat);
 }
 // results:

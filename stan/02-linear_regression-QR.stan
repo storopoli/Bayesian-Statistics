@@ -41,9 +41,7 @@ generated quantities {
   vector[K] beta;
   beta = R_ast_inverse * theta; // coefficients on X scale
 }
-// results:All 4 chains finished successfully.
-Mean chain execution time: 0.2 seconds.
-Total execution time: 0.2 seconds.
+// results:
 //All 4 chains finished successfully.
 //Mean chain execution time: 0.2 seconds.
 //Total execution time: 0.2 seconds.
