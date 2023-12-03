@@ -39,7 +39,11 @@
             julia
           ];
 
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          shellHook = ''
+            export JULIA_NUM_THREADS="auto"
+            export JULIA_PROJECT="turing"
+            ${self.checks.${system}.pre-commit-check.shellHook}
+          '';
         };
         packages.default = pkgs.stdenvNoCC.mkDerivation rec {
           name = "slides";

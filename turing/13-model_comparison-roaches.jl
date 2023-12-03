@@ -1,3 +1,10 @@
+# FIXME: ParetoSmooth is not compatible with Turing 0.29
+using Pkg
+Pkg.compat("Turing", "0.22")
+Pkg.compat("Bijectors", "0.10")
+Pkg.compat("StatsBase", "0.33")
+Pkg.add("ParetoSmooth")
+
 using Turing
 using CSV
 using DataFrames
