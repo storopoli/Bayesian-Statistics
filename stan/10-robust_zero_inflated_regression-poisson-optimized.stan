@@ -29,10 +29,10 @@ model {
     if (y[n] == 0) {
       target += log_sum_exp(bernoulli_lpmf(1 | gamma),
                             bernoulli_lpmf(0 | gamma) +
-                            poisson_log_glm_lpmf(y[n] | X[n], alpha, beta));
+                            poisson_log_glm_lpmf(y[n] | to_matrix(X[n]), alpha, beta));
     } else {
       target += bernoulli_lpmf(0 | gamma) +
-                poisson_log_glm_lpmf(y[n] | X[n], alpha, beta);
+                poisson_log_glm_lpmf(y[n] | to_matrix(X[n]), alpha, beta);
     }
   }
 }

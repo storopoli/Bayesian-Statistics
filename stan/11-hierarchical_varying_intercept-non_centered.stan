@@ -28,7 +28,7 @@ parameters {
   vector[J] z;                           // group-level non-centered intercepts
 }
 transformed parameters {
-  vector[J] alpha_j = z * tau .+ alpha;           // group-level intercepts
+  vector[J] alpha_j = z * tau + alpha;           // group-level intercepts
 }
 model {
   // priors
