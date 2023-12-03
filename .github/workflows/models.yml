@@ -1,0 +1,47 @@
+name: Test Models
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  test-turing:
+    name: Test Turing Models
+    runs-on: ubuntu-latest
+    env:
+      JULIA_NUM_THREADS: "auto"
+    strategy:
+      matrix:
+        jl-file: [
+            "01-predictive_checks.jl",
+            "02-linear_regression-kidiq.jl",
+            "03-logistic_regression-wells.jl",
+            "04-ordinal_regression-esoph.jl",
+            "05-poisson_regression-roaches.jl",
+            "06-robust_linear_regression-duncan.jl",
+            "07-robust_beta_binomial_regression-wells.jl",
+            #"08-robust_robit_regression-wells.jl", # FIXME: broken
+            "09-robust_negative_binomial_regression-roaches.jl",
+            "10-robust_zero_inflated_regression-negative_binomial-roaches.jl",
+            "10-robust_zero_inflated_regression-poisson-roaches.jl",
+            "11-hierarchical_varying_intercept-cheese.jl",
+            "11-hierarchical_varying_intercept-non_centered-cheese.jl",
+            "12-hierarchical_varying_intercept_slope-cheese.jl",
+            "13-model_comparison-roaches.jl",
+          ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: "1"
+      - uses: julia-actions/cache@v1
+      - name: Test ${{ matrix.jl-file }}
+        run: |
+          julia --project=turing -e 'using Pkg; Pkg.instantiate()'
+          julia --project=turing turing/${{ matrix.jl-file }}
