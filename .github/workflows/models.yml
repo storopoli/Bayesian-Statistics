@@ -46,8 +46,8 @@ jobs:
         
       - name: Test ${{ matrix.jl-file }}
         run: |
-          nix build -L . --command bash -c "julia -e 'using Pkg; Pkg.instantiate()'"
-          nix build -L . --command bash -c "julia turing/${{ matrix.jl-file }}"
+          nix develop -L . --command bash -c "julia -e 'using Pkg; Pkg.instantiate()'"
+          nix develop -L . --command bash -c "julia turing/${{ matrix.jl-file }}"
 
   test-stan:
     name: Test Stan Models
