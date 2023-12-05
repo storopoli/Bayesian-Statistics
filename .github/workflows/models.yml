@@ -37,14 +37,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v1
-        with:
-          version: "1"
-      - uses: julia-actions/cache@v1
+        
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v8
+
+      - name: Cache Nix artifacts
+        uses: DeterminateSystems/magic-nix-cache-action@v2
+        
       - name: Test ${{ matrix.jl-file }}
         run: |
-          julia --project=turing -e 'using Pkg; Pkg.instantiate()'
-          julia --project=turing turing/${{ matrix.jl-file }}
+          nix develop -L . --command bash -c "julia -e 'using Pkg; Pkg.instantiate()'"
+          nix develop -L . --command bash -c "julia turing/${{ matrix.jl-file }}"
 
   test-stan:
     name: Test Stan Models
