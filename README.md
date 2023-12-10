@@ -37,7 +37,7 @@ Here is a brief table of contents:
 1. **Bayesian Ordinal Regression**
 1. **Bayesian Regression with Count Data: Poisson Regression**
 1. **Robust Bayesian Regression**
-1. **Bayesian Spase Regression with the Horseshoe**
+1. **Bayesian Spase Regression**
 1. **Hierarchical Models**
 1. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
 1. **Model Comparison: Cross-Validation and Other Metrics**

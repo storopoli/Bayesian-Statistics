@@ -170,6 +170,7 @@
 
 \tikzset{
 	declare function={
+            f2jacobian(\x)=\x^(-2);%
 			discreteuniform(\a,\b)=1/(\b-\a+1);%
 			binomial(\n,\p)=\n!/(x!*(\n-x)!)*\p^x*(1-\p)^(\n-x);%
 			poisson(\l)=(\l^x)*exp(-\l)/(x!);%
@@ -183,6 +184,10 @@
 			student(\n)=gamma((\n+1)/2.)/(sqrt(\n*pi)*gamma(\n/2.))*((1+(x*x)/\n)^(-(\n+1)/2.));%
 			cauchy(\m,\s)=(1/(pi*\s*(1+((x-\m)/\s)^2)));%
 			beta(\a,\b)=(x^(\a-1)*(1-x)^(\b-1)/((gamma(\a)*gamma(\b))/gamma(\a+\b));%
+            laplace(\b)=(1/2*\b)*exp(-abs(x)/\b);%
+            hs(\l,\t)=gaussian(0,sqrt(\l^2*\t^2));%
+            f2exponential(\l)=\l*exp(-\l*(1/x-1));%
+            shrinkagelaplace(\r)=f2exponential(\r)*f2jacobian(x);%
 			binormal(\ma,\sa,\mb,\sb,\ro)=exp(-(((x-\ma)/\sa)^2+((y-\mb)/\sb)^2-(2*\ro)*((x-\ma)/\sa)*((y-\mb)/\sb))/(2*(1-\ro^2)))/(2*pi*\sa*\sb*(1-\ro^2)^0.5);%
 			conditionalbinormal(\yc,\ma,\sa,\mb,\sb,\ro)=exp(-(((x-\ma)/\sa)^2+((\yc-\mb)/\sb)^2-(2*\ro)*((x-\ma)/\sa)*((\yc-\mb)/\sb))/(2*(1-\ro^2)))/(2*pi*\sa*\sb*(1-\ro^2)^0.5);%
 			sumtwonormals(\ma,\sa,\wa,\mb,\sb,\wb)=(\wa*gaussian(\ma,\sa))+(\wb*gaussian(\mb,\sb));%

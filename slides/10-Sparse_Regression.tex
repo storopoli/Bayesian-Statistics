@@ -1,0 +1,379 @@
+% !TeX root = slides.tex
+\section{Sparse Regression}
+
+\subsection{Recommended References}
+\begin{frame}{Recommended References}
+	\begin{vfilleditems}
+		\item \textcite{gelman2020regression} - Chapter 12, Section 12.8: Models for regression coefficients
+		\item Horseshoe Prior: \textcite{carvalho2009handling}
+		\item Horseshoe+ Prior: \textcite{bhadra2015horseshoe}
+        \item Regularized Horseshoe Prior: \textcite{piironen2017horseshoe}
+        \item R2-D2 Prior: \textcite{zhang2022bayesian}
+        \item Betancourt's Case study on Sparsity: \textcite{betancourtSparsityBlues2021}
+	\end{vfilleditems}
+\end{frame}
+
+\subsection{Sparsity}
+\begin{frame}{What is Sparsity?}
+    Sparsity is a concept frequently encountered in statistics, signal processing,
+    and machine learning, which refers to situations where the vast majority of
+    elements in a dataset or a vector are zero or close to zero. 
+\end{frame}
+
+\begin{frame}{How to Handle Sparsity?}
+    Almost all techniques deal with some sort of \textbf{variable selection},
+    instead of altering data.
+
+    This makes sense from a Bayesian perspective,
+    as data is \textbf{information},
+    and we don't want to throw information away.
+\end{frame}
+
+\subsection{Frequentist Approach}
+\begin{frame}{Frequentist Approach}
+    The frequentist approach deals with sparse regression by staying in the
+    ``optimization'' context but adding \textbf{Lagrangian constraints}\footnote{
+        this is called \textbf{LASSO} (least absolute shrinkage and selection operator)
+        from \textcite{tibshirani1996regression,zou2005regularization}.
+    }:
+
+    $$
+        \min_\beta \left\{ \sum _{i=1}^N ( y_i - \alpha - x_i^T \boldsymbol{\beta} )^2 \right\}
+    $$
+
+    suject to $\vert \boldsymbol{\beta} \vert_p \leq t$.
+
+    \vfill
+
+    Here $\vert \cdot \vert_p$ is the $p$-norm.
+\end{frame}
+
+\subsection{Variable Selection Techniques}
+\begin{frame}{Variable Selection Techniques}
+    \begin{vfilleditems}
+        \item \textbf{discrete mixtures}: \textit{spike-and-slab} prior
+        \item \textbf{shrinkage priors}: \textit{Laplace} prior
+              and \textit{horseshoe} prior \parencite{carvalho2009handling}
+    \end{vfilleditems}
+\end{frame}
+
+\subsection{Discrete Mixtures}
+\subsubsection{Spike-and-Slab Prior}
+\begin{frame}{Discrete Mixtures -- Spike-and-Slab Prior}
+    \small
+    Mixture of two distributions—one that is
+    concentrated at zero (the ``spike'') and one with a much wider spread (the
+    ``slab''). This prior indicates that we believe most coefficients in our model are
+    likely to be zero (or close to zero), but we allow the possibility that some are
+    not.
+
+    \vfill 
+    Here is the Gaussian case:
+
+    $$
+        \begin{aligned}
+            \beta_i \mid \lambda_i, c &\sim \text{Normal} \left( 0, \sqrt{\lambda_i^2 c^2} \right) \\
+            \lambda_i &\sim \text{Bernoulli} (p)
+        \end{aligned}
+    $$
+
+    where:
+    \begin{vfilleditems}
+        \small
+        \item $c$: \textit{slab} width
+        \item $p$: prior inclusion probability;
+            encodes the prior information about the sparsity of the
+            coefficient vector $\boldsymbol{\beta}$
+        \item $\lambda_i \in \{0, 1\}$: whether the coefficient $\beta_i$ is close
+            to zero (comes from the ``spike'', $\lambda_i = 0$) or nonzero
+            (comes from the ``slab'', $\lambda_i = 1$)
+    \end{vfilleditems}
+\end{frame}
+
+\begin{frame}{Discrete Mixtures -- Spike-and-Slab Prior}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel=PDF,
+				domain=-4:4,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left, % the * suppresses the arrow tips
+				enlarge x limits=true, % extend the axes a bit
+			]
+
+            \addplot [blue] {hs(1,0.05};
+			\addlegendentry{spike: $c=1, \lambda=0$}
+			\addplot [red] {hs(1,1)};
+			\addlegendentry{slab: $c=1, \lambda=1$}
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\subsection{Shinkrage Priors}
+\subsubsection{Laplace Prior}
+\begin{frame}{Shinkrage Priors -- Laplace Prior}
+    The Laplace distribution is a continuous probability distribution named after
+    Pierre-Simon Laplace.
+    It is also known as the double exponential distribution.
+
+    It has parameters:
+    \begin{vfilleditems}
+        \item $\mu$: location parameter
+        \item $b$: scale parameter
+    \end{vfilleditems}
+
+    The PDF is:
+
+    $$
+        \text{Laplace}(\mu, b) = \frac{1}{2b} e^{-\frac{| x - \mu |}{b}}
+    $$
+
+    \vfill
+
+    It is a symmetrical exponential decay around $\mu$ with scale governed by $b$.
+\end{frame}
+
+\begin{frame}{Shinkrage Priors -- Laplace Prior}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel=PDF,
+				domain=-4:4,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left, % the * suppresses the arrow tips
+				enlarge x limits=true, % extend the axes a bit
+			]
+
+			\addplot [blue] {laplace(1)};
+			\addlegendentry{$\mu=0, b=1$}
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\subsubsection{Horseshoe Prior}
+\begin{frame}{Shinkrage Priors -- Horseshoe Prior}
+    The horseshoe prior\parencite{carvalho2009handling} assumes that each coefficient
+    $\beta_i$ is conditionally independent with density
+    $P_{\text{HS}}(\beta_i \mid \tau )$, where $P_{\text{HS}}$
+    can be represented as a scale mixture of Gaussians:
+
+    $$
+        \begin{aligned}
+            \beta_i \mid \lambda_i, \tau &\sim \text{Normal} \left( 0, \sqrt{\lambda_i^2 \tau^2} \right) \\
+            \lambda_i &\sim \text{Cauchy}^+ (0, 1)
+        \end{aligned}
+    $$
+
+    where:
+    \begin{vfilleditems}
+        \item $\tau$: \textit{global} shrinkage parameter
+        \item $\lambda_i$: \textit{local} shrinkage parameter
+        \item $\text{Cauchy}^+$ is the half-Cauchy distribution for the
+            standard deviation $\lambda_i$
+    \end{vfilleditems}
+
+    \vfill
+
+    \small
+    Note that it is similar to the spike-and-slab, but the discrete mixture becomes
+    a ``continuous'' mixture with the $\text{Cauchy}^+$.
+\end{frame}
+
+\begin{frame}{Shinkrage Priors -- Horseshoe}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel=PDF,
+				domain=-4:4,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left, % the * suppresses the arrow tips
+				enlarge x limits=true, % extend the axes a bit
+			]
+
+            \addplot [blue] {hs(1,1};
+			\addlegendentry{$\tau=1, \lambda=1$}
+			\addplot [red] {hs(1,0.5)};
+			\addlegendentry{$\tau=1, \lambda=0.5$}
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\subsubsection{Discrete Mixtures versus Shinkrage Priors}
+\begin{frame}{Discrete Mixtures versus Shinkrage Priors}
+    \textbf{Discrete mixtures} offer the correct representation of sparse problems
+    \parencite{carvalho2009handling} by placing positive prior probability on
+    $\beta_i = 0$ (regression coefficient),
+    but pose several difficulties: mostly computational due to the
+    \textbf{non-continuous nature}.
+
+    \textbf{Shrinkage priors}, despite not having the best representation of sparsity,
+    can be very attractive computationally: again due to the \textbf{continuous property}.
+\end{frame}
+
+\begin{frame}{Horseshoe versus Laplace}
+    The advantages of the Horseshoe prior over the Laplace prior are primarily:
+
+    \begin{vfilleditems}
+        \small
+        \item \textbf{shrinkage}:
+            The Horseshoe prior has infinitely heavy tails and an infinite spike at zero.
+            Parameters estimated under the Horseshoe prior can be shrunken towards zero
+            more aggressively than under the Laplace prior,
+            promoting sparsity without sacrificing the ability to detect true non-zero signals.
+        \item \textbf{signal} detection:
+            Due to its heavy tails,
+            the Horseshoe prior does not overly penalize large values,
+            which allows significant effects to stand out even in the presence
+            of many small or zero effects.
+        \item \textbf{uncertainty} quantification:
+            With its heavy-tailed nature,
+            the Horseshoe prior better captures uncertainty in parameter estimates,
+            especially when the truth is close to zero.
+        \item \textbf{regularization}: In high-dimensional settings where the number of
+            predictors can exceed the number of observations,
+            the Horseshoe prior acts as a strong regularizer,
+            automatically adapting to the underlying sparsity level without the
+            need for external tuning parameters.
+    \end{vfilleditems}
+\end{frame}
+
+\begin{frame}{Effective Shinkrage Comparison}
+    Makes more sense to compare the shinkrage effects of the proposed approaches
+    so far.
+    Assume for now that $\sigma^2 = \tau^2 = 1$,
+    and define $\kappa_i = \frac{1}{1 + \lambda_i^2}$.
+    Then $\kappa_i$ is a random shrinkage coefficient,
+    and can be interpreted as the amount of weight that the posterior mean for
+    $\beta_i$ places on $0$ once the data $\textbf{y}$ have been observed:
+
+    $$
+        \operatorname{E}(\beta_i \mid y_i, \lambda_i^2) = 
+        \left( \frac{\lambda_i^2}{1 + \lambda_i^2} \right) y_i +
+        \left( \frac{1}{1 + \lambda_i^2} \right) 0 =
+        (1 - \kappa_i) y_i
+    $$
+\end{frame}
+
+\begin{frame}{Effective Shinkrage Comparison\footnote{spike-and-slab with $p=\frac{1}{2}$
+              would be very similar to Horseshoe but with discontinuities.}}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[every axis plot, line width=2pt,
+				ylabel=PDF,
+                xlabel=$\kappa$,
+				domain=0.001:0.999,samples=200,
+				axis x line*=bottom, % no box around the plot, only x and y axis
+				axis y line*=left, % the * suppresses the arrow tips
+				enlarge x limits=true, % extend the axes a bit
+			]
+
+			\addplot [blue] {beta(0.5,0.5)};
+			\addlegendentry{Laplace}
+			\addplot [red] {shrinkagelaplace(0.5)};
+			\addlegendentry{Horseshoe}
+		\end{axis}
+	\end{tikzpicture}
+\end{frame}
+
+\subsubsection{Horseshoe+ Prior}
+\begin{frame}{Shinkrage Priors -- Horseshoe+}
+    Natural extension from the Horseshoe that has improved performance with
+    highly sparse data \parencite{bhadra2015horseshoe}.
+
+    \vfill
+
+    Just introduce a new half-Cauchy mixing variable $\eta_i$ in the Horseshoe:
+
+    $$
+        \begin{aligned}
+            \beta_i \mid \lambda_i, \eta_i, \tau &\sim \text{Normal}(0, \lambda_i) \\
+            \lambda_i \mid \eta_i, \tau &\sim \text{Cauchy}^+ (0, \tau \eta_i) \\
+            \eta_i &\sim \text{Cauchy}^+ (0, 1)
+        \end{aligned}
+    $$
+
+    where:
+    \begin{vfilleditems}
+        \item $\tau$: \textit{global} shrinkage parameter
+        \item $\lambda_i$: \textit{local} shrinkage parameter
+        \item $\eta_i$: additional \textit{local} shrinkage parameter
+        \item $\text{Cauchy}^+$ is the half-Cauchy distribution for the
+            standard deviation $\lambda_i$ and $\eta_i$
+    \end{vfilleditems}
+\end{frame}
+
+\subsubsection{Regularized Horseshoe Prior}
+\begin{frame}{Shinkrage Priors -- Regularized Horseshoe}
+    The Horseshoe and Horseshoe+ guarantees that the strong signals will not
+    be overshrunk.
+    However, this property can also be harmful,
+    especially when the parameters are weakly identified.
+
+    \vfill
+
+    The solution, Regularized Horseshoe \parencite{piironen2017horseshoe}
+    (also known as the ``Finnish Horseshoe''),
+    is able to control the amount of shrinkage for the largest coefficient.
+\end{frame}
+
+\begin{frame}{Shinkrage Priors -- Regularized Horseshoe}
+    $$
+        \begin{aligned}
+            \beta_i \mid \lambda_i, \tau, c &\sim \text{Normal} \left( 0, \sqrt{\tau^2 \tilde{\lambda_i}^2} \right) \\
+            \tilde{\lambda_i}^2 &= \frac{c^2 \lambda_i^2}{c^2 + \tau^2 \lambda_i^2} \\
+            \lambda_i &\sim \text{Cauchy}^+ (0, 1)
+        \end{aligned}
+    $$
+
+    where:
+    \begin{vfilleditems}
+        \small
+        \item $\tau$: \textit{global} shrinkage parameter
+        \item $\lambda_i$: \textit{local} shrinkage parameter
+        \item $c > 0$: regularization constant
+        \item $\text{Cauchy}^+$ is the half-Cauchy distribution for the
+            standard deviation $\lambda_i$
+    \end{vfilleditems}
+    \small
+    Note that when $\tau^2 \lambda_i^2 \ll c^2$ (coefficient $\beta_i \approx 0$),
+    then $\tilde{\lambda_i}^2 \to \lambda_i^2$;
+    and when $\tau^2 \lambda_i^2 \gg c^2$ (coefficient $\beta_i$ far from $0$),
+    then $\tilde{\lambda_i}^2 \to \frac{c^2}{\tau^2}$ and $\beta_i$ prior
+    approaches $\text{Normal}(0,c)$.
+\end{frame}
+
+\subsubsection{R2-D2 Prior}
+\begin{frame}{Shinkrage Priors -- R2-D2}
+    Still, we can do better.
+    The \textbf{R2-D2}\footnote{
+        $R^2$-induced Dirichlet Decomposition
+    } prior \parencite{zhang2022bayesian} has heavier tails and
+    higher concentration around zero than the previous approaches.
+
+    The idea is to, instead of specifying a prior on $\boldsymbol{\beta}$,
+    we construct a prior on the coefficient of determination $R^2$\footnote{
+        square of the correlation coefficient between the dependent variable
+        and its modeled expectation.}.
+    Then using that prior to ``distribute'' throughout the $\boldsymbol{\beta}$. 
+\end{frame}
+
+\begin{frame}{Shinkrage Priors -- R2-D2}
+    $$
+    \begin{aligned}
+        R^2 &\sim \text{Beta} \left( \mu_{R^2} \sigma_{R^2}, (1 - \mu_{R^2}) \sigma_{R^2} \right) \\
+        \boldsymbol{\phi} &\sim \text{Dirichlet}(J, 1) \\
+        \tau^2 &= \frac{R^2}{1 - R^2} \\
+        \boldsymbol{\beta} &= Z \cdot \sqrt{\boldsymbol{\phi} \tau^2}
+    \end{aligned}
+    $$
+    where:
+    \begin{vfilleditems}
+        \small
+        \item $\tau$: \textit{global} shrinkage parameter
+        \item $\boldsymbol{\phi}$: proportion of total variance allocated to each covariate,
+            can be interpreted as the \textit{local} shrinkage parameter
+        \item $\mu_{R^2}$ is the mean of the $R^2$ parameter, generally $\frac{1}{2}$
+        \item $\sigma_{R^2}$ is the precision of the $R^2$ parameter, generally $2$
+        \item $Z$ is the standard Gaussian, i.e. $\text{Normal}(0, 1)$
+    \end{vfilleditems}
+\end{frame}
