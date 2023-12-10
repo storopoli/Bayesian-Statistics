@@ -37,6 +37,12 @@
             typos
             cmdstan
             julia
+
+            # LaTeX part
+            coreutils
+            tex
+            gnuplot
+            biber
           ];
 
           shellHook = ''
@@ -60,7 +66,7 @@
             export PATH="${pkgs.lib.makeBinPath buildInputs}";
             cd slides
             export HOME=$(pwd)
-            latexmk -pdflatex -shell-escape slides.tex
+            latexmk -pdflatex -shell-escape -interaction=nonstopmode slides.tex
           '';
           installPhase = ''
             mkdir -p $out

@@ -1,5 +1,6 @@
 tikz/*
-!tikz/placeholder
+!tikz/.gitkeep
 *.dat
 *.script
 *.table
+*.pdf
