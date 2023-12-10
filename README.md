@@ -174,6 +174,10 @@ The papers section of the references are divided into **required** and **complem
 - Amrhein, V., Greenland, S., & McShane, B. (2019). Scientists rise up
   against statistical significance. _Nature_, _567_(7748), 305–307.
   https://doi.org/[10.1038/d41586-019-00857-9](https://doi.org/10.1038/d41586-019-00857-9)
+- Piironen, J. & Vehtari, A. (2017). Sparsity information and regularization in the
+  horseshoe and other shrinkage priors.
+  _Electronic Journal of Statistics_. _11_(2), 5018-5051.
+  https://doi.org/10.1214/17-EJS1337SI
 - van Ravenzwaaij, D., Cassey, P., & Brown, S. D. (2018). A simple
   introduction to Markov Chain Monte–Carlo sampling. _Psychonomic
   Bulletin and Review_, _25_(1), 143–154.
