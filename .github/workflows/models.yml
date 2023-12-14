@@ -120,28 +120,28 @@ jobs:
               data: "roaches.data.json",
             },
             {
-              model: "11-hierarchical_varying_intercept-non_centered",
+              model: "15-hierarchical_varying_intercept-non_centered",
               data: "cheese.data.json",
             },
             {
-              model: "11-hierarchical_varying_intercept",
+              model: "15-hierarchical_varying_intercept",
               data: "cheese.data.json",
             },
             {
-              model: "12-hierarchical_varying_intercept_slope",
+              model: "16-hierarchical_varying_intercept_slope",
               data: "cheese.data.json",
             },
             {
-              model: "13-model_comparison-negative_binomial",
+              model: "17-model_comparison-negative_binomial",
               data: "roaches.data.json",
             },
-            { model: "13-model_comparison-poisson", data: "roaches.data.json" },
+            { model: "17-model_comparison-poisson", data: "roaches.data.json" },
             {
-              model: "13-model_comparison-zero_inflated-negative_binomial",
+              model: "17-model_comparison-zero_inflated-negative_binomial",
               data: "roaches.data.json",
             },
             {
-              model: "13-model_comparison-zero_inflated-poisson",
+              model: "17-model_comparison-zero_inflated-poisson",
               data: "roaches.data.json",
             },
           ]
