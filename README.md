@@ -87,6 +87,8 @@ These were tested with `Turing.jl` version 0.21.9 and Julia 1.7.3.
   Source: Gelman and Hill (2007).
 - `duncan` (robust regression): data from occupation's prestige filled with outliers.
   Source: Duncan (1961).
+- `sparse_regression` (sparse regression): simulated data from the [`glmnet` R package](https://cran.r-project.org/package=glmnet).
+  Source: Tay, Narasimhan and Hastie (2023).
 - `cheese` (hierarchical models): data from cheese ratings.
   A group of 10 rural and 10 urban raters rated 4 types of different cheeses (A, B, C and D) in two samples.
   Source: Boatwright, McCulloch and Rossi (1999).
@@ -275,6 +277,7 @@ The papers section of the references are divided into **required** and **complem
 - Boatwright, P., McCulloch, R., & Rossi, P. (1999). Account-level modeling for trade promotion: An application of a constrained parameter hierarchical model. _Journal of the American Statistical Association_, 94(448), 1063–1073.
 - Breslow, N. E. & Day, N. E. (1980). **Statistical Methods in Cancer Research. Volume 1: The Analysis of Case-Control Studies**. IARC Lyon / Oxford University Press.
 - Duncan, O. D. (1961). A socioeconomic index for all occupations. Class: Critical Concepts, 1, 388–426.
+- Tay JK, Narasimhan B, Hastie T (2023). Elastic Net Regularization Paths for All Generalized Linear Models. _Journal of Statistical Software_, 106(1), 1–31. doi:10.18637/jss.v106.i01.
 - Gelman, A., & Hill, J. (2007). **Data analysis using regression and
   multilevel/hierarchical models**. Cambridge university press.
 
