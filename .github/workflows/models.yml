@@ -164,3 +164,4 @@ jobs:
           echo "Compiling: ${{ matrix.stan.model }}"
           nix develop -L . --command bash -c "stan stan/${{ matrix.stan.model }}"
           nix develop -L . --command bash -c "stan/${{ matrix.stan.model }} sample data file=stan/${{ matrix.stan.data }}"
+          nix develop -L . --command bash -c "cat output.csv"
