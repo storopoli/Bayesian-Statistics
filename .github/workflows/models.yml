@@ -120,6 +120,10 @@ jobs:
               data: "roaches.data.json",
             },
             {
+              model: "11-sparse_horseshoe_regression",
+              data: "sparse_regression.data.json",
+            },
+            {
               model: "15-hierarchical_varying_intercept-non_centered",
               data: "cheese.data.json",
             },
