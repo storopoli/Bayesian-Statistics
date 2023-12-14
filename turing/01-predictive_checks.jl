@@ -1,4 +1,5 @@
 using Turing
+using DataFrames
 using Random: seed!
 
 seed!(123)
@@ -16,7 +17,7 @@ y = rand(Bernoulli(real_p), 1_000)
     for i in eachindex(y)
         y[i] ~ Bernoulli(p)
     end
-    return(; p, y)
+    return (; p, y)
 end
 
 # Instantiate the model
@@ -27,6 +28,7 @@ model = coin_flip(y)
 # i.e. don't condition on data.
 # Just use the Prior() sampler:
 prior_chain = sample(model, Prior(), 2_000)
+println(DataFrame(summarystats(prior_chain)))
 
 # Step 2: Instantiate a Vector of missing values
 # with the same dimensions as y:
@@ -45,6 +47,7 @@ prior_check = predict(model_missing, prior_chain)
 # i.e. do condition on data.
 # Just use any sampler except the Prior():
 posterior_chain = sample(model, MH(), 2_000)
+println(DataFrame(summarystats(posterior_chain)))
 
 # Step 2: Instantiate a Vector of missing values
 # with the same dimensions as y:

@@ -38,6 +38,7 @@ model = student_t_regression(X, y)
 
 # sample with NUTS, 4 multi-threaded parallel chains, and 2k iters with 1k warmup
 chn = sample(model, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
+println(DataFrame(summarystats(chn)))
 
 # results:
 #  parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec 
