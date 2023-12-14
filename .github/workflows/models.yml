@@ -29,10 +29,14 @@ jobs:
             "09-robust_negative_binomial_regression-roaches.jl",
             "10-robust_zero_inflated_regression-negative_binomial-roaches.jl",
             "10-robust_zero_inflated_regression-poisson-roaches.jl",
-            "11-hierarchical_varying_intercept-cheese.jl",
-            "11-hierarchical_varying_intercept-non_centered-cheese.jl",
-            "12-hierarchical_varying_intercept_slope-cheese.jl",
-            "13-model_comparison-roaches.jl",
+            "11-sparse_horseshoe.jl",
+            "12-sparse_horseshoe_p.jl",
+            "13-sparse_finnish_horseshoe.jl",
+            "14-sparse_r2d2.jl",
+            "15-hierarchical_varying_intercept-cheese.jl",
+            "15-hierarchical_varying_intercept-non_centered-cheese.jl",
+            "16-hierarchical_varying_intercept_slope-cheese.jl",
+            "17-model_comparison-roaches.jl",
           ]
     steps:
       - name: Checkout repository
