@@ -75,7 +75,7 @@ comparison = loo_compare((;
     Poisson=loo_poisson,
     NegativeBinomial=loo_negative_binomial
 ))
-println(comparison)
+display(comparison)
 
 # Results
 #┌──────────────────┬──────────┬────────┬────────┐
