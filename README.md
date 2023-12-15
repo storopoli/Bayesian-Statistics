@@ -37,6 +37,7 @@ Here is a brief table of contents:
 1. **Bayesian Ordinal Regression**
 1. **Bayesian Regression with Count Data: Poisson Regression**
 1. **Robust Bayesian Regression**
+1. **Bayesian Spase Regression**
 1. **Hierarchical Models**
 1. **Markov Chain Monte Carlo (MCMC) and Model Metrics**
 1. **Model Comparison: Cross-Validation and Other Metrics**
@@ -86,6 +87,8 @@ These were tested with `Turing.jl` version 0.21.9 and Julia 1.7.3.
   Source: Gelman and Hill (2007).
 - `duncan` (robust regression): data from occupation's prestige filled with outliers.
   Source: Duncan (1961).
+- `sparse_regression` (sparse regression): simulated data from the [`glmnet` R package](https://cran.r-project.org/package=glmnet).
+  Source: Tay, Narasimhan and Hastie (2023).
 - `cheese` (hierarchical models): data from cheese ratings.
   A group of 10 rural and 10 urban raters rated 4 types of different cheeses (A, B, C and D) in two samples.
   Source: Boatwright, McCulloch and Rossi (1999).
@@ -174,6 +177,10 @@ The papers section of the references are divided into **required** and **complem
 - Amrhein, V., Greenland, S., & McShane, B. (2019). Scientists rise up
   against statistical significance. _Nature_, _567_(7748), 305–307.
   https://doi.org/[10.1038/d41586-019-00857-9](https://doi.org/10.1038/d41586-019-00857-9)
+- Piironen, J. & Vehtari, A. (2017). Sparsity information and regularization in the
+  horseshoe and other shrinkage priors.
+  _Electronic Journal of Statistics_. _11_(2), 5018-5051.
+  https://doi.org/10.1214/17-EJS1337SI
 - van Ravenzwaaij, D., Cassey, P., & Brown, S. D. (2018). A simple
   introduction to Markov Chain Monte–Carlo sampling. _Psychonomic
   Bulletin and Review_, _25_(1), 143–154.
@@ -270,6 +277,7 @@ The papers section of the references are divided into **required** and **complem
 - Boatwright, P., McCulloch, R., & Rossi, P. (1999). Account-level modeling for trade promotion: An application of a constrained parameter hierarchical model. _Journal of the American Statistical Association_, 94(448), 1063–1073.
 - Breslow, N. E. & Day, N. E. (1980). **Statistical Methods in Cancer Research. Volume 1: The Analysis of Case-Control Studies**. IARC Lyon / Oxford University Press.
 - Duncan, O. D. (1961). A socioeconomic index for all occupations. Class: Critical Concepts, 1, 388–426.
+- Tay JK, Narasimhan B, Hastie T (2023). Elastic Net Regularization Paths for All Generalized Linear Models. _Journal of Statistical Software_, 106(1), 1–31. doi:10.18637/jss.v106.i01.
 - Gelman, A., & Hill, J. (2007). **Data analysis using regression and
   multilevel/hierarchical models**. Cambridge university press.
 

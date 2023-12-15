@@ -74,8 +74,8 @@ loo_negative_binomial = loo(model_negative_binomial, chn_negative_binomial)
 comparison = loo_compare((;
     Poisson=loo_poisson,
     NegativeBinomial=loo_negative_binomial
-)
-)
+))
+display(comparison)
 
 # Results
 #┌──────────────────┬──────────┬────────┬────────┐

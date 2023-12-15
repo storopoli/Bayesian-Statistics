@@ -66,6 +66,7 @@ model = correlated_varying_intercept_slope_regression(X, idx, y)
 
 # sample with NUTS, 4 multi-threaded parallel chains, and 2k iters
 chn = sample(model, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
+println(DataFrame(summarystats(chn)))
 
 # results:
 # Summary Statistics
