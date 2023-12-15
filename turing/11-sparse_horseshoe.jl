@@ -24,7 +24,7 @@ y = standardize(ZScoreTransform, y; dims=1)
 @model function sparse_horseshoe_regression(X, y; predictors=size(X, 2))
     # priors
     α ~ TDist(3) * 2.5
-    λ ~ filldist(TDist(3) * 2.5, predictors)
+    λ ~ filldist(truncated(Cauchy(0, 1); lower=0), predictors)
     τ ~ truncated(Cauchy(0, 1); lower=0)
     σ ~ Exponential(1)
 
