@@ -52,7 +52,7 @@
   #utils.polylux-outline()
 ]
 
-// #include "00-Tools.typ"
+#include "00-Tools.typ"
 // #include "01-Bayesian_Statistics.typ"
 // #include "02-Statistical_Distributions.typ"
 // #include "03-Priors.typ"
