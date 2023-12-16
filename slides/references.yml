@@ -1,0 +1,2137 @@
+akaike1998information:
+  type: anthos
+  title: Information theory and an extension of the maximum likelihood principle
+  author: Akaike, Hirotogu
+  date: 1973
+  editor:
+    - Petrov, B. N.
+    - Csaki, F
+  page-range: 266–281
+  parent:
+    type: anthology
+    title: Second International Symposium on Information Theory
+
+amrheinScientistsRiseStatistical2019:
+  type: article
+  title: Scientists Rise up against Statistical Significance
+  author:
+    - Amrhein, Valentin
+    - Greenland, Sander
+    - McShane, Blake
+  date: 2019-03-21
+  page-range: 305–307
+  serial-number:
+    doi: 10.1038/d41586-019-00857-9
+    issn: "14764687"
+  parent:
+    type: periodical
+    title: Nature
+    publisher: "{Nature Publishing Group}"
+    issue: 7748
+    volume: 567
+
+Baird1983:
+  type: article
+  title: "The Fisher/Pearson Chi-Squared Controversy: A Turning Point for Inductive Inference"
+  author: Baird, Davis
+  date: 1983
+  page-range: 105–118
+  url: http://www.jstor.org/stable/687444
+  serial-number:
+    issn: 00070882, 14643537
+  parent:
+    type: periodical
+    title: The British Journal for the Philosophy of Science
+    publisher: "[Oxford University Press, The British Society for the Philosophy of Science]"
+    issue: 2
+    volume: 34
+
+bayesplot:
+  type: misc
+  title: "bayesplot: Plotting for Bayesian Models"
+  author:
+    - Gabry, Jonah
+    - Mahr, Tristan
+  date: 2021
+  url: https://mc-stan.org/bayesplot/
+
+benjaminRedefineStatisticalSignificance2018:
+  type: article
+  title: Redefine Statistical Significance
+  author:
+    - Benjamin, Daniel J.
+    - Berger, James O.
+    - Johannesson, Magnus
+    - Nosek, Brian A.
+    - Wagenmakers, E.-J.
+    - Berk, Richard
+    - Bollen, Kenneth A.
+    - Brembs, Björn
+    - Brown, Lawrence
+    - Camerer, Colin
+    - Cesarini, David
+    - Chambers, Christopher D.
+    - Clyde, Merlise
+    - Cook, Thomas D.
+    - De Boeck, Paul
+    - Dienes, Zoltan
+    - Dreber, Anna
+    - Easwaran, Kenny
+    - Efferson, Charles
+    - Fehr, Ernst
+    - Fidler, Fiona
+    - Field, Andy P.
+    - Forster, Malcolm
+    - George, Edward I.
+    - Gonzalez, Richard
+    - Goodman, Steven
+    - Green, Edwin
+    - Green, Donald P.
+    - Greenwald, Anthony G.
+    - Hadfield, Jarrod D.
+    - Hedges, Larry V.
+    - Held, Leonhard
+    - Hua Ho, Teck
+    - Hoijtink, Herbert
+    - Hruschka, Daniel J.
+    - Imai, Kosuke
+    - Imbens, Guido
+    - Ioannidis, John P. A.
+    - Jeon, Minjeong
+    - Jones, James Holland
+    - Kirchler, Michael
+    - Laibson, David
+    - List, John
+    - Little, Roderick
+    - Lupia, Arthur
+    - Machery, Edouard
+    - Maxwell, Scott E.
+    - McCarthy, Michael
+    - Moore, Don A.
+    - Morgan, Stephen L.
+    - Munaf\a 'o, Marcus
+    - Nakagawa, Shinichi
+    - Nyhan, Brendan
+    - Parker, Timothy H.
+    - Pericchi, Luis
+    - Perugini, Marco
+    - Rouder, Jeff
+    - Rousseau, Judith
+    - Savalei, Victoria
+    - Schönbrodt, Felix D.
+    - Sellke, Thomas
+    - Sinclair, Betsy
+    - Tingley, Dustin
+    - Van Zandt, Trisha
+    - Vazire, Simine
+    - Watts, Duncan J.
+    - Winship, Christopher
+    - Wolpert, Robert L.
+    - Xie, Yu
+    - Young, Cristobal
+    - Zinman, Jonathan
+    - Johnson, Valen E.
+  date: 2018-01-01
+  page-range: 6–10
+  url:
+    value: http://www.nature.com/articles/s41562-017-0189-z
+    date: 2019-09-08
+  serial-number:
+    doi: 10.1038/s41562-017-0189-z
+    issn: 2397-3374
+  parent:
+    type: periodical
+    title: Nature Human Behaviour
+    publisher: "{Nature Publishing Group}"
+    issue: 1
+    volume: 2
+
+bertsekasIntroductionProbability2nd2008:
+  type: book
+  title: Introduction to Probability, 2nd Edition
+  author:
+    - Bertsekas, Dimitri P.
+    - Tsitsiklis, John N.
+  date: 2008-07-15
+  publisher: Athena Scientific
+  location: Belmont, Massachusetts
+  edition: 2nd edition
+  page-total: 544
+  serial-number:
+    isbn: 978-1-886529-23-6
+
+beskosOptimalTuningHybrid2013:
+  type: article
+  title: Optimal Tuning of the Hybrid {Monte Carlo} Algorithm
+  author:
+    - Beskos, Alexandros
+    - Pillai, Natesh
+    - Roberts, Gareth
+    - Sanz-Serna, Jesus-Maria
+    - Stuart, Andrew
+  date: 2013-11
+  page-range: 1501–1534
+  url:
+    value: https://projecteuclid.org/journals/bernoulli/volume-19/issue-5A/Optimal-tuning-of-the-hybrid-Monte-Carlo-algorithm/10.3150/12-BEJ414.full
+    date: 2021-04-30
+  serial-number:
+    doi: 10.3150/12-BEJ414
+    issn: 1350-7265
+  parent:
+    type: periodical
+    title: Bernoulli
+    publisher: "{Bernoulli Society for Mathematical Statistics and Probability}"
+    issue: 5A
+    volume: 19
+
+betancourtConceptualIntroductionHamiltonian2017:
+  type: web
+  title: A {Conceptual Introduction} to {Hamiltonian Monte Carlo}
+  author: Betancourt, Michael
+  date: 2017-01-09
+  url:
+    value: http://arxiv.org/abs/1701.02434
+    date: 2019-11-06
+
+betancourtProbabilisticBuildingBlocks2019:
+  type: web
+  title: Probabilistic Building Blocks
+  author: Betancourt, Michael
+  date: 2019-06
+  url:
+    value: https://betanalpha.github.io/assets/case_studies/probability_densities.html
+    date: 2021-05-27
+
+bezanson2017julia:
+  type: article
+  title: "Julia: {A} Fresh Approach to Numerical Computing"
+  author:
+    - Bezanson, Jeff
+    - Edelman, Alan
+    - Karpinski, Stefan
+    - Shah, Viral B
+  date: 2017
+  page-range: 65–98
+  parent:
+    type: periodical
+    title: SIAM review
+    publisher: "{SIAM}"
+    issue: 1
+    volume: 59
+
+boatwright1999account:
+  type: article
+  title: "Account-level modeling for trade promotion: An application of a constrained parameter hierarchical model"
+  author:
+    - Boatwright, Peter
+    - McCulloch, Robert
+    - Rossi, Peter
+  date: 1999
+  page-range: 1063–1073
+  parent:
+    type: periodical
+    title: Journal of the American Statistical Association
+    publisher: Taylor & Francis
+    issue: 448
+    volume: 94
+
+boxScienceStatistics1976:
+  type: article
+  title: Science and {Statistics}
+  author: Box, George E. P.
+  date: 1976
+  page-range: 791–799
+  serial-number:
+    doi: 10.2307/2286841
+    issn: 0162-1459
+  parent:
+    type: periodical
+    title: Journal of the American Statistical Association
+    publisher: "{[American Statistical Association, Taylor & Francis, Ltd.]}"
+    issue: 356
+    volume: 71
+
+brms:
+  type: article
+  title: "{brms}: An {R} Package for {Bayesian} Multilevel Models Using {Stan }"
+  author: Bürkner, Paul-Christian
+  date: 2017
+  page-range: 1–28
+  serial-number:
+    doi: 10.18637/jss.v080.i01
+  parent:
+    type: periodical
+    title: Journal of Statistical Software
+    issue: 1
+    volume: 80
+
+brooksGeneralMethodsMonitoring1998:
+  type: article
+  title: General {Methods} for {Monitoring Convergence} of {Iterative Simulations}
+  author:
+    - Brooks, Stephen P.
+    - Gelman, Andrew
+  date: 1998-12-01
+  page-range: 434–455
+  url:
+    value: https://amstat.tandfonline.com/doi/abs/10.1080/10618600.1998.10474787
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1080/10618600.1998.10474787
+    issn: 1061-8600
+  parent:
+    type: periodical
+    title: Journal of Computational and Graphical Statistics
+    publisher: "{Taylor & Francis}"
+    issue: 4
+    volume: 7
+
+brooksHandbookMarkovChain2011:
+  type: book
+  title: Handbook of {Markov Chain Monte Carlo}
+  author:
+    - Brooks, Steve
+    - Gelman, Andrew
+    - Jones, Galin
+    - Meng, Xiao-Li
+  date: 2011-05-10
+  publisher: "{CRC Press}"
+  page-total: 620
+  serial-number:
+    isbn: 978-1-4200-7942-5
+
+burknerAdvancedBayesianMultilevel2018:
+  type: article
+  title: Advanced Bayesian Multilevel Modeling with the R Package brms
+  author: Bürkner, Paul-Christian
+  date: 2018
+  page-range: 395–411
+  url:
+    value: https://journal.r-project.org/archive/2018/RJ-2018-017/index.html
+    date: 2021-02-26
+  serial-number:
+    issn: 2073-4859
+  parent:
+    type: periodical
+    title: The R Journal
+    issue: 1
+    volume: 10
+
+carpenterStanProbabilisticProgramming2017:
+  type: article
+  title: "Stan : {A Probabilistic Programming Language}"
+  author:
+    - Carpenter, Bob
+    - Gelman, Andrew
+    - Hoffman, Matthew D.
+    - Lee, Daniel
+    - Goodrich, Ben
+    - Betancourt, Michael
+    - Brubaker, Marcus
+    - Guo, Jiqiang
+    - Li, Peter
+    - Riddell, Allen
+  date: 2017
+  url:
+    value: http://www.jstatsoft.org/v76/i01/
+    date: 2019-10-29
+  serial-number:
+    doi: 10.18637/jss.v076.i01
+    issn: 1548-7660
+  parent:
+    type: periodical
+    title: Journal of Statistical Software
+    publisher: "{American Statistical Association}"
+    issue: 1
+    volume: 76
+
+casellaExplainingGibbsSampler1992:
+  type: article
+  title: Explaining the Gibbs Sampler
+  author:
+    - Casella, George
+    - George, Edward I.
+  date: 1992-08-01
+  page-range: 167–174
+  url: https://www.tandfonline.com/doi/abs/10.1080/00031305.1992.10475878
+  serial-number:
+    doi: 10.1080/00031305.1992.10475878
+  parent:
+    type: periodical
+    title: The American Statistician
+    issue: 3
+    volume: 46
+
+chibUnderstandingMetropolisHastingsAlgorithm1995:
+  type: article
+  title: Understanding the {Metropolis}-{Hastings Algorithm}
+  author:
+    - Chib, Siddhartha
+    - Greenberg, Edward
+  date: 1995-11
+  page-range: 327–335
+  serial-number:
+    doi: 10.1080/00031305.1995.10476177
+    issn: 0003-1305
+  parent:
+    type: periodical
+    title: The American Statistician
+    publisher: "{Taylor & Francis}"
+    issue: 4
+    volume: 49
+
+cobb2007introductory:
+  type: article
+  title: "The introductory statistics course: A Ptolemaic curriculum?"
+  author: Cobb, George W
+  date: 2007
+  parent:
+    type: periodical
+    title: Technology innovations in statistics education
+    issue: 1
+    volume: 1
+
+cohenEarth051994:
+  type: article
+  title: The Earth Is Round (p {}$<${} .05)
+  author: Cohen, Jacob
+  date: 1994
+  page-range: 997–1003
+  serial-number:
+    doi: 10.1037/0003-066X.49.12.997
+    issn: 0003066X
+  parent:
+    type: periodical
+    title: American Psychologist
+    publisher: "{American Psychological Association Inc.}"
+    issue: 12
+    volume: 49
+
+cortez2009modeling:
+  type: article
+  title: Modeling wine preferences by data mining from physicochemical properties
+  author:
+    - Cortez, Paulo
+    - Cerdeira, António
+    - Almeida, Fernando
+    - Matos, Telmo
+    - Reis, José
+  date: 2009
+  page-range: 547–553
+  parent:
+    type: periodical
+    title: Decision support systems
+    publisher: Elsevier
+    issue: 4
+    volume: 47
+
+cumming2009inference:
+  type: article
+  title: "Inference by eye: reading the overlap of independent confidence intervals"
+  author: Cumming, Geoff
+  date: 2009
+  page-range: 205–220
+  parent:
+    type: periodical
+    title: Statistics in medicine
+    publisher: Wiley Online Library
+    issue: 2
+    volume: 28
+
+definettiTheoryProbability1974:
+  type: book
+  title: Theory of {Probability}
+  author: de Finetti, Bruno
+  date: 1974
+  publisher: "{John Wiley & Sons}"
+  location: "{New York}"
+  edition: Volume1
+  serial-number:
+    isbn: 978-1-119-28637-0
+
+dekkingModernIntroductionProbability2010:
+  type: book
+  title: "A Modern Introduction to Probability and Statistics: Understanding Why and How"
+  author:
+    - Dekking, F. M.
+    - Kraaikamp, C.
+    - Lopuhaä, H. P.
+    - Meester, L. E.
+  date: 2010-10-19
+  publisher: Springer
+  page-total: 504
+  serial-number:
+    isbn: 978-1-84996-952-9
+
+DescTools:
+  type: reference
+  title: "{DescTools}: Tools for Descriptive Statistics"
+  author: Andri et mult. al., Signorell
+  date: 2021
+  url: https://cran.r-project.org/package=DescTools
+
+diaconisTenGreatIdeas2019:
+  type: book
+  title: Ten Great Ideas about Chance
+  author:
+    - Diaconis, Persi
+    - Skyrms, Brian
+  date: 2019-10-08
+  publisher: Princeton University Press
+  page-total: 270
+  serial-number:
+    isbn: 978-0-691-19639-8
+
+dienesBayesianOrthodoxStatistics2011:
+  type: article
+  title: "Bayesian {Versus Orthodox Statistics}: {Which Side Are You On}? "
+  author: Dienes, Zoltan
+  date: 2011-05-01
+  page-range: 274–290
+  url:
+    value: https://doi.org/10.1177/1745691611406920
+    date: 2021-02-04
+  serial-number:
+    doi: 10.1177/1745691611406920
+    issn: 1745-6916
+  parent:
+    type: periodical
+    title: Perspectives on Psychological Science
+    publisher: "{SAGE Publications Inc}"
+    issue: 3
+    volume: 6
+
+downey2016:
+  type: reference
+  title: "Probably Overthinking It: There is still only one test"
+  author: Downey, Allen
+  date: 2016
+  url: http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html
+
+duaneHybridMonteCarlo1987:
+  type: article
+  title: Hybrid {Monte Carlo}
+  author:
+    - Duane, Simon
+    - Kennedy, A. D.
+    - Pendleton, Brian J.
+    - Roweth, Duncan
+  date: 1987-09-03
+  page-range: 216–222
+  url:
+    value: https://www.sciencedirect.com/science/article/pii/037026938791197X
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1016/0370-2693(87)91197-X
+    issn: 0370-2693
+  parent:
+    type: periodical
+    title: Physics Letters B
+    issue: 2
+    volume: 195
+
+duncan1961socioeconomic:
+  type: article
+  title: A socioeconomic index for all occupations
+  author: Duncan, Otis Dudley
+  date: 1961
+  page-range: 388–426
+  parent:
+    type: periodical
+    title: "Class: Critical Concepts"
+    publisher: Rutledge New York, NY
+    volume: 1
+
+eckhardtStanUlamJohn1987:
+  type: article
+  title: Stan {Ulam}, {John} von {Neumann}, and the {Monte Carlo Method}
+  author: Eckhardt, Roger
+  date: 1987
+  page-range: 131–136
+  parent:
+    type: periodical
+    title: Los Alamos Science
+    issue: 30
+    volume: 15
+
+etzHowBecomeBayesian2018:
+  type: article
+  title: "How to Become a {Bayesian} in Eight Easy Steps: {An} Annotated Reading List"
+  author:
+    - Etz, Alexander
+    - Gronau, Quentin F.
+    - Dablander, Fabian
+    - Edelsbrunner, Peter A.
+    - Baribault, Beth
+  date: 2018-02-01
+  page-range: 219–234
+  url:
+    value: https://doi.org/10.3758/s13423-017-1317-5
+    date: 2021-02-04
+  serial-number:
+    doi: 10.3758/s13423-017-1317-5
+    issn: 1531-5320
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin & Review
+    issue: 1
+    volume: 25
+
+etzIntroductionBayesianInference2018:
+  type: article
+  title: Introduction to {Bayesian Inference} for {Psychology}
+  author:
+    - Etz, Alexander
+    - Vandekerckhove, Joachim
+  date: 2018-02-01
+  page-range: 5–34
+  url:
+    value: https://doi.org/10.3758/s13423-017-1262-3
+    date: 2021-02-04
+  serial-number:
+    doi: 10.3758/s13423-017-1262-3
+    issn: 1531-5320
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin & Review
+    issue: 1
+    volume: 25
+
+etzIntroductionConceptLikelihood2018:
+  type: article
+  title: Introduction to the {Concept} of {Likelihood} and {Its Applications}
+  author: Etz, Alexander
+  date: 2018-03-01
+  page-range: 60–69
+  url:
+    value: https://doi.org/10.1177/2515245917744314
+    date: 2021-02-04
+  serial-number:
+    doi: 10.1177/2515245917744314
+    issn: 2515-2459
+  parent:
+    type: periodical
+    title: Advances in Methods and Practices in Psychological Science
+    publisher: "{SAGE Publications Inc}"
+    issue: 1
+    volume: 1
+
+fisher1925statistical:
+  type: book
+  title: Statistical methods for research workers
+  author: Fisher, Ronald Aylmer
+  date: 1925
+  publisher: Oliver, Boyd
+
+fisherExamplesBayesMethod1962:
+  type: article
+  title: Some {Examples} of {Bayes}' {Method} of the {Experimental Determination} of {Probabilities A Priori}
+  author: Fisher, Ronald Aylmer
+  date: 1962
+  page-range: 118–124
+  serial-number:
+    issn: 0035-9246
+  parent:
+    type: periodical
+    title: Journal of the Royal Statistical Society. Series B (Methodological)
+    publisher: "{[Royal Statistical Society, Wiley]}"
+    issue: 1
+    volume: 24
+
+gabryVisualizationBayesianWorkflow2019:
+  type: article
+  title: Visualization in {Bayesian} Workflow
+  author:
+    - Gabry, Jonah
+    - Simpson, Daniel
+    - Vehtari, Aki
+    - Betancourt, Michael
+    - Gelman, Andrew
+  date: 2019-02-01
+  page-range: 389–402
+  url:
+    value: http://doi.wiley.com/10.1111/rssa.12378
+    date: 2019-09-16
+  serial-number:
+    doi: 10.1111/rssa.12378
+    issn: "09641998"
+  parent:
+    type: periodical
+    title: "Journal of the Royal Statistical Society: Series A (Statistics in Society)"
+    publisher: "{Blackwell Publishing Ltd}"
+    issue: 2
+    volume: 182
+
+gapminder:
+  type: reference
+  title: "gapminder: Data from Gapminder"
+  author: Bryan, Jennifer
+  date: 2017
+  url: https://cran.r-project.org/package=gapminder
+
+geisser1979predictive:
+  type: article
+  title: A predictive approach to model selection
+  author:
+    - Geisser, Seymour
+    - Eddy, William F
+  date: 1979
+  page-range: 153–160
+  parent:
+    type: periodical
+    title: Journal of the American Statistical Association
+    publisher: Taylor & Francis Group
+    issue: 365
+    volume: 74
+
+gelfand1992model:
+  type: anthos
+  title: Model determination using predictive distributions with implementation via sampling-based methods
+  author:
+    - Gelfand, A. E.
+    - Dey, D. K.
+    - Chang, H.
+  date: 1992
+  editor:
+    - Bernardo, J. M.
+    - Berger, J. O.
+    - Dawid, A. P.
+    - Smith, A. F. M.
+  page-range: 147–167
+  parent:
+    type: anthology
+    title: Bayesian Statistics
+    publisher: Oxford University Press
+
+gelfand1996model:
+  type: article
+  title: Model determination using sampling-based methods
+  author: Gelfand, Alan E
+  date: 1996
+  page-range: 145–161
+  parent:
+    type: periodical
+    title: Markov chain Monte Carlo in practice
+    publisher: London
+
+gelman2013bayesian:
+  type: book
+  title: Bayesian {Data Analysis}
+  author:
+    - Gelman, Andrew
+    - Carlin, John B
+    - Stern, Hal S
+    - Dunson, David B
+    - Vehtari, Aki
+    - Rubin, Donald B
+  date: 2013
+  publisher: "{Chapman and Hall/CRC}"
+
+gelman2020regression:
+  type: book
+  title: Regression and Other Stories
+  author:
+    - Gelman, Andrew
+    - Hill, Jennifer
+    - Vehtari, Aki
+  date: 2020
+  publisher: "{Cambridge University Press}"
+
+gelmanBasicsMarkovChain2013:
+  type: anthos
+  title: Basics of {Markov Chain Simulation}
+  author:
+    - Gelman, Andrew
+    - Carlin, John B
+    - Stern, Hal S
+    - Dunson, David B
+    - Vehtari, Aki
+    - Rubin, Donald B
+  date: 2013
+  parent:
+    type: anthology
+    title: Bayesian {Data Analysis}
+    publisher: "{Chapman and Hall/CRC}"
+
+gelmanBayesianWorkflow2020:
+  type: web
+  title: Bayesian {Workflow}
+  author:
+    - Gelman, Andrew
+    - Vehtari, Aki
+    - Simpson, Daniel
+    - Margossian, Charles C.
+    - Carpenter, Bob
+    - Yao, Yuling
+    - Kennedy, Lauren
+    - Gabry, Jonah
+    - Bürkner, Paul-Christian
+    - Modr\a 'ak, Martin
+  date: 2020-11-03
+  url:
+    value: http://arxiv.org/abs/2011.01808
+    date: 2021-02-04
+
+gelmanDataAnalysisUsing2007:
+  type: book
+  title: Data Analysis Using Regression and Multilevel/Hierarchical Models
+  author:
+    - Gelman, Andrew
+    - Hill, Jennifer
+  date: 2007
+  publisher: "{Cambridge university press}"
+
+gelmanFolkTheoremStatistical2008:
+  type: web
+  title: The Folk Theorem of Statistical Computing
+  author: Gelman, Andrew
+  date: 2008
+  url: https://statmodeling.stat.columbia.edu/2008/05/13/the_folk_theore/
+
+gelmanInferenceIterativeSimulation1992:
+  type: article
+  title: Inference from {Iterative Simulation Using Multiple Sequences}
+  author:
+    - Gelman, Andrew
+    - Rubin, Donald B.
+  date: 1992-11
+  page-range: 457–472
+  url:
+    value: https://projecteuclid.org/euclid.ss/1177011136
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1214/ss/1177011136
+    issn: 0883-4237, 2168-8745
+  parent:
+    type: periodical
+    title: Statistical Science
+    publisher: "{Institute of Mathematical Statistics}"
+    issue: 4
+    volume: 7
+
+gelmanIterativeNonIterativeSimulation1992:
+  type: article
+  title: Iterative and {Non}-{Iterative Simulation Algorithms}
+  author: Gelman, Andrew
+  date: 1992
+  page-range: 457–511
+  parent:
+    type: proceedings
+    title: Computing {Science} and {Statistics} ({Interface Proceedings})
+    publisher: "{PROCEEDINGS PUBLISHED BY VARIOUS PUBLISHERS}"
+    volume: 24
+
+gemanStochasticRelaxationGibbs1984:
+  type: article
+  title: Stochastic {Relaxation}, {Gibbs Distributions}, and the { Bayesian Restoration} of {Images}
+  author:
+    - Geman, S.
+    - Geman, D.
+  date: 1984-11
+  page-range: 721–741
+  serial-number:
+    doi: 10.1109/TPAMI.1984.4767596
+    issn: 1939-3539
+  parent:
+    type: periodical
+    title: IEEE Transactions on Pattern Analysis and Machine Intelligence
+    issue: 6
+
+geTuringLanguageFlexible2018:
+  type: article
+  title: "Turing: {A Language} for {Flexible Probabilistic Inference}"
+  author:
+    - Ge, Hong
+    - Xu, Kai
+    - Ghahramani, Zoubin
+  date: 2018-03
+  page-range: 1682–1690
+  serial-number:
+    issn: 2640-3498
+  parent:
+    type: proceedings
+    title: International {Conference} on {Artificial Intelligence} and {Statistics}
+    publisher: "{PMLR}"
+
+geyer2011introduction:
+  type: anthos
+  title: Introduction to Markov Chain Monte Carlo
+  author: Geyer, Charles J
+  date: 2011
+  editor:
+    - Brooks, Steve
+    - Gelman, Andrew
+    - Jones, Galin L.
+    - Meng, Xiao-Li
+  parent:
+    type: anthology
+    title: Handbook of Markov Chain Monte Carlo
+
+Goodman1180:
+  type: article
+  title: Aligning Statistical and Scientific Reasoning
+  author: Goodman, Steven N
+  date: 2016
+  page-range: 1180–1181
+  url: https://science.sciencemag.org/content/352/6290/1180
+  serial-number:
+    doi: 10.1126/science.aaf5406
+    issn: 0036-8075
+  note: 59 citations (Semantic Scholar/DOI) [2021-02-13]
+  parent:
+    type: periodical
+    title: Science
+    publisher: "{American Association for the Advancement of Science}"
+    issue: 6290
+    volume: 352
+
+gtsummary:
+  type: reference
+  title: "gtsummary: Presentation-Ready Data Summary and Analytic Result Tables"
+  author:
+    - Sjoberg, Daniel D.
+    - Curry, Michael
+    - Hannum, Margie
+    - Larmarange, Joseph
+    - Whiting, Karissa
+    - Zabor, Emily C.
+  date: 2021
+
+hastingsMonteCarloSampling1970:
+  type: article
+  title: Monte {Carlo} Sampling Methods Using {Markov} Chains and Their Applications
+  author: Hastings, W. K.
+  date: 1970-04-01
+  page-range: 97–109
+  url:
+    value: https://doi.org/10.1093/biomet/57.1.97
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1093/biomet/57.1.97
+    issn: 0006-3444
+  parent:
+    type: periodical
+    title: Biometrika
+    issue: 1
+    volume: 57
+
+head2015extent:
+  type: article
+  title: The extent and consequences of p-hacking in science
+  author:
+    - Head, Megan L
+    - Holman, Luke
+    - Lanfear, Rob
+    - Kahn, Andrew T
+    - Jennions, Michael D
+  date: 2015
+  page-range: e1002106
+  parent:
+    type: periodical
+    title: PLoS Biol
+    publisher: Public Library of Science
+    issue: 3
+    volume: 13
+
+Hoekstra2014:
+  type: article
+  title: "{Robust misinterpretation of confidence intervals}"
+  author:
+    - Hoekstra, Rink
+    - Morey, Richard D
+    - Rouder, Jeffrey N
+    - Wagenmakers, Eric-Jan
+  date: 2014
+  page-range: 1157–1164
+  url: https://doi.org/10.3758/s13423-013-0572-3
+  serial-number:
+    doi: 10.3758/s13423-013-0572-3
+    issn: 1531-5320
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin {&} Review
+    issue: 5
+    volume: 21
+
+hoffman2014no:
+  type: article
+  title: "The {No}-{U}-{Turn Sampler}: {Adaptively Setting Path Lengths} in {Hamiltonian Monte Carlo}"
+  author:
+    - Hoffman, Matthew D
+    - Gelman, Andrew
+  date: 2011-11-17
+  page-range: 1593–1623
+  url: http://arxiv.org/abs/1111.4246
+  parent:
+    type: periodical
+    title: Journal of Machine Learning Research
+    issue: 1
+    volume: 15
+
+ioannidis2005most:
+  type: article
+  title: Why most published research findings are false
+  author: Ioannidis, John PA
+  date: 2005
+  page-range: e124
+  parent:
+    type: periodical
+    title: PLoS medicine
+    publisher: Public Library of Science
+    issue: 8
+    volume: 2
+
+Ioannidis2019:
+  type: article
+  title: "{What Have We (Not) Learnt from Millions of Scientific Papers with <i>P</i> Values?}"
+  author: Ioannidis, John P. A.
+  date: 2019
+  page-range: 20–25
+  url: https://www.tandfonline.com/doi/full/10.1080/00031305.2018.1447512
+  serial-number:
+    doi: 10.1080/00031305.2018.1447512
+    issn: 0003-1305
+  parent:
+    type: periodical
+    title: The American Statistician
+    issue: sup1
+    volume: 73
+
+irseles2008numericalanalysis:
+  type: book
+  title: A First Course in the Numerical Analysis of Differential Equations
+  author: Iserles, Arieh
+  date: 2008
+  publisher: Cambridge University Press
+  location: USA
+  edition: 2nd
+  serial-number:
+    isbn: "0521734908"
+
+ItTimeTalk2019:
+  type: article
+  title: It’s Time to Talk about Ditching Statistical Significance
+  date: 2019-03-20
+  page-range: 283
+  url:
+    value: https://www.nature.com/articles/d41586-019-00874-8
+    date: 2021-03-30
+  serial-number:
+    doi: 10.1038/d41586-019-00874-8
+  parent:
+    type: periodical
+    title: Nature
+    publisher: "{Nature Publishing Group}"
+    issue: 7748
+    volume: 567
+
+jaynesProbabilityTheoryLogic2003:
+  type: book
+  title: "Probability Theory: {The} Logic of Science"
+  author: Jaynes, Edwin T.
+  date: 2003
+  publisher: "{Cambridge university press}"
+
+junior2020vale:
+  type: article
+  title: Quanto Vale o Valor-p?
+  author: J\a 'unior, Carlos Alberto Mourão
+  date: 2020
+  parent:
+    type: periodical
+    title: Arquivos de Ciências do Esporte
+    issue: 2
+    volume: 7
+
+kerrHARKingHypothesizingResults1998:
+  type: article
+  title: "{HARKing}: {Hypothesizing} after the Results Are Known"
+  author: Kerr, Norbert L.
+  date: 1998
+  page-range: 196–217
+  serial-number:
+    doi: 10.1207/s15327957pspr0203_4
+    issn: "10888683"
+  parent:
+    type: periodical
+    title: Personality and Social Psychology Review
+    publisher: "{SAGE Publications Inc.}"
+    issue: 3
+    volume: 2
+
+khanBayesianLearningRule2021:
+  type: web
+  title: The {Bayesian Learning Rule}
+  author:
+    - Khan, Mohammad Emtiyaz
+    - Rue, Håvard
+  date: 2021-07-09
+  url:
+    value: http://arxiv.org/abs/2107.04562
+    date: 2021-07-13
+
+kolmogorovFoundationsTheoryProbability1933:
+  type: book
+  title: Foundations of the {Theory} of {Probability}
+  author: Kolmogorov, Andrey Nikolaevich
+  date: 1933
+  publisher: "{Julius Springer}"
+  location: "{Berlin}"
+
+kruschke2015bayesian:
+  type: anthos
+  title: Bayesian Estimation in Hierarchical Models
+  author:
+    - Kruschke, John K
+    - Vanpaemel, Wolf
+  date: 2015
+  editor:
+    - Busemeyer, Jerome R.
+    - Wang, Zheng
+    - Townsend, James T.
+    - Eidels, Ami
+  page-range: 279–299
+  serial-number:
+    isbn: 978-0-19-995799-6
+  parent:
+    type: anthology
+    title: The {Oxford} Handbook of Computational and Mathematical Psychology
+    publisher: "{Oxford University Press Oxford, UK}"
+
+kruschkeBayesianDataAnalysis2018:
+  type: article
+  title: Bayesian Data Analysis for Newcomers
+  author:
+    - Kruschke, John K.
+    - Liddell, Torrin M.
+  date: 2018-02-01
+  page-range: 155–177
+  url:
+    value: https://doi.org/10.3758/s13423-017-1272-1
+    date: 2021-02-04
+  serial-number:
+    doi: 10.3758/s13423-017-1272-1
+    issn: 1531-5320
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin & Review
+    issue: 1
+    volume: 25
+
+kruschkeBayesianNewStatistics2018:
+  type: article
+  title: "The {Bayesian New Statistics}: {Hypothesis} Testing, Estimation , Meta-Analysis, and Power Analysis from a {Bayesian} Perspective"
+  author:
+    - Kruschke, John K.
+    - Liddell, Torrin M.
+  date: 2018-02-01
+  page-range: 178–206
+  url:
+    value: https://doi.org/10.3758/s13423-016-1221-4
+    date: 2021-02-04
+  serial-number:
+    doi: 10.3758/s13423-016-1221-4
+    issn: 1531-5320
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin & Review
+    issue: 1
+    volume: 25
+
+kurtBayesianStatisticsFun2019:
+  type: book
+  title: "Bayesian Statistics the Fun Way: Understanding Statistics and Probability with Star Wars, {LEGO}, and Rubber Ducks"
+  author: Kurt, Will
+  date: 2019-07-09
+  publisher: No Starch Press
+  location: San Francisco
+  edition: Illustrated edition
+  page-total: 256
+  serial-number:
+    isbn: 978-1-59327-956-1
+
+lakensJustifyYourAlpha2018:
+  type: article
+  title: Justify Your Alpha
+  author:
+    - Lakens, Daniel
+    - Adolfi, Federico G.
+    - Albers, Casper J.
+    - Anvari, Farid
+    - Apps, Matthew A.J.
+    - Argamon, Shlomo E.
+    - Baguley, Thom
+    - Becker, Raymond B.
+    - Benning, Stephen D.
+    - Bradford, Daniel E.
+    - Buchanan, Erin M.
+    - Caldwell, Aaron R.
+    - Van Calster, Ben
+    - Carlsson, Rickard
+    - Chen, Sau Chin
+    - Chung, Bryan
+    - Colling, Lincoln J.
+    - Collins, Gary S.
+    - Crook, Zander
+    - Cross, Emily S.
+    - Daniels, Sameera
+    - Danielsson, Henrik
+    - Debruine, Lisa
+    - Dunleavy, Daniel J.
+    - Earp, Brian D.
+    - Feist, Michele I.
+    - Ferrell, Jason D.
+    - Field, James G.
+    - Fox, Nicholas W.
+    - Friesen, Amanda
+    - Gomes, Caio
+    - Gonzalez-Marquez, Monica
+    - Grange, James A.
+    - Grieve, Andrew P.
+    - Guggenberger, Robert
+    - Grist, James
+    - Van Harmelen, Anne Laura
+    - Hasselman, Fred
+    - Hochard, Kevin D.
+    - Hoffarth, Mark R.
+    - Holmes, Nicholas P.
+    - Ingre, Michael
+    - Isager, Peder M.
+    - Isotalus, Hanna K.
+    - Johansson, Christer
+    - Juszczyk, Konrad
+    - Kenny, David A.
+    - Khalil, Ahmed A.
+    - Konat, Barbara
+    - Lao, Junpeng
+    - Larsen, Erik Gahner
+    - Lodder, Gerine M.A.
+    - Lukavsk\a`y , Jǐr\a 'ı
+    - Madan, Christopher R.
+    - Manheim, David
+    - Martin, Stephen R.
+    - Martin, Andrea E.
+    - Mayo, Deborah G.
+    - McCarthy, Randy J.
+    - McConway, Kevin
+    - McFarland, Colin
+    - Nio, Amanda Q.X.
+    - Nilsonne, Gustav
+    - De Oliveira, Cilene Lino
+    - De Xivry, Jean Jacques Orban
+    - Parsons, Sam
+    - Pfuhl, Gerit
+    - Quinn, Kimberly A.
+    - Sakon, John J.
+    - Saribay, S. Adil
+    - Schneider, Iris K.
+    - Selvaraju, Manojkumar
+    - Sjoerds, Zsuzsika
+    - Smith, Samuel G.
+    - Smits, Tim
+    - Spies, Jeffrey R.
+    - Sreekumar, Vishnu
+    - Steltenpohl, Crystal N.
+    - Stenhouse, Neil
+    - \a 'Swįatkowski, Wojciech
+    - Vadillo, Miguel A.
+    - Van Assen, Marcel A.L.M.
+    - Williams, Matt N.
+    - Williams, Samantha E.
+    - Williams, Donald R.
+    - Yarkoni, Tal
+    - Ziano, Ignazio
+    - Zwaan, Rolf A.
+  date: 2018-03-01
+  page-range: 168–171
+  serial-number:
+    doi: 10.1038/s41562-018-0311-x
+    issn: "23973374"
+  parent:
+    type: periodical
+    title: Nature Human Behaviour
+    publisher: "{Nature Publishing Group}"
+    issue: 3
+    volume: 2
+
+lewandowski2009generating:
+  type: article
+  title: Generating random correlation matrices based on vines and extended onion method
+  author:
+    - Lewandowski, Daniel
+    - Kurowicka, Dorota
+    - Joe, Harry
+  date: 2009
+  page-range: 1989–2001
+  parent:
+    type: periodical
+    title: Journal of multivariate analysis
+    publisher: Elsevier
+    issue: 9
+    volume: 100
+
+lme4:
+  type: article
+  title: Fitting Linear Mixed-Effects Models Using {lme4}
+  author:
+    - Bates, Douglas
+    - Mächler, Martin
+    - Bolker, Ben
+    - Walker, Steve
+  date: 2015
+  page-range: 1–48
+  serial-number:
+    doi: 10.18637/jss.v067.i01
+  parent:
+    type: periodical
+    title: Journal of Statistical Software
+    issue: 1
+    volume: 67
+
+loo:
+  type: misc
+  title: "loo: Efficient leave-one-out cross-validation and WAIC for Bayesian models"
+  author:
+    - Vehtari, Aki
+    - Gabry, Jonah
+    - Magnusson, Mans
+    - Yao, Yuling
+    - Bürkner, Paul-Christian
+    - Paananen, Topi
+    - Gelman, Andrew
+  date: 2020
+  url: https://mc-stan.org/loo/
+
+mcelreath2020statistical:
+  type: book
+  title: "Statistical Rethinking: {A Bayesian} Course with Examples in {R } and {Stan}"
+  author: McElreath, Richard
+  date: 2020
+  publisher: "{CRC press}"
+
+mcshaneAbandonStatisticalSignificance2019:
+  type: article
+  title: Abandon {Statistical Significance}
+  author:
+    - McShane, Blakeley B.
+    - Gal, David
+    - Gelman, Andrew
+    - Robert, Christian
+    - Tackett, Jennifer L.
+  date: 2019-03-29
+  page-range: 235–245
+  serial-number:
+    doi: 10.1080/00031305.2018.1527253
+    issn: "15372731"
+  parent:
+    type: periodical
+    title: American Statistician
+    publisher: "{American Statistical Association}"
+    issue: sup1
+    volume: 73
+
+metropolisEquationStateCalculations1953:
+  type: article
+  title: Equation of {State Calculations} by {Fast Computing Machines}
+  author:
+    - Metropolis, Nicholas
+    - Rosenbluth, Arianna W.
+    - Rosenbluth, Marshall N.
+    - Teller, Augusta H.
+    - Teller, Edward
+  date: 1953-06-01
+  page-range: 1087–1092
+  url:
+    value: https://aip.scitation.org/doi/abs/10.1063/1.1699114
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1063/1.1699114
+    issn: 0021-9606
+  parent:
+    type: periodical
+    title: The Journal of Chemical Physics
+    publisher: "{American Institute of Physics}"
+    issue: 6
+    volume: 21
+
+Morey2016:
+  type: article
+  title: "{The fallacy of placing confidence in confidence intervals}"
+  author:
+    - Morey, Richard D.
+    - Hoekstra, Rink
+    - Rouder, Jeffrey N.
+    - Lee, Michael D.
+    - Wagenmakers, Eric-Jan
+  date: 2016-02
+  page-range: 103–123
+  url: http://link.springer.com/10.3758/s13423-015-0947-8
+  serial-number:
+    doi: 10.3758/s13423-015-0947-8
+    issn: 1069-9384
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin {&} Review
+    publisher: Springer New York LLC
+    issue: 1
+    volume: 23
+
+murphyHARKingHowBadly2019:
+  type: article
+  title: "{HARKing}: {How Badly Can Cherry}-{Picking} and {Question Trolling Produce Bias} in {Published Results}?"
+  author:
+    - Murphy, Kevin R.
+    - Aguinis, Herman
+  date: 2019-02-15
+  serial-number:
+    doi: 10.1007/s10869-017-9524-7
+    issn: "08893268"
+  parent:
+    type: periodical
+    title: Journal of Business and Psychology
+    publisher: "{Springer New York LLC}"
+    issue: 1
+    volume: 34
+
+muth2018user:
+  type: article
+  title: "User-friendly Bayesian regression modeling: A tutorial with rstanarm and shinystan"
+  author:
+    - Muth, Chelsea
+    - Oravecz, Zita
+    - Gabry, Jonah
+  date: 2018
+  page-range: 99–119
+  parent:
+    type: periodical
+    title: Quantitative Methods for Psychology
+    issue: 2
+    volume: 14
+
+nauFinettiWasRight2001:
+  type: article
+  title: "De {Finetti} Was {Right}: {Probability Does Not Exist}"
+  author: Nau, Robert F.
+  date: 2001-12-01
+  page-range: 89–124
+  url:
+    value: https://doi.org/10.1023/A:1015525808214
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1023/A:1015525808214
+    issn: 1573-7187
+  note: 80 citations (Semantic Scholar/DOI) [2021-02-13]
+  parent:
+    type: periodical
+    title: Theory and Decision
+    issue: 2
+    volume: 51
+
+neal2011mcmc:
+  type: anthos
+  title: "{MCMC} Using {Hamiltonian} Dynamics"
+  author: Neal, Radford M
+  date: 2011
+  editor:
+    - Brooks, Steve
+    - Gelman, Andrew
+    - Jones, Galin L.
+    - Meng, Xiao-Li
+  parent:
+    type: anthology
+    title: Handbook of Markov Chain Monte Carlo
+
+nealImprovedAcceptanceProcedure1994:
+  type: article
+  title: An {Improved Acceptance Procedure} for the {Hybrid Monte Carlo Algorithm}
+  author: Neal, Radford M.
+  date: 1994-03-01
+  page-range: 194–203
+  url:
+    value: https://www.sciencedirect.com/science/article/pii/S0021999184710540
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1006/jcph.1994.1054
+    issn: 0021-9991
+  parent:
+    type: periodical
+    title: Journal of Computational Physics
+    issue: 1
+    volume: 111
+
+nealSliceSampling2003:
+  type: article
+  title: Slice {Sampling}
+  author: Neal, Radford M.
+  date: 2003
+  page-range: 705–741
+  serial-number:
+    issn: 0090-5364
+  parent:
+    type: periodical
+    title: The Annals of Statistics
+    publisher: "{Institute of Mathematical Statistics}"
+    issue: 3
+    volume: 31
+
+nesterov2009primal:
+  type: article
+  title: Primal-dual subgradient methods for convex problems
+  author: Nesterov, Yurii
+  date: 2009
+  page-range: 221–259
+  parent:
+    type: periodical
+    title: Mathematical programming
+    publisher: Springer
+    issue: 1
+    volume: 120
+
+neyman1933:
+  type: article
+  title: On the problem of the most efficient tests of statistical hypotheses
+  author:
+    - Neyman, Jerzy
+    - Pearson, Egon Sharpe
+  date: 1933
+  page-range: 289–337
+  parent:
+    type: periodical
+    title: Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character
+    publisher: The Royal Society London
+    issue: 694–706
+    volume: 231
+
+neyman1937outline:
+  type: article
+  title: Outline of a theory of statistical estimation based on the classical theory of probability
+  author: Neyman, Jerzy
+  date: 1937
+  page-range: 333–380
+  parent:
+    type: periodical
+    title: Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences
+    publisher: The Royal Society London
+    issue: 767
+    volume: 236
+
+perkelJuliaComeSyntax2019:
+  type: article
+  title: "Julia: Come for the Syntax, Stay for the Speed"
+  author: Perkel, Jeffrey M.
+  date: 2019-07
+  page-range: 141–142
+  serial-number:
+    doi: 10.1038/d41586-019-02310-3
+  parent:
+    type: periodical
+    title: Nature
+    publisher: "{Nature Publishing Group}"
+    issue: 7767
+    volume: 572
+
+postcards:
+  type: reference
+  title: "postcards: Create Beautiful, Simple Personal Websites"
+  author: Kross, Sean
+  date: 2021
+  url: https://cran.r-project.org/package=postcards
+
+pymc3:
+  type: article
+  title: Probabilistic programming in Python using PyMC3
+  author:
+    - Salvatier, John
+    - Wiecki, Thomas V
+    - Fonnesbeck, Christopher
+  date: 2016
+  page-range: e55
+  parent:
+    type: periodical
+    title: PeerJ Computer Science
+    publisher: PeerJ Inc.
+    volume: 2
+
+readxl:
+  type: reference
+  title: "readxl: Read Excel Files"
+  author:
+    - Wickham, Hadley
+    - Bryan, Jennifer
+  date: 2019
+  url: https://cran.r-project.org/package=readxl
+
+ritchie2020science:
+  type: book
+  title: "Science fictions: Exposing fraud, bias, negligence and hype in science"
+  author: Ritchie, Stuart
+  date: 2020
+  publisher: Random House
+
+robertsWeakConvergenceOptimal1997:
+  type: article
+  title: Weak Convergence and Optimal Scaling of Random Walk {Metropolis} Algorithms
+  author:
+    - Roberts, G. O.
+    - Gelman, A.
+    - Gilks, W. R.
+  date: 1997-02
+  page-range: 110–120
+  url:
+    value: https://projecteuclid.org/euclid.aoap/1034625254
+    date: 2021-02-07
+  serial-number:
+    doi: 10.1214/aoap/1034625254
+    issn: 1050-5164, 2168-8737
+  parent:
+    type: periodical
+    title: Annals of Applied Probability
+    publisher: "{Institute of Mathematical Statistics}"
+    issue: 1
+    volume: 7
+
+rosnow1989statistical:
+  type: article
+  title: Statistical procedures and the justification of knowledge in psychological science
+  author:
+    - Rosnow, Ralph L
+    - Rosenthal, Robert
+  date: 1989
+  page-range: 1276–1284
+  parent:
+    type: periodical
+    title: American Psychologist
+    publisher: American Psychological Association (PsycARTICLES)
+    volume: 44
+
+rstanarm:
+  type: misc
+  title: "rstanarm: {Bayesian} applied regression modeling via {Stan}."
+  author:
+    - Goodrich, Ben
+    - Gabry, Jonah
+    - Ali, Imad
+    - Brilleman, Sam
+  date: 2020
+  url: https://mc-stan.org/rstanarm
+
+saculinggan2013empirical:
+  type: article
+  title: Empirical power comparison of goodness of fit tests for normality in the presence of outliers
+  author:
+    - Saculinggan, Mayette
+    - Balase, Emily Amor
+  date: 2013
+  page-range: 12041
+  parent:
+    type: proceedings
+    title: "Journal of Physics: Conference Series"
+    organization: IOP Publishing
+    issue: 1
+    volume: 435
+
+schootGentleIntroductionBayesian2014:
+  type: article
+  title: "A {Gentle Introduction} to {Bayesian Analysis}: {Applications } to {Developmental Research}"
+  author:
+    - van de Schoot, Rens
+    - Kaplan, David
+    - Denissen, Jaap
+    - Asendorpf, Jens B.
+    - Neyer, Franz J.
+    - van Aken, Marcel A. G.
+  date: 2014
+  page-range: 842–860
+  url:
+    value: https://srcd.onlinelibrary.wiley.com/doi/abs/10.1111/cdev.12169
+    date: 2021-02-04
+  serial-number:
+    doi: 10.1111/cdev.12169
+    issn: 1467-8624
+  note: "_eprint: https://srcd.onlinelibrary.wiley.com/doi/pdf/10.1111/cdev.12169 "
+  parent:
+    type: periodical
+    title: Child Development
+    issue: 3
+    volume: 85
+
+skimr:
+  type: reference
+  title: "skimr: Compact and Flexible Summaries of Data"
+  author:
+    - Waring, Elin
+    - Quinn, Michael
+    - McNamara, Amelia
+    - Arino de la Rubia, Eduardo
+    - Zhu, Hao
+    - Ellis, Shannon
+  date: 2021
+  url: https://cran.r-project.org/package=skimr
+
+spiegelhalter2002bayesian:
+  type: article
+  title: Bayesian measures of model complexity and fit
+  author:
+    - Spiegelhalter, David J
+    - Best, Nicola G
+    - Carlin, Bradley P
+    - Van Der Linde, Angelika
+  date: 2002
+  page-range: 583–639
+  parent:
+    type: periodical
+    title: "Journal of the royal statistical society: Series b (statistical methodology)"
+    publisher: Wiley Online Library
+    issue: 4
+    volume: 64
+
+starkCargocultStatisticsScientific2018:
+  type: article
+  title: Cargo-Cult Statistics and Scientific Crisis
+  author:
+    - Stark, Philip B.
+    - Saltelli, Andrea
+  date: 2018-08-01
+  page-range: 40–43
+  url:
+    value: http://doi.wiley.com/10.1111/j.1740-9713.2018.01174.x
+    date: 2019-08-01
+  serial-number:
+    doi: 10.1111/j.1740-9713.2018.01174.x
+    issn: "17409705"
+  parent:
+    type: periodical
+    title: Significance
+    publisher: "{John Wiley & Sons, Ltd (10.1111)}"
+    issue: 4
+    volume: 15
+
+stigler2007epic:
+  type: article
+  title: The epic story of maximum likelihood
+  author:
+    - Stigler, Stephen M
+    - others
+  date: 2007
+  page-range: 598–620
+  parent:
+    type: periodical
+    title: Statistical Science
+    publisher: Institute of Mathematical Statistics
+    issue: 4
+    volume: 22
+
+storopoli2021bayesianjulia:
+  type: misc
+  title: Bayesian Statistics with Julia and Turing
+  author: Storopoli, Jose
+  date: 2021
+  url: https://storopoli.io/Bayesian-Julia
+
+storopoli2021estatisticabayesianaR:
+  type: misc
+  title: Estatística Bayesiana com R e Stan
+  author: Storopoli, Jose
+  date: 2021
+  url: https://storopoli.io/Estatistica-Bayesiana
+
+storopoli2022bayesian:
+  type: misc
+  title: "Bayesian Statistics: a graduate course"
+  author: Storopoli, Jose
+  date: 2022
+  url: https://github.com/storopoli/Bayesian-Statistics
+
+van2005dic:
+  type: article
+  title: DIC in variable selection
+  author: Van Der Linde, Angelika
+  date: 2005
+  page-range: 45–56
+  parent:
+    type: periodical
+    title: Statistica Neerlandica
+    publisher: Wiley Online Library
+    issue: 1
+    volume: 59
+
+vandekerckhove2015model:
+  type: anthos
+  title: Model Comparison and the Principle of Parsimony
+  author:
+    - Vandekerckhove, Joachim
+    - Matzke, Dora
+    - Wagenmakers, Eric-Jan
+    - others
+  date: 2015
+  editor:
+    - Busemeyer, Jerome R.
+    - Wang, Zheng
+    - Townsend, James T.
+    - Eidels, Ami
+  page-range: 300–319
+  serial-number:
+    isbn: 978-0-19-995799-6
+  parent:
+    type: anthology
+    title: Oxford Handbook of Computational and Mathematical Psychology
+    publisher: "{Oxford University Press Oxford}"
+
+vandeschootBayesianStatisticsModelling2021:
+  type: article
+  title: Bayesian Statistics and Modelling
+  author:
+    - van de Schoot, Rens
+    - Depaoli, Sarah
+    - King, Ruth
+    - Kramer, Bianca
+    - Märtens, Kaspar
+    - Tadesse, Mahlet G.
+    - Vannucci, Marina
+    - Gelman, Andrew
+    - Veen, Duco
+    - Willemsen, Joukje
+    - Yau, Christopher
+  date: 2021-01-14
+  page-range: 1–26
+  url:
+    value: https://www.nature.com/articles/s43586-020-00001-2
+    date: 2021-02-15
+  serial-number:
+    doi: 10.1038/s43586-020-00001-2
+    issn: 2662-8449
+  parent:
+    type: periodical
+    title: Nature Reviews Methods Primers
+    publisher: "{Nature Publishing Group}"
+    issue: 1
+    volume: 1
+
+vanravenzwaaijSimpleIntroductionMarkov2018:
+  type: article
+  title: A Simple Introduction to {Markov Chain Monte}–{Carlo} Sampling
+  author:
+    - van Ravenzwaaij, Don
+    - Cassey, Pete
+    - Brown, Scott D.
+  date: 2018-02-01
+  page-range: 143–154
+  serial-number:
+    doi: 10.3758/s13423-016-1015-8
+    issn: "15315320"
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin and Review
+    publisher: "{Springer New York LLC}"
+    issue: 1
+    volume: 25
+
+vehtariPracticalBayesianModel2015:
+  type: web
+  title: Practical {Bayesian} Model Evaluation Using Leave-One-out Cross-Validation and {WAIC}
+  author:
+    - Vehtari, Aki
+    - Gelman, Andrew
+    - Gabry, Jonah
+  date: 2015-07-16
+  url:
+    value: http://arxiv.org/abs/1507.04544
+    date: 2019-11-06
+  serial-number:
+    doi: 10.1007/s11222-016-9696-4
+  note: 1221 citations (Semantic Scholar/DOI) [2021-02-13] 1221 citations (Semantic Scholar/arXiv) [2021-02-13]
+
+vitae:
+  type: reference
+  title: "vitae: Curriculum Vitae for R Markdown"
+  author:
+    - O'Hara-Wild, Mitchell
+    - Hyndman, Rob
+  date: 2021
+  url: https://cran.r-project.org/package=vitae
+
+Wagenmakers2007:
+  type: article
+  title: A Practical Solution to the Pervasive Problems of p Values
+  author: Wagenmakers, Eric-Jan
+  date: 2007-10
+  page-range: 779–804
+  url:
+    value: http://www.springerlink.com/index/10.3758/BF03194105
+    date: 2019-09-09
+  serial-number:
+    doi: 10.3758/BF03194105
+    issn: 1069-9384
+  parent:
+    type: periodical
+    title: Psychonomic Bulletin & Review
+    publisher: "{Psychonomic Society Inc.}"
+    issue: 5
+    volume: 14
+
+Wasserstein2016:
+  type: article
+  title: "The {ASA}'s {Statement} on p-{Values}: {Context}, {Process }, and {Purpose}"
+  author:
+    - Wasserstein, Ronald L.
+    - Lazar, Nicole A.
+  date: 2016-04-02
+  page-range: 129–133
+  serial-number:
+    doi: 10.1080/00031305.2016.1154108
+    issn: "15372731"
+  note: 2634 citations (Semantic Scholar/DOI) [2021-02-13]
+  parent:
+    type: periodical
+    title: American Statistician
+    publisher: "{American Statistical Association}"
+    issue: 2
+    volume: 70
+
+wassersteinMovingWorld052019:
+  type: article
+  title: Moving to a {World Beyond} “p {}$<${} 0.05”
+  author:
+    - Wasserstein, Ronald L.
+    - Schirm, Allen L.
+    - Lazar, Nicole A.
+  date: 2019-03-29
+  page-range: 1–19
+  serial-number:
+    doi: 10.1080/00031305.2019.1583913
+    issn: "15372731"
+  note: 662 citations (Semantic Scholar/DOI) [2021-02-13]
+  parent:
+    type: periodical
+    title: American Statistician
+    publisher: "{American Statistical Association}"
+    issue: sup1
+    volume: 73
+
+watanabe2010asymptotic:
+  type: article
+  title: Asymptotic equivalence of Bayes cross validation and widely applicable information criterion in singular learning theory.
+  author:
+    - Watanabe, Sumio
+    - Opper, Manfred
+  date: 2010
+  parent:
+    type: periodical
+    title: Journal of machine learning research
+    issue: 12
+    volume: 11
+
+wickhamGgplot2ElegantGraphics2016:
+  type: book
+  title: "Ggplot2: {Elegant Graphics} for {Data Analysis}"
+  author: Wickham, Hadley
+  date: 2016
+  publisher: "{Springer-Verlag New York}"
+  url: https://ggplot2.tidyverse.org/
+  serial-number:
+    isbn: 978-3-319-24277-4
+
+zuur2007analyzing:
+  type: book
+  title: Analyzing ecological data
+  author:
+    - Zuur, Alain
+    - Ieno, Elena N
+    - Smith, Graham M
+  date: 2007
+  publisher: Springer
+
+Burkner_Vuorre_2019:
+  type: article
+  title: "Ordinal Regression Models in Psychology: A Tutorial"
+  author:
+    - Bürkner, Paul-Christian
+    - Vuorre, Matti
+  date: 2019
+  page-range: 77
+  url: http://journals.sagepub.com/doi/10.1177/2515245918823199
+  serial-number:
+    doi: 10.1177/2515245918823199
+    issn: 2515-2459, 2515-2467
+  parent:
+    type: periodical
+    title: Advances in Methods and Practices in Psychological Science
+    issue: 1
+    volume: 2
+
+Semenova_2019:
+  type: misc
+  title: Ordered Logistic regression and Probabilistic Programming:with examples in Stan, PyMC3 and Turing
+  author: Semenova, Elizaveta
+  date: 2019
+  url: https://medium.com/@liza_p_semenova/ordered-logistic-regression-and-probabilistic-programming-502d8235ad3f
+
+grimmettProbabilityRandomProcesses2020:
+  type: book
+  title: "Probability and {Random Processes}: {Fourth Edition}"
+  author:
+    - Grimmett, G
+    - Stirzaker, D
+  date: 2020-09
+  publisher: "{Oxford University Press}"
+  location: "{Oxford, New York}"
+  edition: "Fourth Edition, New to this Edition:"
+  serial-number:
+    isbn: 978-0-19-884760-1
+
+Blei_Workflow2014:
+  type: article
+  title: "Build, Compute, Critique, Repeat: Data Analysis with Latent Variable Models"
+  author: Blei, David M.
+  date: 2014
+  page-range: 203–232
+  url: https://doi.org/10.1146/annurev-statistics-022513-115657
+  serial-number:
+    doi: 10.1146/annurev-statistics-022513-115657
+  parent:
+    type: periodical
+    title: Annual Review of Statistics and Its Application
+    issue: 1
+    volume: 1
+
+MixedModels:
+  type: misc
+  title: JuliaStats/MixedModels.jl
+  author:
+    - Bates, Douglas
+    - Alday, Phillip
+    - Kleinschmidt, Dave
+    - José Bayoán Santiago Calderón, PhD
+    - Zhan, Likan
+    - Noack, Andreas
+    - Bouchet-Valat, Milan
+    - Arslan, Alex
+    - Kelman, Tony
+    - Baldassari, Antoine
+    - Ehinger, Benedikt
+    - Karrasch, Daniel
+    - Saba, Elliot
+    - Quinn, Jacob
+    - Hatherly, Michael
+    - Piibeleht, Morten
+    - Mogensen, Patrick Kofod
+    - Babayan, Simon
+    - Gagnon, Yakir Luc
+  date: 2022-07
+  publisher: Zenodo
+  url: https://zenodo.org/record/6925652
+  serial-number:
+    doi: 10.5281/ZENODO.6925652
+
+carvalho2009handling:
+  type: article
+  title: Handling sparsity via the horseshoe
+  author:
+    - Carvalho, Carlos M
+    - Polson, Nicholas G
+    - Scott, James G
+  date: 2009
+  page-range: 73–80
+  parent:
+    type: proceedings
+    title: Artificial intelligence and statistics
+    organization: PMLR
+
+bhadra2015horseshoe:
+  type: misc
+  title: The Horseshoe+ Estimator of Ultra-Sparse Signals
+  author:
+    - Bhadra, Anindya
+    - Datta, Jyotishka
+    - Polson, Nicholas G.
+    - Willard, Brandon
+  date: 2015
+
+piironen2017horseshoe:
+  type: article
+  title: "{Sparsity information and regularization in the horseshoe and other shrinkage priors}"
+  author:
+    - Piironen, Juho
+    - Vehtari, Aki
+  date: 2017
+  page-range: 5018–5051
+  url: https://doi.org/10.1214/17-EJS1337SI
+  serial-number:
+    doi: 10.1214/17-EJS1337SI
+  parent:
+    type: periodical
+    title: Electronic Journal of Statistics
+    publisher: Institute of Mathematical Statistics, Bernoulli Society
+    issue: 2
+    volume: 11
+
+zhang2022bayesian:
+  type: article
+  title: "Bayesian regression using a prior on the model fit: The r2-d2 shrinkage prior"
+  author:
+    - Zhang, Yan Dora
+    - Naughton, Brian P
+    - Bondell, Howard D
+    - Reich, Brian J
+  date: 2022
+  page-range: 862–874
+  parent:
+    type: periodical
+    title: Journal of the American Statistical Association
+    publisher: Taylor & Francis
+    issue: 538
+    volume: 117
+
+betancourtSparsityBlues2021:
+  type: web
+  title: Sparsity Blues
+  author: Betancourt, Michael
+  date: 2021-07
+  url:
+    value: https://betanalpha.github.io/assets/case_studies/modeling_sparsity.html
+    date: 2023-12-09
+
+tibshirani1996regression:
+  type: article
+  title: Regression shrinkage and selection via the lasso
+  author: Tibshirani, Robert
+  date: 1996
+  page-range: 267–288
+  parent:
+    type: periodical
+    title: "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+    publisher: Oxford University Press
+    issue: 1
+    volume: 58
+
+zou2005regularization:
+  type: article
+  title: Regularization and variable selection via the elastic net
+  author:
+    - Zou, Hui
+    - Hastie, Trevor
+  date: 2005
+  page-range: 301–320
+  parent:
+    type: periodical
+    title: "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+    publisher: Oxford University Press
+    issue: 2
+    volume: 67
+
+glmnet:
+  type: article
+  title: Elastic Net Regularization Paths for All Generalized Linear Models
+  author:
+    - Tay, J. Kenneth
+    - Narasimhan, Balasubramanian
+    - Hastie, Trevor
+  date: 2023
+  page-range: 1–31
+  serial-number:
+    doi: 10.18637/jss.v106.i01
+  parent:
+    type: periodical
+    title: Journal of Statistical Software
+    issue: 1
+    volume: 106

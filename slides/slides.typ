@@ -10,6 +10,7 @@
 )
 
 // customizations
+#set bibliography(style: "harvard-cite-them-right")
 #show link: set text(rgb("4063d8"))
 #set text(font: "Fira Sans", size: 20pt)
 // #show heading: set text(font: "Vollkorn")
@@ -67,5 +68,5 @@
 // #include "13-Model_Comparison.typ"
 
 #slide(title: "Bibliography")[
-    #bibliography(title: none, style: "harvard-cite-them-right", "references.bib")
+    #bibliography(title: none, "references.yml")
 ]

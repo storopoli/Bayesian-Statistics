@@ -1,7 +1,7 @@
 [default]
 extend-ignore-re = [
-  # citation keys
-  "textcite\\{.*\\}",
+    # citation keys
+    "@\\w*",
 ]
 
 [default.extend-words]
@@ -10,14 +10,14 @@ lik = "lik"
 # surnames
 Yau = "Yau"
 
-[type.bib]
-extend-glob = ["*.bib"]
-check-file = false
-
 [type.sty]
 extend-glob = ["*.sty"]
 check-file = false
 
 [type.gitignore]
 extend-glob = [".gitignore"]
+check-file = false
+
+[type.references]
+extend-glob = ["references.yml"]
 check-file = false
