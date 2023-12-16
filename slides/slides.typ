@@ -1,9 +1,6 @@
 #import "@preview/polylux:0.3.1": *
 #import themes.clean: *
-
-// colors
-#let julia-purple = rgb("#9558b2")
-#let julia-blue = rgb("4063d8")
+#import "utils.typ": *
 
 #show: clean-theme.with(
     footer: [Bayesian Statistics, Jose Storopoli],
