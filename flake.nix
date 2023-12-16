@@ -1,5 +1,5 @@
 {
-  description = "A basic flake with a shell";
+  description = "Bayesian Statistics flake with a shell";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
@@ -9,18 +9,35 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+
         treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-        tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-small;
-          inherit (pkgs.texlive) latexmk pgf pgfplots tikzsymbols biblatex beamer;
-          inherit (pkgs.texlive) silence appendixnumberbeamer fira fontaxes mwe;
-          inherit (pkgs.texlive) noto csquotes babel helvetic transparent;
-          inherit (pkgs.texlive) xpatch hyphenat wasysym algorithm2e listings;
-          inherit (pkgs.texlive) lstbayes ulem subfigure ifoddpage relsize;
-          inherit (pkgs.texlive) adjustbox media9 ocgx2 biblatex-apa wasy;
-        };
+
         julia = pkgs.julia-bin.overrideDerivation (oldAttrs: { doInstallCheck = false; });
 
+        typst-packages = builtins.fetchGit {
+          url = "https://github.com/typst/packages.git";
+          ref = "main";
+          rev = "aa400735cba3e5bd312b14c69a7b56a01a1b35e4";
+        };
+
+        typst-fonts = pkgs.stdenvNoCC.mkDerivation {
+          name = "typst-fonts";
+
+          src = self;
+
+          installPhase =
+            let
+              fonts = {
+                inherit (pkgs) fira fira-mono julia-mono inriafonts;
+              };
+            in
+            pkgs.lib.concatStringsSep "\n" (map
+              (name: ''
+                mkdir -p $out/share/fonts/${name}
+                cp -r ${fonts.${name}}/share/fonts/* $out/share/fonts/${name}
+              '')
+              (builtins.attrNames fonts));
+        };
       in
       rec {
         formatter = treefmtEval.config.build.wrapper;
@@ -49,40 +66,45 @@
             cmdstan
             julia
 
-            # LaTeX part
-            coreutils
-            tex
-            gnuplot
-            biber
+            # typst part
+            typst
+            typst-fonts
+            typst-live
+            hayagriva
           ];
 
           shellHook = ''
             export JULIA_NUM_THREADS="auto"
             export JULIA_PROJECT="turing"
             export CMDSTAN_HOME="${pkgs.cmdstan}/opt/cmdstan"
+            export TYPST_FONT_PATHS="${typst-fonts}/share/fonts"
             ${self.checks.${system}.pre-commit-check.shellHook}
           '';
         };
-        packages.default = pkgs.stdenvNoCC.mkDerivation rec {
-          name = "slides";
-          src = self;
-          buildInputs = with pkgs; [
-            coreutils
-            tex
-            gnuplot
-            biber
-          ];
-          phases = [ "unpackPhase" "buildPhase" "installPhase" ];
-          buildPhase = ''
-            export PATH="${pkgs.lib.makeBinPath buildInputs}";
-            cd slides
-            export HOME=$(pwd)
-            latexmk -pdflatex -shell-escape -interaction=nonstopmode slides.tex
-          '';
-          installPhase = ''
-            mkdir -p $out
-            cp slides.pdf $out/
-          '';
+        packages = {
+          inherit typst-fonts;
+          default = pkgs.stdenvNoCC.mkDerivation {
+            name = "slides";
+
+            src = self;
+
+            buildInputs = with pkgs; [
+              typst
+              typst-fonts
+            ];
+
+            buildPhase = ''
+              mkdir -pv $out/.cache/typst
+              cp -rv ${typst-packages}/packages $out/.cache/typst
+              export XDG_CACHE_HOME="$out/.cache"
+              export TYPST_FONT_PATHS="${typst-fonts}/share/fonts"
+              typst compile ./slides/slides.typ ./slides/slides.pdf
+            '';
+
+            installPhase = ''
+              cp ./slides/slides.pdf $out/
+            '';
+          };
         };
       });
 }
