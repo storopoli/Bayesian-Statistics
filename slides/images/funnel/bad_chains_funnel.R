@@ -1,10 +1,7 @@
 library(rstan)
 library(ggplot2)
-library(ggdark)
 library(bayesplot)
-library(tikzDevice)
-theme_set(dark_theme_light())
-bayesplot_theme_set(dark_theme_light())
+library(svglite)
 
 funnel_cp_code <-
 "
@@ -46,10 +43,8 @@ funnel_ncp <- stan(model_code = funnel_ncp_code,
                   control = list(adapt_delta = 0.65))
 
 
-tikz(file = "slides/images/bad_chains_traceplot.tex")
-mcmc_trace(funnel_cp, pars = "y") + ylab(NULL)
-dev.off()
+p1 <- mcmc_trace(funnel_cp, pars = "y") + ylab(NULL)
+ggsave("bad_chains_traceplot.svg", plot = p1, device = "svg")
 
-tikz(file = "slides/images/good_chains_traceplot.tex")
-mcmc_trace(funnel_ncp, pars = "y") + ylab(NULL)
-dev.off()
+p2 <- mcmc_trace(funnel_ncp, pars = "y") + ylab(NULL)
+ggsave("good_chains_traceplot.svg", plot = p2, device = "svg")
