@@ -4,7 +4,7 @@
 
 <div class="figure" style="text-align: center">
 
-<img src="slides/images/bayes-meme.jpg" alt="Bayesian for Everyone!" width="500" />
+<img src="slides/images/memes/main.jpg" alt="Bayesian for Everyone!" width="500" />
 <p class="caption">
 Bayesian for Everyone!
 </p>

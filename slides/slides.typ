@@ -5,7 +5,7 @@
 #show: clean-theme.with(
     footer: [Bayesian Statistics, Jose Storopoli],
     short-title: [Bayesian Statistics],
-    logo: image("logos/juliadatascience_white.png"),
+    logo: image("images/logos/juliadatascience_white.png"),
     color: julia-purple,
 )
 
@@ -24,6 +24,10 @@
   authors: [Jose Storopoli#footnote[Universidade Nove de Julho, Pumas-AI \ #v(0.5em)]],
 )
 
+#focus-slide(background: julia-purple)[
+  #align(center)[#image("images/memes/main.jpg")]
+]
+
 #slide(title: "License")[
   #v(2em)
 
@@ -38,7 +42,7 @@
 
     #v(1.5em)
 
-    #image("images/cc-by-nc-sa.svg", width: 20%)
+    #image("images/badges/cc-by-nc-sa.svg", width: 20%)
 
     #v(1.5em)
 
@@ -52,20 +56,20 @@
   #utils.polylux-outline()
 ]
 
-#include "00-Tools.typ"
-// #include "01-Bayesian_Statistics.typ"
-// #include "02-Statistical_Distributions.typ"
 // #include "03-Priors.typ"
-// #include "04-Predictive_Checks.typ"
-// #include "05-Linear_Regression.typ"
-// #include "06-Logistic_Regression.typ"
-// #include "07-Ordinal_Regression.typ"
-// #include "08-Poisson_Regression.typ"
-// #include "09-Robust_Regression.typ"
-// #include "10-Sparse_Regression.typ"
-// #include "11-Hierarchical_Models.typ"
-// #include "12-MCMC.typ"
-// #include "13-Model_Comparison.typ"
+#include "00-tools.typ"
+// #include "01-bayesian_statistics.typ"
+// #include "02-statistical_distributions.typ"
+// #include "04-predictive_checks.typ"
+// #include "05-linear_regression.typ"
+// #include "06-logistic_regression.typ"
+// #include "07-ordinal_regression.typ"
+// #include "08-poisson_regression.typ"
+// #include "09-robust_regression.typ"
+// #include "10-sparse_regression.typ"
+// #include "11-hierarchical_models.typ"
+// #include "12-mcmc.typ"
+// #include "13-model_comparison.typ"
 
 #slide(title: "Bibliography")[
     #bibliography(title: none, "references.yml")
