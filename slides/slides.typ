@@ -56,10 +56,10 @@
   #utils.polylux-outline()
 ]
 
-// #include "03-Priors.typ"
 #include "00-tools.typ"
 // #include "01-bayesian_statistics.typ"
 // #include "02-statistical_distributions.typ"
+#include "03-priors.typ"
 // #include "04-predictive_checks.typ"
 // #include "05-linear_regression.typ"
 // #include "06-logistic_regression.typ"
