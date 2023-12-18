@@ -35,7 +35,7 @@ jobs:
         run: cp -v result/slides.pdf slides.pdf
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: output
           path: ./slides.pdf
