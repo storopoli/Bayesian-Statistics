@@ -3,11 +3,13 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+  inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
 
-  outputs = { self, nixpkgs, flake-utils, pre-commit-hooks }:
+  outputs = { self, nixpkgs, flake-utils, pre-commit-hooks, treefmt-nix }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
         tex = pkgs.texlive.combine {
           inherit (pkgs.texlive) scheme-small;
           inherit (pkgs.texlive) latexmk pgf pgfplots tikzsymbols biblatex beamer;
@@ -20,12 +22,21 @@
         julia = pkgs.julia-bin.overrideDerivation (oldAttrs: { doInstallCheck = false; });
 
       in
-      {
+      rec {
+        formatter = treefmtEval.config.build.wrapper;
+
         checks = {
+          formatting = treefmtEval.config.build.check self;
           pre-commit-check = pre-commit-hooks.lib.${system}.run {
             src = ./.;
             hooks = {
               typos.enable = true;
+              treefmt = {
+                enable = true;
+              };
+            };
+            settings = {
+              treefmt.package = treefmtEval.config.build.wrapper;
             };
           };
         };
