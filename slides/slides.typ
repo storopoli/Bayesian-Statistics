@@ -3,10 +3,10 @@
 #import "utils.typ": *
 
 #show: clean-theme.with(
-    footer: [Bayesian Statistics, Jose Storopoli],
-    short-title: [Bayesian Statistics],
-    logo: image("images/logos/juliadatascience_white.png"),
-    color: julia-purple,
+  footer: [Bayesian Statistics, Jose Storopoli],
+  short-title: [Bayesian Statistics],
+  logo: image("images/logos/juliadatascience_white.png"),
+  color: julia-purple,
 )
 
 // customizations
@@ -28,14 +28,18 @@
   #align(center)[#image("images/memes/main.jpg")]
 ]
 
-#slide(title: "License")[
+#slide(
+  title: "License",
+)[
   #v(2em)
 
-  #align(center)[
+  #align(
+    center,
+  )[
     The text and images from these slides have a
 
     #link(
-      "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"
+      "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en",
     )[
       Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
     ]
@@ -46,8 +50,7 @@
 
     #v(1.5em)
 
-    All links are in #text(julia-blue)[blue].
-    Feel free to click on them.
+    All links are in #text(julia-blue)[blue]. Feel free to click on them.
   ]
 ]
 
@@ -72,5 +75,5 @@
 // #include "13-model_comparison.typ"
 
 #slide(title: "Bibliography")[
-    #bibliography(title: none, "references.yml")
+  #bibliography(title: none, "references.yml")
 ]

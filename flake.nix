@@ -51,6 +51,13 @@
               treefmt = {
                 enable = true;
               };
+              typst-fmt = {
+                enable = true;
+                name = "Typst Formatter";
+                entry = "${pkgs.typstfmt}/bin/typstfmt";
+                files = "\\.typ$";
+                language = "rust";
+              };
             };
             settings = {
               treefmt.package = treefmtEval.config.build.wrapper;
@@ -70,6 +77,7 @@
             typst
             typst-fonts
             typst-live
+            typstfmt
             hayagriva
           ];
 

@@ -4,7 +4,9 @@
 
 #new-section-slide("Linear Regression")
 
-#slide(title: "Recommended References")[
+#slide(
+  title: "Recommended References",
+)[
   - #cite(<gelman2013bayesian>, form: "prose"):
     - Chapter 14: Introduction to regression models
     - Chapter 16: Generalized linear models
@@ -21,11 +23,13 @@
   #align(center)[#image("images/memes/linear_regression.jpg")]
 ]
 
-#slide(title: "What is Linear Regression?")[
-  The ideia here is to model a dependent variable as a linear combination
-  of independent variables.
+#slide(
+  title: "What is Linear Regression?",
+)[
+  The ideia here is to model a dependent variable as a linear combination of
+  independent variables.
 
-  $ bold(y) = α +  bold(X) bold(β) + ε $
+  $ bold(y) = α + bold(X) bold(β) + ε $
 
   where:
 
@@ -36,20 +40,24 @@
   - $ε$ -- model error
 ]
 
-#slide(title: "Linear Regression Specification")[
+#slide(
+  title: "Linear Regression Specification",
+)[
   To estimate the intercept $α$ and coefficients $bold(β)$
-  we use a Gaussian/normal likelihood function.
-  Mathematically speaking, Bayesian linear regression is:
-  
+  we use a Gaussian/normal likelihood function. Mathematically speaking, Bayesian
+  linear regression is:
+
   #v(2em)
 
-  $ bold(y) &tilde "Normal"(α +  bold(X) bold(β), σ) \
-    α       &tilde "Normal"(μ_α, σ_α) \
-    bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
-    σ       &tilde "Exponential"(λ_σ) $
+  $ bold(y)  &tilde "Normal"(α + bold(X) bold(β), σ) \
+  α       &tilde "Normal"(μ_α, σ_α) \
+  bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
+  σ       &tilde "Exponential"(λ_σ) $
 ]
 
-#slide(title: "Linear Regression Specification")[
+#slide(
+  title: "Linear Regression Specification",
+)[
   What we are missing is the prior probabilities for the model's parameters:
 
   #v(2em)
@@ -64,30 +72,31 @@
     Knowledge that we have about the model's error.
 ]
 
-#slide(title: "Good Candidates for Prior Distributions")[
+#slide(
+  title: "Good Candidates for Prior Distributions",
+)[
   First, center ($\mu = 0$) and standardize ($σ = 1$) the independent variables.
-    
+
   #v(2em)
 
-  - $α$ -- either a normal or student-$t$ ($ν = 3$),
-    with mean as $μ_bold(y)$
+  - $α$ -- either a normal or student-$t$ ($ν = 3$), with mean as $μ_bold(y)$
     and standard deviation as $2.5 dot σ_bold(y)$
     (also you can use the median and median absolute deviation).
 
   - $bold(β)$ -- either a normal or student-$t$ ($ν = 3$), with mean $0$ and
     standard deviation $2.5$.
 
-  - $σ$ -- anything that is long-tailed (mass towards lower values)
-    and restrained to positive values only.
-    Exponential is a good candidate.
+  - $σ$ -- anything that is long-tailed (mass towards lower values) and restrained
+    to positive values only. Exponential is a good candidate.
 ]
 
-#slide(title: "Posterior Computation")[
-	Our aim to is to *find the posterior distribution of the
-    model's parameters of interest* ($α$ and $bold(β)$)
-	by computing the full posterior distribution of:
+#slide(
+  title: "Posterior Computation",
+)[
+  Our aim to is to *find the posterior distribution of the model's parameters of
+  interest* ($α$ and $bold(β)$) by computing the full posterior distribution of:
 
   #v(3em)
 
-	$ P(bold(θ) | bold(y)) = P(α, bold(β), σ | bold(y)) $
+  $ P(bold(θ) | bold(y)) = P(α, bold(β), σ | bold(y)) $
 ]
