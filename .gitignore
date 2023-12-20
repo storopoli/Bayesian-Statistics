@@ -3,3 +3,6 @@ Manifest.toml
 
 ### Typst ###
 *.pdf
+
+### pre-commit-hooks.nix ###
+.pre-commit-config.yaml
