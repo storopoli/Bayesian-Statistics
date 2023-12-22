@@ -95,9 +95,9 @@
   Formally, an uniform prior is an uniform distribution over all the possible
   support of the possible values:
 
-  - *model parameters*: ${θ in RR : -oo < θ < oo}$
+  - *model parameters*: ${θ ∈ RR : -oo < θ < oo}$
 
-  - *model error or residuals*: ${σ in RR^+ : 0 < θ < oo}$
+  - *model error or residuals*: ${σ ∈ RR^+ : 0 < θ < oo}$
 ]
 
 #slide(
@@ -110,7 +110,7 @@
 
   I recommend always to transform the priors of the problem at hand into something
   centered in $0$ with standard deviation of $1$ #footnote[
-    this is called standardization, transforming all variables into $μ=0$ and $σ=1$.
+    this is called standardization, transforming all variables into $μ = 0$ and $σ = 1$.
   ]:
 
   - $θ tilde "Normal"(0, 1)$ (Andrew Gelman's preferred choice
@@ -137,8 +137,8 @@
     He discuss about one of the biggest effect sizes observed in social sciences. In
     the exit pools for the 2008 USA presidential election (Obama vs McCain), there
     was, in general, around 40% of support for Obama. If you changed the respondent
-    race from non-black to black, this was associated with an increase of 60\% in
-    the probability of the respondent to vote on Obama
+    race from non-black to black, this was associated with an increase of 60% in the
+    probability of the respondent to vote on Obama
 
     In logodds scales, 2.5x increase (from 40% to almost 100%) would be equivalent,
     on a Bernoulli/logistic/binomial model, to a coefficient value of $approx 0.92$ #footnote[
