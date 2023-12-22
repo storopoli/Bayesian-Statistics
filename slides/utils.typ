@@ -9,3 +9,5 @@
 #let normcdf(x, μ, σ) = 1 / (
   1 + calc.exp(-0.07056 * calc.pow(((x - μ) / σ), 3) - 1.5976 * (x - μ) / σ)
 )
+#let logodds(p) = calc.ln(p / (1 - p))
+

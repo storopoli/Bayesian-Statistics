@@ -66,7 +66,7 @@
 #include "04-bayesian_workflow.typ"
 #include "05-linear_regression.typ"
 #include "06-logistic_regression.typ"
-// #include "07-ordinal_regression.typ"
+#include "07-ordinal_regression.typ"
 // #include "08-poisson_regression.typ"
 // #include "09-robust_regression.typ"
 // #include "10-sparse_regression.typ"
