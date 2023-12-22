@@ -41,6 +41,20 @@
 ]
 
 #slide(
+  title: "Linear Regression Assumptions",
+)[
+  #v(3em)
+
+  - Dependent variable $bold(y)$ is continuous, unbounded, and, more importantly,
+    "metric"-scaled.
+
+    - e.g. the increase from $1$ to $2$ is the same from $3$ to $4$. Generally
+      violated when $bold(y)$ is interval-scaled.
+
+  - model error $ε$ is independent of $bold(X)$ and $bold(y)$.
+]
+
+#slide(
   title: "Linear Regression Specification",
 )[
   To estimate the intercept $α$ and coefficients $bold(β)$
@@ -75,7 +89,7 @@
 #slide(
   title: "Good Candidates for Prior Distributions",
 )[
-  First, center ($\mu = 0$) and standardize ($σ = 1$) the independent variables.
+  First, center ($μ = 0$) and standardize ($σ = 1$) the independent variables.
 
   #v(2em)
 
