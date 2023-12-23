@@ -242,7 +242,7 @@
         title: "log-cumulative-odds",
       )
       #let pl = pplot(data: data, axes: (x_axis, y_axis))
-      #scatter_plot(pl, 80%, caption: none)
+      #scatter_plot(pl, 80%, stroke: 4pt, caption: none)
     ]
   ]
 ]

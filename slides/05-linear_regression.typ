@@ -1,6 +1,7 @@
 #import "@preview/polylux:0.3.1": *
 #import themes.clean: *
 #import "utils.typ": *
+#import "@preview/plotst:0.2.0": plot as pplot, axis, scatter_plot, graph_plot, overlay
 
 #new-section-slide("Linear Regression")
 
@@ -26,6 +27,26 @@
 #slide(
   title: "What is Linear Regression?",
 )[
+  #let data_scatter = ((0.5, 0.7), (1, 0.7), (2, 2.4), (3, 2.6), (4, 4.6), (5, 4.2),)
+  #let data_graph = ((0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),)
+  #let x_axis = axis(min: 0, max: 5, location: "bottom")
+  #let y_axis = axis(min: 0, max: 5, location: "left")
+  #let pl_scatter = pplot(data: data_scatter, axes: ((x_axis, y_axis)))
+  #let scatter_display = scatter_plot(pl_scatter, 70pt, stroke: 3pt, caption: none)
+  #let pl_graph = pplot(data: data_graph, axes: (x_axis, y_axis))
+  #let graph_display = graph_plot(
+    pl_graph,
+    70pt,
+    stroke: 2pt + julia-blue,
+    markings: none,
+    caption: none,
+  )
+  #overlay((scatter_display, graph_display), (360pt, 280pt))
+]
+
+#slide(
+  title: "What is Linear Regression?",
+)[
   The ideia here is to model a dependent variable as a linear combination of
   independent variables.
 
@@ -40,18 +61,24 @@
   - $ε$ -- model error
 ]
 
+#focus-slide(background: julia-purple)[
+  #align(center)[#image("images/memes/assumptions.jpg")]
+]
+
 #slide(
   title: "Linear Regression Assumptions",
 )[
   #v(3em)
 
+  - model error $ε$ is independent of $bold(X)$ and $bold(y)$.
+
   - Dependent variable $bold(y)$ is continuous, unbounded, and, more importantly,
-    "metric"-scaled.
+    "metric"-scaled, i.e. *equidistant*.
 
     - e.g. the increase from $1$ to $2$ is the same from $3$ to $4$. Generally
       violated when $bold(y)$ is interval-scaled.
 
-  - model error $ε$ is independent of $bold(X)$ and $bold(y)$.
+  - Observations are I.I.D #footnote[independent and identically distributed.].
 ]
 
 #slide(
