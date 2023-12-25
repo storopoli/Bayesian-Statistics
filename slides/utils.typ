@@ -23,4 +23,8 @@
   1 + calc.exp(-0.07056 * calc.pow(((x - μ) / σ), 3) - 1.5976 * (x - μ) / σ)
 )
 #let logodds(p) = calc.ln(p / (1 - p))
-
+#let laplace(x, b) = (1 / (2 * b)) * calc.exp(-calc.abs(x) / b)
+#let hs(x, λ, τ) = gaussian(x, 0, calc.sqrt(calc.pow(λ, 2) * calc.pow(τ, 2)))
+#let f2jacobian(x) = calc.pow(x, -2)
+#let f2exponential(x, λ) = λ * calc.exp(-λ * (1 / (x - 1)))
+#let shinkragelaplace(x, ρ) = (f2exponential(x, ρ) * f2jacobian(x)) / 100
