@@ -1,7 +1,6 @@
 #import "@preview/polylux:0.3.1": *
 #import themes.clean: *
 #import "utils.typ": *
-#import "@preview/cetz:0.1.2": canvas, plot
 #import "@preview/plotst:0.2.0": plot as pplot, axis, bar_chart, scatter_plot
 
 #new-section-slide("Ordinal Regression")
