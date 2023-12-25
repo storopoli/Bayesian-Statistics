@@ -5,6 +5,17 @@
 #let julia-red = rgb("#cb3c33")
 
 // functions
+#let binormal(x, y, μ_a, σ_a, μ_b, σ_b, ρ) = calc.exp(
+  -(
+    calc.pow((x - μ_a) / σ_a, 2) + calc.pow((y - μ_b) / σ_b, 2) - (2 * ρ) * ((x - μ_a) / σ_a) * ((y - μ_b) / σ_b)
+  ) / (2 * (1 - calc.pow(ρ, 2))),
+) / (2 * calc.pi * σ_a * σ_b * calc.pow(1 - calc.pow(ρ, 2)), 0.5)
+#let conditionalbinormal(x, y_c, μ_a, σ_a, μ_b, σ_b, ρ) = calc.exp(
+  -(
+    calc.pow((x - μ_a) / σ_a, 2) + calc.pow((y_c - μ_b) / σ_b, 2) - (2 * ρ) * ((x - μ_a) / σ_a) * ((y_c - μ_b) / σ_b)
+  ) / (2 * (1 - calc.pow(ρ, 2))),
+) / (2 * calc.pi * σ_a * σ_b * calc.pow(1 - calc.pow(ρ, 2)), 0.5)
+#let sumtwonormals(x_a, x_b, μ_a, σ_a, w_a, μ_b, σ_b, w_b) = (w_a * gaussian(x_a, μ_a, σ_a)) + (w_b * gaussian(x_b, μ_b, σ_b))
 #let discreteuniform(a, b) = 1 / (b - a + 1)
 #let binomial(x, n, p) = calc.fact(n) / (calc.fact(x) * calc.fact(n - x)) * calc.pow(p, x) * calc.pow(1 - p, n - x)
 #let poisson(x, λ) = calc.pow(λ, x) * calc.exp(-λ) / calc.fact(x)
