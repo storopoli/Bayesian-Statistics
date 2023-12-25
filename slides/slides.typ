@@ -54,8 +54,7 @@
   ]
 ]
 
-#slide[
-  == Outline
+#slide(title: [Outline])[
   #utils.polylux-outline()
 ]
 
