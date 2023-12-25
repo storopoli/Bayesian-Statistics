@@ -71,7 +71,7 @@
 #include "10-sparse_regression.typ"
 // #include "11-hierarchical_models.typ"
 // #include "12-mcmc.typ"
-// #include "13-model_comparison.typ"
+#include "13-model_comparison.typ"
 #include "backup_slides.typ"
 
 #slide(title: "Bibliography")[
