@@ -72,6 +72,7 @@
 // #include "11-hierarchical_models.typ"
 // #include "12-mcmc.typ"
 // #include "13-model_comparison.typ"
+#include "backup_slides.typ"
 
 #slide(title: "Bibliography")[
   #bibliography(title: none, "references.yml")
