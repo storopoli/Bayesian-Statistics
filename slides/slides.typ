@@ -11,6 +11,7 @@
 
 // customizations
 #set bibliography(style: "harvard-cite-them-right")
+#set footnote(numbering: "i")
 #show link: set text(rgb("4063d8"))
 #set text(font: "Fira Sans", size: 20pt)
 // #show heading: set text(font: "Vollkorn")
