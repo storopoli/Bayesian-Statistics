@@ -2,6 +2,7 @@
 extend-ignore-re = [
     # citation keys
     "@\\w*",
+    "<\\w*>",
 ]
 
 [default.extend-words]

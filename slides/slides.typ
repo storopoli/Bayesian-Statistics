@@ -56,11 +56,13 @@
 ]
 
 #slide(title: [Outline])[
-  #utils.polylux-outline()
+  #text(size: 16pt)[
+    #utils.polylux-outline()
+  ]
 ]
 
 #include "00-tools.typ"
-// #include "01-bayesian_statistics.typ"
+#include "01-bayesian_statistics.typ"
 #include "02-statistical_distributions.typ"
 #include "03-priors.typ"
 #include "04-bayesian_workflow.typ"
