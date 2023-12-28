@@ -215,7 +215,7 @@
 
     - $P("rain") = "degree of belief that will rain"$
 
-    - $P("me being elected president") = 10^{-10}$ (highly unlikely)
+    - $P("me being elected president") = 10^(-10)$ (highly unlikely)
 ]
 
 #slide(
@@ -399,10 +399,10 @@
           content((-7, -18))[#text(size: 18pt, fill: white)[☿]]
           circle((-5, -18))
           content((-5, -18))[#text(size: 18pt)[♀]]
-          circle((-3, -18), fill: julia-purple)
-          content((-3, -18))[#text(size: 18pt, fill: white)[♁]]
-          circle((-1, -18))
-          content((-1, -18))[#text(size: 18pt)[♂]]
+          circle((-3, -18))
+          content((-3, -18))[#text(size: 18pt)[♁]]
+          circle((-1, -18), fill: julia-purple)
+          content((-1, -18))[#text(size: 18pt, fill: white)[♂]]
           circle((1, -18))
           content((1, -18))[#text(size: 18pt)[♃]]
           circle((3, -18))
@@ -515,7 +515,7 @@
   that we already observed $B$".
 
   $
-    P(A | B) & = "number of elements in $A$ and $B$" / "number of elements in $B$" \
+    P(A | B) & = "number of elements in A and B" / "number of elements in B" \
     P(A | B) &= P(A sect B) / P(B)
   $
 
@@ -547,8 +547,9 @@
     More specific, if the basal rates $P(A)$ and $P(B)$ aren't equal, the symmetry
     is broken $P(A | B) ≠ P(B | A)$
   ]
+
   #text(
-    size: 16pt,
+    size: 14pt,
   )[
     The Pope is catholic:
 
@@ -568,16 +569,14 @@
   - #text(size: 22pt)[*Hence*: $P("catholic" | "pope") ≠ P("pope" | "catholic")$]
 ]
 
-#slide(
-  title: [Joint Probability],
-)[
-  Probability of two or more events occurring. \newline \newline
+#slide(title: [Joint Probability])[
+  Probability of two or more events occurring.
 
   The notation we use is $P(A, B)$, that read as
-  "the probability of observing $A$ and also observing $B$". \newline \newline
+  "the probability of observing $A$ and also observing $B$".
 
   $
-    P(A, B) &= "number of elements in $A$ or $B$" \
+    P(A, B) &= "number of elements in A or B" \
     P(A, B) &= P(A union B) \
     P(A, B) &= P(B, A)
   $
@@ -1082,7 +1081,7 @@ title: [Bayesian vs Frequentist Stats],
   - I believe that frequentist statistics, specially the way we qualify evidence and hypotheses with
     $p$-values will transform in a "significant" #footnote[pun intended ...] way.
 
-  - 6 years ago, the _American Statistical Association_ (ASA) published a declaration about
+  - 8 years ago, the _American Statistical Association_ (ASA) published a declaration about
     $p$-values @Wasserstein2016.
     It states exactly what we exposed here:
     The main concepts of the null hypothesis significant testing and,
