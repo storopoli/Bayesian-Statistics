@@ -39,7 +39,7 @@
 )[
   - #link("https://mc-stan.org")[Stan] (BSD-3 License)
 
-  - #link("https://turing.ml")[Turing] (MIT License)
+  - #link("https://turinglang.org")[Turing] (MIT License)
 
   - #link("https://www.pymc.io/")[PyMC] (Apache License)
 

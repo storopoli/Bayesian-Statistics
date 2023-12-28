@@ -25,7 +25,7 @@ and the process of parameter value inference is a direct result of the **Bayes' 
 
 ## Content
 
-The whole content is a set of several slides found at [`the latest release`](https://github.com/storopoli/Bayesian-Statistics/releases/latest/download/slides.pdf) (348 slides).
+The whole content is a set of several slides found at [`the latest release`](https://github.com/storopoli/Bayesian-Statistics/releases/latest/download/slides.pdf) (382 slides).
 Here is a brief table of contents:
 
 1. **What is Bayesian Statistics?**
@@ -44,30 +44,30 @@ Here is a brief table of contents:
 
 ## Probabilistic Programming Languages (PPLs)
 
-Along with slides for the content, this repository also holds `Stan` code and also `Turing.jl` code for all models.
-`Stan` and `Turing.jl` represents, respectively, the present and future of [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) languages.
+Along with slides for the content, this repository also holds Stan code and also Turing code for all models.
+Stan and Turing represents, respectively, the present and future of [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) languages.
 
 All model files are tested in [GitHub Actions](https://github.com/storopoli/Bayesian-Statistics/actions/workflows/models.yml)
-against the latest `Stan` and Julia/`Turing.jl` versions.
+against the latest Stan and Julia/Turing versions.
 
-### `Stan`
+### Stan
 
-[**`Stan`**](https://mc-stan.org) (Carpenter et al., 2017) `Stan` is a state-of-the-art platform for statistical modeling and high-performance statistical computation.
-Thousands of users rely on `Stan` for statistical modeling, data analysis, and prediction in the social, biological, and physical sciences, engineering, and business.
+[**Stan**](https://mc-stan.org) (Carpenter et al., 2017) Stan is a state-of-the-art platform for statistical modeling and high-performance statistical computation.
+Thousands of users rely on Stan for statistical modeling, data analysis, and prediction in the social, biological, and physical sciences, engineering, and business.
 
-`Stan` models are specified in its own language (similar to C++) and compiled into an executable binary that can generate Bayesian statistical inferences using a high-performance Markov Chain Montecarlo (MCMC).
+Stan models are specified in its own language (similar to C++) and compiled into an executable binary that can generate Bayesian statistical inferences using a high-performance Markov Chain Montecarlo (MCMC).
 
-You can find `Stan` models for all the content discussed in the slides at [`stan/`](stan/) folder.
-These were tested with `Stan` version 2.30.0 and `CmdStanR` version 0.5.2.
+You can find Stan models for all the content discussed in the slides at [`stan/`](stan/) folder.
+These were tested with Stan version 2.33.1.
 
-### `Turing.jl`
+### Turing
 
-[**`Turing.jl`**](http://turing.ml/) (Ge, Xu & Ghahramani, 2018) is an ecosystem of [**Julia**](https://www.julialang.org) packages for Bayesian Inference using [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming).
-Models specified using `Turing.jl` are easy to read and write — models work the way you write them.
-Like everything in Julia, `Turing.jl` is [fast](https://arxiv.org/abs/2002.02702).
+[**Turing**](http://turinglang.org/) (Ge, Xu & Ghahramani, 2018) is an ecosystem of [**Julia**](https://www.julialang.org) packages for Bayesian Inference using [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming).
+Models specified using Turing are easy to read and write — models work the way you write them.
+Like everything in Julia, Turing is [fast](https://arxiv.org/abs/2002.02702).
 
-You can find `Turing.jl` models for all the content discussed in the slides at [`turing/`](turing/) folder.
-These were tested with `Turing.jl` version 0.21.9 and Julia 1.7.3.
+You can find Turing models for all the content discussed in the slides at [`turing/`](turing/) folder.
+These were tested with Turing version 0.30 and Julia 1.10.
 
 ## Datasets
 
@@ -95,7 +95,7 @@ These were tested with `Turing.jl` version 0.21.9 and Julia 1.7.3.
 
 ## Author
 
-Jose Storopoli, PhD - [_Lattes_ CV](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - <https://storopoli.io>
+Jose Storopoli, PhD - [ORCID](https://orcid.org/0000-0002-0559-5176) - <https://storopoli.io>
 
 ## How to use the content?
 
@@ -107,7 +107,7 @@ The content is aimed towards PhD candidates in applied sciences.
 I chose to provide an **intuitive approach** along with some rigorous mathematical formulations.
 I've made it to be how I would have liked to be introduced to Bayesian statistics.
 
-If you want to build the slides locally without having to worry with $\LaTeX$
+If you want to build the slides locally without having to worry with [Typst](https://typst.app)
 packages, [install Nix](https://nixos.org/download.html) and run:
 
 ```shell
@@ -287,7 +287,7 @@ To cite this course, please use:
 
     Storopoli (2022). Bayesian Statistics: a graduate course. https://github.com/storopoli/Bayesian-Statistics.
 
-Or in BibTeX format (LaTeX):
+Or in BibTeX format ($\LaTeX$):
 
     @misc{storopoli2022bayesian,
       author = {Storopoli, Jose},
