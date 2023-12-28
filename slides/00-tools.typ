@@ -13,7 +13,7 @@
 
   - #cite(<pymc3>, form: "prose") - PyMC paper
 
-  - #link("https://storopoli.github.io/Bayesian-Julia/pages/1_why_Julia/")[
+  - #link("https://storopoli.github.io/Bayesian-Julia/pages/01_why_Julia/")[
       Bayesian Statistics with Julia and Turing - Why Julia?
     ]
 ]
