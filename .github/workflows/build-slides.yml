@@ -25,8 +25,8 @@ jobs:
       - name: Cache Nix artifacts
         uses: DeterminateSystems/magic-nix-cache-action@v2
 
-      - name: Nix Flake Check
-        run: nix flake check -L
+      - name: Nix pre-commit check
+        run: nix develop -L . --command bash -c 'pre-commit run --all-files'
 
       - name: Build Slides
         run: nix build -L
