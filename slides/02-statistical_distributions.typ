@@ -859,7 +859,7 @@
 #slide(
   title: [Gamma],
 )[
-  The gammma distribution is a long-tailed distribution with support only for
+  The gamma distribution is a long-tailed distribution with support only for
   positive real numbers.
 
   #v(1em)
