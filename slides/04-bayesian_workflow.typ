@@ -142,7 +142,7 @@
 
     #v(1em)
 
-    The ideia is that the real and simulated histograms blend together and we do not
+    The idea is that the real and simulated histograms blend together and we do not
     observer any divergences.
   ]
 ]
