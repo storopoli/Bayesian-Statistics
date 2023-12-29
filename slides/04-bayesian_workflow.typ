@@ -117,15 +117,13 @@
 ]
 
 #slide(
-  title: "Prior Predictive Check",
+  title: "Posterior Predictive Check",
 )[
   #text(
     size: 18pt,
   )[
     We need to make sure that the posterior distribution of $bold(y)$, namely $bold(tilde(y))$,
     can capture all the nuances of the real distribution density/mass of $bold(y)$.
-
-    #v(1em)
 
     This procedure is called *posterior predictive check*, and it is generally
     carried on by a visual inspection #footnote[
@@ -134,13 +132,9 @@
     of the real density/mass of $bold(y)$ against generated samples of $bold(y)$ by
     the Bayesian model.
 
-    #v(1em)
-
     The purpose is to compare the histogram of the dependent variable $bold(y)$
     against the histograms of simulated dependent variables $bold(y)_"rep"$
     by the model after parameter inference.
-
-    #v(1em)
 
     The idea is that the real and simulated histograms blend together and we do not
     observer any divergences.
