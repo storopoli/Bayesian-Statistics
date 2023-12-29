@@ -598,7 +598,7 @@
   title: [Normal],
 )[
   The normal distribution has two parameters and its notation is
-  $"Normal"(μ, σ^2)$ or $"N"(μ, σ^2)$:
+  $"Normal"(μ, σ)$ or $"N"(μ, σ)$:
 
   - $μ$ -- mean of the distribution, and also median and mode
   - $σ$ -- standard deviation #footnote[sometimes is also parameterized as variance $σ^2$.],
@@ -1052,7 +1052,7 @@
 
   But, differently than Student's $t$, the Cauchy distribution has two parameters
   and its notation is
-  $"Gamma"(μ, σ)$:
+  $"Cauchy"(μ, σ)$:
 
   - $μ$ -- location parameter
   - $σ$ -- scale parameter
@@ -1152,7 +1152,7 @@
 )[
   #v(4em)
 
-  $ "Beta" (α, β) = f(x, α, β) (x^(α - 1)(1 - x)^(β - 1)) / ((Γ(α)Γ(β)) / (Γ(α +β ))) "for" α, β > 0 "and" x ∈ [0, 1] $
+  $ "Beta"(α, β) = f(x, α, β) (x^(α - 1)(1 - x)^(β - 1)) / ((Γ(α)Γ(β)) / (Γ(α +β ))) "for" α, β > 0 "and" x ∈ [0, 1] $
 ]
 
 #slide(title: [Beta])[
