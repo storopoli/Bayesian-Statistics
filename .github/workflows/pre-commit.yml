@@ -1,4 +1,4 @@
-name: Build Slides
+name: Pre Commit Checks
 on:
   push:
     branches:
@@ -11,10 +11,8 @@ on:
 
 jobs:
   build-release:
-    name: Build Slides
+    name: Pre Commit Checks
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,15 +23,5 @@ jobs:
       - name: Cache Nix artifacts
         uses: DeterminateSystems/magic-nix-cache-action@v2
 
-      - name: Build Slides
-        run: nix build -L
-
-      - name: Copy result out of nix store
-        run: cp -v result/slides.pdf slides.pdf
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: output
-          path: ./slides.pdf
-          if-no-files-found: error
+      - name: Nix pre-commit check
+        run: nix develop -L . --command bash -c 'pre-commit run --all-files'
