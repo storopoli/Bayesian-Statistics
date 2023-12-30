@@ -58,6 +58,28 @@
                 files = "\\.typ$";
                 language = "rust";
               };
+              julia-formatter = {
+                enable = true;
+                name = "format julia code";
+                entry = ''
+                  ${pkgs.julia-bin}/bin/julia -e '
+                  using Pkg
+                  Pkg.activate(".")
+                  Pkg.add("JuliaFormatter")
+                  using JuliaFormatter
+                  format(ARGS)
+                  out = Cmd(`git diff --name-only`) |> read |> String
+                  if out == ""
+                      exit(0)
+                  else
+                      @error "Some files have been formatted !!!"
+                      write(stdout, out)
+                      exit(1)
+                  end'
+                '';
+                files = "\\.jl$";
+                language = "system";
+              };
             };
             settings = {
               treefmt.package = treefmtEval.config.build.wrapper;

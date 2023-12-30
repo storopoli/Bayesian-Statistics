@@ -19,24 +19,29 @@ end
 
 # create int idx
 cheese[:, :background_int] = map(cheese[:, :background]) do b
-    b == "urban" ? 1 :
-    b == "rural" ? 2 : missing
+    if b == "urban"
+        1
+    elseif b == "rural"
+        2
+    else
+        missing
+    end
 end
 
 # define data matrix X
-X = select(cheese, Between(:cheese_A, :cheese_D)) |> Matrix
+X = Matrix(select(cheese, Between(:cheese_A, :cheese_D)))
 
 # define dependent variable y and standardize
-y = cheese[:, :y] |> float
+y = float(cheese[:, :y])
 y = standardize(ZScoreTransform, y; dims=1)
 
 # define vector of group memberships idx
 idx = cheese[:, :background_int]
 
 # define the model
-@model function varying_intercept_ncp_regression(X, idx, y;
-    predictors=size(X, 2),
-    n_gr=length(unique(idx)))
+@model function varying_intercept_ncp_regression(
+    X, idx, y; predictors=size(X, 2), n_gr=length(unique(idx))
+)
     # priors
     α ~ TDist(3) * 2.5
     β ~ filldist(TDist(3) * 2.5, predictors)

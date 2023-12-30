@@ -25,7 +25,7 @@ transform!(
         x -> categorical(x; levels=["0-39g/day", "40-79", "80-119", "120+"], ordered=true),
     :tobgp =>
         x -> categorical(x; levels=["0-9g/day", "10-19", "20-29", "30+"], ordered=true);
-    renamecols=false
+    renamecols=false,
 )
 transform!(esoph, [:agegp, :alcgp, :tobgp] .=> ByRow(levelcode); renamecols=false)
 

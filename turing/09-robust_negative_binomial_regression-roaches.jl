@@ -14,7 +14,7 @@ seed!(123)
 roaches = CSV.read("datasets/roaches.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(roaches, Not(:y)) |> Matrix
+X = Matrix(select(roaches, Not(:y)))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y

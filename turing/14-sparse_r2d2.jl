@@ -13,21 +13,16 @@ seed!(123)
 df = CSV.read("datasets/sparse_regression.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(df, Not(:y)) |> Matrix |> float
+X = float(Matrix(select(df, Not(:y))))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y and standardize
-y = df[:, :y] |> float
+y = float(df[:, :y])
 y = standardize(ZScoreTransform, y; dims=1)
 
 # define the model
 @model function sparse_r2d2_regression(
-    X,
-    y;
-    predictors=size(X, 2),
-    mean_R²=0.5,
-    prec_R²=2,
-    cons_D2=1,
+    X, y; predictors=size(X, 2), mean_R²=0.5, prec_R²=2, cons_D2=1
 )
     # priors
     α ~ TDist(3) * 2.5

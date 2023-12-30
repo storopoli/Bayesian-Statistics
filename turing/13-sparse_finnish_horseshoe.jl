@@ -13,23 +13,16 @@ seed!(123)
 df = CSV.read("datasets/sparse_regression.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(df, Not(:y)) |> Matrix |> float
+X = float(Matrix(select(df, Not(:y))))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y and standardize
-y = df[:, :y] |> float
+y = float(df[:, :y])
 y = standardize(ZScoreTransform, y; dims=1)
 
 # define the model
 @model function sparse_finnish_horseshoe_regression(
-    X,
-    y;
-    predictors=size(X, 2),
-    τ₀=3,
-    ν_local=1,
-    ν_global=1,
-    slab_df=4,
-    slab_scale=2,
+    X, y; predictors=size(X, 2), τ₀=3, ν_local=1, ν_global=1, slab_df=4, slab_scale=2
 )
     # priors
     α ~ TDist(3) * 2.5

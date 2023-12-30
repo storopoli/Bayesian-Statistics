@@ -13,11 +13,11 @@ seed!(123)
 kidiq = CSV.read("datasets/kidiq.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(kidiq, Not(:kid_score)) |> Matrix
+X = Matrix(select(kidiq, Not(:kid_score)))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y and standardize
-y = kidiq[:, :kid_score] |> float
+y = float(kidiq[:, :kid_score])
 y = standardize(ZScoreTransform, y; dims=1)
 
 # define the model
@@ -61,8 +61,12 @@ model_qr = linear_regression(Q_ast, y)
 chn_qr = sample(model_qr, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
 
 # reconstruct β back from the Q_ast scale into X scale
-betas = mapslices(x -> R_ast^-1 * x, chn_qr[:, namesingroup(chn_qr, :β), :].value.data, dims=[2])
-chain_beta = setrange(Chains(betas, ["real_β[$i]" for i in 1:size(Q_ast, 2)]), 1_001:1:2_000)
+betas = mapslices(
+    x -> R_ast^-1 * x, chn_qr[:, namesingroup(chn_qr, :β), :].value.data; dims=[2]
+)
+chain_beta = setrange(
+    Chains(betas, ["real_β[$i]" for i in 1:size(Q_ast, 2)]), 1_001:1:2_000
+)
 chn_qr_reconstructed = hcat(chain_beta, chn_qr)
 println(DataFrame(summarystats(chn_qr_reconstructed)))
 

@@ -17,7 +17,7 @@ seed!(123)
 wells = CSV.read("datasets/wells.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(wells, Not(:switch)) |> Matrix
+X = Matrix(select(wells, Not(:switch)))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y
