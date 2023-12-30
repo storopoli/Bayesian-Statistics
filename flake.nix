@@ -62,7 +62,7 @@
                 enable = true;
                 name = "format julia code";
                 entry = ''
-                  ${pkgs.julia-bin}/bin/julia -e '
+                  ${pkgs.julia}/bin/julia -e '
                   using Pkg
                   Pkg.activate(".")
                   Pkg.add("JuliaFormatter")
