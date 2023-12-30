@@ -13,7 +13,7 @@ seed!(123)
 roaches = CSV.read("datasets/roaches.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(roaches, Not(:y)) |> Matrix
+X = Matrix(select(roaches, Not(:y)))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y
@@ -28,7 +28,9 @@ function NegativeBinomial2(μ, ϕ)
 end
 
 # define the model
-@model function zero_inflated_negative_binomial_regression(X, y; predictors=size(X, 2), N=size(X, 1))
+@model function zero_inflated_negative_binomial_regression(
+    X, y; predictors=size(X, 2), N=size(X, 1)
+)
     # priors
     α ~ TDist(3) * 2.5
     β ~ filldist(TDist(3) * 2.5, predictors)
@@ -40,11 +42,11 @@ end
     for n in 1:N
         if y[n] == 0
             Turing.@addlogprob! logpdf(Bernoulli(γ), 0) +
-                                logpdf(Bernoulli(γ), 1) +
-                                logpdf(NegativeBinomial2(exp(α + X[n, :] ⋅ β), ϕ), y[n])
+                logpdf(Bernoulli(γ), 1) +
+                logpdf(NegativeBinomial2(exp(α + X[n, :] ⋅ β), ϕ), y[n])
         else
             Turing.@addlogprob! logpdf(Bernoulli(γ), 0) +
-                                logpdf(NegativeBinomial2(exp(α + X[n, :] ⋅ β), ϕ), y[n])
+                logpdf(NegativeBinomial2(exp(α + X[n, :] ⋅ β), ϕ), y[n])
         end
     end
     return (; y, α, β, γ, ϕ)

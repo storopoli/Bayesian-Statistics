@@ -19,28 +19,32 @@ end
 
 # create int idx
 cheese[:, :background_int] = map(cheese[:, :background]) do b
-    b == "urban" ? 1 :
-    b == "rural" ? 2 : missing
+    if b == "urban"
+        1
+    elseif b == "rural"
+        2
+    else
+        missing
+    end
 end
 
 # define data matrix X
 # now we are binding a column of 1s as the first column of X
 # for the correlated intercepts
 insertcols!(cheese, :intercept => fill(1, nrow(cheese)))
-X = select(cheese, Cols(:intercept, Between(:cheese_A, :cheese_D))) |> Matrix
+X = Matrix(select(cheese, Cols(:intercept, Between(:cheese_A, :cheese_D))))
 
 # define dependent variable y and standardize
-y = cheese[:, :y] |> float
+y = float(cheese[:, :y])
 y = standardize(ZScoreTransform, y; dims=1)
 
 # define vector of group memberships idx
 idx = cheese[:, :background_int]
 
 # define the model
-@model function correlated_varying_intercept_slope_regression(X, idx, y;
-    predictors=size(X, 2),
-    N=size(X, 1),
-    n_gr=length(unique(idx)))
+@model function correlated_varying_intercept_slope_regression(
+    X, idx, y; predictors=size(X, 2), N=size(X, 1), n_gr=length(unique(idx))
+)
     # priors
     Ω ~ LKJCholesky(predictors, 2.0)
     σ ~ Exponential(1)

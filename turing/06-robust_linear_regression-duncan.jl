@@ -13,11 +13,11 @@ seed!(123)
 duncan = CSV.read("datasets/duncan.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(duncan, [:income, :education]) |> Matrix |> float
+X = float(Matrix(select(duncan, [:income, :education])))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y and standardize
-y = duncan[:, :prestige] |> float
+y = float(duncan[:, :prestige])
 y = standardize(ZScoreTransform, y; dims=1)
 
 # define the model

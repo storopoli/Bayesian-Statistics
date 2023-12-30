@@ -13,7 +13,7 @@ seed!(123)
 roaches = CSV.read("datasets/roaches.csv", DataFrame)
 
 # define data matrix X and standardize
-X = select(roaches, Not(:y)) |> Matrix
+X = Matrix(select(roaches, Not(:y)))
 X = standardize(ZScoreTransform, X; dims=1)
 
 # define dependent variable y
@@ -30,11 +30,11 @@ y = roaches[:, :y]
     for n in 1:N
         if y[n] == 0
             Turing.@addlogprob! logpdf(Bernoulli(γ), 0) +
-                                logpdf(Bernoulli(γ), 1) +
-                                logpdf(LogPoisson(α + X[n, :] ⋅ β), y[n])
+                logpdf(Bernoulli(γ), 1) +
+                logpdf(LogPoisson(α + X[n, :] ⋅ β), y[n])
         else
             Turing.@addlogprob! logpdf(Bernoulli(γ), 0) +
-                                logpdf(LogPoisson(α + X[n, :] ⋅ β), y[n])
+                logpdf(LogPoisson(α + X[n, :] ⋅ β), y[n])
         end
     end
     return (; y, α, β, γ)
