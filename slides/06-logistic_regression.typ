@@ -215,7 +215,7 @@
   #text(size: 16pt)[
     $
       bold(y)  &tilde "Bernoulli"(p) \
-      p        &= "logistic/logit"(α + bold(X) bold(β)) \
+      p        &= "logistic/probit"(α + bold(X) bold(β)) \
       α       &tilde "Normal"(μ_α, σ_α) \
       bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β))
     $
@@ -236,7 +236,7 @@
   #text(size: 16pt)[
     $
       bold(y)  &tilde "Binomial"(n, p) \
-      p        &= "logistic/logit"(α + bold(X) bold(β)) \
+      p        &= "logistic/probit"(α + bold(X) bold(β)) \
       α       &tilde "Normal"(μ_α, σ_α) \
       bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β))
     $
