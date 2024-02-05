@@ -46,7 +46,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
 
       - name: Cache Nix artifacts
-        uses: DeterminateSystems/magic-nix-cache-action@v2
+        uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: Test ${{ matrix.jl-file }}
         run: |
@@ -169,7 +169,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
 
       - name: Cache Nix artifacts
-        uses: DeterminateSystems/magic-nix-cache-action@v2
+        uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: Test ${{ matrix.stan.model }}
         run: |
