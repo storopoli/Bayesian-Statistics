@@ -231,7 +231,7 @@
     Also known as Robit #footnote[there is a great discussion between Gelman, Vehtari and Kurz at
       #link("https://discourse.mc-stan.org/t/robit-regression-not-robust/21245/")[
         Stan's Discourse
-      ].] @gelman2013bayesian @gelman2020regression. The ideia is to make the
+      ].] @gelman2013bayesian @gelman2020regression. The idea is to make the
     logistic regression robust by using a *latent variable* $z$ as the linear
     predictor.
     $z$'s errors, $ε$, are distributed as a Student's $t$ distribution:
