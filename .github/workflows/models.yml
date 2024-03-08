@@ -36,7 +36,7 @@ jobs:
             "15-hierarchical_varying_intercept-cheese.jl",
             "15-hierarchical_varying_intercept-non_centered-cheese.jl",
             "16-hierarchical_varying_intercept_slope-cheese.jl",
-            "17-model_comparison-roaches.jl",
+            #"17-model_comparison-roaches.jl", # FIXME: broken upstream in ParetoSmooth.jl
           ]
     steps:
       - name: Checkout repository
