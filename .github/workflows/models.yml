@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v9
+        uses: DeterminateSystems/nix-installer-action@v10
 
       - name: Cache Nix artifacts
         uses: DeterminateSystems/magic-nix-cache-action@v4
@@ -166,7 +166,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v9
+        uses: DeterminateSystems/nix-installer-action@v10
 
       - name: Cache Nix artifacts
         uses: DeterminateSystems/magic-nix-cache-action@v4
