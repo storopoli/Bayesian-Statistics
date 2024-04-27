@@ -72,20 +72,11 @@
     center,
   )[
     #canvas(
-      length: 0.9cm,
-      {
+      length: 0.9cm, {
         plot.plot(
-          size: (16, 9),
-          x-label: $x$,
-          y-label: $"logistic"(x)$,
-          x-tick-step: 5,
-          y-tick-step: 0.25,
-          y-min: -0.01,
-          y-max: 1.01,
-          {
+          size: (16, 9), x-label: $x$, y-label: $"logistic"(x)$, x-tick-step: 5, y-tick-step: 0.25, y-min: -0.01, y-max: 1.01, {
             plot.add(
-              domain: (-10, 10),
-              samples: 200,
+              domain: (-10, 10), samples: 200,
               // label: $"logistic"(x)$, // FIXME: depends on unreleased cetz 2.0.0
               x => logistic(x),
             )
@@ -114,20 +105,11 @@
     center,
   )[
     #canvas(
-      length: 0.9cm,
-      {
+      length: 0.9cm, {
         plot.plot(
-          size: (16, 9),
-          x-label: $x$,
-          y-label: $Φ(x)$,
-          x-tick-step: 5,
-          y-tick-step: 0.25,
-          y-min: -0.01,
-          y-max: 1.01,
-          {
+          size: (16, 9), x-label: $x$, y-label: $Φ(x)$, x-tick-step: 5, y-tick-step: 0.25, y-min: -0.01, y-max: 1.01, {
             plot.add(
-              domain: (-10, 10),
-              samples: 200,
+              domain: (-10, 10), samples: 200,
               // label: $"probit"(x)$, // FIXME: depends on unreleased cetz 2.0.0
               x => normcdf(x, 0, 1),
             )
@@ -145,26 +127,16 @@
     center,
   )[
     #canvas(
-      length: 0.9cm,
-      {
+      length: 0.9cm, {
         plot.plot(
-          size: (16, 9),
-          x-label: $x$,
-          y-label: $Φ(x)$,
-          x-tick-step: 5,
-          y-tick-step: 0.25,
-          y-min: -0.01,
-          y-max: 1.01,
-          {
+          size: (16, 9), x-label: $x$, y-label: $Φ(x)$, x-tick-step: 5, y-tick-step: 0.25, y-min: -0.01, y-max: 1.01, {
             plot.add(
-              domain: (-10, 10),
-              samples: 200,
+              domain: (-10, 10), samples: 200,
               // label: $"logistic"(x)$, // FIXME: depends on unreleased cetz 2.0.0
               x => logistic(x),
             )
             plot.add(
-              domain: (-10, 10),
-              samples: 200,
+              domain: (-10, 10), samples: 200,
               // label: $"probit"(x)$, // FIXME: depends on unreleased cetz 2.0.0
               x => normcdf(x, 0, 1),
             )
@@ -214,8 +186,8 @@
 #slide(title: [Bernoulli Likelihood])[
   #text(size: 16pt)[
     $
-      bold(y)  &tilde "Bernoulli"(p) \
-      p        &= "logistic/probit"(α + bold(X) bold(β)) \
+      bold(y) &tilde "Bernoulli"(p) \
+      p       &= "logistic/probit"(α + bold(X) bold(β)) \
       α       &tilde "Normal"(μ_α, σ_α) \
       bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β))
     $
@@ -235,8 +207,8 @@
 #slide(title: [Binomial Likelihood])[
   #text(size: 16pt)[
     $
-      bold(y)  &tilde "Binomial"(n, p) \
-      p        &= "logistic/probit"(α + bold(X) bold(β)) \
+      bold(y) &tilde "Binomial"(n, p) \
+      p       &= "logistic/probit"(α + bold(X) bold(β)) \
       α       &tilde "Normal"(μ_α, σ_α) \
       bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β))
     $
@@ -322,9 +294,9 @@
   If you revisit the logistic function, you'll se that the intercept $α$
   and coefficients $bold(β)$ are literally the *log of the odds* (logodds):
   $
-    p        &= "logistic"(α + bold(X) bold(β) ) \
-    p        &= "logistic"(α) + "logistic"( bold(X) bold(β)) \
-    p        &= 1 / (1 + e^(-bold(β))) \
+    p       &= "logistic"(α + bold(X) bold(β) ) \
+    p       &= "logistic"(α) + "logistic"( bold(X) bold(β)) \
+    p       &= 1 / (1 + e^(-bold(β))) \
     bold(β) &= log("odds")
   $
 ]

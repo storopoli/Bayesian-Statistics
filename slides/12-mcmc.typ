@@ -250,8 +250,7 @@
     center,
   )[
     #canvas(
-      length: 0.9cm,
-      {
+      length: 0.9cm, {
         import draw: *
         set-style(mark: (end: ">", fill: black), stroke: (thickness: 2pt), radius: 2)
         circle((0, 0))
@@ -441,39 +440,36 @@
   ]
 ]
 
-#slide(title: [Visual Intuition -- Metropolis])[
-  #align(center)[
+#slide(
+  title: [Visual Intuition -- Metropolis],
+)[
+  #align(
+    center,
+  )[
     #import draw: *
-    #canvas(length: 0.9cm, {
-      set-style(stroke: (thickness: 2pt))
-      plot.plot(
-        size: (16, 9),
-        x-label: none,
-        y-label: "PDF",
-        x-tick-step: 1,
-        y-tick-step: 0.1,
-        y-max: 0.55,
+    #canvas(
+      length: 0.9cm, {
+        set-style(stroke: (thickness: 2pt))
+        plot.plot(
+          size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, y-max: 0.55, {
+            plot.add(
+              domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => gaussian(x, 0, 1),
+            )
+          },
+        )
+        // mark: (end: ">", fill: black),
+        content((4, 1.5), text(size: 24pt, fill: julia-blue)[🚶])
+        content((8, 7), text(size: 24pt, fill: julia-blue)[🚶])
+        content((12, 1.5), text(size: 24pt, fill: julia-blue)[🚶])
         {
-          plot.add(
-            domain: (-4, 4),
-            samples: 200,
-            style: (stroke: (paint: julia-purple, thickness: 2pt)),
-            x => gaussian(x, 0, 1),
-          )
-        },
-      )
-      // mark: (end: ">", fill: black),
-      content((4, 1.5), text(size: 24pt, fill: julia-blue)[🚶])
-      content((8, 7), text(size: 24pt, fill: julia-blue)[🚶])
-      content((12, 1.5), text(size: 24pt, fill: julia-blue)[🚶])
-      {
-        set-style(mark: (end: ">", fill: black))
-        bezier-through((4, 2), (6, 8), (7.5, 7))
-        bezier-through((8.5, 7), (10, 8), (12, 2))
-      }
-      content((3, 7), [$P = 1$])
-      content((13, 7), [$P ≈ 1 / 4$])
-    })
+          set-style(mark: (end: ">", fill: black))
+          bezier-through((4, 2), (6, 8), (7.5, 7))
+          bezier-through((8.5, 7), (10, 8), (12, 2))
+        }
+        content((3, 7), [$P = 1$])
+        content((13, 7), [$P ≈ 1 / 4$])
+      },
+    )
   ]
 ]
 
@@ -615,10 +611,7 @@ See Metropolis-Hastings in action at #link(
     $
       bold(θ)^t =
       cases(
-        bold(θ)^t_1 tilde P(θ_1 | θ^0_2, dots, θ^0_p),
-        bold(θ)^t_2 tilde P(θ_2 | θ^(t - 1)_1, dots, θ^(t - 1)_p),
-        dots.v,
-        bold(θ)^t_p tilde P(θ_p | θ^(t - 1)_1, dots, θ^(t - 1)_(p - 1)),
+        bold(θ)^t_1 tilde P(θ_1 | θ^0_2, dots, θ^0_p), bold(θ)^t_2 tilde P(θ_2 | θ^(t - 1)_1, dots, θ^(t - 1)_p), dots.v, bold(θ)^t_p tilde P(θ_p | θ^(t - 1)_1, dots, θ^(t - 1)_(p - 1)),
 
       )
     $
@@ -757,8 +750,7 @@ See Gibbs in action at #link(
 
     $
       P_"change" = min(
-        (P(bold(θ)_"proposed") dot P(bold(φ)_"proposed")) / (P(bold(θ)_"current") dot P(bold(φ)_"current")),
-        1,
+        (P(bold(θ)_"proposed") dot P(bold(φ)_"proposed")) / (P(bold(θ)_"current") dot P(bold(φ)_"current")), 1,
 
       )
     $
@@ -866,8 +858,7 @@ See HMC in action at #link(
   ][
 
     #figure(
-      image("images/mcmc/euler_0_3.jpg", height: 55%),
-      caption: [HMC numerically integrated using Euler with $ε = 0.3$ and $L = 20$],
+      image("images/mcmc/euler_0_3.jpg", height: 55%), caption: [HMC numerically integrated using Euler with $ε = 0.3$ and $L = 20$],
     )
   ]
 ]
@@ -897,8 +888,7 @@ See HMC in action at #link(
   ][
 
     #figure(
-      image("images/mcmc/leapfrog_0_3.jpg", height: 55%),
-      caption: [HMC numerically integrated using leapfrog with $ε = 0.3$ and $L = 20$],
+      image("images/mcmc/leapfrog_0_3.jpg", height: 55%), caption: [HMC numerically integrated using leapfrog with $ε = 0.3$ and $L = 20$],
     )
   ]
 ]
@@ -923,8 +913,7 @@ See HMC in action at #link(
   ][
 
     #figure(
-      image("images/mcmc/leapfrog_1_2.jpg", height: 55%),
-      caption: [HMC numerically integrated using leapfrog with $ε = 1.2$ and $L = 20$],
+      image("images/mcmc/leapfrog_1_2.jpg", height: 55%), caption: [HMC numerically integrated using leapfrog with $ε = 1.2$ and $L = 20$],
     )
   ]
 ]
@@ -996,8 +985,7 @@ See HMC in action at #link(
     forward or backward.
 
     #figure(
-      image("images/mcmc/nuts.jpg", height: 40%),
-      caption: [NUTS growing leaf nodes forward],
+      image("images/mcmc/nuts.jpg", height: 40%), caption: [NUTS growing leaf nodes forward],
     )
   ]
 ]
@@ -1148,9 +1136,9 @@ See NUTS in action at #link(
   This example is for linear regression:
 
   $
-    bold(y)  &tilde "Normal"(α_j + bold(X) dot bold(β), σ ) \
+    bold(y) &tilde "Normal"(α_j + bold(X) dot bold(β), σ ) \
     α_j     &= z_j dot τ + α \
-    z_j      &tilde "Normal"(0, 1) \
+    z_j     &tilde "Normal"(0, 1) \
     α       &tilde "Normal"(μ_α, σ_α) \
     bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
     τ       &tilde "Cauchy"^+(0, ψ_α) \
@@ -1164,7 +1152,7 @@ See NUTS in action at #link(
   This example is for linear regression:
 
   $
-    bold(y)    &tilde "Normal"(bold(X) bold(β)_j, σ) \
+    bold(y)   &tilde "Normal"(bold(X) bold(β)_j, σ) \
     bold(β)_j &= bold(γ)_j dot bold(Σ) dot bold(γ)_j \
     bold(γ)_j &tilde "Multivariate Normal"(bold(0), bold(I))
     "for" j ∈ {1, dots, J} \
@@ -1296,20 +1284,26 @@ See NUTS in action at #link(
   ]
 ]
 
-#slide(title: [Traceplot -- Convergent Markov Chains])[
-  #align(center)[
+#slide(
+  title: [Traceplot -- Convergent Markov Chains],
+)[
+  #align(
+    center,
+  )[
     #figure(
-      image("images/funnel/good_chains_traceplot.svg", height: 80%),
-      caption: [A convergent Markov chains traceplot],
+      image("images/funnel/good_chains_traceplot.svg", height: 80%), caption: [A convergent Markov chains traceplot],
     )
   ]
 ]
 
-#slide(title: [Traceplot -- Divergent Markov Chains])[
-  #align(center)[
+#slide(
+  title: [Traceplot -- Divergent Markov Chains],
+)[
+  #align(
+    center,
+  )[
     #figure(
-      image("images/funnel/bad_chains_traceplot.svg", height: 80%),
-      caption: [A divergent Markov chains traceplot],
+      image("images/funnel/bad_chains_traceplot.svg", height: 80%), caption: [A divergent Markov chains traceplot],
     )
   ]
 ]
@@ -1395,8 +1389,7 @@ Summary Statistics
   #v(4em)
 
   #quote(
-    block: true,
-    attribution: [#cite(<gelmanFolkTheoremStatistical2008>, form: "prose")],
+    block: true, attribution: [#cite(<gelmanFolkTheoremStatistical2008>, form: "prose")],
   )[
     When you have computational problems, often there’s a problem with your model.
   ]

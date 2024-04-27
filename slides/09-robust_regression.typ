@@ -111,26 +111,16 @@
     center,
   )[
     #canvas(
-      length: 0.9cm,
-      {
+      length: 0.9cm, {
         plot.plot(
-          size: (16, 9),
-          x-label: none,
-          y-label: "PDF",
-          x-tick-step: 1,
-          y-tick-step: 0.1,
-          y-min: -0.01,
-          y-max: 0.42,
-          {
+          size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, y-min: -0.01, y-max: 0.42, {
             plot.add(
-              domain: (-4, 4),
-              samples: 200,
+              domain: (-4, 4), samples: 200,
               // label: "Normal", // FIXME: depends on unreleased cetz 2.0.0
               x => gaussian(x, 0, 1),
             )
             plot.add(
-              domain: (-4, 4),
-              samples: 200,
+              domain: (-4, 4), samples: 200,
               // label: [Student's $t$ with $ν = 3$], // FIXME: depends on unreleased cetz 2.0.0
               x => student(x, 3),
             )
@@ -152,7 +142,7 @@
     distribution, but a Student's $t$ distribution:
 
     $
-      bold(y)  &tilde "Student"(ν, α + bold(X) bold(β), σ) \
+      bold(y) &tilde "Student"(ν, α + bold(X) bold(β), σ) \
       α       &tilde "Normal"(μ_α, σ_α) \
       bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
       ν       &tilde "Log-Normal"(2, 1) \
@@ -207,8 +197,8 @@
     size: 18pt,
   )[
     $
-      bold(y)  & tilde "Beta-Binomial"(n, p, φ) \
-      p        & tilde "Logistic/Probit"(α + bold(X) bold(β)) \
+      bold(y) & tilde "Beta-Binomial"(n, p, φ) \
+      p       & tilde "Logistic/Probit"(α + bold(X) bold(β)) \
       α       & tilde "Normal"(μ_α, σ_α) \
       bold(β) & tilde "Normal"(μ_bold(β), σ_bold(β)) \
       φ       & tilde "Exponential"(1)
@@ -237,8 +227,8 @@
     $z$'s errors, $ε$, are distributed as a Student's $t$ distribution:
 
     $
-      y_i  &= cases(0 "if" z_i < 0, 1 "if" z_i > 0) \
-      z_i  &= X_i bold(β) + ε_i \
+      y_i &= cases(0 "if" z_i < 0, 1 "if" z_i > 0) \
+      z_i &= X_i bold(β) + ε_i \
       ε_i &tilde "Student"(ν, 0, sqrt((ν - 2) / ν)) \
       ν   &tilde "Gamma"(2, 0.1) ∈ [2, oo)
     $
@@ -272,7 +262,7 @@
   title: [Negative Binomial instead of Poisson],
 )[
   $
-    bold(y)  &tilde "Negative Binomial"(e^((α + bold(X) bold(β))), φ) \
+    bold(y) &tilde "Negative Binomial"(e^((α + bold(X) bold(β))), φ) \
     φ       &tilde "Gamma"(0.01, 0.01) \
     α       &tilde "Normal"(μ_α, σ_α) \
     bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β))
@@ -302,12 +292,11 @@
   $S_i$ can be modeled using logistic regression:
   $
     bold(y)    &cases(
-      = 0 "if" S_i = 0,
-      tilde "Negative Binomial"(e^((α + bold(X) bold(β))), φ ) "if" S_i = 1,
+      = 0 "if" S_i = 0, tilde "Negative Binomial"(e^((α + bold(X) bold(β))), φ ) "if" S_i = 1,
 
     ) \
     P(S_i = 1) &= "Logistic/Probit"(bold(X) bold(γ)) \
-    γ         &tilde "Beta"(1, 1)
+    γ          &tilde "Beta"(1, 1)
   $
 
   #v(1em)

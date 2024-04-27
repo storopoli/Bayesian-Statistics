@@ -90,7 +90,7 @@
 
     $
       β_i | λ_i, c &tilde "Normal"(0, sqrt(λ_i^2 c^2)) \
-      λ_i      &tilde "Bernoulli"(p)
+      λ_i          &tilde "Bernoulli"(p)
     $
 
     where:
@@ -103,58 +103,48 @@
   ]
 ]
 
-#slide(title: [Discrete Mixtures -- Spike-and-Slab Prior])[
+#slide(
+  title: [Discrete Mixtures -- Spike-and-Slab Prior],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.5,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => hs(x, 1, 0.05),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.5, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 0.05),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$c = 1, λ = 0$], numbering: none)
+        }, caption: [$c = 1, λ = 0$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.5,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => hs(x, 1, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.5, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$c = 1, λ = 1$], numbering: none)
+        }, caption: [$c = 1, λ = 1$], numbering: none,
+      )
     ]
   ]
 ]
@@ -179,31 +169,27 @@
   It is a symmetrical exponential decay around $μ$ with scale governed by $b$.
 ]
 
-#slide(title: [Shinkrage Priors -- Laplace Prior])[
-  #align(center)[
-    #figure({
-      canvas(length: 0.9cm, {
-        plot.plot(
-          size: (16, 9),
-          x-label: none,
-          y-label: "PDF",
-          x-tick-step: 1,
-          y-tick-step: 0.1,
-          x-min: -4,
-          x-max: 4,
-          y-max: 0.55,
-          y-min: 0,
-          {
-            plot.add(
-              domain: (-4, 4),
-              samples: 200,
-              style: (stroke: (paint: julia-purple, thickness: 2pt)),
-              x => laplace(x, 1),
+#slide(
+  title: [Shinkrage Priors -- Laplace Prior],
+)[
+  #align(
+    center,
+  )[
+    #figure(
+      {
+        canvas(
+          length: 0.9cm, {
+            plot.plot(
+              size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.55, y-min: 0, {
+                plot.add(
+                  domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => laplace(x, 1),
+                )
+              },
             )
           },
         )
-      })
-    }, caption: [$μ = 0, b = 1$], numbering: none)
+      }, caption: [$μ = 0, b = 1$], numbering: none,
+    )
   ]
 ]
 
@@ -220,7 +206,7 @@
 
     $
       β_i | λ_i, τ &tilde "Normal"(0, sqrt(λ_i^2 τ^2)) \
-      λ_i       &tilde "Cauchy"^+ (0, 1)
+      λ_i          &tilde "Cauchy"^+ (0, 1)
     $
 
     where:
@@ -233,58 +219,48 @@
   ]
 ]
 
-#slide(title: [Discrete Mixtures -- Spike-and-Slab Prior])[
+#slide(
+  title: [Discrete Mixtures -- Spike-and-Slab Prior],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.8,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => hs(x, 1, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.8, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$τ = 1, λ = 1$], numbering: none)
+        }, caption: [$τ = 1, λ = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.8,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => hs(x, 1, 1 / 2),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.8, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 1 / 2),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$τ = 1, λ = 1 / 2$], numbering: none)
+        }, caption: [$τ = 1, λ = 1 / 2$], numbering: none,
+      )
     ]
   ]
 ]
@@ -355,56 +331,44 @@
       would be very similar to Horseshoe but with discontinuities.]],
 )[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: 0,
-            x-max: 1,
-            y-max: 0.8,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.01, 0.99),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => beta(x, 0.5, 0.5),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 1, y-max: 0.8, y-min: 0, {
+                  plot.add(
+                    domain: (0.01, 0.99), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => beta(x, 0.5, 0.5),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [Laplace], numbering: none)
+        }, caption: [Laplace], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: 0,
-            x-max: 1,
-            y-max: 0.8,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.1, 0.9),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => shinkragelaplace(x, 1 / 2),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 1, y-max: 0.8, y-min: 0, {
+                  plot.add(
+                    domain: (0.1, 0.9), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => shinkragelaplace(x, 1 / 2),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [Horseshoe], numbering: none)
+        }, caption: [Horseshoe], numbering: none,
+      )
     ]
   ]
 ]
@@ -422,8 +386,8 @@
 
     $
       β_i | λ_i, η_i, τ &tilde "Normal"(0, λ_i) \
-      λ_i | η_i, τ &tilde "Cauchy"^+(0, τ η_i) \
-      η_i                                                             &tilde "Cauchy"^+ (0, 1)
+      λ_i | η_i, τ      &tilde "Cauchy"^+(0, τ η_i) \
+      η_i               &tilde "Cauchy"^+ (0, 1)
     $
 
     where:
@@ -457,8 +421,8 @@
   )[
     $
       β_i | λ_i, τ, c &tilde "Normal" (0, sqrt(τ^2 tilde(λ_i)^2)) \
-      tilde(λ_i)^2 &= (c^2 λ_i^2) / (c^2 + τ^2 λ_i^2) \
-      λ_i          &tilde "Cauchy"^+(0, 1)
+      tilde(λ_i)^2    &= (c^2 λ_i^2) / (c^2 + τ^2 λ_i^2) \
+      λ_i             &tilde "Cauchy"^+(0, 1)
     $
 
     where:
@@ -495,7 +459,7 @@
     size: 16pt,
   )[
     $
-      R^2      &tilde "Beta"(μ_(R^2) σ_(R^2), (1 - μ_(R^2)) σ_(R^2)) \
+      R^2     &tilde "Beta"(μ_(R^2) σ_(R^2), (1 - μ_(R^2)) σ_(R^2)) \
       bold(φ) &tilde "Dirichlet"(J, 1) \
       τ^2     &= (R^2) / (1 - R^2) \
       bold(β) &= Z dot sqrt(bold(φ) τ^2)

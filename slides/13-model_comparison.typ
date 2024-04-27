@@ -89,8 +89,7 @@
 
     $
       D(y, bold(θ)) = -2 dot underbrace(
-        sum^N_(i = 1) log 1 / S sum^S_(s = 1) P(y_i | bold(θ)^s),
-        "log pointwise predictive density - lppd",
+        sum^N_(i = 1) log 1 / S sum^S_(s = 1) P(y_i | bold(θ)^s), "log pointwise predictive density - lppd",
 
       )
     $
@@ -132,8 +131,7 @@
   $
     "DIC" = D(y, bold(θ)) + k_("DIC") = -2 "lppd"_("Bayes")
     +2 underbrace(
-      ("lppd"_("Bayes") - 1 / S sum^S_(s=1) log P(y | bold(θ)^s)),
-      text("bias-corrected") k,
+      ("lppd"_("Bayes") - 1 / S sum^S_(s=1) log P(y | bold(θ)^s)), text("bias-corrected") k,
 
     )
   $

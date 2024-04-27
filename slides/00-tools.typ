@@ -20,13 +20,11 @@
 
 #focus-slide(background: julia-purple)[
   #quote(
-    block: true,
-    attribution: [Vita Sackville-West],
+    block: true, attribution: [Vita Sackville-West],
   )[A man and his tools make a man and his trade]
 
   #quote(
-    block: true,
-    attribution: [Winston Churchill],
+    block: true, attribution: [Winston Churchill],
   )[We shape our tools and then the tools shape us]
 ]
 

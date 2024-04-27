@@ -71,26 +71,23 @@
   that allow to control certain distribution aspects for a specific goal.
 ]
 
-#slide(title: [Probability Distribution Function])[
-  #align(center)[
-    #canvas(length: 0.9cm, {
-      plot.plot(
-        size: (16, 9),
-        x-label: $X$,
-        y-label: "PDF",
-        x-tick-step: 1,
-        y-tick-step: 0.1,
-        y-max: 0.45,
-        {
-          plot.add(
-            domain: (-4, 4),
-            samples: 200,
-            style: (stroke: (paint: julia-purple, thickness: 2pt)),
-            x => gaussian(x, 0, 1),
-          )
-        },
-      )
-    })
+#slide(
+  title: [Probability Distribution Function],
+)[
+  #align(
+    center,
+  )[
+    #canvas(
+      length: 0.9cm, {
+        plot.plot(
+          size: (16, 9), x-label: $X$, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, y-max: 0.45, {
+            plot.add(
+              domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => gaussian(x, 0, 1),
+            )
+          },
+        )
+      },
+    )
   ]
 ]
 
@@ -104,27 +101,23 @@
   $ "CDF" = P(X <= x) $
 ]
 
-#slide(title: [Cumulative Distribution Function])[
-  #align(center)[
-    #canvas(length: 0.9cm, {
-      plot.plot(
-        size: (16, 9),
-        x-label: $X$,
-        y-label: "PDF",
-        x-tick-step: 1,
-        y-tick-step: 0.25,
-        y-min: -0.01,
-        y-max: 1.01,
-        {
-          plot.add(
-            domain: (-4, 4),
-            samples: 200,
-            style: (stroke: (paint: julia-purple, thickness: 2pt)),
-            x => normcdf(x, 0, 1),
-          )
-        },
-      )
-    })
+#slide(
+  title: [Cumulative Distribution Function],
+)[
+  #align(
+    center,
+  )[
+    #canvas(
+      length: 0.9cm, {
+        plot.plot(
+          size: (16, 9), x-label: $X$, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.25, y-min: -0.01, y-max: 1.01, {
+            plot.add(
+              domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => normcdf(x, 0, 1),
+            )
+          },
+        )
+      },
+    )
   ]
 ]
 
@@ -189,9 +182,7 @@
         let y_axis = axis(min: 0, max: 0.21, step: 0.1, location: "left", title: $"PMF"$)
         let pl = pplot(data: data, axes: ((x_axis, y_axis)))
         bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      },
-      caption: [$a = 1, b = 6$],
-      numbering: none,
+      }, caption: [$a = 1, b = 6$], numbering: none,
     )
   ]
 ]
@@ -233,18 +224,11 @@
         let data = ((0.666, "0"), (0.333, "1"))
         let x_axis = axis(values: ("", "0", "1"), location: "bottom", title: none)
         let y_axis = axis(
-          min: 0,
-          max: 0.7,
-          step: 0.2,
-          value_formatter: "{:.1}",
-          location: "left",
-          title: $"PMF"$,
+          min: 0, max: 0.7, step: 0.2, value_formatter: "{:.1}", location: "left", title: $"PMF"$,
         )
         let pl = pplot(data: data, axes: ((x_axis, y_axis)))
         bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      },
-      caption: [$p = 1 / 3$],
-      numbering: none,
+      }, caption: [$p = 1 / 3$], numbering: none,
     )
   ]
 ]
@@ -282,48 +266,46 @@
   title: [Binomial],
 )[
   #side-by-side[
-    #align(center)[
-      #figure({
-        let data = for i in range(0, 11) {
-          ((binomial(i, 10, 1 / 5), str(i)),)
-        }
-        data.insert(0, (0, ""))
-        let x_ticks = range(0, 11).map(str)
-        x_ticks.insert(0, "")
-        let x_axis = axis(values: x_ticks, location: "bottom", title: none)
-        let y_axis = axis(
-          min: 0,
-          max: 0.5,
-          step: 0.1,
-          value_formatter: "{:.1}",
-          location: "left",
-          title: $"PMF"$,
-        )
-        let pl = pplot(data: data, axes: ((x_axis, y_axis)))
-        bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      }, caption: [$n = 10, p = 1 / 5$], numbering: none)
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          let data = for i in range(0, 11) {
+            ((binomial(i, 10, 1 / 5), str(i)),)
+          }
+          data.insert(0, (0, ""))
+          let x_ticks = range(0, 11).map(str)
+          x_ticks.insert(0, "")
+          let x_axis = axis(values: x_ticks, location: "bottom", title: none)
+          let y_axis = axis(
+            min: 0, max: 0.5, step: 0.1, value_formatter: "{:.1}", location: "left", title: $"PMF"$,
+          )
+          let pl = pplot(data: data, axes: ((x_axis, y_axis)))
+          bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
+        }, caption: [$n = 10, p = 1 / 5$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        let data = for i in range(0, 11) {
-          ((binomial(i, 10, 1 / 2), str(i)),)
-        }
-        data.insert(0, (0, ""))
-        let x_ticks = range(0, 11).map(str)
-        x_ticks.insert(0, "")
-        let x_axis = axis(values: x_ticks, location: "bottom", title: none)
-        let y_axis = axis(
-          min: 0,
-          max: 0.5,
-          step: 0.1,
-          value_formatter: "{:.1}",
-          location: "left",
-          title: $"PMF"$,
-        )
-        let pl = pplot(data: data, axes: ((x_axis, y_axis)))
-        bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      }, caption: [$n = 10, p = 1 / 2$], numbering: none)
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          let data = for i in range(0, 11) {
+            ((binomial(i, 10, 1 / 2), str(i)),)
+          }
+          data.insert(0, (0, ""))
+          let x_ticks = range(0, 11).map(str)
+          x_ticks.insert(0, "")
+          let x_axis = axis(values: x_ticks, location: "bottom", title: none)
+          let y_axis = axis(
+            min: 0, max: 0.5, step: 0.1, value_formatter: "{:.1}", location: "left", title: $"PMF"$,
+          )
+          let pl = pplot(data: data, axes: ((x_axis, y_axis)))
+          bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
+        }, caption: [$n = 10, p = 1 / 2$], numbering: none,
+      )
     ]
   ]
 ]
@@ -358,48 +340,46 @@
   title: [Poisson],
 )[
   #side-by-side[
-    #align(center)[
-      #figure({
-        let data = for i in range(0, 9) {
-          ((poisson(i, 2), str(i)),)
-        }
-        data.insert(0, (0, ""))
-        let x_ticks = range(0, 9).map(str)
-        x_ticks.insert(0, "")
-        let x_axis = axis(values: x_ticks, location: "bottom", title: none)
-        let y_axis = axis(
-          min: 0,
-          max: 0.5,
-          step: 0.1,
-          value_formatter: "{:.1}",
-          location: "left",
-          title: $"PMF"$,
-        )
-        let pl = pplot(data: data, axes: ((x_axis, y_axis)))
-        bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      }, caption: [$λ = 2$], numbering: none)
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          let data = for i in range(0, 9) {
+            ((poisson(i, 2), str(i)),)
+          }
+          data.insert(0, (0, ""))
+          let x_ticks = range(0, 9).map(str)
+          x_ticks.insert(0, "")
+          let x_axis = axis(values: x_ticks, location: "bottom", title: none)
+          let y_axis = axis(
+            min: 0, max: 0.5, step: 0.1, value_formatter: "{:.1}", location: "left", title: $"PMF"$,
+          )
+          let pl = pplot(data: data, axes: ((x_axis, y_axis)))
+          bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
+        }, caption: [$λ = 2$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        let data = for i in range(0, 9) {
-          ((poisson(i, 3), str(i)),)
-        }
-        data.insert(0, (0, ""))
-        let x_ticks = range(0, 9).map(str)
-        x_ticks.insert(0, "")
-        let x_axis = axis(values: x_ticks, location: "bottom", title: none)
-        let y_axis = axis(
-          min: 0,
-          max: 0.5,
-          step: 0.1,
-          value_formatter: "{:.1}",
-          location: "left",
-          title: $"PMF"$,
-        )
-        let pl = pplot(data: data, axes: ((x_axis, y_axis)))
-        bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      }, caption: [$λ = 3$], numbering: none)
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          let data = for i in range(0, 9) {
+            ((poisson(i, 3), str(i)),)
+          }
+          data.insert(0, (0, ""))
+          let x_ticks = range(0, 9).map(str)
+          x_ticks.insert(0, "")
+          let x_axis = axis(values: x_ticks, location: "bottom", title: none)
+          let y_axis = axis(
+            min: 0, max: 0.5, step: 0.1, value_formatter: "{:.1}", location: "left", title: $"PMF"$,
+          )
+          let pl = pplot(data: data, axes: ((x_axis, y_axis)))
+          bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
+        }, caption: [$λ = 3$], numbering: none,
+      )
     ]
   ]
 ]
@@ -450,48 +430,46 @@
   title: [Negative Binomial],
 )[
   #side-by-side[
-    #align(center)[
-      #figure({
-        let data = for i in range(0, 9) {
-          ((negativebinomial(i, 1, 0.5), str(i)),)
-        }
-        data.insert(0, (0, ""))
-        let x_ticks = range(0, 9).map(str)
-        x_ticks.insert(0, "")
-        let x_axis = axis(values: x_ticks, location: "bottom", title: none)
-        let y_axis = axis(
-          min: 0,
-          max: 0.5,
-          step: 0.1,
-          value_formatter: "{:.1}",
-          location: "left",
-          title: $"PMF"$,
-        )
-        let pl = pplot(data: data, axes: ((x_axis, y_axis)))
-        bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      }, caption: [$k = 1, p = 1 / 2$], numbering: none)
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          let data = for i in range(0, 9) {
+            ((negativebinomial(i, 1, 0.5), str(i)),)
+          }
+          data.insert(0, (0, ""))
+          let x_ticks = range(0, 9).map(str)
+          x_ticks.insert(0, "")
+          let x_axis = axis(values: x_ticks, location: "bottom", title: none)
+          let y_axis = axis(
+            min: 0, max: 0.5, step: 0.1, value_formatter: "{:.1}", location: "left", title: $"PMF"$,
+          )
+          let pl = pplot(data: data, axes: ((x_axis, y_axis)))
+          bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
+        }, caption: [$k = 1, p = 1 / 2$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        let data = for i in range(0, 9) {
-          ((negativebinomial(i, 5, 0.5), str(i)),)
-        }
-        data.insert(0, (0, ""))
-        let x_ticks = range(0, 9).map(str)
-        x_ticks.insert(0, "")
-        let x_axis = axis(values: x_ticks, location: "bottom", title: none)
-        let y_axis = axis(
-          min: 0,
-          max: 0.5,
-          step: 0.1,
-          value_formatter: "{:.1}",
-          location: "left",
-          title: $"PMF"$,
-        )
-        let pl = pplot(data: data, axes: ((x_axis, y_axis)))
-        bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
-      }, caption: [$k = 5, p = 1 / 2$], numbering: none)
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          let data = for i in range(0, 9) {
+            ((negativebinomial(i, 5, 0.5), str(i)),)
+          }
+          data.insert(0, (0, ""))
+          let x_ticks = range(0, 9).map(str)
+          x_ticks.insert(0, "")
+          let x_axis = axis(values: x_ticks, location: "bottom", title: none)
+          let y_axis = axis(
+            min: 0, max: 0.5, step: 0.1, value_formatter: "{:.1}", location: "left", title: $"PMF"$,
+          )
+          let pl = pplot(data: data, axes: ((x_axis, y_axis)))
+          bar_chart(pl, (350pt, 275pt), bar_width: 70%, caption: none)
+        }, caption: [$k = 5, p = 1 / 2$], numbering: none,
+      )
     ]
   ]
 ]
@@ -545,31 +523,27 @@
   $ "Uniform"(a,b) = f(x, a, b) = 1 / (b-a) "for" a <= x <= b "and" x ∈ [a, b] $
 ]
 
-#slide(title: [Continuous Uniform])[
-  #align(center)[
-    #figure({
-      canvas(length: 0.9cm, {
-        plot.plot(
-          size: (16, 9),
-          x-label: none,
-          y-label: "PDF",
-          x-tick-step: 1,
-          y-tick-step: 0.1,
-          x-min: 0,
-          x-max: 6,
-          y-max: 0.4,
-          y-min: 0,
-          {
-            plot.add(
-              domain: (0, 6),
-              samples: 200,
-              style: (stroke: (paint: julia-purple, thickness: 2pt)),
-              x => continuousuniform(0, 6),
+#slide(
+  title: [Continuous Uniform],
+)[
+  #align(
+    center,
+  )[
+    #figure(
+      {
+        canvas(
+          length: 0.9cm, {
+            plot.plot(
+              size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 6, y-max: 0.4, y-min: 0, {
+                plot.add(
+                  domain: (0, 6), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => continuousuniform(0, 6),
+                )
+              },
             )
           },
         )
-      })
-    }, caption: [$a = 0, b = 6$], numbering: none)
+      }, caption: [$a = 0, b = 6$], numbering: none,
+    )
   ]
 ]
 
@@ -624,58 +598,48 @@
   $
 ]
 
-#slide(title: [Normal])[
+#slide(
+  title: [Normal],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.65,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => gaussian(x, 0, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.65, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => gaussian(x, 0, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$μ = 0, σ = 1$], numbering: none)
+        }, caption: [$μ = 0, σ = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.65,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => gaussian(x, 1, 2 / 3),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.65, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => gaussian(x, 1, 2 / 3),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$μ = 1, σ = 2 / 3$], numbering: none)
+        }, caption: [$μ = 1, σ = 2 / 3$], numbering: none,
+      )
     ]
   ]
 ]
@@ -718,58 +682,48 @@
   $ "Log-Normal"(μ,σ) = f(x, μ, σ) = 1 / (x σ sqrt(2π))e^((-ln(x) - μ)^2 / (2 σ^2)) "for" σ > 0 $
 ]
 
-#slide(title: [Log-Normal])[
+#slide(
+  title: [Log-Normal],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: 0,
-            x-max: 5,
-            y-max: 0.7,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.001, 5),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => lognormal(x, 0, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 5, y-max: 0.7, y-min: 0, {
+                  plot.add(
+                    domain: (0.001, 5), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => lognormal(x, 0, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$μ = 0, σ = 1$], numbering: none)
+        }, caption: [$μ = 0, σ = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: 0,
-            x-max: 5,
-            y-max: 0.7,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.001, 5),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => lognormal(x, 1, 2 / 3),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 5, y-max: 0.7, y-min: 0, {
+                  plot.add(
+                    domain: (0.001, 5), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => lognormal(x, 1, 2 / 3),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$μ = 1, σ = 2 / 3$], numbering: none)
+        }, caption: [$μ = 1, σ = 2 / 3$], numbering: none,
+      )
     ]
   ]
 ]
@@ -800,58 +754,48 @@
   $ "Exponential"(λ) = f(x, λ) = λ e^(-λ x) "for" λ > 0 $
 ]
 
-#slide(title: [Exponential])[
+#slide(
+  title: [Exponential],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.25,
-            x-min: 0,
-            x-max: 5,
-            y-max: 0.95,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.001, 5),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => exponential(x, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.25, x-min: 0, x-max: 5, y-max: 0.95, y-min: 0, {
+                  plot.add(
+                    domain: (0.001, 5), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => exponential(x, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$λ = 1$], numbering: none)
+        }, caption: [$λ = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.25,
-            x-min: 0,
-            x-max: 5,
-            y-max: 0.95,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.001, 5),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => exponential(x, 1 / 2),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.25, x-min: 0, x-max: 5, y-max: 0.95, y-min: 0, {
+                  plot.add(
+                    domain: (0.001, 5), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => exponential(x, 1 / 2),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$λ = 1 / 2$], numbering: none)
+        }, caption: [$λ = 1 / 2$], numbering: none,
+      )
     ]
   ]
 ]
@@ -883,58 +827,48 @@
   $ "Gamma"(α, θ) = f(x, α, θ) = (x^(α-1) e^(-x / θ)) / (Γ(α) θ^α) "for" x, α, θ > 0 $
 ]
 
-#slide(title: [Gamma])[
+#slide(
+  title: [Gamma],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.2,
-            x-min: 0,
-            x-max: 6,
-            y-max: 0.95,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.001, 6),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => gammadist(x, 1, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.2, x-min: 0, x-max: 6, y-max: 0.95, y-min: 0, {
+                  plot.add(
+                    domain: (0.001, 6), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => gammadist(x, 1, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$α = 1, θ = 1$], numbering: none)
+        }, caption: [$α = 1, θ = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.2,
-            x-min: 0,
-            x-max: 6,
-            y-max: 0.95,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.001, 6),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => gammadist(x, 2, 1 / 2),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.2, x-min: 0, x-max: 6, y-max: 0.95, y-min: 0, {
+                  plot.add(
+                    domain: (0.001, 6), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => gammadist(x, 2, 1 / 2),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$α = 2, θ = 1 / 2$], numbering: none)
+        }, caption: [$α = 2, θ = 1 / 2$], numbering: none,
+      )
     ]
   ]
 ]
@@ -986,58 +920,48 @@
   $ "Student"(ν) = f(x, ν) = (Γ ((ν + 1) / 2) ) / (sqrt(ν π) Γ (ν / 2 )) (1+ x^2 / ν)^(-(ν+1) / 2) "for" ν >= 1 $
 ]
 
-#slide(title: [Student's $t$])[
+#slide(
+  title: [Student's $t$],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.45,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => student(x, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.45, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => student(x, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$ν = 1$], numbering: none)
+        }, caption: [$ν = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.45,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => student(x, 3),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.45, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => student(x, 3),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$ν = 3$], numbering: none)
+        }, caption: [$ν = 3$], numbering: none,
+      )
     ]
   ]
 ]
@@ -1068,58 +992,48 @@
   $ "Cauchy"(μ, σ) = 1 / (π σ (1 + ((x - μ) / σ )^2 )) "for" σ >= 0 $
 ]
 
-#slide(title: [Cauchy])[
+#slide(
+  title: [Cauchy],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.65,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => cauchy(x, 0, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.65, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => cauchy(x, 0, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$μ = 0, σ = 1$], numbering: none)
+        }, caption: [$μ = 0, σ = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: -4,
-            x-max: 4,
-            y-max: 0.65,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (-4, 4),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => cauchy(x, 0, 1 / 2),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.65, y-min: 0, {
+                  plot.add(
+                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => cauchy(x, 0, 1 / 2),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$μ = 0, σ = 1 / 2$], numbering: none)
+        }, caption: [$μ = 0, σ = 1 / 2$], numbering: none,
+      )
     ]
   ]
 ]
@@ -1155,58 +1069,48 @@
   $ "Beta"(α, β) = f(x, α, β) (x^(α - 1)(1 - x)^(β - 1)) / ((Γ(α)Γ(β)) / (Γ(α +β ))) "for" α, β > 0 "and" x ∈ [0, 1] $
 ]
 
-#slide(title: [Beta])[
+#slide(
+  title: [Beta],
+)[
   #side-by-side[
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: 0,
-            x-max: 1,
-            y-max: 0.3,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.0001, 0.9999),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => beta(x, 1, 1),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 1, y-max: 0.3, y-min: 0, {
+                  plot.add(
+                    domain: (0.0001, 0.9999), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => beta(x, 1, 1),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$α = 1, β = 1$], numbering: none)
+        }, caption: [$α = 1, β = 1$], numbering: none,
+      )
     ]
   ][
-    #align(center)[
-      #figure({
-        canvas(length: 0.75cm, {
-          plot.plot(
-            size: (16, 9),
-            x-label: none,
-            y-label: "PDF",
-            x-tick-step: 1,
-            y-tick-step: 0.1,
-            x-min: 0,
-            x-max: 1,
-            y-max: 0.3,
-            y-min: 0,
-            {
-              plot.add(
-                domain: (0.0001, 0.9999),
-                samples: 200,
-                style: (stroke: (paint: julia-purple, thickness: 2pt)),
-                x => beta(x, 3, 2),
+    #align(
+      center,
+    )[
+      #figure(
+        {
+          canvas(
+            length: 0.75cm, {
+              plot.plot(
+                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 1, y-max: 0.3, y-min: 0, {
+                  plot.add(
+                    domain: (0.0001, 0.9999), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => beta(x, 3, 2),
+                  )
+                },
               )
             },
           )
-        })
-      }, caption: [$α = 3, β = 2$], numbering: none)
+        }, caption: [$α = 3, β = 2$], numbering: none,
+      )
     ]
   ]
 ]

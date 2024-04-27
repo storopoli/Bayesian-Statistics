@@ -38,8 +38,7 @@
 
 #focus-slide(background: julia-purple)[
   #quote(
-    block: true,
-    attribution: [Denis Lindley],
+    block: true, attribution: [Denis Lindley],
   )[Inside every nonBayesian there is a Bayesian struggling to get out]
 
 ]
@@ -157,8 +156,7 @@
       center,
     )[
       #canvas(
-        length: 0.65cm,
-        {
+        length: 0.65cm, {
           import draw: *
           set-style(mark: (fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1)
           circle((0, 0))
@@ -288,8 +286,7 @@
       center,
     )[
       #canvas(
-        length: 0.5cm,
-        {
+        length: 0.5cm, {
           import draw: *
           set-style(mark: (fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1)
 
@@ -317,8 +314,7 @@
       center,
     )[
       #canvas(
-        length: 0.5cm,
-        {
+        length: 0.5cm, {
           import draw: *
           set-style(mark: (fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1)
 
@@ -447,34 +443,37 @@
       })
     ]
   ][
-    #align(center)[
-      #canvas(length: 0.5cm, {
-        import draw: *
-        set-style(
-          mark: (start: "|", end: "|", fill: black, size: 1),
-          stroke: (thickness: 4pt),
-        )
+    #align(
+      center,
+    )[
+      #canvas(
+        length: 0.5cm, {
+          import draw: *
+          set-style(
+            mark: (start: "|", end: "|", fill: black, size: 1), stroke: (thickness: 4pt),
+          )
 
-        content((0, 0))[#text(size: 18pt)[$θ ∈ E_1$]]
-        line((-7, -2), (7, -2))
-        line((-7, -2), (-1, -2), stroke: julia-purple + 6pt)
+          content((0, 0))[#text(size: 18pt)[$θ ∈ E_1$]]
+          line((-7, -2), (7, -2))
+          line((-7, -2), (-1, -2), stroke: julia-purple + 6pt)
 
-        content((0, -4))[#text(size: 18pt)[$θ ∈ E_2$]]
-        line((-7, -6), (7, -6))
-        line((-3, -6), (1, -6), stroke: julia-purple + 6pt)
+          content((0, -4))[#text(size: 18pt)[$θ ∈ E_2$]]
+          line((-7, -6), (7, -6))
+          line((-3, -6), (1, -6), stroke: julia-purple + 6pt)
 
-        content((0, -8))[#text(size: 18pt)[$θ ∈ E_1 sect E_2$]]
-        line((-7, -10), (7, -10))
-        line((-3, -10), (-1, -10), stroke: julia-purple + 6pt)
+          content((0, -8))[#text(size: 18pt)[$θ ∈ E_1 sect E_2$]]
+          line((-7, -10), (7, -10))
+          line((-3, -10), (-1, -10), stroke: julia-purple + 6pt)
 
-        content((0, -12))[#text(size: 18pt)[$θ ∈ E_1 union E_2$]]
-        line((-7, -14), (7, -14))
-        line((-7, -14), (1, -14), stroke: julia-purple + 6pt)
+          content((0, -12))[#text(size: 18pt)[$θ ∈ E_1 union E_2$]]
+          line((-7, -14), (7, -14))
+          line((-7, -14), (1, -14), stroke: julia-purple + 6pt)
 
-        content((0, -16))[#text(size: 18pt)[$θ ∈ not E_1$]]
-        line((-7, -18), (7, -18))
-        line((-1, -18), (7, -18), stroke: julia-purple + 6pt)
-      })
+          content((0, -16))[#text(size: 18pt)[$θ ∈ not E_1$]]
+          line((-7, -18), (7, -18))
+          line((-1, -18), (7, -18), stroke: julia-purple + 6pt)
+        },
+      )
     ]
   ]
 ]
@@ -610,8 +609,7 @@
   title: [Visualization of Joint Probability versus Conditional Probability],
 )[
   #figure(
-    image("images/probability/joint_vs_conditional_probability.svg", height: 80%),
-    caption: [$P(X,Y)$ versus $P(X | Y=-0.75)$],
+    image("images/probability/joint_vs_conditional_probability.svg", height: 80%), caption: [$P(X,Y)$ versus $P(X | Y=-0.75)$],
   )
 ]
 
@@ -793,8 +791,7 @@
   )[
     #v(2em)
     #quote(
-      block: true,
-      attribution: [
+      block: true, attribution: [
         #cite(<neyman1937outline>, form: "prose") the "father" of confidence intervals
       ],
     )[
@@ -843,34 +840,18 @@
     center,
   )[
     #canvas(
-      length: 0.9cm,
-      {
+      length: 0.9cm, {
         plot.plot(
-          size: (16, 9),
-          x-label: $θ$,
-          y-label: none,
-          x-tick-step: 5,
-          y-tick-step: 0.25,
-          x-min: -0.1,
-          x-max: 4,
-          y-min: -0.01,
-          y-max: 1.5,
-          {
+          size: (16, 9), x-label: $θ$, y-label: none, x-tick-step: 5, y-tick-step: 0.25, x-min: -0.1, x-max: 4, y-min: -0.01, y-max: 1.5, {
             plot.add(domain: (0.02, 4), samples: 200, x => lognormal(x, 0, 2))
             plot.add(
-              domain: (0.25950495026507125, 3.8534910373715427),
-              samples: 200,
-              style: plot.palette.blue,
-              hypograph: true,
+              domain: (0.25950495026507125, 3.8534910373715427), samples: 200, style: plot.palette.blue, hypograph: true,
               // label: "50% Posterior", // FIXME: depends on unreleased cetz 2.0.0
               x => lognormal(x, 0, 2),
             )
             plot.add(
-              domain: (0.001, 0.09),
-              samples: 50,
-              style: (
-                stroke: julia-red + 2pt,
-                mark: (start: "|", end: "|", fill: julia-red, size: 0.05),
+              domain: (0.001, 0.09), samples: 50, style: (
+                stroke: julia-red + 2pt, mark: (start: "|", end: "|", fill: julia-red, size: 0.05),
               ),
               // mark: "o",
               // mark-size: 0.4,
@@ -946,8 +927,7 @@
     #v(3em)
 
     #quote(
-      block: true,
-      attribution: [
+      block: true, attribution: [
         #cite(<fisher1925statistical>, form: "prose")
       ],
     )[

@@ -17,8 +17,8 @@
   )[
 
     $
-      "Binomial"(n, k)                           &= binom(n, k) p^k (1-p)^(n-k) \
-      n!                                         &≈ sqrt(2 π n) (n / e)^n \
+      "Binomial"(n, k)                         &= binom(n, k) p^k (1-p)^(n-k) \
+      n!                                       &≈ sqrt(2 π n) (n / e)^n \
       lim_(n → oo) binom(n, k) p^k (1-p)^(n-k) &=
       1 / (sqrt(2 π n p q)) e^(-((k - n p)^2) / (2 n p q))
     $
@@ -55,7 +55,7 @@
       bold(X)   &= bold(Q)^* bold(R)^* \
       bold(Q)^* &= bold(Q) dot sqrt(n - 1) \
       bold(R)^* &= 1 / (sqrt(n - 1)) dot bold(R) \
-      bold(μ)  &= α + bold(X) dot bold(β) + σ \
+      bold(μ)   &= α + bold(X) dot bold(β) + σ \
                 &= α + bold(Q)^* dot bold(R)^* dot bold(β) + σ \
                 &= α + bold(Q)^* dot (bold(R)^* dot bold(β)) + σ \
                 &= α + bold(Q)^* dot tilde(bold(β)) + σ

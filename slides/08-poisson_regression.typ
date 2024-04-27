@@ -60,19 +60,11 @@
     center,
   )[
     #canvas(
-      length: 0.9cm,
-      {
+      length: 0.9cm, {
         plot.plot(
-          size: (16, 9),
-          x-label: $x$,
-          y-label: $e^x$,
-          x-tick-step: 1,
-          y-tick-step: 20,
-          y-min: -0.01,
-          {
+          size: (16, 9), x-label: $x$, y-label: $e^x$, x-tick-step: 1, y-tick-step: 20, y-min: -0.01, {
             plot.add(
-              domain: (-1, 5),
-              samples: 200,
+              domain: (-1, 5), samples: 200,
               // label: $"exponential"(x)$, // FIXME: depends on unreleased cetz 2.0.0
               x => calc.exp(x),
             )
@@ -116,7 +108,7 @@
   #v(1em)
 
   $
-    bold(y)  &tilde "Poisson"(e^((α + bold(X) bold(β)))) \
+    bold(y) &tilde "Poisson"(e^((α + bold(X) bold(β)))) \
     α       &tilde "Normal"(μ_α, σ_α) \
     bold(β) &tilde "Normal"(μ_(bold(β)), σ_(bold(β)))
   $

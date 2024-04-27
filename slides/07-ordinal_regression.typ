@@ -161,22 +161,10 @@
   )[
     #let data = ((0.10, 1), (0.15, 2), (0.33, 3), (0.25, 4), (0.10, 5), (0.07, 6),)
     #let x_axis = axis(
-      min: 0,
-      max: 6.1,
-      step: 1,
-      location: "bottom",
-      helper_lines: false,
-      title: "values",
+      min: 0, max: 6.1, step: 1, location: "bottom", helper_lines: false, title: "values",
     )
     #let y_axis = axis(
-      min: 0,
-      max: 0.46,
-      step: 0.1,
-      location: "left",
-      show_markings: true,
-      helper_lines: true,
-      value_formatter: "{:.1}",
-      title: "PDF",
+      min: 0, max: 0.46, step: 0.1, location: "left", show_markings: true, helper_lines: true, value_formatter: "{:.1}", title: "PDF",
     )
     #let pl = pplot(data: data, axes: (x_axis, y_axis))
     #bar_chart(pl, 80%, bar_width: 70%, caption: none)
@@ -192,53 +180,26 @@
     )[
       #let data = ((0.10, 1), (0.25, 2), (0.58, 3), (0.83, 4), (0.93, 5), (1.00, 6),)
       #let x_axis = axis(
-        min: 0,
-        max: 6.1,
-        step: 1,
-        location: "bottom",
-        helper_lines: false,
-        title: "values",
+        min: 0, max: 6.1, step: 1, location: "bottom", helper_lines: false, title: "values",
       )
       #let y_axis = axis(
-        min: 0,
-        max: 1.2,
-        step: 0.1,
-        location: "left",
-        show_markings: true,
-        helper_lines: true,
-        value_formatter: "{:.1}",
-        title: "CDF",
+        min: 0, max: 1.2, step: 0.1, location: "left", show_markings: true, helper_lines: true, value_formatter: "{:.1}", title: "CDF",
       )
       #let pl = pplot(data: data, axes: (x_axis, y_axis))
       #bar_chart(pl, 80%, bar_width: 70%, caption: none)
     ]
   ][
-    #align(center)[
+    #align(
+      center,
+    )[
       #let data = (
-        (1, -2.19722),
-        (2, -1.09861),
-        (3, 0.322773),
-        (4, 1.58563),
-        (5, 2.58669),
-        (6, 10.0),
+        (1, -2.19722), (2, -1.09861), (3, 0.322773), (4, 1.58563), (5, 2.58669), (6, 10.0),
       )
       #let x_axis = axis(
-        min: 0,
-        max: 6.1,
-        step: 1,
-        location: "bottom",
-        helper_lines: false,
-        title: "values",
+        min: 0, max: 6.1, step: 1, location: "bottom", helper_lines: false, title: "values",
       )
       #let y_axis = axis(
-        min: -3,
-        max: 3,
-        step: 1,
-        location: "left",
-        show_markings: true,
-        helper_lines: true,
-        value_formatter: "{:.1}",
-        title: "log-cumulative-odds",
+        min: -3, max: 3, step: 1, location: "left", show_markings: true, helper_lines: true, value_formatter: "{:.1}", title: "log-cumulative-odds",
       )
       #let pl = pplot(data: data, axes: (x_axis, y_axis))
       #scatter_plot(pl, 80%, stroke: 4pt, caption: none)
@@ -299,12 +260,12 @@
     size: 13pt,
   )[
     $
-      bold(y)  &tilde "Categorical"(bold(p)) \
-      bold(p)  &= "logistic"(bold(φ)) \
+      bold(y) &tilde "Categorical"(bold(p)) \
+      bold(p) &= "logistic"(bold(φ)) \
       bold(φ) &= bold(α) + bold(c) + bold(X) \cdot bold(β) \
-      c_1      &= "logit"("CDF"(y_1)) \
-      c_k      &= "logit"("CDF"(y_k) - "CDF"(y_(k-1))) "for" 2 <= k <= K-1 \
-      c_K      &= "logit"(1 - "CDF"(y_(K-1))) \
+      c_1     &= "logit"("CDF"(y_1)) \
+      c_k     &= "logit"("CDF"(y_k) - "CDF"(y_(k-1))) "for" 2 <= k <= K-1 \
+      c_K     &= "logit"(1 - "CDF"(y_(K-1))) \
       bold(α) &tilde "Normal"(μ_α, σ_α) \
       bold(β) &tilde "Normal"(μ_(bold(β)), σ_{bold(β)})
     $

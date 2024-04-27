@@ -3,10 +3,7 @@
 #import "utils.typ": *
 
 #show: clean-theme.with(
-  footer: [Bayesian Statistics, Jose Storopoli],
-  short-title: [Bayesian Statistics],
-  logo: image("images/logos/juliadatascience_white.png"),
-  color: julia-purple,
+  footer: [Bayesian Statistics, Jose Storopoli], short-title: [Bayesian Statistics], logo: image("images/logos/juliadatascience_white.png"), color: julia-purple,
 )
 
 // customizations

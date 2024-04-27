@@ -35,11 +35,7 @@
   #let scatter_display = scatter_plot(pl_scatter, 70pt, stroke: 3pt, caption: none)
   #let pl_graph = pplot(data: data_graph, axes: (x_axis, y_axis))
   #let graph_display = graph_plot(
-    pl_graph,
-    70pt,
-    stroke: 2pt + julia-blue,
-    markings: none,
-    caption: none,
+    pl_graph, 70pt, stroke: 2pt + julia-blue, markings: none, caption: none,
   )
   #overlay((scatter_display, graph_display), (360pt, 280pt))
 ]
@@ -90,7 +86,7 @@
 
   #v(2em)
 
-  $ bold(y)  &tilde "Normal"(α + bold(X) bold(β), σ) \
+  $ bold(y) &tilde "Normal"(α + bold(X) bold(β), σ) \
   α       &tilde "Normal"(μ_α, σ_α) \
   bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
   σ       &tilde "Exponential"(λ_σ) $

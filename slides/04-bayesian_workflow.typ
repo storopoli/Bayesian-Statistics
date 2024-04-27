@@ -39,28 +39,32 @@
   ]
 ]
 
-#slide(title: [Bayesian Workflow #footnote[
-    based on #cite(<gelmanBayesianWorkflow2020>, form: "prose")
-  ]])[
+#slide(
+  title: [Bayesian Workflow #footnote[
+      based on #cite(<gelmanBayesianWorkflow2020>, form: "prose")
+    ]],
+)[
   #v(2em)
-  #align(center)[#cetz.canvas({
-      import cetz.draw: *
-      set-style(
-        mark: (start: ">", end: ">", fill: black, size: 0.3),
-        stroke: (thickness: 2pt),
-        radius: 3,
-      )
-      circle((0, 0))
-      content((0, 0), [#align(center)[Prior \ Elicitation]])
-      line((3, 0), (7, 0))
-      content((5, 2), [#align(center)[Prior \ Predictive \ Check]])
-      circle((10, 0))
-      content((10, 0), [#align(center)[Model \ Specification]])
-      line((13, 0), (17, 0))
-      content((15, 2), [#align(center)[Posterior \ Predictive \ Check]])
-      circle((20, 0))
-      content((20, 0), [#align(center)[Posterior \ Inference]])
-    })]
+  #align(
+    center,
+  )[#cetz.canvas(
+      {
+        import cetz.draw: *
+        set-style(
+          mark: (start: ">", end: ">", fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 3,
+        )
+        circle((0, 0))
+        content((0, 0), [#align(center)[Prior \ Elicitation]])
+        line((3, 0), (7, 0))
+        content((5, 2), [#align(center)[Prior \ Predictive \ Check]])
+        circle((10, 0))
+        content((10, 0), [#align(center)[Model \ Specification]])
+        line((13, 0), (17, 0))
+        content((15, 2), [#align(center)[Posterior \ Predictive \ Check]])
+        circle((20, 0))
+        content((20, 0), [#align(center)[Posterior \ Inference]])
+      },
+    )]
 ]
 
 #slide(
@@ -83,15 +87,15 @@
   title: "Actual Bayesian Workflow",
 )[
   #figure(
-    image("images/workflow/workflow_overview.svg", height: 80%),
-    caption: [Bayesian workflow by #cite(<gelmanBayesianWorkflow2020>, form: "prose").],
+    image("images/workflow/workflow_overview.svg", height: 80%), caption: [Bayesian workflow by #cite(<gelmanBayesianWorkflow2020>, form: "prose").],
   )
 ]
 
-#slide(title: [Not a "new idea"])[
+#slide(
+  title: [Not a "new idea"],
+)[
   #figure(
-    image("images/workflow/box_loop.png", height: 80%),
-    caption: [Box's Loop from
+    image("images/workflow/box_loop.png", height: 80%), caption: [Box's Loop from
       #cite(<boxScienceStatistics1976>, form: "prose")
       but taken from
       #cite(<Blei_Workflow2014>, form: "prose").],
@@ -148,13 +152,11 @@
     columns: (1fr, 1fr),
   )[
     #figure(
-      image("images/predictive_checks/pp_check_brms.svg", height: 80%),
-      caption: [#text(size: 18pt)[Real versus Simulated Densities]],
+      image("images/predictive_checks/pp_check_brms.svg", height: 80%), caption: [#text(size: 18pt)[Real versus Simulated Densities]],
     )
   ][
     #figure(
-      image("images/predictive_checks/pp_check_brms_ecdf.svg", height: 80%),
-      caption: [#text(size: 18pt)[Real versus Simulated Empirical CDFs]],
+      image("images/predictive_checks/pp_check_brms_ecdf.svg", height: 80%), caption: [#text(size: 18pt)[Real versus Simulated Empirical CDFs]],
     )
   ]
 ]

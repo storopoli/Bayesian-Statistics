@@ -77,57 +77,59 @@
     infer the posterior density of some random variable
     $bold(y) = y_1, y_2, dots, y_K$
   ]
-  #align(center)[
-    #canvas(length: 0.9cm, {
-      import draw: *
-      set-style(
-        mark: (end: ">", fill: black, size: 0.3),
-        stroke: (thickness: 2pt),
-        radius: 1,
-      )
-      circle((6, 0))
-      content((6, 0), [#align(center)[$φ$]])
+  #align(
+    center,
+  )[
+    #canvas(
+      length: 0.9cm, {
+        import draw: *
+        set-style(
+          mark: (end: ">", fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1,
+        )
+        circle((6, 0))
+        content((6, 0), [#align(center)[$φ$]])
 
-      line((6, 1), (0, 2))
-      circle((0, 3))
-      content((0, 3), [#align(center)[$θ_1$]])
+        line((6, 1), (0, 2))
+        circle((0, 3))
+        content((0, 3), [#align(center)[$θ_1$]])
 
-      line((6, 1), (3, 2))
-      circle((3, 3))
-      content((3, 3), [#align(center)[$dots$]])
+        line((6, 1), (3, 2))
+        circle((3, 3))
+        content((3, 3), [#align(center)[$dots$]])
 
-      line((6, 1), (6, 2))
-      circle((6, 3))
-      content((6, 3), [#align(center)[$θ_k$]])
+        line((6, 1), (6, 2))
+        circle((6, 3))
+        content((6, 3), [#align(center)[$θ_k$]])
 
-      line((6, 1), (9, 2))
-      circle((9, 3))
-      content((9, 3), [#align(center)[$dots$]])
+        line((6, 1), (9, 2))
+        circle((9, 3))
+        content((9, 3), [#align(center)[$dots$]])
 
-      line((6, 1), (12, 2))
-      circle((12, 3))
-      content((12, 3), [#align(center)[$θ_K$]])
+        line((6, 1), (12, 2))
+        circle((12, 3))
+        content((12, 3), [#align(center)[$θ_K$]])
 
-      line((0, 4), (0, 5))
-      circle((0, 6), fill: julia-purple)
-      content((0, 6), [#align(center)[#text(fill: white)[$y_1$]]])
+        line((0, 4), (0, 5))
+        circle((0, 6), fill: julia-purple)
+        content((0, 6), [#align(center)[#text(fill: white)[$y_1$]]])
 
-      line((3, 4), (3, 5))
-      circle((3, 6), fill: julia-purple)
-      content((3, 6), [#align(center)[#text(fill: white)[$dots$]]])
+        line((3, 4), (3, 5))
+        circle((3, 6), fill: julia-purple)
+        content((3, 6), [#align(center)[#text(fill: white)[$dots$]]])
 
-      line((6, 4), (6, 5))
-      circle((6, 6), fill: julia-purple)
-      content((6, 6), [#align(center)[#text(fill: white)[$y_k$]]])
+        line((6, 4), (6, 5))
+        circle((6, 6), fill: julia-purple)
+        content((6, 6), [#align(center)[#text(fill: white)[$y_k$]]])
 
-      line((9, 4), (9, 5))
-      circle((9, 6), fill: julia-purple)
-      content((9, 6), [#align(center)[#text(fill: white)[$dots$]]])
+        line((9, 4), (9, 5))
+        circle((9, 6), fill: julia-purple)
+        content((9, 6), [#align(center)[#text(fill: white)[$dots$]]])
 
-      line((12, 4), (12, 5))
-      circle((12, 6), fill: julia-purple)
-      content((12, 6), [#align(center)[#text(fill: white)[$y_K$]]])
-    })
+        line((12, 4), (12, 5))
+        circle((12, 6), fill: julia-purple)
+        content((12, 6), [#align(center)[#text(fill: white)[$y_K$]]])
+      },
+    )
   ]
 ]
 
@@ -141,104 +143,106 @@
     hierarchical model couples individual parameters, and provides a "backdoor" for
     information flow.
   ]
-  #align(center)[
+  #align(
+    center,
+  )[
     #side-by-side[
-      #canvas(length: 0.7cm, {
-        import draw: *
-        set-style(
-          mark: (end: ">", fill: black, size: 0.3),
-          stroke: (thickness: 2pt),
-          radius: 1,
-        )
-        circle((6, 0))
-        content((6, 0), [#align(center)[$φ$]])
+      #canvas(
+        length: 0.7cm, {
+          import draw: *
+          set-style(
+            mark: (end: ">", fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1,
+          )
+          circle((6, 0))
+          content((6, 0), [#align(center)[$φ$]])
 
-        line((6, 1), (0, 2))
-        circle((0, 3))
-        content((0, 3), [#align(center)[$θ_1$]])
+          line((6, 1), (0, 2))
+          circle((0, 3))
+          content((0, 3), [#align(center)[$θ_1$]])
 
-        line((6, 1), (3, 2))
-        circle((3, 3))
-        content((3, 3), [#align(center)[$dots$]])
+          line((6, 1), (3, 2))
+          circle((3, 3))
+          content((3, 3), [#align(center)[$dots$]])
 
-        line((6, 1), (6, 2))
-        circle((6, 3))
-        content((6, 3), [#align(center)[$θ_k$]])
+          line((6, 1), (6, 2))
+          circle((6, 3))
+          content((6, 3), [#align(center)[$θ_k$]])
 
-        line((6, 1), (9, 2))
-        circle((9, 3))
-        content((9, 3), [#align(center)[$dots$]])
+          line((6, 1), (9, 2))
+          circle((9, 3))
+          content((9, 3), [#align(center)[$dots$]])
 
-        line((6, 1), (12, 2))
-        circle((12, 3))
-        content((12, 3), [#align(center)[$θ_K$]])
+          line((6, 1), (12, 2))
+          circle((12, 3))
+          content((12, 3), [#align(center)[$θ_K$]])
 
-        circle((0, 6), fill: julia-purple.lighten(50%))
-        content((0, 6), [#align(center)[#text(fill: white)[$y_1$]]])
+          circle((0, 6), fill: julia-purple.lighten(50%))
+          content((0, 6), [#align(center)[#text(fill: white)[$y_1$]]])
 
-        circle((3, 6), fill: julia-purple.lighten(50%))
-        content((3, 6), [#align(center)[#text(fill: white)[$dots$]]])
+          circle((3, 6), fill: julia-purple.lighten(50%))
+          content((3, 6), [#align(center)[#text(fill: white)[$dots$]]])
 
-        line((6, 5), (6, 4))
-        circle((6, 6), fill: julia-purple)
-        content((6, 6), [#align(center)[#text(fill: white)[$y_k$]]])
+          line((6, 5), (6, 4))
+          circle((6, 6), fill: julia-purple)
+          content((6, 6), [#align(center)[#text(fill: white)[$y_k$]]])
 
-        circle((9, 6), fill: julia-purple.lighten(50%))
-        content((9, 6), [#align(center)[#text(fill: white)[$dots$]]])
+          circle((9, 6), fill: julia-purple.lighten(50%))
+          content((9, 6), [#align(center)[#text(fill: white)[$dots$]]])
 
-        circle((12, 6), fill: julia-purple.lighten(50%))
-        content((12, 6), [#align(center)[#text(fill: white)[$y_K$]]])
-      })
+          circle((12, 6), fill: julia-purple.lighten(50%))
+          content((12, 6), [#align(center)[#text(fill: white)[$y_K$]]])
+        },
+      )
     ][
-      #canvas(length: 0.7cm, {
-        import draw: *
-        set-style(
-          mark: (end: ">", fill: black, size: 0.3),
-          stroke: (thickness: 2pt),
-          radius: 1,
-        )
-        circle((6, 0))
-        content((6, 0), [#align(center)[$φ$]])
+      #canvas(
+        length: 0.7cm, {
+          import draw: *
+          set-style(
+            mark: (end: ">", fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1,
+          )
+          circle((6, 0))
+          content((6, 0), [#align(center)[$φ$]])
 
-        line((6, 1), (0, 2))
-        circle((0, 3))
-        content((0, 3), [#align(center)[$θ_1$]])
+          line((6, 1), (0, 2))
+          circle((0, 3))
+          content((0, 3), [#align(center)[$θ_1$]])
 
-        line((6, 1), (3, 2))
-        circle((3, 3))
-        content((3, 3), [#align(center)[$dots$]])
+          line((6, 1), (3, 2))
+          circle((3, 3))
+          content((3, 3), [#align(center)[$dots$]])
 
-        line((6, 1), (6, 2))
-        circle((6, 3))
-        content((6, 3), [#align(center)[$θ_k$]])
+          line((6, 1), (6, 2))
+          circle((6, 3))
+          content((6, 3), [#align(center)[$θ_k$]])
 
-        line((6, 1), (9, 2))
-        circle((9, 3))
-        content((9, 3), [#align(center)[$dots$]])
+          line((6, 1), (9, 2))
+          circle((9, 3))
+          content((9, 3), [#align(center)[$dots$]])
 
-        line((6, 1), (12, 2))
-        circle((12, 3))
-        content((12, 3), [#align(center)[$θ_K$]])
+          line((6, 1), (12, 2))
+          circle((12, 3))
+          content((12, 3), [#align(center)[$θ_K$]])
 
-        line((0, 5), (0, 4))
-        circle((0, 6), fill: julia-purple)
-        content((0, 6), [#align(center)[#text(fill: white)[$y_1$]]])
+          line((0, 5), (0, 4))
+          circle((0, 6), fill: julia-purple)
+          content((0, 6), [#align(center)[#text(fill: white)[$y_1$]]])
 
-        line((3, 5), (3, 4))
-        circle((3, 6), fill: julia-purple)
-        content((3, 6), [#align(center)[#text(fill: white)[$dots$]]])
+          line((3, 5), (3, 4))
+          circle((3, 6), fill: julia-purple)
+          content((3, 6), [#align(center)[#text(fill: white)[$dots$]]])
 
-        circle((6, 6), fill: julia-purple.lighten(50%))
-        content((6, 6), [#align(center)[#text(fill: white)[$y_k$]]])
+          circle((6, 6), fill: julia-purple.lighten(50%))
+          content((6, 6), [#align(center)[#text(fill: white)[$y_k$]]])
 
-        line((9, 5), (9, 4))
-        circle((9, 6), fill: julia-purple)
-        content((9, 6), [#align(center)[#text(fill: white)[$dots$]]])
+          line((9, 5), (9, 4))
+          circle((9, 6), fill: julia-purple)
+          content((9, 6), [#align(center)[#text(fill: white)[$dots$]]])
 
-        line((12, 4), (12, 5))
-        circle((12, 6), fill: julia-purple)
-        content((12, 6), [#align(center)[#text(fill: white)[$y_K$]]])
-      })
+          line((12, 4), (12, 5))
+          circle((12, 6), fill: julia-purple)
+          content((12, 6), [#align(center)[#text(fill: white)[$y_K$]]])
+        },
+      )
     ]
   ]
   #text(
@@ -327,7 +331,7 @@
   #v(1em)
 
   $
-    bold(y)  &tilde "Normal"(10, bold(θ)) \
+    bold(y) &tilde "Normal"(10, bold(θ)) \
     bold(θ) &tilde "Normal"(0, φ) \
     φ       &tilde "Exponential(1)"
   $
@@ -408,7 +412,7 @@
   This example is for linear regression:
 
   $
-    bold(y)  &tilde "Normal"(α_j + bold(X) dot bold(β), σ) \
+    bold(y) &tilde "Normal"(α_j + bold(X) dot bold(β), σ) \
     α_j     &tilde "Normal"(α, τ) \
     α       &tilde "Normal"(μ_α, σ_α) \
     bold(β) &tilde "Normal"(μ_{bold(β)}, σ_(bold(β))) \
@@ -427,15 +431,15 @@
     If you need to extend to more than one group, such as $J_1, J_2, dots$:
 
     $
-      bold(y)     &tilde "Normal"(α_j_1 + α_j_2 + bold(X) bold(β), σ) \
-      α_(j_1)    &tilde "Normal"(α_1, τ_α_j_1) \
-      α_(j_2)    &tilde "Normal"(α_2, τ_α_j_2) \
-      α_1        &tilde "Normal"(μ_(α_1), σ_α_1) \
-      α_2        &tilde "Normal"(μ_(α_2), σ_α_2) \
-      bold(β)    &tilde "Normal"(μ_(bold(β)), σ_(bold(β))) \
+      bold(y)   &tilde "Normal"(α_j_1 + α_j_2 + bold(X) bold(β), σ) \
+      α_(j_1)   &tilde "Normal"(α_1, τ_α_j_1) \
+      α_(j_2)   &tilde "Normal"(α_2, τ_α_j_2) \
+      α_1       &tilde "Normal"(μ_(α_1), σ_α_1) \
+      α_2       &tilde "Normal"(μ_(α_2), σ_α_2) \
+      bold(β)   &tilde "Normal"(μ_(bold(β)), σ_(bold(β))) \
       τ_(α_j_1) &tilde "Cauchy"^+(0, ψ_α_j_1) \
       τ_(α_j_2) &tilde "Cauchy"^+(0, ψ_α_j_2) \
-      σ          &tilde "Exponential"(λ_σ)
+      σ         &tilde "Exponential"(λ_σ)
     $
   ]
 ]
