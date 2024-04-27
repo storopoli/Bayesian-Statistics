@@ -50,6 +50,7 @@
               typos.enable = true;
               treefmt = {
                 enable = true;
+                package = treefmtEval.config.build.wrapper;
               };
               typst-fmt = {
                 enable = true;
@@ -80,9 +81,6 @@
                 files = "\\.jl$";
                 language = "system";
               };
-            };
-            settings = {
-              treefmt.package = treefmtEval.config.build.wrapper;
             };
           };
         };
