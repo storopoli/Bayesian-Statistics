@@ -4,5 +4,9 @@ Manifest.toml
 ### Typst ###
 *.pdf
 
+### Nix ###
+.envrc
+.direnv/
+
 ### pre-commit-hooks.nix ###
 .pre-commit-config.yaml
