@@ -23,7 +23,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v10
 
       - name: Cache Nix artifacts
-        uses: DeterminateSystems/magic-nix-cache-action@v4
+        uses: DeterminateSystems/magic-nix-cache-action@v6
 
       - name: Build Slides
         run: nix build -L
