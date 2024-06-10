@@ -19,7 +19,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v11
 
       - name: Cache Nix artifacts
-        uses: DeterminateSystems/magic-nix-cache-action@v6
+        uses: DeterminateSystems/magic-nix-cache-action@v7
 
       - name: Nix pre-commit check
         run: nix develop -L . --command bash -c 'pre-commit run --all-files'
