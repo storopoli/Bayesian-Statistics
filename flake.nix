@@ -68,7 +68,7 @@
                   Pkg.activate(".")
                   Pkg.add("JuliaFormatter")
                   using JuliaFormatter
-                  format(ARGS)
+                  format("turing")
                   out = Cmd(`git diff --name-only`) |> read |> String
                   if out == ""
                       exit(0)
@@ -80,6 +80,7 @@
                 '';
                 files = "\\.jl$";
                 language = "system";
+                pass_filenames = false;
               };
             };
           };
