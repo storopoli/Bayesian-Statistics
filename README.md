@@ -58,7 +58,6 @@ Thousands of users rely on Stan for statistical modeling, data analysis, and pre
 Stan models are specified in its own language (similar to C++) and compiled into an executable binary that can generate Bayesian statistical inferences using a high-performance Markov Chain Montecarlo (MCMC).
 
 You can find Stan models for all the content discussed in the slides at [`stan/`](stan/) folder.
-These were tested with Stan version 2.33.1.
 
 ### Turing
 
@@ -67,7 +66,6 @@ Models specified using Turing are easy to read and write — models work the way
 Like everything in Julia, Turing is [fast](https://arxiv.org/abs/2002.02702).
 
 You can find Turing models for all the content discussed in the slides at [`turing/`](turing/) folder.
-These were tested with Turing version 0.30 and Julia 1.10.
 
 ## Datasets
 
