@@ -16,7 +16,7 @@ data {
 parameters {
   real alpha;                         // intercept
   vector[K] beta;                     // coefficients for independent variables
-  real<lower=2> nu;                   // degrees of freedom
+  real<lower=2, upper=100> nu;        // degrees of freedom
 }
 model {
   // priors
