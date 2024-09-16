@@ -4,9 +4,7 @@
 
 #new-section-slide("Tools")
 
-#slide(
-  title: "Recommended References",
-)[
+#slide(title: "Recommended References")[
   - #cite(<geTuringLanguageFlexible2018>, form: "prose") - Turing paper
 
   - #cite(<carpenterStanProbabilisticProgramming2017>, form: "prose") - Stan paper
@@ -20,11 +18,13 @@
 
 #focus-slide(background: julia-purple)[
   #quote(
-    block: true, attribution: [Vita Sackville-West],
+    block: true,
+    attribution: [Vita Sackville-West],
   )[A man and his tools make a man and his trade]
 
   #quote(
-    block: true, attribution: [Winston Churchill],
+    block: true,
+    attribution: [Winston Churchill],
   )[We shape our tools and then the tools shape us]
 ]
 
@@ -32,9 +32,7 @@
   #align(center)[#image("images/memes/standards.png")]
 ]
 
-#slide(
-  title: "Tools",
-)[
+#slide(title: "Tools")[
   - #link("https://mc-stan.org")[Stan] (BSD-3 License)
 
   - #link("https://turinglang.org")[Turing] (MIT License)
@@ -46,15 +44,9 @@
   - #link("https://www.mrc-bsu.cam.ac.uk/software/bugs/")[BUGS] (GPL License)
 ]
 
-#slide(
-  title: [Stan #footnote[#cite(<carpenterStanProbabilisticProgramming2017>, form: "prose")]],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
-    #text(
-      size: 16pt,
-    )[
+#slide(title: [Stan #footnote[#cite(<carpenterStanProbabilisticProgramming2017>, form: "prose")]])[
+  #side-by-side(columns: (4fr, 1fr))[
+    #text(size: 16pt)[
       - High-performance platform for statistical modeling and statistical computation
       - Financial support from
         #link("https://numfocus.org/")[NUMFocus]:
@@ -75,36 +67,30 @@
 ]
 
 #slide(title: [Stan Code Example])[
-#fit-to-height(1fr)[```cpp
-        data {
-          int<lower=0> N;
-          vector[N] x;
-          vector[N] y;
-        }
-        parameters {
-          real alpha;
-          real beta;
-          real<lower=0> sigma;
-        }
-        model {
-          alpha ~ normal(0, 20);
-          beta ~ normal(0, 2);
-          sigma ~ cauchy(0, 2.5);
-          y ~ normal(alpha + beta * x, sigma);
-        }
-  ```
-]
+  #fit-to-height(1fr)[```cpp
+          data {
+            int<lower=0> N;
+            vector[N] x;
+            vector[N] y;
+          }
+          parameters {
+            real alpha;
+            real beta;
+            real<lower=0> sigma;
+          }
+          model {
+            alpha ~ normal(0, 20);
+            beta ~ normal(0, 2);
+            sigma ~ cauchy(0, 2.5);
+            y ~ normal(alpha + beta * x, sigma);
+          }
+    ```
+  ]
 ]
 
-#slide(
-  title: [Turing #footnote[#cite(<geTuringLanguageFlexible2018>, form: "prose")]],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
-    #text(
-      size: 18pt,
-    )[
+#slide(title: [Turing #footnote[#cite(<geTuringLanguageFlexible2018>, form: "prose")]])[
+  #side-by-side(columns: (4fr, 1fr))[
+    #text(size: 18pt)[
       - Ecosystem of Julia packages for Bayesian Inference using probabilistic
         programming
 
@@ -127,12 +113,8 @@
   ]
 ]
 
-#slide(
-  title: [Turing Ecosystem],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [Turing Ecosystem])[
+  #text(size: 16pt)[
     We have several Julia packages under Turing's GitHub organization
     #link("https://github.com/TuringLang")[TuringLang], but I will focus on 6 of
     those:
@@ -170,9 +152,9 @@
     ] @storopoli2021bayesianjulia
   ] Code Example])[
 
-#v(1em)
+  #v(1em)
 
-```julia
+  ```julia
         @model function linreg(x,  y)
             α ~ Normal(0, 20)
             β ~ Normal(0, 2)
@@ -183,12 +165,8 @@
   ```
 ]
 
-#slide(
-  title: [PyMC #footnote[#cite(form: "prose", <pymc3>)]],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
+#slide(title: [PyMC #footnote[#cite(form: "prose", <pymc3>)]])[
+  #side-by-side(columns: (4fr, 1fr))[
 
     - Python package for Bayesian statistics with a Markov Chain Monte Carlo sampler
 
@@ -208,7 +186,7 @@
 ]
 
 #slide(title: [PyMC Code Example])[
-```python
+  ```python
     with pm.Model() as model:
         alpha = pm.Normal("Intercept", mu=0, sigma=20)
         beta = pm.Normal("beta", mu=0, sigma=2)
@@ -230,9 +208,7 @@
   ]
 ]
 
-#slide(
-  title: [Why Turing],
-)[
+#slide(title: [Why Turing])[
   - *Julia* all the way down...
   - Can *interface/compose* _any_ Julia package
   - Decoupling of *modeling DSL, inference algorithms and data*
@@ -246,9 +222,7 @@
   - Very easy to do *distributed model inference and prediction*.
 ]
 
-#slide(
-  title: [Why _Not_ Turing],
-)[
+#slide(title: [Why _Not_ Turing])[
   - *Not as fast*, but pretty close behind, as Stan.
 
   - *Not enough learning materials*, example models, tutorials. Also documentation
@@ -271,9 +245,7 @@
   - *More tutorials, example models, and learning materials available*.
 ]
 
-#slide(
-  title: [Why _Not_ Stan],
-)[
+#slide(title: [Why _Not_ Stan])[
   - If you want to try *something new*, you'll have to do in *C++*.
 
   - Constrained *only to HMC-NUTS* as MCMC algorithm.

@@ -5,9 +5,7 @@
 
 #new-section-slide("Hierarchical Models")
 
-#slide(
-  title: "Recommended References",
-)[
+#slide(title: "Recommended References")[
   - #cite(<gelman2020regression>, form: "prose"):
     - Chapter 5: Hierarchical models
     - Chapter 15: Hierarchical linear models
@@ -29,9 +27,7 @@
   #align(center)[#image("images/memes/hierarchical_models.jpg")]
 ]
 
-#slide(
-  title: [I have many names...],
-)[
+#slide(title: [I have many names...])[
   Hierarchical models are also known for several names #footnote[
     for the whole full list
     #link(
@@ -50,9 +46,7 @@
   - Nested Data Models
 ]
 
-#slide(
-  title: [What are hierarchical models?],
-)[
+#slide(title: [What are hierarchical models?])[
   Statistical model specified in multiple levels that estimates parameters from
   the posterior distribution using a Bayesian approach.
 
@@ -67,24 +61,21 @@
   values.
 ]
 
-#slide(
-  title: [What are hierarchical models?],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [What are hierarchical models?])[
+  #text(size: 16pt)[
     Hyperparameter $φ$ that parameterizes $θ_1, θ_2, dots, θ_K$, that are used to
     infer the posterior density of some random variable
     $bold(y) = y_1, y_2, dots, y_K$
   ]
-  #align(
-    center,
-  )[
+  #align(center)[
     #canvas(
-      length: 0.9cm, {
+      length: 0.9cm,
+      {
         import draw: *
         set-style(
-          mark: (end: ">", fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1,
+          mark: (end: ">", fill: black, size: 0.3),
+          stroke: (thickness: 2pt),
+          radius: 1,
         )
         circle((6, 0))
         content((6, 0), [#align(center)[$φ$]])
@@ -133,25 +124,22 @@
   ]
 ]
 
-#slide(
-  title: [What are hierarchical models?],
-)[
-  #text(
-    size: 14pt,
-  )[
+#slide(title: [What are hierarchical models?])[
+  #text(size: 14pt)[
     Even that the observations directly inform only a single set of parameters, a
     hierarchical model couples individual parameters, and provides a "backdoor" for
     information flow.
   ]
-  #align(
-    center,
-  )[
+  #align(center)[
     #side-by-side[
       #canvas(
-        length: 0.7cm, {
+        length: 0.7cm,
+        {
           import draw: *
           set-style(
-            mark: (end: ">", fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1,
+            mark: (end: ">", fill: black, size: 0.3),
+            stroke: (thickness: 2pt),
+            radius: 1,
           )
           circle((6, 0))
           content((6, 0), [#align(center)[$φ$]])
@@ -195,10 +183,13 @@
       )
     ][
       #canvas(
-        length: 0.7cm, {
+        length: 0.7cm,
+        {
           import draw: *
           set-style(
-            mark: (end: ">", fill: black, size: 0.3), stroke: (thickness: 2pt), radius: 1,
+            mark: (end: ">", fill: black, size: 0.3),
+            stroke: (thickness: 2pt),
+            radius: 1,
           )
           circle((6, 0))
           content((6, 0), [#align(center)[$φ$]])
@@ -245,9 +236,7 @@
       )
     ]
   ]
-  #text(
-    size: 14pt,
-  )[
+  #text(size: 14pt)[
     For example, the observations from the $k$th group, $y_k$, informs directly the
     parameters that quantify the $k$th group's behavior,
     $θ_k$. These parameters, however, inform directly the population-level
@@ -259,9 +248,7 @@
   ]
 ]
 
-#slide(
-  title: [When to Use Hierarchical Models?],
-)[
+#slide(title: [When to Use Hierarchical Models?])[
   #v(3em)
 
   *Hierarchical models* are used when information is available in *several levels
@@ -270,12 +257,8 @@
   also performing a crucial role in the development of *computational strategies*.
 ]
 
-#slide(
-  title: [When to Use Hierarchical Models?],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [When to Use Hierarchical Models?])[
+  #text(size: 16pt)[
     Hierarchical models are particularly appropriate for research projects where
     participant data can be organized in more than one level #footnote[
       also known as nested data.
@@ -295,9 +278,7 @@
   ]
 ]
 
-#slide(
-  title: [When to Use Hierarchical Models?],
-)[
+#slide(title: [When to Use Hierarchical Models?])[
   Another good use case is *big data* @gelman2013bayesian.
 
   - simple nonhierarchical models are usually inappropriate for hierarchical data:
@@ -310,9 +291,7 @@
     thereby *avoiding problems of overfitting*.
 ]
 
-#slide(
-  title: [When to Use Hierarchical Models?],
-)[
+#slide(title: [When to Use Hierarchical Models?])[
   #v(2em)
 
   Most important is *not to violate* the *exchangeability assumption*
@@ -323,9 +302,7 @@
   This assumption stems from the principle that *groups are _exchangeable_*.
 ]
 
-#slide(
-  title: [Hyperprior],
-)[
+#slide(title: [Hyperprior])[
   In hierarchical models, we have a hyperprior, which is a prior's prior:
 
   #v(1em)
@@ -333,7 +310,7 @@
   $
     bold(y) &tilde "Normal"(10, bold(θ)) \
     bold(θ) &tilde "Normal"(0, φ) \
-    φ       &tilde "Exponential(1)"
+    φ &tilde "Exponential(1)"
   $
 
   #v(2em)
@@ -343,12 +320,8 @@
   their own prior (which becomes a hyperprior) $φ$.
 ]
 
-#slide(
-  title: [Frequentist versus Bayesian Approaches],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Frequentist versus Bayesian Approaches])[
+  #text(size: 18pt)[
     There are also hierarchical models in frequentist statistics. They are mainly
     available in the lme4 package @lme4, and also in MixedModels.jl @MixedModels.
 
@@ -370,9 +343,7 @@
   ]
 ]
 
-#slide(
-  title: [Frequentist versus Bayesian Approaches],
-)[
+#slide(title: [Frequentist versus Bayesian Approaches])[
   #v(3em)
 
   To sum up, *frequentist approach for hierarchical models is not robust* in both
@@ -381,9 +352,7 @@
   provide $p$-values due to *strong assumptions that are almost always violated*).
 ]
 
-#slide(
-  title: [Approaches to Hierarchical Modeling],
-)[
+#slide(title: [Approaches to Hierarchical Modeling])[
   #v(1em)
 
   - *Varying-intercept* model: One group-level intercept besides the
@@ -400,9 +369,7 @@
     group-level coefficient(s).
 ]
 
-#slide(
-  title: [Mathematical Specification of Hierarchical Models],
-)[
+#slide(title: [Mathematical Specification of Hierarchical Models])[
   #v(4em)
 
   We have $N$ observations organized in $J$ groups with $K$ independent variables.
@@ -413,40 +380,34 @@
 
   $
     bold(y) &tilde "Normal"(α_j + bold(X) dot bold(β), σ) \
-    α_j     &tilde "Normal"(α, τ) \
-    α       &tilde "Normal"(μ_α, σ_α) \
+    α_j &tilde "Normal"(α, τ) \
+    α &tilde "Normal"(μ_α, σ_α) \
     bold(β) &tilde "Normal"(μ_{bold(β)}, σ_(bold(β))) \
-    τ       &tilde "Cauchy"^+(0, ψ_(α)) \
-    σ       &tilde "Exponential"(λ_σ)
+    τ &tilde "Cauchy"^+(0, ψ_(α)) \
+    σ &tilde "Exponential"(λ_σ)
   $
 ]
 
-#slide(
-  title: [Mathematical Specification -- Varying-Intercept Model],
-)[
+#slide(title: [Mathematical Specification -- Varying-Intercept Model])[
 
-  #text(
-    size: 14pt,
-  )[
+  #text(size: 14pt)[
     If you need to extend to more than one group, such as $J_1, J_2, dots$:
 
     $
-      bold(y)   &tilde "Normal"(α_j_1 + α_j_2 + bold(X) bold(β), σ) \
-      α_(j_1)   &tilde "Normal"(α_1, τ_α_j_1) \
-      α_(j_2)   &tilde "Normal"(α_2, τ_α_j_2) \
-      α_1       &tilde "Normal"(μ_(α_1), σ_α_1) \
-      α_2       &tilde "Normal"(μ_(α_2), σ_α_2) \
-      bold(β)   &tilde "Normal"(μ_(bold(β)), σ_(bold(β))) \
+      bold(y) &tilde "Normal"(α_j_1 + α_j_2 + bold(X) bold(β), σ) \
+      α_(j_1) &tilde "Normal"(α_1, τ_α_j_1) \
+      α_(j_2) &tilde "Normal"(α_2, τ_α_j_2) \
+      α_1 &tilde "Normal"(μ_(α_1), σ_α_1) \
+      α_2 &tilde "Normal"(μ_(α_2), σ_α_2) \
+      bold(β) &tilde "Normal"(μ_(bold(β)), σ_(bold(β))) \
       τ_(α_j_1) &tilde "Cauchy"^+(0, ψ_α_j_1) \
       τ_(α_j_2) &tilde "Cauchy"^+(0, ψ_α_j_2) \
-      σ         &tilde "Exponential"(λ_σ)
+      σ &tilde "Exponential"(λ_σ)
     $
   ]
 ]
 
-#slide(
-  title: [Mathematical Specification -- Varying-(Intercept-)Slope Model],
-)[
+#slide(title: [Mathematical Specification -- Varying-(Intercept-)Slope Model])[
   If we want a varying intercept, we just insert a column filled with $1$s in the
   data matrix $bold(X)$.
 
@@ -459,12 +420,10 @@
   intercept.
 ]
 
-#slide(
-title: [Mathematical Specification -- Varying-(Intercept-)Slope Model],
-)[
-Hence, we have as a data matrix:
+#slide(title: [Mathematical Specification -- Varying-(Intercept-)Slope Model])[
+  Hence, we have as a data matrix:
 
-#v(2em)
+  #v(2em)
 
   // typstfmt::off
   $
@@ -480,17 +439,15 @@ Hence, we have as a data matrix:
   // typstfmt::on
 ]
 
-#slide(
-  title: [Mathematical Specification -- Varying-(Intercept-)Slope Model],
-)[
+#slide(title: [Mathematical Specification -- Varying-(Intercept-)Slope Model])[
   This example is for linear regression:
 
   $
-    bold(y)    &tilde "Normal"(bold(X) bold(β)_{j}, σ) \
+    bold(y) &tilde "Normal"(bold(X) bold(β)_{j}, σ) \
     bold(β)_j &tilde "Multivariate Normal"(bold(μ)_j, bold(Σ))
     "for" j ∈ {1, dots, J} \
-    bold(Σ)   &tilde "LKJ"(η) \
-    σ         &tilde "Exponential"(λ_σ)
+    bold(Σ) &tilde "LKJ"(η) \
+    σ &tilde "Exponential"(λ_σ)
   $
 
   #v(1em)
@@ -500,26 +457,22 @@ Hence, we have as a data matrix:
   filled with $1$s (intercept).
 ]
 
-#slide(
-  title: [Mathematical Specification -- Varying-(Intercept-)Slope Model],
-)[
+#slide(title: [Mathematical Specification -- Varying-(Intercept-)Slope Model])[
   If you need to extend to more than one group, such as $J_1, J_2, dots$:
 
   $
-    bold(y)      &tilde "Normal"(α + bold(X) bold(β)_j_1 + bold(X) bold(β)_j_2, σ) \
+    bold(y) &tilde "Normal"(α + bold(X) bold(β)_j_1 + bold(X) bold(β)_j_2, σ) \
     bold(β)_j_1 &tilde "Multivariate Normal"(bold(μ)_j_1, bold(Σ)_1)
     "for" j_1 ∈ {1, dots, J_1} \
     bold(β)_j_2 &tilde "Multivariate Normal"(bold(μ)_j_2, bold(Σ)_2)
     "for" j_2 ∈ {1, dots, J_2} \
-    bold(Σ)_1   &tilde "LKJ"(η_1) \
-    bold(Σ)_2   &tilde "LKJ"(η_2) \
-    σ           &tilde "Exponential"(λ_σ)
+    bold(Σ)_1 &tilde "LKJ"(η_1) \
+    bold(Σ)_2 &tilde "LKJ"(η_2) \
+    σ &tilde "Exponential"(λ_σ)
   $
 ]
 
-#slide(
-  title: [Priors for Covariance Matrices],
-)[
+#slide(title: [Priors for Covariance Matrices])[
   We can specify a prior for a covariance matrix $bold(Σ)$.
 
   #v(1em)
@@ -538,20 +491,14 @@ Hence, we have as a data matrix:
   $bold(Σ)$ (is is the $bold(Σ)$'s diagonal).
 ]
 
-#slide(
-  title: [Priors for Covariance Matrices],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [Priors for Covariance Matrices])[
+  #text(size: 16pt)[
     Additionally, the correlation matrix $bold(Ω)$
     can be decomposed once more for greater computational efficiency.
 
     Since all correlations matrices are symmetric and positive definite (all of its
     eigenvalues are real numbers $RR$ and positive $>0$), we can use the
-    #link(
-      "https://en.wikipedia.org/wiki/Cholesky_decomposition",
-    )[Cholesky Decomposition]
+    #link("https://en.wikipedia.org/wiki/Cholesky_decomposition")[Cholesky Decomposition]
     to decompose it into a triangular matrix (which is much more computational
     efficient to handle):
 

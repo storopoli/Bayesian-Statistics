@@ -4,9 +4,7 @@
 
 #new-section-slide("Model Comparison")
 
-#slide(
-  title: "Recommended References",
-)[
+#slide(title: "Recommended References")[
   - #cite(<gelman2013bayesian>, form: "prose") - Chapter 7: Evaluating, comparing,
     and expanding models
   - #cite(<gelman2020regression>, form: "prose") - Chapter 11, Section 11.8: Cross
@@ -26,18 +24,14 @@
   #align(center)[#image("images/memes/model_comparison.jpg")]
 ]
 
-#slide(
-  title: [Why Compare Models?],
-)[
+#slide(title: [Why Compare Models?])[
   #v(3em)
   After model parameters estimation, many times we want to measure its *predictive
   accuracy* by itself, or for *model comparison*, *model selection*, or computing
   a *model performance metric* @geisser1979predictive.
 ]
 
-#slide(
-  title: [But What About Visual Posterior Predictive Checks?],
-)[
+#slide(title: [But What About Visual Posterior Predictive Checks?])[
   To analyze and compare models using visual posterior predictive checks is a
   *subjective and arbitrary approach*.
 
@@ -54,9 +48,7 @@
   @gelmanBayesianWorkflow2020.
 ]
 
-#slide(
-  title: [Model Comparison Techniques],
-)[
+#slide(title: [Model Comparison Techniques])[
   We have several model comparison techniques that use *predictive accuracy*, but
   the main ones are:
   - Leave-one-out cross-validation (LOO) @vehtariPracticalBayesianModel2015.
@@ -70,12 +62,8 @@
     and it is asymptotically equal to LOO @vehtariPracticalBayesianModel2015.
 ]
 
-#slide(
-  title: [Historical Interlude],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [Historical Interlude])[
+  #text(size: 16pt)[
     In the past, we did not have computational power and data abundance. Model
     comparison was done based on a theoretical divergence metric originated from
     information theory's entropy:
@@ -88,7 +76,9 @@
     so lower values are preferable:
 
     $
-      D(y, bold(θ)) = -2 dot underbrace(
+      D(
+        y, bold(θ)
+      ) = -2 dot underbrace(
         sum^N_(i = 1) log 1 / S sum^S_(s = 1) P(y_i | bold(θ)^s), "log pointwise predictive density - lppd",
 
       )
@@ -98,9 +88,7 @@
   ]
 ]
 
-#slide(
-  title: [Historical Interlude -- AIC @akaike1998information],
-)[
+#slide(title: [Historical Interlude -- AIC @akaike1998information])[
   $
     "AIC" = D(y, bold(θ)) + 2k = -2 "lppd"_("mle") + 2k
   $
@@ -122,9 +110,7 @@
     parameters $k$: $N >> k$
 ]
 
-#slide(
-  title: [Historical Interlude -- DIC @spiegelhalter2002bayesian],
-)[
+#slide(title: [Historical Interlude -- DIC @spiegelhalter2002bayesian])[
   A generalization of the AIC, where we replace the maximum likelihood estimate
   for the posterior mean and $k$ by a data-based bias correction:
 
@@ -141,9 +127,7 @@
   and that $N >> k$.
 ]
 
-#slide(
-  title: [Predictive Accuracy],
-)[
+#slide(title: [Predictive Accuracy])[
   With current computational power, we do not need approximations #footnote[AIC, DIC etc.].
 
   #v(2em)
@@ -155,9 +139,7 @@
   But, first, let's define what is predictive accuracy.
 ]
 
-#slide(
-  title: [Predictive Accuracy],
-)[
+#slide(title: [Predictive Accuracy])[
   Bayesian approaches measure predictive accuracy using posterior draws
   $tilde(y)$ from the model. For that we have the predictive posterior
   distribution:
@@ -176,14 +158,14 @@
   $p(tilde(y) | y)$, the *better* will be the model's predictive accuracy.
 ]
 
-#slide(
-  title: [Predictive Accuracy],
-)[
+#slide(title: [Predictive Accuracy])[
   To make samples comparable, we calculate the expectation of this measure for
   each one of the $N$ sample observations:
 
   $
-    op("elpd") = sum_(i=1)^N ∫ p_t(tilde(y)_i) log p(tilde(y)_i | y) dif tilde(y)
+    op("elpd") = sum_(i=1)^N ∫ p_t(tilde(y)_i) log p(
+      tilde(y)_i | y
+    ) dif tilde(y)
   $
 
   where $op("elpd")$ is the expected log pointwise predictive density, and $p_t(tilde(y)_i)$ is
@@ -194,12 +176,8 @@
   approximations to estimate $op("elpd")$.
 ]
 
-#slide(
-  title: [Leave-One-Out Cross-Validation (LOO)],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Leave-One-Out Cross-Validation (LOO)])[
+  #text(size: 18pt)[
     We can compute the $op("elpd")$ using LOO @vehtariPracticalBayesianModel2015:
 
     $
@@ -218,12 +196,8 @@
   ]
 ]
 
-#slide(
-  title: [Widely Applicable Information Criteria (WAIC)],
-)[
-  #text(
-    size: 12pt,
-  )[
+#slide(title: [Widely Applicable Information Criteria (WAIC)])[
+  #text(size: 12pt)[
     WAIC @watanabe2010asymptotic, like LOO, is also an alternative approach to
     compute the $op("elpd")$,
 
@@ -254,9 +228,7 @@
   ]
 ]
 
-#slide(
-  title: [$K$-fold Cross-Validation ($K$-fold CV)],
-)[
+#slide(title: [$K$-fold Cross-Validation ($K$-fold CV)])[
   In the same manner that we can compute the $op("elpd")$
   using LOO with $N-1$ sample partitions, we can also compute it with any desired
   partition number.
@@ -272,9 +244,7 @@
   which almost involves a *high computational cost*.
 ]
 
-#slide(
-  title: [Pareto Smoothed Importance Sampling LOO (PSIS-LOO)],
-)[
+#slide(title: [Pareto Smoothed Importance Sampling LOO (PSIS-LOO)])[
   PSIS uses *importance sampling* #footnote[another class of MCMC algorithm that we did not cover yet.],
   which means a importance weighting scheme approach.
 
@@ -284,9 +254,7 @@
   reliability.
 ]
 
-#slide(
-  title: [Importance Sampling],
-)[
+#slide(title: [Importance Sampling])[
   If the $N$ samples are conditionally independent #footnote[
     that is, they are independent if conditioned on the model's parameters, which is
     a basic assumption in any Bayesian (and frequentist) model
@@ -307,13 +275,13 @@
   $
 ]
 
-#slide(
-  title: [Importance Sampling],
-)[
+#slide(title: [Importance Sampling])[
   However, the posterior $P(θ | y$ often has low variance and shorter tails than
   the LOO distributions $P(θ | y_(-1))$. Hence, if we use:
   $
-    P(tilde(y)_i | y_(-i)) ≈ (sum_(s=1)^S r_i^s P(tilde(y)_i|θ^s)) / (sum_(s=1)^S r_i^s)
+    P(tilde(y)_i | y_(-i)) ≈ (sum_(s=1)^S r_i^s P(
+      tilde(y)_i|θ^s
+    )) / (sum_(s=1)^S r_i^s)
   $
 
   #v(1em)
@@ -322,9 +290,7 @@
   variance*.
 ]
 
-#slide(
-  title: [Pareto Smoothed Importance Sampling],
-)[
+#slide(title: [Pareto Smoothed Importance Sampling])[
   We can enhance the IS-LOO estimate using a *Pareto Smoothed Importance Sampling*
   @vehtariPracticalBayesianModel2015.
 
@@ -350,12 +316,8 @@
   where $w$ is the truncated weights.
 ]
 
-#slide(
-  title: [Pareto Smoothed Importance Sampling LOO (PSIS-LOO)],
-)[
-  #text(
-    size: 17pt,
-  )[
+#slide(title: [Pareto Smoothed Importance Sampling LOO (PSIS-LOO)])[
+  #text(size: 17pt)[
     We use the importance weights Pareto distribution's estimated shape parameter
     $hat(k)$ to assess its reliability:
 

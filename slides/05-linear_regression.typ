@@ -5,9 +5,7 @@
 
 #new-section-slide("Linear Regression")
 
-#slide(
-  title: "Recommended References",
-)[
+#slide(title: "Recommended References")[
   - #cite(<gelman2013bayesian>, form: "prose"):
     - Chapter 14: Introduction to regression models
     - Chapter 16: Generalized linear models
@@ -24,25 +22,37 @@
   #align(center)[#image("images/memes/linear_regression.jpg")]
 ]
 
-#slide(
-  title: "What is Linear Regression?",
-)[
-  #let data_scatter = ((0.5, 0.7), (1, 0.7), (2, 2.4), (3, 2.6), (4, 4.6), (5, 4.2),)
-  #let data_graph = ((0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),)
+#slide(title: "What is Linear Regression?")[
+  #let data_scatter = (
+    (0.5, 0.7),
+    (1, 0.7),
+    (2, 2.4),
+    (3, 2.6),
+    (4, 4.6),
+    (5, 4.2),
+  )
+  #let data_graph = ((0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
   #let x_axis = axis(min: 0, max: 5, location: "bottom")
   #let y_axis = axis(min: 0, max: 5, location: "left")
   #let pl_scatter = pplot(data: data_scatter, axes: ((x_axis, y_axis)))
-  #let scatter_display = scatter_plot(pl_scatter, 70pt, stroke: 3pt, caption: none)
+  #let scatter_display = scatter_plot(
+    pl_scatter,
+    70pt,
+    stroke: 3pt,
+    caption: none,
+  )
   #let pl_graph = pplot(data: data_graph, axes: (x_axis, y_axis))
   #let graph_display = graph_plot(
-    pl_graph, 70pt, stroke: 2pt + julia-blue, markings: none, caption: none,
+    pl_graph,
+    70pt,
+    stroke: 2pt + julia-blue,
+    markings: none,
+    caption: none,
   )
   #overlay((scatter_display, graph_display), (360pt, 280pt))
 ]
 
-#slide(
-  title: "What is Linear Regression?",
-)[
+#slide(title: "What is Linear Regression?")[
   The ideia here is to model a dependent variable as a linear combination of
   independent variables.
 
@@ -61,9 +71,7 @@
   #align(center)[#image("images/memes/assumptions.jpg")]
 ]
 
-#slide(
-  title: "Linear Regression Assumptions",
-)[
+#slide(title: "Linear Regression Assumptions")[
   #v(3em)
 
   - model error $ε$ is independent of $bold(X)$ and $bold(y)$.
@@ -77,24 +85,22 @@
   - Observations are I.I.D #footnote[independent and identically distributed.].
 ]
 
-#slide(
-  title: "Linear Regression Specification",
-)[
+#slide(title: "Linear Regression Specification")[
   To estimate the intercept $α$ and coefficients $bold(β)$
   we use a Gaussian/normal likelihood function. Mathematically speaking, Bayesian
   linear regression is:
 
   #v(2em)
 
-  $ bold(y) &tilde "Normal"(α + bold(X) bold(β), σ) \
-  α       &tilde "Normal"(μ_α, σ_α) \
-  bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
-  σ       &tilde "Exponential"(λ_σ) $
+  $
+    bold(y) &tilde "Normal"(α + bold(X) bold(β), σ) \
+    α &tilde "Normal"(μ_α, σ_α) \
+    bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
+    σ &tilde "Exponential"(λ_σ)
+  $
 ]
 
-#slide(
-  title: "Linear Regression Specification",
-)[
+#slide(title: "Linear Regression Specification")[
   What we are missing is the prior probabilities for the model's parameters:
 
   #v(2em)
@@ -109,9 +115,7 @@
     Knowledge that we have about the model's error.
 ]
 
-#slide(
-  title: "Good Candidates for Prior Distributions",
-)[
+#slide(title: "Good Candidates for Prior Distributions")[
   First, center ($μ = 0$) and standardize ($σ = 1$) the independent variables.
 
   #v(2em)
@@ -127,9 +131,7 @@
     to positive values only. Exponential is a good candidate.
 ]
 
-#slide(
-  title: "Posterior Computation",
-)[
+#slide(title: "Posterior Computation")[
   Our aim to is to *find the posterior distribution of the model's parameters of
   interest* ($α$ and $bold(β)$) by computing the full posterior distribution of:
 

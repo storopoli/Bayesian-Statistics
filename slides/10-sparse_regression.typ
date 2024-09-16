@@ -5,9 +5,7 @@
 
 #new-section-slide("Sparse Regression")
 
-#slide(
-  title: "Recommended References",
-)[
+#slide(title: "Recommended References")[
   - #cite(<gelman2020regression>, form: "prose") - Chapter 12, Section 12.8: Models
     for regression coefficients
 
@@ -22,9 +20,7 @@
   #align(center)[#image("images/memes/horseshoe.jpg")]
 ]
 
-#slide(
-  title: [What is Sparsity?],
-)[
+#slide(title: [What is Sparsity?])[
   #v(2em)
 
   Sparsity is a concept frequently encountered in statistics, signal processing,
@@ -32,9 +28,7 @@
   elements in a dataset or a vector are zero or close to zero.
 ]
 
-#slide(
-  title: [How to Handle Sparsity?],
-)[
+#slide(title: [How to Handle Sparsity?])[
   Almost all techniques deal with some sort of *variable selection*, instead of
   altering data.
 
@@ -44,9 +38,7 @@
   don't want to throw information away.
 ]
 
-#slide(
-  title: [Frequentist Approach],
-)[
+#slide(title: [Frequentist Approach])[
   The frequentist approach deals with sparse regression by staying in the
   "optimization" context but adding *Lagrangian constraints* #footnote[
     this is called *LASSO* (least absolute shrinkage and selection operator) from #cite(<tibshirani1996regression>, form: "prose")
@@ -64,9 +56,7 @@
   Here $|| dot ||_p$ is the $p$-norm.
 ]
 
-#slide(
-  title: [Variable Selection Techniques],
-)[
+#slide(title: [Variable Selection Techniques])[
   #v(4em)
 
   - *discrete mixtures*: _spike-and-slab_ prior
@@ -74,12 +64,8 @@
   - *shrinkage priors*: _Laplace_ prior and _horseshoe_ prior @carvalho2009handling
 ]
 
-#slide(
-  title: [Discrete Mixtures -- Spike-and-Slab Prior],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [Discrete Mixtures -- Spike-and-Slab Prior])[
+  #text(size: 16pt)[
     Mixture of two distributions—one that is concentrated at zero (the "spike") and
     one with a much wider spread (the
     "slab"). This prior indicates that we believe most coefficients in our model are
@@ -90,7 +76,7 @@
 
     $
       β_i | λ_i, c &tilde "Normal"(0, sqrt(λ_i^2 c^2)) \
-      λ_i          &tilde "Bernoulli"(p)
+      λ_i &tilde "Bernoulli"(p)
     $
 
     where:
@@ -103,55 +89,77 @@
   ]
 ]
 
-#slide(
-  title: [Discrete Mixtures -- Spike-and-Slab Prior],
-)[
+#slide(title: [Discrete Mixtures -- Spike-and-Slab Prior])[
   #side-by-side[
-    #align(
-      center,
-    )[
+    #align(center)[
       #figure(
         {
           canvas(
-            length: 0.75cm, {
+            length: 0.75cm,
+            {
               plot.plot(
-                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.5, y-min: 0, {
+                size: (16, 9),
+                x-label: none,
+                y-label: "PDF",
+                x-tick-step: 1,
+                y-tick-step: 0.1,
+                x-min: -4,
+                x-max: 4,
+                y-max: 0.5,
+                y-min: 0,
+                {
                   plot.add(
-                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 0.05),
+                    domain: (-4, 4),
+                    samples: 200,
+                    style: (stroke: (paint: julia-purple, thickness: 2pt)),
+                    x => hs(x, 1, 0.05),
                   )
                 },
               )
             },
           )
-        }, caption: [$c = 1, λ = 0$], numbering: none,
+        },
+        caption: [$c = 1, λ = 0$],
+        numbering: none,
       )
     ]
   ][
-    #align(
-      center,
-    )[
+    #align(center)[
       #figure(
         {
           canvas(
-            length: 0.75cm, {
+            length: 0.75cm,
+            {
               plot.plot(
-                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.5, y-min: 0, {
+                size: (16, 9),
+                x-label: none,
+                y-label: "PDF",
+                x-tick-step: 1,
+                y-tick-step: 0.1,
+                x-min: -4,
+                x-max: 4,
+                y-max: 0.5,
+                y-min: 0,
+                {
                   plot.add(
-                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 1),
+                    domain: (-4, 4),
+                    samples: 200,
+                    style: (stroke: (paint: julia-purple, thickness: 2pt)),
+                    x => hs(x, 1, 1),
                   )
                 },
               )
             },
           )
-        }, caption: [$c = 1, λ = 1$], numbering: none,
+        },
+        caption: [$c = 1, λ = 1$],
+        numbering: none,
       )
     ]
   ]
 ]
 
-#slide(
-  title: [Shinkrage Priors -- Laplace Prior],
-)[
+#slide(title: [Shinkrage Priors -- Laplace Prior])[
   The Laplace distribution is a continuous probability distribution named after
   Pierre-Simon Laplace. It is also known as the double exponential distribution.
 
@@ -169,36 +177,43 @@
   It is a symmetrical exponential decay around $μ$ with scale governed by $b$.
 ]
 
-#slide(
-  title: [Shinkrage Priors -- Laplace Prior],
-)[
-  #align(
-    center,
-  )[
+#slide(title: [Shinkrage Priors -- Laplace Prior])[
+  #align(center)[
     #figure(
       {
         canvas(
-          length: 0.9cm, {
+          length: 0.9cm,
+          {
             plot.plot(
-              size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.55, y-min: 0, {
+              size: (16, 9),
+              x-label: none,
+              y-label: "PDF",
+              x-tick-step: 1,
+              y-tick-step: 0.1,
+              x-min: -4,
+              x-max: 4,
+              y-max: 0.55,
+              y-min: 0,
+              {
                 plot.add(
-                  domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => laplace(x, 1),
+                  domain: (-4, 4),
+                  samples: 200,
+                  style: (stroke: (paint: julia-purple, thickness: 2pt)),
+                  x => laplace(x, 1),
                 )
               },
             )
           },
         )
-      }, caption: [$μ = 0, b = 1$], numbering: none,
+      },
+      caption: [$μ = 0, b = 1$],
+      numbering: none,
     )
   ]
 ]
 
-#slide(
-  title: [Shinkrage Priors -- Horseshoe Prior],
-)[
-  #text(
-    size: 17pt,
-  )[
+#slide(title: [Shinkrage Priors -- Horseshoe Prior])[
+  #text(size: 17pt)[
     The horseshoe prior @carvalho2009handling assumes that each coefficient
     $β_i$ is conditionally independent with density
     $P_("HS")(β_i | τ )$, where $P_("HS")$
@@ -206,7 +221,7 @@
 
     $
       β_i | λ_i, τ &tilde "Normal"(0, sqrt(λ_i^2 τ^2)) \
-      λ_i          &tilde "Cauchy"^+ (0, 1)
+      λ_i &tilde "Cauchy"^+ (0, 1)
     $
 
     where:
@@ -219,55 +234,77 @@
   ]
 ]
 
-#slide(
-  title: [Discrete Mixtures -- Spike-and-Slab Prior],
-)[
+#slide(title: [Discrete Mixtures -- Spike-and-Slab Prior])[
   #side-by-side[
-    #align(
-      center,
-    )[
+    #align(center)[
       #figure(
         {
           canvas(
-            length: 0.75cm, {
+            length: 0.75cm,
+            {
               plot.plot(
-                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.8, y-min: 0, {
+                size: (16, 9),
+                x-label: none,
+                y-label: "PDF",
+                x-tick-step: 1,
+                y-tick-step: 0.1,
+                x-min: -4,
+                x-max: 4,
+                y-max: 0.8,
+                y-min: 0,
+                {
                   plot.add(
-                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 1),
+                    domain: (-4, 4),
+                    samples: 200,
+                    style: (stroke: (paint: julia-purple, thickness: 2pt)),
+                    x => hs(x, 1, 1),
                   )
                 },
               )
             },
           )
-        }, caption: [$τ = 1, λ = 1$], numbering: none,
+        },
+        caption: [$τ = 1, λ = 1$],
+        numbering: none,
       )
     ]
   ][
-    #align(
-      center,
-    )[
+    #align(center)[
       #figure(
         {
           canvas(
-            length: 0.75cm, {
+            length: 0.75cm,
+            {
               plot.plot(
-                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: -4, x-max: 4, y-max: 0.8, y-min: 0, {
+                size: (16, 9),
+                x-label: none,
+                y-label: "PDF",
+                x-tick-step: 1,
+                y-tick-step: 0.1,
+                x-min: -4,
+                x-max: 4,
+                y-max: 0.8,
+                y-min: 0,
+                {
                   plot.add(
-                    domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => hs(x, 1, 1 / 2),
+                    domain: (-4, 4),
+                    samples: 200,
+                    style: (stroke: (paint: julia-purple, thickness: 2pt)),
+                    x => hs(x, 1, 1 / 2),
                   )
                 },
               )
             },
           )
-        }, caption: [$τ = 1, λ = 1 / 2$], numbering: none,
+        },
+        caption: [$τ = 1, λ = 1 / 2$],
+        numbering: none,
       )
     ]
   ]
 ]
 
-#slide(
-  title: [Discrete Mixtures versus Shinkrage Priors],
-)[
+#slide(title: [Discrete Mixtures versus Shinkrage Priors])[
   *Discrete mixtures* offer the correct representation of sparse problems
   @carvalho2009handling by placing positive prior probability on
   $β_i = 0$ (regression coefficient), but pose several difficulties: mostly
@@ -279,12 +316,8 @@
   be very attractive computationally: again due to the *continuous property*.
 ]
 
-#slide(
-  title: [Horseshoe versus Laplace],
-)[
-  #text(
-    size: 17pt,
-  )[
+#slide(title: [Horseshoe versus Laplace])[
+  #text(size: 17pt)[
     The advantages of the Horseshoe prior over the Laplace prior are primarily:
 
     - *shrinkage*: The Horseshoe prior has infinitely heavy tails and an infinite
@@ -304,9 +337,7 @@
   ]
 ]
 
-#slide(
-  title: [Effective Shinkrage Comparison],
-)[
+#slide(title: [Effective Shinkrage Comparison])[
   Makes more sense to compare the shinkrage effects of the proposed approaches so
   far. Assume for now that $σ^2 = τ^2 = 1$, and define $κ_i = 1 / (1 + λ_i^2)$.
 
@@ -326,59 +357,79 @@
   $
 ]
 
-#slide(
-  title: [Effective Shinkrage Comparison #footnote[spike-and-slab with $p = 1 / 2$
-      would be very similar to Horseshoe but with discontinuities.]],
-)[
+#slide(title: [Effective Shinkrage Comparison #footnote[spike-and-slab with $p = 1 / 2$
+      would be very similar to Horseshoe but with discontinuities.]])[
   #side-by-side[
-    #align(
-      center,
-    )[
+    #align(center)[
       #figure(
         {
           canvas(
-            length: 0.75cm, {
+            length: 0.75cm,
+            {
               plot.plot(
-                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 1, y-max: 0.8, y-min: 0, {
+                size: (16, 9),
+                x-label: none,
+                y-label: "PDF",
+                x-tick-step: 1,
+                y-tick-step: 0.1,
+                x-min: 0,
+                x-max: 1,
+                y-max: 0.8,
+                y-min: 0,
+                {
                   plot.add(
-                    domain: (0.01, 0.99), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => beta(x, 0.5, 0.5),
+                    domain: (0.01, 0.99),
+                    samples: 200,
+                    style: (stroke: (paint: julia-purple, thickness: 2pt)),
+                    x => beta(x, 0.5, 0.5),
                   )
                 },
               )
             },
           )
-        }, caption: [Laplace], numbering: none,
+        },
+        caption: [Laplace],
+        numbering: none,
       )
     ]
   ][
-    #align(
-      center,
-    )[
+    #align(center)[
       #figure(
         {
           canvas(
-            length: 0.75cm, {
+            length: 0.75cm,
+            {
               plot.plot(
-                size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, x-min: 0, x-max: 1, y-max: 0.8, y-min: 0, {
+                size: (16, 9),
+                x-label: none,
+                y-label: "PDF",
+                x-tick-step: 1,
+                y-tick-step: 0.1,
+                x-min: 0,
+                x-max: 1,
+                y-max: 0.8,
+                y-min: 0,
+                {
                   plot.add(
-                    domain: (0.1, 0.9), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => shinkragelaplace(x, 1 / 2),
+                    domain: (0.1, 0.9),
+                    samples: 200,
+                    style: (stroke: (paint: julia-purple, thickness: 2pt)),
+                    x => shinkragelaplace(x, 1 / 2),
                   )
                 },
               )
             },
           )
-        }, caption: [Horseshoe], numbering: none,
+        },
+        caption: [Horseshoe],
+        numbering: none,
       )
     ]
   ]
 ]
 
-#slide(
-  title: [Shinkrage Priors -- Horseshoe+],
-)[
-  #text(
-    size: 17pt,
-  )[
+#slide(title: [Shinkrage Priors -- Horseshoe+])[
+  #text(size: 17pt)[
     Natural extension from the Horseshoe that has improved performance with highly
     sparse data @bhadra2015horseshoe.
 
@@ -386,8 +437,8 @@
 
     $
       β_i | λ_i, η_i, τ &tilde "Normal"(0, λ_i) \
-      λ_i | η_i, τ      &tilde "Cauchy"^+(0, τ η_i) \
-      η_i               &tilde "Cauchy"^+ (0, 1)
+      λ_i | η_i, τ &tilde "Cauchy"^+(0, τ η_i) \
+      η_i &tilde "Cauchy"^+ (0, 1)
     $
 
     where:
@@ -399,9 +450,7 @@
   ]
 ]
 
-#slide(
-  title: [Shinkrage Priors -- Regularized Horseshoe],
-)[
+#slide(title: [Shinkrage Priors -- Regularized Horseshoe])[
   The Horseshoe and Horseshoe+ guarantees that the strong signals will not be
   overshrunk. However, this property can also be harmful, especially when the
   parameters are weakly identified.
@@ -413,16 +462,12 @@
   coefficient.
 ]
 
-#slide(
-  title: [Shinkrage Priors -- Regularized Horseshoe],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [Shinkrage Priors -- Regularized Horseshoe])[
+  #text(size: 16pt)[
     $
       β_i | λ_i, τ, c &tilde "Normal" (0, sqrt(τ^2 tilde(λ_i)^2)) \
-      tilde(λ_i)^2    &= (c^2 λ_i^2) / (c^2 + τ^2 λ_i^2) \
-      λ_i             &tilde "Cauchy"^+(0, 1)
+      tilde(λ_i)^2 &= (c^2 λ_i^2) / (c^2 + τ^2 λ_i^2) \
+      λ_i &tilde "Cauchy"^+(0, 1)
     $
 
     where:
@@ -438,9 +483,7 @@
   ]
 ]
 
-#slide(
-  title: [Shinkrage Priors -- R2-D2],
-)[ Still, we can do better. The *R2-D2* #footnote[
+#slide(title: [Shinkrage Priors -- R2-D2])[ Still, we can do better. The *R2-D2* #footnote[
     $R^2$-induced Dirichlet Decomposition
   ] prior @zhang2022bayesian has heavier tails and higher concentration around
   zero than the previous approaches.
@@ -452,16 +495,12 @@
   coefficient between the dependent variable and its modeled expectation.}. Then
   using that prior to "distribute" throughout the $bold(β)$. ]
 
-#slide(
-  title: [Shinkrage Priors -- R2-D2],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [Shinkrage Priors -- R2-D2])[
+  #text(size: 16pt)[
     $
-      R^2     &tilde "Beta"(μ_(R^2) σ_(R^2), (1 - μ_(R^2)) σ_(R^2)) \
+      R^2 &tilde "Beta"(μ_(R^2) σ_(R^2), (1 - μ_(R^2)) σ_(R^2)) \
       bold(φ) &tilde "Dirichlet"(J, 1) \
-      τ^2     &= (R^2) / (1 - R^2) \
+      τ^2 &= (R^2) / (1 - R^2) \
       bold(β) &= Z dot sqrt(bold(φ) τ^2)
     $
 

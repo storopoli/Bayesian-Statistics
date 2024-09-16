@@ -52,10 +52,10 @@
                 enable = true;
                 package = treefmtEval.config.build.wrapper;
               };
-              typst-fmt = {
+              typstyle = {
                 enable = true;
-                name = "Typst Formatter";
-                entry = "${pkgs.typstfmt}/bin/typstfmt";
+                name = "typstyle";
+                entry = "${pkgs.typstyle}/bin/typstyle --check";
                 files = "\\.typ$";
                 language = "rust";
               };

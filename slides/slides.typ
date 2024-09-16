@@ -3,7 +3,10 @@
 #import "utils.typ": *
 
 #show: clean-theme.with(
-  footer: [Bayesian Statistics, Jose Storopoli], short-title: [Bayesian Statistics], logo: image("images/logos/juliadatascience_white.png"), color: julia-purple,
+  footer: [Bayesian Statistics, Jose Storopoli],
+  short-title: [Bayesian Statistics],
+  logo: image("images/logos/juliadatascience_white.png"),
+  color: julia-purple,
 )
 
 // customizations
@@ -26,19 +29,13 @@
   #align(center)[#image("images/memes/main.jpg")]
 ]
 
-#slide(
-  title: "License",
-)[
+#slide(title: "License")[
   #v(2em)
 
-  #align(
-    center,
-  )[
+  #align(center)[
     The text and images from these slides have a
 
-    #link(
-      "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en",
-    )[
+    #link("https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en")[
       Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
     ]
 

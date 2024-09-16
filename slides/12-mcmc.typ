@@ -6,12 +6,8 @@
 
 #new-section-slide("Markov Chain Monte Carlo (MCMC) and Model Metrics")
 
-#slide(
-  title: "Recommended References",
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: "Recommended References")[
+  #text(size: 18pt)[
     - #cite(<gelman2013bayesian>, form: "prose"):
       - Chapter 10: Introduction to Bayesian computation
       - Chapter 11: Basics of Markov chain simulation
@@ -37,12 +33,8 @@
   #align(center)[#image("images/memes/computation.png")]
 ]
 
-#slide(
-  title: [Monte Carlo Methods],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
+#slide(title: [Monte Carlo Methods])[
+  #side-by-side(columns: (4fr, 1fr))[
 
     - #link("http://mc-stan.org/")[Stan] is named after the mathematician Stanislaw
       Ulam, who was involved in the Manhattan project, and while trying to calculate
@@ -57,18 +49,12 @@
   ]
 ]
 
-#slide(
-  title: [
-    History Behind the Monte Carlo Methods
-    #footnote[those who are interested, should read #cite(<eckhardtStanUlamJohn1987>, form: "prose").]
-  ],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
-    #text(
-      size: 17pt,
-    )[
+#slide(title: [
+  History Behind the Monte Carlo Methods
+  #footnote[those who are interested, should read #cite(<eckhardtStanUlamJohn1987>, form: "prose").]
+])[
+  #side-by-side(columns: (4fr, 1fr))[
+    #text(size: 17pt)[
       - The idea came when Ulam was playing Solitaire while recovering from surgery.
         Ulam was trying to calculate the deterministic, i.e. analytical solution, of the
         probability of being dealt an already-won game. The calculations where almost
@@ -86,12 +72,8 @@
   ]
 ]
 
-#slide(
-  title: [Why Do We Need MCMC?],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Why Do We Need MCMC?])[
+  #text(size: 18pt)[
     The main computation barrier for Bayesian statistics is the denominator in
     Bayes' theorem,
     $P("data")$:
@@ -115,9 +97,7 @@
   ]
 ]
 
-#slide(
-  title: [Why Do We Need MCMC?],
-)[
+#slide(title: [Why Do We Need MCMC?])[
   However, in the case of continuous values, the denominator $P("data")$
   turns into a very big and nasty integral:
 
@@ -135,9 +115,7 @@
   *This is where Monte Carlo methods comes into play!*
 ]
 
-#slide(
-  title: [Why Do We Need the Denominator $P("data")$?],
-)[
+#slide(title: [Why Do We Need the Denominator $P("data")$?])[
   To normalize the posterior with the intent of making it a *valid probability*.
   This means that the probability for all possible parameters' values must be $1$:
 
@@ -152,9 +130,7 @@
     $
 ]
 
-#slide(
-  title: [What If We Remove the Denominator $P("data")$?],
-)[
+#slide(title: [What If We Remove the Denominator $P("data")$?])[
   By removing the denominator $("data")$, we conclude that the posterior
   $P(θ | "data")$ is *proportional* to the product of the prior and the likelihood
   $P(θ) dot P("data" | θ)$:
@@ -166,9 +142,7 @@
   $
 ]
 
-#slide(
-  title: [Markov Chain Monte Carlo (MCMC)],
-)[
+#slide(title: [Markov Chain Monte Carlo (MCMC)])[
   Here is where *Markov Chain Monte Carlo* comes in:
 
   MCMC is an ample class of computational tools to approximate integrals and
@@ -189,14 +163,10 @@
   $P("data")$.
 ]
 
-#slide(
-  title: [
-    Markov Chains
-  ],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
+#slide(title: [
+  Markov Chains
+])[
+  #side-by-side(columns: (4fr, 1fr))[
     #v(2em)
 
     - We proceed by defining an *ergodic Markov chain* #footnote[
@@ -215,14 +185,10 @@
   ]
 ]
 
-#slide(
-  title: [
-    Markov Chains
-  ],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
+#slide(title: [
+  Markov Chains
+])[
+  #side-by-side(columns: (4fr, 1fr))[
 
     - Markov chains have a property that the probability distribution of the next
       state *depends only on the current state and not in the sequence of events that
@@ -241,18 +207,19 @@
   ]
 ]
 
-#slide(
-  title: [
-    Example of a Markov Chain
-  ],
-)[
-  #align(
-    center,
-  )[
+#slide(title: [
+  Example of a Markov Chain
+])[
+  #align(center)[
     #canvas(
-      length: 0.9cm, {
+      length: 0.9cm,
+      {
         import draw: *
-        set-style(mark: (end: ">", fill: black), stroke: (thickness: 2pt), radius: 2)
+        set-style(
+          mark: (end: ">", fill: black),
+          stroke: (thickness: 2pt),
+          radius: 2,
+        )
         circle((0, 0))
         content((0, 0), [#align(center)[Sun]])
         bezier-through((0, 2), (4, 4), (8, 2))
@@ -273,12 +240,8 @@
   ]
 ]
 
-#slide(
-  title: [Markov Chains],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Markov Chains])[
+  #text(size: 18pt)[
     The efficacy of this approach depends on:
 
     - *how big $r$ must be* to guarantee an *adequate sample*.
@@ -297,9 +260,7 @@
   ]
 ]
 
-#slide(
-  title: [MCMC Algorithms],
-)[
+#slide(title: [MCMC Algorithms])[
   We have *TONS* of MCMC algorithms
   #footnote[
     see the #link(
@@ -319,9 +280,7 @@
     @neal2011mcmc @betancourtConceptualIntroductionHamiltonian2017.
 ]
 
-#slide(
-  title: [MCMC Algorithms -- Metropolis-Hastings],
-)[
+#slide(title: [MCMC Algorithms -- Metropolis-Hastings])[
   These are the first MCMC algorithms. They use an *acceptance/rejection rule for
   the proposals*. They are characterized by proposals originated from a random
   walk in the parameter space. The *Gibbs algorithm* can be seen as a *special
@@ -335,9 +294,7 @@
   the parameter space @beskosOptimalTuningHybrid2013.
 ]
 
-#slide(
-  title: [MCMC Algorithms -- Hamiltonian Monte Carlo],
-)[
+#slide(title: [MCMC Algorithms -- Hamiltonian Monte Carlo])[
   The current most efficient MCMC algorithms. They try to *avoid the random walk
   behavior by introducing an auxiliary vector of momenta
   using Hamiltonian dynamics*. The proposals are "guided" to higher density
@@ -351,17 +308,11 @@
   dimension in the parameter space @beskosOptimalTuningHybrid2013.
 ]
 
-#slide(
-  title: [
-    Metropolis Algorithm
-  ],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
-    #text(
-      size: 18pt,
-    )[
+#slide(title: [
+  Metropolis Algorithm
+])[
+  #side-by-side(columns: (4fr, 1fr))[
+    #text(size: 18pt)[
       The first broadly used MCMC algorithm to generate samples from a Markov chain
       was originated in the physics literature in the 1950s and is called Metropolis
       @metropolisEquationStateCalculations1953, in honor of the first author
@@ -386,12 +337,8 @@
   ]
 ]
 
-#slide(
-  title: [Metropolis Algorithm],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Metropolis Algorithm])[
+  #text(size: 18pt)[
     Metropolis is a random walk through the parameter sample space, where the
     probability of the Markov chain changing its state is defined as:
 
@@ -415,12 +362,8 @@
   ]
 ]
 
-#slide(
-  title: [Metropolis Algorithm],
-)[
-  #algo(
-    line-numbers: false,
-  )[
+#slide(title: [Metropolis Algorithm])[
+  #algo(line-numbers: false)[
     Define an initial set $bold(θ)^0 ∈ RR^p$ that $P(bold(θ)^0 | bold(y)) > 0$ \
     for $t = 1, 2, dots$ #i \
     Sample a proposal of $bold(θ)^*$ from a proposal distribution in time
@@ -440,20 +383,26 @@
   ]
 ]
 
-#slide(
-  title: [Visual Intuition -- Metropolis],
-)[
-  #align(
-    center,
-  )[
+#slide(title: [Visual Intuition -- Metropolis])[
+  #align(center)[
     #import draw: *
     #canvas(
-      length: 0.9cm, {
+      length: 0.9cm,
+      {
         set-style(stroke: (thickness: 2pt))
         plot.plot(
-          size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, y-max: 0.55, {
+          size: (16, 9),
+          x-label: none,
+          y-label: "PDF",
+          x-tick-step: 1,
+          y-tick-step: 0.1,
+          y-max: 0.55,
+          {
             plot.add(
-              domain: (-4, 4), samples: 200, style: (stroke: (paint: julia-purple, thickness: 2pt)), x => gaussian(x, 0, 1),
+              domain: (-4, 4),
+              samples: 200,
+              style: (stroke: (paint: julia-purple, thickness: 2pt)),
+              x => gaussian(x, 0, 1),
             )
           },
         )
@@ -473,14 +422,10 @@
   ]
 ]
 
-#slide(
-  title: [
-    Metropolis-Hastings Algorithm
-  ],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
+#slide(title: [
+  Metropolis-Hastings Algorithm
+])[
+  #side-by-side(columns: (4fr, 1fr))[
     In the 1970s emerged a generalization of the Metropolis algorithm, which *does
     not need that the proposal distributions be symmetric*:
 
@@ -499,12 +444,8 @@
   ]
 ]
 
-#slide(
-  title: [Metropolis-Hastings Algorithm],
-)[
-  #algo(
-    line-numbers: false,
-  )[
+#slide(title: [Metropolis-Hastings Algorithm])[
+  #algo(line-numbers: false)[
     Define an initial set $bold(θ)^0 ∈ RR^p$ that $P(bold(θ)^0 | bold(y)) > 0$ \
     for $t = 1, 2, dots$ #i \
     Sample a proposal of $bold(θ)^*$ from a proposal distribution in time
@@ -512,7 +453,11 @@
     As an acceptance/rejection rule, compute the proportion of the probabilities: \
 
     $
-      r = ((P(bold(θ)^* | bold(y))) / (J_t (bold(θ)^* | bold(θ)^(t - 1)))) / ((P(bold(θ)^(t - 1) | bold(y))) / (J_t (bold(θ)^(t - 1) | bold(θ)^*)))
+      r = ((P(bold(θ)^* | bold(y))) / (J_t (
+        bold(θ)^* | bold(θ)^(t - 1)
+      ))) / ((P(bold(θ)^(t - 1) | bold(y))) / (J_t (
+        bold(θ)^(t - 1) | bold(θ)^*
+      )))
     $
 
     Assign:
@@ -524,25 +469,19 @@
   ]
 ]
 
-#slide(
-  title: [Metropolis-Hastings Animation],
-)[
-#v(4em)
+#slide(title: [Metropolis-Hastings Animation])[
+  #v(4em)
 
-#align(
-  center,
-)[
-See Metropolis-Hastings in action at #link(
+  #align(center)[
+    See Metropolis-Hastings in action at #link(
   "https://chi-feng.github.io/mcmc-demo/app.html?algorithm=RandomWalkMH&target=banana",
 )[
 `chi-feng/mcmc-demo`
 ].
-]
+  ]
 ]
 
-#slide(
-  title: [Limitations of the Metropolis Algorithms],
-)[
+#slide(title: [Limitations of the Metropolis Algorithms])[
   The limitations of the Metropolis-Hastings algorithms are mainly
   *computational*:
 
@@ -558,12 +497,8 @@ See Metropolis-Hastings in action at #link(
     overcome the low efficiency.
 ]
 
-#slide(
-  title: [Gibbs Algorithm],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
+#slide(title: [Gibbs Algorithm])[
+  #side-by-side(columns: (4fr, 1fr))[
     To circumvent Metropolis' low acceptance rate, the Gibbs algorithm was
     conceived. Gibbs *do not have an acceptance/rejection rule* for the Markov chain
     state change: *all proposals are accepted!*
@@ -579,9 +514,7 @@ See Metropolis-Hastings in action at #link(
   ]
 ]
 
-#slide(
-  title: [Gibbs Algorithm],
-)[
+#slide(title: [Gibbs Algorithm])[
   The Gibbs algorithm is very useful in multidimensional sample spaces. It is also
   known as *alternating conditional sampling*, because we always sample a
   parameter *conditioned* on the probability of the other model's parameters.
@@ -598,12 +531,8 @@ See Metropolis-Hastings in action at #link(
   $
 ]
 
-#slide(
-  title: [Gibbs Algorithm],
-)[
-  #algo(
-    line-numbers: false,
-  )[
+#slide(title: [Gibbs Algorithm])[
+  #algo(line-numbers: false)[
     Define an initial set $bold(θ)^0 ∈ RR^p$ that $P(bold(θ)^0 | bold(y)) > 0$ \
     for $t = 1, 2, dots$ #i \
     Assign:
@@ -618,25 +547,19 @@ See Metropolis-Hastings in action at #link(
   ]
 ]
 
-#slide(
-  title: [Gibbs Animation],
-)[
-#v(4em)
+#slide(title: [Gibbs Animation])[
+  #v(4em)
 
-#align(
-  center,
-)[
-See Gibbs in action at #link(
+  #align(center)[
+    See Gibbs in action at #link(
   "https://chi-feng.github.io/mcmc-demo/app.html?algorithm=GibbsSampling&target=banana",
 )[
 `chi-feng/mcmc-demo`
 ].
-]
+  ]
 ]
 
-#slide(
-  title: [Limitations of the Gibbs Algorithm],
-)[
+#slide(title: [Limitations of the Gibbs Algorithm])[
   The main limitation of Gibbs algorithm is with relation to *alternating
   conditional sampling*:
 
@@ -650,12 +573,8 @@ See Gibbs in action at #link(
     movements*, and never multidimensional diagonal movements.
 ]
 
-#slide(
-  title: [Hamiltonian Monte Carlo (HMC)],
-)[
-  #side-by-side(
-    columns: (4fr, 1fr),
-  )[
+#slide(title: [Hamiltonian Monte Carlo (HMC)])[
+  #side-by-side(columns: (4fr, 1fr))[
     Metropolis' low acceptance rate and Gibbs' low performance in multidimensional
     problems (where the posterior geometry is highly complex) made a new class of
     MCMC algorithms to emerge.
@@ -670,12 +589,8 @@ See Gibbs in action at #link(
   ]
 ]
 
-#slide(
-  title: [HMC Algorithm],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [HMC Algorithm])[
+  #text(size: 18pt)[
     HMC algorithm is an adaptation of the MH algorithm, and employs a guidance
     scheme to the generation of new proposals. It boosts the acceptance rate, and,
     consequently, has a better efficiency.
@@ -694,9 +609,7 @@ See Gibbs in action at #link(
   ]
 ]
 
-#slide(
-  title: [History of HMC Algorithm],
-)[
+#slide(title: [History of HMC Algorithm])[
   HMC was originally described in the physics literature
   #footnote[where is called "Hybrid" Monte Carlo (HMC)]
   @duaneHybridMonteCarlo1987.
@@ -714,9 +627,7 @@ See Gibbs in action at #link(
   and #cite(<betancourtConceptualIntroductionHamiltonian2017>, form: "prose").
 ]
 
-#slide(
-  title: [What Changes With HMC?],
-)[
+#slide(title: [What Changes With HMC?])[
   HMC uses Hamiltonian dynamics applied to particles efficiently exploring a
   posterior probability geometry, while also being robust to complex posterior's
   geometries.
@@ -727,12 +638,8 @@ See Gibbs in action at #link(
   Gibbs' parameters correlation issues
 ]
 
-#slide(
-  title: [Intuition Behind the HMC Algorithm],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Intuition Behind the HMC Algorithm])[
+  #text(size: 18pt)[
     For every parameter $θ_j$, HMC adds a momentum variable $φ_j$. The posterior
     density $P(bold(θ) | y)$ is incremented by an independent momenta distribution $P(bold(φ))$,
     hence defining the following joint probability:
@@ -757,9 +664,7 @@ See Gibbs in action at #link(
   ]
 ]
 
-#slide(
-  title: [Momenta Distribution -- $P(bold(φ))$],
-)[
+#slide(title: [Momenta Distribution -- $P(bold(φ))$])[
   Generally we give $bold(φ)$ a multivariate normal distribution with mean $0$ and
   covariance $bold(M)$, a "mass matrix".
 
@@ -772,15 +677,9 @@ See Gibbs in action at #link(
   $ φ_j tilde "Normal"(0, M_(j j)) $
 ]
 
-#slide(
-  title: [HMC Algorithm],
-)[
-  #text(
-    size: 13pt,
-  )[
-    #algo(
-      line-numbers: false,
-    )[
+#slide(title: [HMC Algorithm])[
+  #text(size: 13pt)[
+    #algo(line-numbers: false)[
       Define an initial set $bold(θ)^0 ∈ RR^p$ that $P(bold(θ)^0 | bold(y)) > 0$ \
       Sample $bold(φ)$ from a $"Multivariate Normal"(bold(0),bold(M))$ \
       Simultaneously sample $bold(θ)^*$ and $bold(φ)$ with $L$ steps and step-size $ε$ \
@@ -788,14 +687,20 @@ See Gibbs in action at #link(
       $bold(θ)^* <- bold(θ)$ \
       for $1, 2, dots, L$ #i \
       Use the $log$ of the posterior's gradient $bold(θ)^*$ to produce a half-step of $bold(φ)$:
-      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(bold(θ)^* | bold(y))) / (dif θ)$ \
+      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(
+          bold(θ)^* | bold(y)
+        )) / (dif θ)$ \
       Use $bold(φ)$ to update $bold(θ)^*$:
       $bold(θ)^* <- bold(θ)^* + ε bold(M)^(-1) bold(φ)$ \
       Use again $bold(θ)^*$ $log$ gradient to produce a half-step of $bold(φ)$:
-      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(bold(θ)^* | bold(y))) / (dif θ)$ #d \
+      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(
+          bold(θ)^* | bold(y)
+        )) / (dif θ)$ #d \
       As an acceptance/rejection rule, compute: \
       $
-        r = (P (bold(θ)^* | bold(y) ) P (bold(φ)^*))/ (P (bold(θ)^(t - 1) | bold(y)) P(bold(φ)^(t - 1)))
+        r = (P (bold(θ)^* | bold(y)) P (bold(φ)^*)) / (P (
+          bold(θ)^(t - 1) | bold(y)
+        ) P(bold(φ)^(t - 1)))
       $
       Assign:
 
@@ -807,25 +712,19 @@ See Gibbs in action at #link(
   ]
 ]
 
-#slide(
-  title: [HMC Animation],
-)[
-#v(4em)
+#slide(title: [HMC Animation])[
+  #v(4em)
 
-#align(
-  center,
-)[
-See HMC in action at #link(
+  #align(center)[
+    See HMC in action at #link(
   "https://chi-feng.github.io/mcmc-demo/app.html?algorithm=HamiltonianHMC&target=banana",
 )[
 `chi-feng/mcmc-demo`
 ].
-]
+  ]
 ]
 
-#slide(
-  title: [An Interlude into Numerical Integration],
-)[
+#slide(title: [An Interlude into Numerical Integration])[
   In the field of ordinary differential equations (ODE), we have the idea of "discretizing"
   a system of ODEs by applying a small step-size $ε$ #footnote[sometimes also called $h$].
   Such approaches are called "numerical integrators" and are composed by an ample
@@ -838,12 +737,8 @@ See HMC in action at #link(
   future time $t$ from specific initial conditions.
 ]
 
-#slide(
-  title: [An Interlude into Numerical Integration],
-)[
-  #side-by-side(
-    columns: (3fr, 2fr),
-  )[
+#slide(title: [An Interlude into Numerical Integration])[
+  #side-by-side(columns: (3fr, 2fr))[
     The problem is that Euler method, when applied to Hamiltonian dynamics, *does
     not preserve volume*.
 
@@ -858,23 +753,20 @@ See HMC in action at #link(
   ][
 
     #figure(
-      image("images/mcmc/euler_0_3.jpg", height: 55%), caption: [HMC numerically integrated using Euler with $ε = 0.3$ and $L = 20$],
+      image("images/mcmc/euler_0_3.jpg", height: 55%),
+      caption: [HMC numerically integrated using Euler with $ε = 0.3$ and $L = 20$],
     )
   ]
 ]
 
-#slide(
-  title: [
-    An Interlude into Numerical Integration
-    #footnote[
-      An excellent textbook for numerical and symplectic integrator is
-      #cite(<irseles2008numericalanalysis>, form: "prose").
-    ]
-  ],
-)[
-  #side-by-side(
-    columns: (3fr, 2fr),
-  )[
+#slide(title: [
+  An Interlude into Numerical Integration
+  #footnote[
+    An excellent textbook for numerical and symplectic integrator is
+    #cite(<irseles2008numericalanalysis>, form: "prose").
+  ]
+])[
+  #side-by-side(columns: (3fr, 2fr))[
     To preserve volume, we need a numerical *symplectic integrator*.
 
     #v(1em)
@@ -888,17 +780,14 @@ See HMC in action at #link(
   ][
 
     #figure(
-      image("images/mcmc/leapfrog_0_3.jpg", height: 55%), caption: [HMC numerically integrated using leapfrog with $ε = 0.3$ and $L = 20$],
+      image("images/mcmc/leapfrog_0_3.jpg", height: 55%),
+      caption: [HMC numerically integrated using leapfrog with $ε = 0.3$ and $L = 20$],
     )
   ]
 ]
 
-#slide(
-  title: [Limitations of the HMC Algorithm],
-)[
-  #side-by-side(
-    columns: (3fr, 2fr),
-  )[
+#slide(title: [Limitations of the HMC Algorithm])[
+  #side-by-side(columns: (3fr, 2fr))[
     As you can see, HMC algorithm is highly sensible to the choice of leapfrog steps $L$ and
     step-size $ε$,
 
@@ -913,14 +802,13 @@ See HMC in action at #link(
   ][
 
     #figure(
-      image("images/mcmc/leapfrog_1_2.jpg", height: 55%), caption: [HMC numerically integrated using leapfrog with $ε = 1.2$ and $L = 20$],
+      image("images/mcmc/leapfrog_1_2.jpg", height: 55%),
+      caption: [HMC numerically integrated using leapfrog with $ε = 1.2$ and $L = 20$],
     )
   ]
 ]
 
-#slide(
-  title: [No-U-Turn-Sampler (NUTS)],
-)[
+#slide(title: [No-U-Turn-Sampler (NUTS)])[
   In HMC, we can adjust $ε$ during the algorithm runtime. But, for $L$, we need to
   to "dry run" the HMC sampler to find a good candidate value for $L$.
 
@@ -934,9 +822,7 @@ See HMC in action at #link(
   It will automatically find $ε$ and $L$.
 ]
 
-#slide(
-  title: [No-U-Turn-Sampler (NUTS)],
-)[
+#slide(title: [No-U-Turn-Sampler (NUTS)])[
   More specifically, we need a criterion that informs that we performed enough
   Hamiltonian dynamics simulation.
 
@@ -957,9 +843,7 @@ See HMC in action at #link(
   $
 ]
 
-#slide(
-  title: [No-U-Turn-Sampler (NUTS)],
-)[
+#slide(title: [No-U-Turn-Sampler (NUTS)])[
   #v(2em)
 
   This suggests an algorithms that does not allow proposals be guided infinitely
@@ -971,12 +855,8 @@ See HMC in action at #link(
   This means that such algorithm will *not allow u-turns*.
 ]
 
-#slide(
-  title: [No-U-Turn-Sampler (NUTS)],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [No-U-Turn-Sampler (NUTS)])[
+  #text(size: 18pt)[
     NUTS uses the leapfrog integrator to create a binary tree where each leaf node
     is a proposal of the momenta vector $bold(φ)$ tracing both a forward ($t + 1$)
     as well as a backward ($t - 1$) path in a determined fictitious time $t$.
@@ -985,14 +865,13 @@ See HMC in action at #link(
     forward or backward.
 
     #figure(
-      image("images/mcmc/nuts.jpg", height: 40%), caption: [NUTS growing leaf nodes forward],
+      image("images/mcmc/nuts.jpg", height: 40%),
+      caption: [NUTS growing leaf nodes forward],
     )
   ]
 ]
 
-#slide(
-  title: [No-U-Turn-Sampler (NUTS)],
-)[
+#slide(title: [No-U-Turn-Sampler (NUTS)])[
   #v(2em)
 
   NUTS also uses a procedure called Dual Averaging @nesterov2009primal to
@@ -1005,19 +884,11 @@ See HMC in action at #link(
   $ε$ and $L$ are kept fixed during the sampling phase.
 ]
 
-#slide(
-  title: [NUTS Algorithm],
-)[
-  #text(
-    size: 7pt,
-  )[
-    #algo(
-      line-numbers: false,
-    )[
+#slide(title: [NUTS Algorithm])[
+  #text(size: 7pt)[
+    #algo(line-numbers: false)[
       Define an initial set $bold(θ)^0 ∈ RR^p$ that $P(bold(θ)^0 | bold(y)) > 0$ \
-      #text(
-        fill: julia-blue,
-      )[Instantiate an empty binary tree with $2^L$ leaf nodes] \
+      #text(fill: julia-blue)[Instantiate an empty binary tree with $2^L$ leaf nodes] \
       Sample $bold(φ)$ from a $"Multivariate Normal"(bold(0),bold(M))$ \
       Simultaneously sample $bold(θ)^*$ and $bold(φ)$ with $L$ steps and step-size $ε$ \
       Define the current value of $bold(θ)$ as the proposed value $bold(θ)^*$:
@@ -1025,39 +896,37 @@ See HMC in action at #link(
       for $1, 2, dots, L$ #i \
       #text(fill: julia-blue)[Choose a direction $v tilde "Uniform"({-1, 1})$] \
       Use the $log$ of the posterior's gradient $bold(θ)^*$ to produce a half-step of $bold(φ)$:
-      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(bold(θ)^* | bold(y))) / (dif θ)$ \
+      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(
+          bold(θ)^* | bold(y)
+        )) / (dif θ)$ \
       Use $bold(φ)$ to update $bold(θ)^*$:
       $bold(θ)^* <- bold(θ)^* + ε bold(M)^(-1) bold(φ)$ \
       Use again $bold(θ)^*$ $log$ gradient to produce a half-step of $bold(φ)$:
-      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(bold(θ)^* | bold(y))) / (dif θ)$ #d \
+      $bold(φ) <- bold(φ) + 1 / 2 ε (dif log P(
+          bold(θ)^* | bold(y)
+        )) / (dif θ)$ #d \
       #text(fill: julia-blue)[Define the node $L_t^v$ as the proposal $bold(θ)$] \
-      #text(
-        fill: julia-blue,
-      )[
+      #text(fill: julia-blue)[
         if the difference between proposal vector $bold(θ)^*$
         and current vector $bold(θ)$ in the direction $v$ is lower than zero: $v (dif) / (dif t) ((bold(θ)^* - bold(θ)^*) dot (bold(θ)^* - bold(θ)^*)) / 2 < 0$
         or $L$ steps have been reached
       ] #i \
-      #text(
-        fill: julia-red,
-      )[
+      #text(fill: julia-red)[
         Stop sampling $bold(θ)^*$ in the direction $v$ and continue sampling only in the
         direction $-v$
       ] #i \
-      #text(
-        fill: julia-blue,
-      )[
+      #text(fill: julia-blue)[
         The difference between proposal vector $bold(θ)^*$
         and current vector $bold(θ)$ in the direction $-v$ is lower than zero: $-v (dif) / (dif t) ((bold(θ)^* - bold(θ)^*) dot (bold(θ)^* - bold(θ)^*)) / 2 < 0$
         or $L$ steps have been reached
       ] #i \
       #text(fill: julia-red)[Stop sampling $bold(θ)^*$] #d #d #d\
-      #text(
-        fill: julia-blue,
-      )[Choose a random node from the binary tree as the proposal] \
+      #text(fill: julia-blue)[Choose a random node from the binary tree as the proposal] \
       As an acceptance/rejection rule, compute: \
       $
-        r = (P (bold(θ)^* | bold(y) ) P (bold(φ)^*))/ (P (bold(θ)^(t - 1) | bold(y)) P(bold(φ)^(t - 1)))
+        r = (P (bold(θ)^* | bold(y)) P (bold(φ)^*)) / (P (
+          bold(θ)^(t - 1) | bold(y)
+        ) P(bold(φ)^(t - 1)))
       $
       Assign:
 
@@ -1069,26 +938,20 @@ See HMC in action at #link(
   ]
 ]
 
-#slide(
-  title: [NUTS Animation],
-)[
-#v(4em)
+#slide(title: [NUTS Animation])[
+  #v(4em)
 
-#align(
-  center,
-)[
-See NUTS in action at #link(
+  #align(center)[
+    See NUTS in action at #link(
   "https://chi-feng.github.io/mcmc-demo/app.html?algorithm=EfficientNUTS&target=banana",
 )[
 `chi-feng/mcmc-demo`
 ].
-]
+  ]
 ]
 
-#slide(
-  title: [Limitations of HMC and NUTS Algorithms -- #cite(<nealSliceSampling2003>, form: "prose")'s
-    Funnel],
-)[
+#slide(title: [Limitations of HMC and NUTS Algorithms -- #cite(<nealSliceSampling2003>, form: "prose")'s
+  Funnel])[
   The famous "Devil's Funnel"
   #footnote[very common em hierarchical models.].
 
@@ -1102,13 +965,9 @@ See NUTS in action at #link(
   #align(center)[#image("images/funnel/funnel.png", height: 40%)]
 ]
 
-#slide(
-  title: [#cite(<nealSliceSampling2003>, form: "prose")'s Funnel and Non-Centered
-    Parameterization (NCP)],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [#cite(<nealSliceSampling2003>, form: "prose")'s Funnel and Non-Centered
+  Parameterization (NCP)])[
+  #text(size: 18pt)[
     The funnel occurs when we have a variable that its variance depends on another
     variable variance in an exponential scale. A canonical example of a centered
     parameterization (CP) is:
@@ -1126,8 +985,8 @@ See NUTS in action at #link(
     $
       P(tilde(y),tilde(x)) &= "Normal"(tilde(y) | 0, 1) dot
       "Normal"(tilde(x) | 0, 1) \
-      y                    &= tilde(y) dot 3 + 0 \
-      x                    &= tilde(x) dot e^(y / 2) + 0
+      y &= tilde(y) dot 3 + 0 \
+      x &= tilde(x) dot e^(y / 2) + 0
     $
   ]
 ]
@@ -1136,28 +995,26 @@ See NUTS in action at #link(
   This example is for linear regression:
 
   $
-    bold(y) &tilde "Normal"(α_j + bold(X) dot bold(β), σ ) \
-    α_j     &= z_j dot τ + α \
-    z_j     &tilde "Normal"(0, 1) \
-    α       &tilde "Normal"(μ_α, σ_α) \
+    bold(y) &tilde "Normal"(α_j + bold(X) dot bold(β), σ) \
+    α_j &= z_j dot τ + α \
+    z_j &tilde "Normal"(0, 1) \
+    α &tilde "Normal"(μ_α, σ_α) \
     bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
-    τ       &tilde "Cauchy"^+(0, ψ_α) \
-    σ       &tilde "Exponential"(λ_σ)
+    τ &tilde "Cauchy"^+(0, ψ_α) \
+    σ &tilde "Exponential"(λ_σ)
   $
 ]
 
-#slide(
-  title: [Non-Centered Parameterization -- Varying-(Intercept-)Slope Model],
-)[
+#slide(title: [Non-Centered Parameterization -- Varying-(Intercept-)Slope Model])[
   This example is for linear regression:
 
   $
-    bold(y)   &tilde "Normal"(bold(X) bold(β)_j, σ) \
+    bold(y) &tilde "Normal"(bold(X) bold(β)_j, σ) \
     bold(β)_j &= bold(γ)_j dot bold(Σ) dot bold(γ)_j \
     bold(γ)_j &tilde "Multivariate Normal"(bold(0), bold(I))
     "for" j ∈ {1, dots, J} \
-    bold(Σ)   &tilde "LKJ"(η) \
-    σ         &tilde "Exponential"(λ_σ)
+    bold(Σ) &tilde "LKJ"(η) \
+    σ &tilde "Exponential"(λ_σ)
   $
 
   Each coefficient vector $bold(β)_j$ represents the model columns $bold(X)$ coefficients
@@ -1165,9 +1022,7 @@ See NUTS in action at #link(
   filled with $1$s (intercept).
 ]
 
-#slide(
-  title: [Stan and NUTS],
-)[
+#slide(title: [Stan and NUTS])[
   Stan was the first MCMC sampler to implement NUTS.
 
   Besides that, it has an automatic optimized adjustment routine for values of $L$ and $ε$ during
@@ -1189,9 +1044,7 @@ See NUTS in action at #link(
   - *max tree depth* (in powers of $2$): 10 (which means $2^(10) = 1024$)
 ]
 
-#slide(
-  title: [Turing and NUTS],
-)[
+#slide(title: [Turing and NUTS])[
   Turing also implements NUTS which lives, along with other MCMC samplers, inside
   the package AdvancedHMC.jl.
 
@@ -1211,9 +1064,7 @@ See NUTS in action at #link(
   - *max tree depth* (in powers of $2$): 10 (which means $2^(10) = 1024$)
 ]
 
-#slide(
-  title: [Markov Chain Convergence],
-)[
+#slide(title: [Markov Chain Convergence])[
   MCMC has an interesting property that it will *asymptotically converge to the
   target distribution*
   #footnote[
@@ -1229,9 +1080,7 @@ See NUTS in action at #link(
   convergence to the target distribution.
 ]
 
-#slide(
-  title: [Convergence Metrics],
-)[
+#slide(title: [Convergence Metrics])[
   #v(2em)
 
   We have some options on how to measure if the Markov chains converged to the
@@ -1248,9 +1097,7 @@ See NUTS in action at #link(
     Markov chain have mixed, and, potentially, converged.
 ]
 
-#slide(
-  title: [Convergence Metrics -- Effective Sample Size @gelman2013bayesian],
-)[
+#slide(title: [Convergence Metrics -- Effective Sample Size @gelman2013bayesian])[
   $ hat(n)_"eff" = (m n) / (1 + sum_(t = 1)^T hat(ρ)_t) $
 
   where:
@@ -1262,12 +1109,8 @@ See NUTS in action at #link(
   - $hat(ρ)_t$: an autocorrelation estimate.
 ]
 
-#slide(
-  title: [Convergence Metrics -- Rhat @gelman2013bayesian],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Convergence Metrics -- Rhat @gelman2013bayesian])[
+  #text(size: 18pt)[
     $ hat(R) = sqrt((hat("var")^+ (ψ | y)) / W) $
 
     where $hat("var")^+ (ψ | y)$ is the Markov chains' sample variance for a certain
@@ -1284,26 +1127,20 @@ See NUTS in action at #link(
   ]
 ]
 
-#slide(
-  title: [Traceplot -- Convergent Markov Chains],
-)[
-  #align(
-    center,
-  )[
+#slide(title: [Traceplot -- Convergent Markov Chains])[
+  #align(center)[
     #figure(
-      image("images/funnel/good_chains_traceplot.svg", height: 80%), caption: [A convergent Markov chains traceplot],
+      image("images/funnel/good_chains_traceplot.svg", height: 80%),
+      caption: [A convergent Markov chains traceplot],
     )
   ]
 ]
 
-#slide(
-  title: [Traceplot -- Divergent Markov Chains],
-)[
-  #align(
-    center,
-  )[
+#slide(title: [Traceplot -- Divergent Markov Chains])[
+  #align(center)[
     #figure(
-      image("images/funnel/bad_chains_traceplot.svg", height: 80%), caption: [A divergent Markov chains traceplot],
+      image("images/funnel/bad_chains_traceplot.svg", height: 80%),
+      caption: [A divergent Markov chains traceplot],
     )
   ]
 ]
@@ -1316,58 +1153,52 @@ See NUTS in action at #link(
     )[Stan's #text(fill: julia-red)[warnings] guide].
   ]
 ])[
-#fit-to-height(1fr)[
-```shell
-Warning messages:
-1: There were 275 divergent transitions after warmup. See
-http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-to find out why this is a problem and how to eliminate them.
-2: Examine the pairs() plot to diagnose sampling problems
+  #fit-to-height(1fr)[
+    ```shell
+    Warning messages:
+    1: There were 275 divergent transitions after warmup. See
+    http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
+    to find out why this is a problem and how to eliminate them.
+    2: Examine the pairs() plot to diagnose sampling problems
 
-3: The largest R-hat is 1.12, indicating chains have not mixed.
-Running the chains for more iterations may help. See
-http://mc-stan.org/misc/warnings.html#r-hat
-4: Bulk Effective Samples Size (ESS) is too low, indicating posterior
-means and medians may be unreliable.
-Running the chains for more iterations may help. See
-http://mc-stan.org/misc/warnings.html#bulk-ess
-5: Tail Effective Samples Size (ESS) is too low, indicating posterior
-variances and tail quantiles may be unreliable.
-Running the chains for more iterations may help. See
-http://mc-stan.org/misc/warnings.html#tail-ess
-```
-]
+    3: The largest R-hat is 1.12, indicating chains have not mixed.
+    Running the chains for more iterations may help. See
+    http://mc-stan.org/misc/warnings.html#r-hat
+    4: Bulk Effective Samples Size (ESS) is too low, indicating posterior
+    means and medians may be unreliable.
+    Running the chains for more iterations may help. See
+    http://mc-stan.org/misc/warnings.html#bulk-ess
+    5: Tail Effective Samples Size (ESS) is too low, indicating posterior
+    variances and tail quantiles may be unreliable.
+    Running the chains for more iterations may help. See
+    http://mc-stan.org/misc/warnings.html#tail-ess
+    ```
+  ]
 ]
 
-#slide(
-  title: [
-    Turing's Warning Messages
-  ],
-)[
-#fit-to-height(
-  1fr,
-)[
-*Turing does not give warning messages!*
-But you can check divergent transitions with `summarize(chn;
+#slide(title: [
+  Turing's Warning Messages
+])[
+  #fit-to-height(1fr)[
+    *Turing does not give warning messages!*
+    But you can check divergent transitions with `summarize(chn;
 sections=[:internals])`:
 
-```shell
-Summary Statistics
-      parameters     mean      std  naive_se     mcse      ess     rhat  ess_per_sec
-          Symbol  Float64  Float64   Float64  Float64  Float64  Float64  Float64
+    ```shell
+    Summary Statistics
+          parameters     mean      std  naive_se     mcse      ess     rhat  ess_per_sec
+              Symbol  Float64  Float64   Float64  Float64  Float64  Float64  Float64
 
-              lp  -3.9649   1.7887   0.0200   0.1062  179.1235  1.0224   6.4133
-         n_steps   9.1275  11.1065   0.1242   0.7899   38.3507  1.3012   1.3731
- acceptance_rate   0.5944   0.4219   0.0047   0.0322   40.5016  1.2173   1.4501
-      tree_depth   2.2444   1.3428   0.0150   0.1049   32.8514  1.3544   1.1762
- numerical_error   0.1975   0.3981   0.0045   0.0273   59.8853  1.1117   2.1441
-```
-]
+                  lp  -3.9649   1.7887   0.0200   0.1062  179.1235  1.0224   6.4133
+             n_steps   9.1275  11.1065   0.1242   0.7899   38.3507  1.3012   1.3731
+     acceptance_rate   0.5944   0.4219   0.0047   0.0322   40.5016  1.2173   1.4501
+          tree_depth   2.2444   1.3428   0.0150   0.1049   32.8514  1.3544   1.1762
+     numerical_error   0.1975   0.3981   0.0045   0.0273   59.8853  1.1117   2.1441
+    ```
+  ]
 ]
 
-#slide(
-  title: [What To Do If the Markov Chains Do Not Converge?],
-)[
+#slide(title: [What To Do If the Markov Chains Do Not Converge?])[
   *First*: before making any fine adjustments in the number of Markov chains or
   the number of iterations per chain, etc.
 
@@ -1383,21 +1214,18 @@ Summary Statistics
   99% of the time.
 ]
 
-#slide(
-  title: [What To Do If the Markov Chains Do Not Converge?],
-)[
+#slide(title: [What To Do If the Markov Chains Do Not Converge?])[
   #v(4em)
 
   #quote(
-    block: true, attribution: [#cite(<gelmanFolkTheoremStatistical2008>, form: "prose")],
+    block: true,
+    attribution: [#cite(<gelmanFolkTheoremStatistical2008>, form: "prose")],
   )[
     When you have computational problems, often there’s a problem with your model.
   ]
 ]
 
-#slide(
-  title: [What To Do If the Markov Chains Do Not Converge?],
-)[
+#slide(title: [What To Do If the Markov Chains Do Not Converge?])[
   If you experiencing convergence issues, *and you've discarded that something is
   wrong with you model*, here is a few steps to try
   #footnote[
@@ -1415,9 +1243,7 @@ Summary Statistics
     is 2,000 iterations and 4 chains).
 ]
 
-#slide(
-  title: [What To Do If the Markov Chains Do Not Converge?],
-)[
+#slide(title: [What To Do If the Markov Chains Do Not Converge?])[
   2. *Change the HMC's warmup adaptation routine*: make the HMC sampler to be more
     conservative in the proposals. This can be changed by increasing the
     hyperparameter *target acceptance rate of Metropolis proposals*
@@ -1430,9 +1256,7 @@ Summary Statistics
     (CP) and non-centered parameterization (NCP).
 ]
 
-#slide(
-  title: [What To Do If the Markov Chains Do Not Converge?],
-)[
+#slide(title: [What To Do If the Markov Chains Do Not Converge?])[
   4. *Collect more data*: sometimes the model is too complex and we need a higher
     sample size for stable estimates.
 
