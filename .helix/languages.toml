@@ -1,0 +1,9 @@
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+formatter = { command = "typstyle" }
+auto-format = true
+
+[language-server.tinymist]
+command = "tinymist"
+config = { tinymist.formatterMode = "typstyle" }
