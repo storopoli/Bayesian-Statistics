@@ -5,9 +5,7 @@
 
 #new-section-slide("Robust Regression")
 
-#slide(
-  title: "Recommended References",
-)[
+#slide(title: "Recommended References")[
   - #cite(<gelman2013bayesian>, form: "prose") - Chapter 17: Models for robust
     inference
 
@@ -23,9 +21,7 @@
   #align(center)[#image("images/memes/not_normal_transparent.png")]
 ]
 
-#slide(
-  title: [Robust Models],
-)[
+#slide(title: [Robust Models])[
   Almost always data from real world are really strange.
 
   #v(1em)
@@ -39,9 +35,7 @@
   - unrealistic model assumptions?
 ]
 
-#slide(
-  title: [Outliers],
-)[
+#slide(title: [Outliers])[
   #v(2em)
 
   Models based on the *normal distribution are notoriously "non-robust" against
@@ -50,9 +44,7 @@
   with it.
 ]
 
-#slide(
-  title: [Overdispersion],
-)[
+#slide(title: [Overdispersion])[
   Superdispersion and underdispersion #footnote[
     rarer to find in the real world.
   ]
@@ -65,9 +57,7 @@
   *a single parameter* is added to allow for overdispersion @gelman2013bayesian.
 ]
 
-#slide(
-  title: [Overdispersion Example],
-)[
+#slide(title: [Overdispersion Example])[
   Suppose you are analyzing data from car accidents. The model we generally use in
   this type of phenomena is *Poisson regression*.
 
@@ -83,9 +73,7 @@
   the desired phenomena.
 ]
 
-#slide(
-  title: [Student's $t$ instead of Normal],
-)[
+#slide(title: [Student's $t$ instead of Normal])[
   Student's $t$ distribution has *wider #footnote[or "fatter".] tails* than the
   Normal distribution.
 
@@ -104,16 +92,20 @@
   function.
 ]
 
-#slide(
-  title: [Student's $t$ instead of Normal],
-)[
-  #align(
-    center,
-  )[
+#slide(title: [Student's $t$ instead of Normal])[
+  #align(center)[
     #canvas(
-      length: 0.9cm, {
+      length: 0.9cm,
+      {
         plot.plot(
-          size: (16, 9), x-label: none, y-label: "PDF", x-tick-step: 1, y-tick-step: 0.1, y-min: -0.01, y-max: 0.42, {
+          size: (16, 9),
+          x-label: none,
+          y-label: "PDF",
+          x-tick-step: 1,
+          y-tick-step: 0.1,
+          y-min: -0.01,
+          y-max: 0.42,
+          {
             plot.add(
               domain: (-4, 4), samples: 200,
               // label: "Normal", // FIXME: depends on unreleased cetz 2.0.0
@@ -131,22 +123,18 @@
   ]
 ]
 
-#slide(
-  title: [Student's $t$ instead of Normal],
-)[
-  #text(
-    size: 16pt,
-  )[
+#slide(title: [Student's $t$ instead of Normal])[
+  #text(size: 16pt)[
     By using a Student's $t$ distribution instead of the Normal distribution as
     likelihood functions, the model's error $σ$ does _not_ follow a Normal
     distribution, but a Student's $t$ distribution:
 
     $
       bold(y) &tilde "Student"(ν, α + bold(X) bold(β), σ) \
-      α       &tilde "Normal"(μ_α, σ_α) \
+      α &tilde "Normal"(μ_α, σ_α) \
       bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β)) \
-      ν       &tilde "Log-Normal"(2, 1) \
-      σ       &tilde "Exponential"(λ_σ)
+      ν &tilde "Log-Normal"(2, 1) \
+      σ &tilde "Exponential"(λ_σ)
     $
 
     Note that we are including an extra parameter $ν$, which represents the
@@ -158,9 +146,7 @@
   ]
 ]
 
-#slide(
-  title: [Beta-Binomial instead of the Binomial],
-)[
+#slide(title: [Beta-Binomial instead of the Binomial])[
   The binomial distribution has a practical limitation that we only have one free
   parameter to estimate #footnote[since $n$ already comes from data.] ($p$). This
   implies in the *variance to determined by the mean*. Hence, the binomial
@@ -174,9 +160,7 @@
   against overdispersion*.
 ]
 
-#slide(
-  title: [Beta-Binomial instead of Binomial],
-)[
+#slide(title: [Beta-Binomial instead of Binomial])[
   The *beta-binomial distribution* is a binomial distribution, where the
   probability of success $p$ is parameterized as a $"Beta"(α, β)$.
 
@@ -190,18 +174,14 @@
   Values of $β >= 1$ make the beta-binomial behave the same as a binomial.
 ]
 
-#slide(
-  title: [Beta-Binomial instead of Binomial],
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: [Beta-Binomial instead of Binomial])[
+  #text(size: 18pt)[
     $
       bold(y) & tilde "Beta-Binomial"(n, p, φ) \
-      p       & tilde "Logistic/Probit"(α + bold(X) bold(β)) \
-      α       & tilde "Normal"(μ_α, σ_α) \
+      p & tilde "Logistic/Probit"(α + bold(X) bold(β)) \
+      α & tilde "Normal"(μ_α, σ_α) \
       bold(β) & tilde "Normal"(μ_bold(β), σ_bold(β)) \
-      φ       & tilde "Exponential"(1)
+      φ & tilde "Exponential"(1)
     $
 
     #v(1em)
@@ -212,12 +192,8 @@
   ]
 ]
 
-#slide(
-  title: [Student's $t$ instead Binomial],
-)[
-  #text(
-    size: 15pt,
-  )[
+#slide(title: [Student's $t$ instead Binomial])[
+  #text(size: 15pt)[
     Also known as Robit #footnote[there is a great discussion between Gelman, Vehtari and Kurz at
       #link("https://discourse.mc-stan.org/t/robit-regression-not-robust/21245/")[
         Stan's Discourse
@@ -230,7 +206,7 @@
       y_i &= cases(0 "if" z_i < 0, 1 "if" z_i > 0) \
       z_i &= X_i bold(β) + ε_i \
       ε_i &tilde "Student"(ν, 0, sqrt((ν - 2) / ν)) \
-      ν   &tilde "Gamma"(2, 0.1) ∈ [2, oo)
+      ν &tilde "Gamma"(2, 0.1) ∈ [2, oo)
     $
 
     Here we are using the gamma distribution as a truncated Student's $t$
@@ -239,9 +215,7 @@
   ]
 ]
 
-#slide(
-  title: [Negative Binomial instead of Poisson],
-)[
+#slide(title: [Negative Binomial instead of Poisson])[
   This is the overdispersion example. The Poisson distribution uses a *single
   parameter for both its mean and variance*.
 
@@ -258,13 +232,11 @@
   $φ$ is also known as a "reciprocal dispersion" parameter.
 ]
 
-#slide(
-  title: [Negative Binomial instead of Poisson],
-)[
+#slide(title: [Negative Binomial instead of Poisson])[
   $
     bold(y) &tilde "Negative Binomial"(e^((α + bold(X) bold(β))), φ) \
-    φ       &tilde "Gamma"(0.01, 0.01) \
-    α       &tilde "Normal"(μ_α, σ_α) \
+    φ &tilde "Gamma"(0.01, 0.01) \
+    α &tilde "Normal"(μ_α, σ_α) \
     bold(β) &tilde "Normal"(μ_bold(β), σ_bold(β))
   $
 
@@ -284,19 +256,17 @@
   @mcelreath2020statistical.
 ]
 
-#slide(
-  title: [Negative Binomial Mixture instead of Poisson],
-)[
+#slide(title: [Negative Binomial Mixture instead of Poisson])[
   Here, $S_i$ is a dummy variable, taking value $1$ if the $i$th observation has a
   value $≠ 0$.
   $S_i$ can be modeled using logistic regression:
   $
-    bold(y)    &cases(
+    bold(y) &cases(
       = 0 "if" S_i = 0, tilde "Negative Binomial"(e^((α + bold(X) bold(β))), φ ) "if" S_i = 1,
 
     ) \
     P(S_i = 1) &= "Logistic/Probit"(bold(X) bold(γ)) \
-    γ          &tilde "Beta"(1, 1)
+    γ &tilde "Beta"(1, 1)
   $
 
   #v(1em)
@@ -304,9 +274,7 @@
   $γ$ is a new coefficients which we give uniform prior of $"Beta"(1, 1)$.
 ]
 
-#slide(
-  title: [Why Use Non-Robust Models?],
-)[
+#slide(title: [Why Use Non-Robust Models?])[
   The *central limit theorem* tells us that the *normal distribution* is an
   appropriate model for data that arises as a *sum of independent components*.
 

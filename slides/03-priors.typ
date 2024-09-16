@@ -4,9 +4,7 @@
 
 #new-section-slide("Priors")
 
-#slide(
-  title: "Recommended References",
-)[
+#slide(title: "Recommended References")[
   - #cite(<gelman2013bayesian>, form: "prose"):
 
     - Chapter 2: Single-parameter models
@@ -26,17 +24,15 @@
   #align(center)[#image("images/memes/priors.jpg")]
 ]
 
-#slide(
-  title: "Prior Probability",
-)[
+#slide(title: "Prior Probability")[
   Bayesian statistics is characterized by the use of prior information as the
   prior probability $P(θ)$, often just prior:
-  $ underbrace(P(θ | y), "Posterior") = (overbrace(P(y | θ), "Likelihood") dot overbrace(P(θ), "Prior")) / underbrace(P(y), "Normalizing Constant") $
+  $
+    underbrace(P(θ | y), "Posterior") = (overbrace(P(y | θ), "Likelihood") dot overbrace(P(θ), "Prior")) / underbrace(P(y), "Normalizing Constant")
+  $
 ]
 
-#slide(
-  title: "The Subjectivity of the Prior",
-)[
+#slide(title: "The Subjectivity of the Prior")[
   - Many critics to Bayesian statistics are due the subjectivity in eliciting priors
     probability on certain hypothesis or model parameter's values.
   - Subjectivity is something unwanted in the ideal picture of the scientist and the
@@ -51,9 +47,7 @@
     @vandeschootBayesianStatisticsModelling2021.
 ]
 
-#slide(
-  title: "How to Incorporate Subjectivity",
-)[
+#slide(title: "How to Incorporate Subjectivity")[
   - Bayesian statistics *embraces* subjectivity while frequentist statistics *bans*
     it.
 
@@ -68,9 +62,7 @@
     *declared and formalized*
 ]
 
-#slide(
-  title: "Types of Priors",
-)[
+#slide(title: "Types of Priors")[
   In general, we can have 3 types of priors in a Bayesian approach
   @gelman2013bayesian @mcelreath2020statistical
   @vandeschootBayesianStatisticsModelling2021:
@@ -82,9 +74,7 @@
   - *informative*: introduction of medium to high domain knowledge.
 ]
 
-#slide(
-  title: "Uniform Prior (Flat)",
-)[
+#slide(title: "Uniform Prior (Flat)")[
   Starts from the premise that "everything is possible". There is no limits in the
   degree of beliefs that the distribution of certain values must be or any sort of
   restrictions.
@@ -100,9 +90,7 @@
   - *model error or residuals*: ${σ ∈ RR^+ : 0 < θ < oo}$
 ]
 
-#slide(
-  title: "Weakly Uninformative Prior",
-)[
+#slide(title: "Weakly Uninformative Prior")[
   Here we start to have "educated" guess about our parameter values. Hence, we
   don't start from the premise that "anything is possible".
 
@@ -122,12 +110,8 @@
   - $θ tilde "Student"(ν=3, 0, 1)$ (Aki Vehtari's preferred choice #footnote(<fn-priors-1>))
 ]
 
-#slide(
-  title: "An Example of a Robust Prior",
-)[
-  #text(
-    size: 18pt,
-  )[
+#slide(title: "An Example of a Robust Prior")[
+  #text(size: 18pt)[
     A nice example comes from a Ben Goodrich's lecture #footnote[
       https://youtu.be/p6cyRBWahRA, in case you want to see the full video, the
       section about priors related to the argument begins at minute 40
@@ -147,9 +131,7 @@
   ]
 ]
 
-#slide(
-  title: "Informative Prior",
-)[
+#slide(title: "Informative Prior")[
   In some contexts, it is interesting to use an informative prior. Good candidates
   are when data is scarce or expensive and prior knowledge about the phenomena is
   available.
