@@ -4,7 +4,7 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
 
-  outputs = { self, nixpkgs, flake-utils, pre-commit-hooks, treefmt-nix }:
+  outputs = { self, nixpkgs, flake-utils, treefmt-nix }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -64,7 +64,6 @@
             export JULIA_PROJECT="turing"
             export CMDSTAN_HOME="${pkgs.cmdstan}/opt/cmdstan"
             export TYPST_FONT_PATHS="${typst-fonts}/share/fonts"
-            ${self.checks.${system}.pre-commit-check.shellHook}
           '';
         };
         packages = {
