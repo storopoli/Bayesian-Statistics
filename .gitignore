@@ -7,6 +7,3 @@ Manifest.toml
 ### Nix ###
 .envrc
 .direnv/
-
-### pre-commit-hooks.nix ###
-.pre-commit-config.yaml

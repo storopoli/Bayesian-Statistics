@@ -2,10 +2,9 @@
   description = "Bayesian Statistics flake with a shell";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
 
-  outputs = { self, nixpkgs, flake-utils, pre-commit-hooks, treefmt-nix }:
+  outputs = { self, nixpkgs, flake-utils, treefmt-nix }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -42,49 +41,7 @@
       rec {
         formatter = treefmtEval.config.build.wrapper;
 
-        checks = {
-          formatting = treefmtEval.config.build.check self;
-          pre-commit-check = pre-commit-hooks.lib.${system}.run {
-            src = ./.;
-            hooks = {
-              typos.enable = true;
-              treefmt = {
-                enable = true;
-                package = treefmtEval.config.build.wrapper;
-              };
-              typstyle = {
-                enable = true;
-                name = "typstyle";
-                entry = "${pkgs.typstyle}/bin/typstyle --check";
-                files = "\\.typ$";
-                language = "rust";
-              };
-              julia-formatter = {
-                enable = true;
-                name = "format julia code";
-                entry = ''
-                  ${julia}/bin/julia -e '
-                  using Pkg
-                  Pkg.activate(".")
-                  Pkg.add("JuliaFormatter")
-                  using JuliaFormatter
-                  format("turing")
-                  out = Cmd(`git diff --name-only`) |> read |> String
-                  if out == ""
-                      exit(0)
-                  else
-                      @error "Some files have been formatted !!!"
-                      write(stdout, out)
-                      exit(1)
-                  end'
-                '';
-                files = "\\.jl$";
-                language = "system";
-                pass_filenames = false;
-              };
-            };
-          };
-        };
+        checks.formatting = treefmtEval.config.build.check self;
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs;[
@@ -107,7 +64,6 @@
             export JULIA_PROJECT="turing"
             export CMDSTAN_HOME="${pkgs.cmdstan}/opt/cmdstan"
             export TYPST_FONT_PATHS="${typst-fonts}/share/fonts"
-            ${self.checks.${system}.pre-commit-check.shellHook}
           '';
         };
         packages = {
