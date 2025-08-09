@@ -12,7 +12,7 @@ TransformVariables = "84d833dd-6860-57f9-a1a7-6da5db126cff"
 Turing = "fce5fe82-541a-59a6-adf8-730c64b5f9a0"
 
 [compat]
-Bijectors = "0.13"
+Bijectors = "0.15"
 CSV = "0.10"
 CategoricalArrays = "0.10"
 DataFrames = "1"
