@@ -17,7 +17,8 @@ jobs:
       JULIA_NUM_THREADS: "auto"
     strategy:
       matrix:
-        jl-file: [
+        jl-file:
+          [
             "01-predictive_checks.jl",
             "02-linear_regression-kidiq.jl",
             "03-logistic_regression-wells.jl",
@@ -36,7 +37,7 @@ jobs:
             "15-hierarchical_varying_intercept-cheese.jl",
             "15-hierarchical_varying_intercept-non_centered-cheese.jl",
             "16-hierarchical_varying_intercept_slope-cheese.jl",
-            #"17-model_comparison-roaches.jl", # FIXME: broken upstream in ParetoSmooth.jl
+            "17-model_comparison-roaches.jl",
           ]
     steps:
       - name: Checkout repository
