@@ -24,8 +24,8 @@ jobs:
             "04-ordinal_regression-esoph.jl",
             "05-poisson_regression-roaches.jl",
             "06-robust_linear_regression-duncan.jl",
-            #"07-robust_beta_binomial_regression-wells.jl", # FIXME: broken
             #"08-robust_robit_regression-wells.jl", # FIXME: broken
+            "07-robust_beta_binomial_regression-wells.jl",
             "09-robust_negative_binomial_regression-roaches.jl",
             "10-robust_zero_inflated_regression-negative_binomial-roaches.jl",
             "10-robust_zero_inflated_regression-poisson-roaches.jl",
