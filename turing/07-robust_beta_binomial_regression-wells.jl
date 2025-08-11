@@ -3,7 +3,7 @@ using CSV
 using DataFrames
 using StatsBase
 using LinearAlgebra
-using LazyArrays
+# using LazyArrays  # removed to avoid Any-typed lazy broadcast issues with BetaBinomial + AD
 
 # logistic function
 using StatsFuns: logistic
@@ -42,7 +42,10 @@ end
 
     # likelihood
     p̂ = logistic.(α .+ X * β)
-    y ~ arraydist(LazyArray(@~ BetaBinomial2.(1, p̂, ϕ)))
+    # Explicit loop avoids LazyArray + arraydist producing Any-typed broadcast that breaks AD.
+    for i in eachindex(y)
+        y[i] ~ BetaBinomial2(1, p̂[i], ϕ)
+    end
     # you could also do BetaBinomial2.(n, p̂, ϕ) if you can group the successes
     return (; y, α, β, p̂, ϕ)
 end
@@ -55,7 +58,7 @@ chn = sample(model, NUTS(1_000, 0.8), MCMCThreads(), 1_000, 4)
 println(DataFrame(summarystats(chn)))
 
 # results:
-#   parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec 
+#   parameters      mean       std   naive_se      mcse         ess      rhat   ess_per_sec
 #       Symbol   Float64   Float64    Float64   Float64     Float64   Float64       Float64
 #            α    0.3373    0.0394     0.0006    0.0006   5610.8988    0.9992       75.4224
 #         β[1]    0.5203    0.0458     0.0007    0.0006   5412.8138    0.9994       72.7597

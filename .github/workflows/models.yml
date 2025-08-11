@@ -17,15 +17,16 @@ jobs:
       JULIA_NUM_THREADS: "auto"
     strategy:
       matrix:
-        jl-file: [
+        jl-file:
+          [
             "01-predictive_checks.jl",
             "02-linear_regression-kidiq.jl",
             "03-logistic_regression-wells.jl",
             "04-ordinal_regression-esoph.jl",
             "05-poisson_regression-roaches.jl",
             "06-robust_linear_regression-duncan.jl",
-            #"07-robust_beta_binomial_regression-wells.jl", # FIXME: broken
-            #"08-robust_robit_regression-wells.jl", # FIXME: broken
+            "07-robust_beta_binomial_regression-wells.jl",
+            "08-robust_robit_regression-wells.jl",
             "09-robust_negative_binomial_regression-roaches.jl",
             "10-robust_zero_inflated_regression-negative_binomial-roaches.jl",
             "10-robust_zero_inflated_regression-poisson-roaches.jl",
@@ -36,7 +37,7 @@ jobs:
             "15-hierarchical_varying_intercept-cheese.jl",
             "15-hierarchical_varying_intercept-non_centered-cheese.jl",
             "16-hierarchical_varying_intercept_slope-cheese.jl",
-            #"17-model_comparison-roaches.jl", # FIXME: broken upstream in ParetoSmooth.jl
+            "17-model_comparison-roaches.jl",
           ]
     steps:
       - name: Checkout repository
