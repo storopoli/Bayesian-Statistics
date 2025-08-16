@@ -16,6 +16,7 @@ jobs:
     env:
       JULIA_NUM_THREADS: "auto"
     strategy:
+      fail-fast: false
       matrix:
         jl-file:
           [

@@ -5,7 +5,6 @@ using StatsBase
 using LinearAlgebra
 using LazyArrays
 
-
 # reproducibility
 using Random: seed!
 
@@ -33,8 +32,12 @@ y = wells[:, :switch]
     # probabilities via probit link
     p = cdf.(Normal(), η)
 
-    # vectorized Bernoulli observations using LazyArrays (kept per user request)
-    y ~ arraydist(LazyArray(@~ Bernoulli.(p)))
+    # clamp probabilities to avoid numerical issues with Bernoulli
+    p_safe = clamp.(p, eps(), 1 - eps())
+
+    # likelihood
+    y ~ arraydist(LazyArray(@~ Bernoulli.(p_safe)))
+
     return (; y, α, β)
 end
 
