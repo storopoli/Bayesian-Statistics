@@ -16,7 +16,7 @@
         typst-packages = builtins.fetchGit {
           url = "https://github.com/typst/packages.git";
           ref = "main";
-          rev = "66f5634493fe02d406b5e43d674696669fb77442"; # 2025-08-11
+          rev = "e56a5838f69b65e937477f435d203600171168db"; # 2025-10-01
         };
 
         typst-fonts = pkgs.stdenvNoCC.mkDerivation {
